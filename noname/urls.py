@@ -30,6 +30,7 @@ urlpatterns = [
     # SWAGGER
     path('swagger/', schema_view),
     # MY_APP
+    path('film/', include('film.urls')),
 
 
 ]
