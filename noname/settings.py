@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'rest_framework_swagger',
+    'django_filters',
+    'debug_toolbar',
 
     'user.apps.UserConfig',
     'film.apps.FilmConfig',
@@ -60,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'noname.urls'
@@ -170,4 +173,8 @@ DJOSER = {
     'LOGOUT_ON_PASSWORD_CHANGE': True,
 
 }
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
