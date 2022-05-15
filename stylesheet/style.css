@@ -1,0 +1,88 @@
+html{
+    box-sizing: border-box; 
+}
+*,
+::after,
+*::before{
+    box-sizing: inherit; 
+}
+
+@font-face {
+    font-family: 'Sitka';
+    font-style: normal;
+    font-weight: 700;
+    color: #000;
+    src: local("Sitka"), 
+        url(../fonts/sitka-small-652.woff2) format("woff2"),
+        url(../fonts/sitka-small-652.woff)  format("woff")
+}
+
+body{
+    font-family: 'Sitka';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+
+    letter-spacing: 0.05em;
+
+    color: #FEFEFE;
+    background: #241B2C;
+}
+
+.container{
+    max-width: 1900px;
+    margin: 0 auto;
+    padding: 0px 120px;
+    
+}
+
+.header-nav{
+    display: flex;;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 36px;
+}
+
+.header-list{
+    display: flex;
+    margin-right: 83px;
+}
+.header-list-item + .header-list-item {
+    margin-left: 50px;
+}
+
+.header-logo{
+    margin-right: 75px;
+}
+
+.header-group__right{
+
+}
+
+.header-search{
+    width: 223px;
+    height: 24px;
+    background-color: #241B2C;
+    color: #FEFEFE;
+    border: none;
+}
+
+.header-button{
+    width: 180px;
+    height: 42px;
+    background: #2D8984;
+    border-radius: 8px;
+    margin-right: 50px;
+
+    font-family: 'Sitka';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 100%;
+    
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+
+}
