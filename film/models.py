@@ -1,5 +1,7 @@
 from django.db import models
 
+from user.models import User
+
 
 class Award(models.Model):
     title = models.CharField('Название награды', max_length=255)
@@ -84,3 +86,31 @@ class Film(models.Model):
 
     def __str__(self):
         return f'{self.title}: {self.year}'
+
+
+class Comment(models.Model):
+    RATING_1_5 = (
+        ('1', 'terribly'),
+        ('2', 'bad'),
+        ('3', 'ok'),
+        ('4', 'good'),
+        ('5', 'amazing')
+    )
+
+    owner = models.ForeignKey(User, verbose_name='Автор комментария', on_delete=models.CASCADE,
+                              null=True, blank=True,)
+    film = models.ForeignKey(Film, verbose_name='Комменитрованный фильм', on_delete=models.CASCADE,
+                             related_name='comment')
+    body = models.TextField('Тело текста', max_length=1024,)
+    created_at = models.DateTimeField('Время создания комментария', auto_now_add=True,)
+    updated_at = models.DateTimeField('Время последнего обновления комментария', auto_now=True,)
+    active = models.BooleanField('Состояние комментария', default=True,)
+    rating = models.CharField('Рейтинг фильма', max_length=25, choices=RATING_1_5, null=True, blank=True,)
+    parent = models.ForeignKey('self', verbose_name='Родитель', blank=True, null=True, on_delete=models.SET_NULL,)
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+
+    def __str__(self):
+        return f'Комментатор дает - {self.owner} к фильму - "{self.film}"'

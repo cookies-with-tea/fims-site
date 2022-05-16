@@ -44,13 +44,12 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework_swagger',
     'django_filters',
+    # 'social_django',
     'debug_toolbar',
 
     'user.apps.UserConfig',
     'film.apps.FilmConfig',
-
-
-
+    'userlibrary.apps.UserlibraryConfig',
 
 ]
 
@@ -105,6 +104,8 @@ DATABASES = {
     }
 }
 
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -134,6 +135,25 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+# AUTHENTICATION_BACKENDS = (
+#     'social_core.backends.vk.VKOAuth2',
+#     'social_core.backends.github.GithubOAuth2',
+#     'social_core.backends.google.GoogleOAuth2',
+#     'django.contrib.auth.backends.ModelBackend',
+# )
+
+# внизу должны быть ключи, но я хз, какие сети будем использовать, тк на разных старницах разные
+# ну и мне лень создавать приложения
+
+# SOCIAL_AUTH_VK_OAUTH2_KEY = '********'
+# SOCIAL_AUTH_VK_OAUTH2_SECRET = '*************'
+#
+# SOCIAL_AUTH_GITHUB_KEY = '********'
+# SOCIAL_AUTH_GITHUB_SECRET = '*************'
+#
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '********'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '*************'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -177,4 +197,5 @@ DJOSER = {
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
 

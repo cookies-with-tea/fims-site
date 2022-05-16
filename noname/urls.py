@@ -24,6 +24,8 @@ schema_view = get_swagger_view(title='Pastebin API')
 urlpatterns = [
     # DJANGO
     path('admin/', admin.site.urls),
+    # OAUTH
+    # path('oauth/', include('social_django.urls', namespace='social')),
     # DJOSER
     path('auth/', include('djoser.urls')),
     re_path('auth/', include('djoser.urls.authtoken')),
@@ -31,6 +33,7 @@ urlpatterns = [
     path('swagger/', schema_view),
     # MY_APP
     path('film/', include('film.urls')),
+    path('library/', include('userlibrary.urls')),
 
 
 ]

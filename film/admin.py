@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from film.models import Film, Award, Genre, People
+from film.models import Film, Award, Genre, People, Comment
 
 
 @admin.register(Film)
@@ -58,3 +58,10 @@ class PeopleAdmin(admin.ModelAdmin):
             return None
 
     get_image.short_description = 'Фотография Человека'
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('owner', 'film', 'created_at', 'active',)
+    search_fields = ('owner', 'film',)
+    ordering = ('owner', 'film',)
