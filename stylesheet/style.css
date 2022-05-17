@@ -1,80 +1,92 @@
-:root{
-    --main-text-color: #000;
-    --main-white-color: #FEFEFE;  
+:root {
+    --main-text: #000;
+    --main-white: #fefefe;
 }
+
 *,
 ::after,
-*::before{
-    box-sizing: inherit; 
-    box-sizing: border-box; 
+*::before {
+    box-sizing: border-box;
 }
+
 @font-face {
     font-family: 'Sitka';
     font-style: normal;
     font-weight: 400;
-    color: var(--main-text-color);
-    src: local("Sitka"), 
+    color: var(--main-text);
+    src: local("Sitka"),
         url(../fonts/sitka-small-599.woff2) format("woff2"),
-        url(../fonts/sitka-small-599.woff)  format("woff");
+        url(../fonts/sitka-small-599.woff) format("woff");
 }
+
 @font-face {
     font-family: 'Sitka';
     font-style: normal;
     font-weight: 600;
-    color: var(--main-text-color);
-    src: local("Sitka"), 
+    color: var(--main-text);
+    src: local("Sitka"),
         url(../fonts/sitka-small-652.woff2) format("woff2"),
-        url(../fonts/sitka-small-652.woff)  format("woff");
+        url(../fonts/sitka-small-652.woff) format("woff");
 }
+
 @font-face {
     font-family: 'Sitka';
     font-style: normal;
     font-weight: 700;
-    color: var(--main-text-color);
-    src: local("Sitka"), 
+    color: var(--main-text);
+    src: local("Sitka"),
         url(../fonts/sitka-small-815.woff2) format("woff2"),
-        url(../fonts/sitka-small-815.woff)  format("woff");
+        url(../fonts/sitka-small-815.woff) format("woff");
 }
-body{
+
+body {
     font-family: 'Sitka-small';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 100%;
     letter-spacing: 0.05em;
-    color: var(--main-white-color);
-    background: #241B2C;
+    color: var(--main-white);
+    background: #241b2c;
 }
-.container{
+
+.container {
     max-width: 1470px;
     margin: 0 auto;
-    padding: 0px 15px;    
+    padding: 0px 15px;
 }
-.button{    
-    background: #2D8984;
+
+.button {
+    background: #2d8984;
     border-radius: 8px;
 }
-.main__header-nav{
-    display: flex;;
+
+.main-header__nav {
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 36px;
 }
-.header-list{
+
+.header-list {
     display: flex;
     margin-right: 83px;
 }
-.header-list-item + .header-list-item {
+
+.header-list__item+.header-list__item {
     margin-left: 50px;
 }
-.main__header-logo{
+
+.main-header__logo {
     margin-right: 75px;
 }
-.main__header-group-right{
+
+.main-header__group {
     display: flex;
     align-items: center;
 }
-.header-search{
+
+.header-search {
     font-family: 'Sitka-small';
     font-style: normal;
     font-weight: 400;
@@ -82,15 +94,16 @@ body{
     font-size: 20px;
     letter-spacing: 0.05em;
     width: 223px;
-    height: 24px;    
-    background-color: #241B2C;
-    color: var(--main-white-color);
-    border-bottom: 1px solid var(--main-white-color);
+    height: 24px;
+    background-color: #241b2c;
+    color: var(--main-white);
+    border-bottom: 1px solid var(--main-white);
     text-align: left;
     margin-right: 50px;
     position: relative;
 }
-.header-search::after{
+
+.header-search::after {
     width: 14px;
     height: 14px;
     content: '';
@@ -100,14 +113,14 @@ body{
     transform: translate(-50%);
     background: center / cover no-repeat url("../img/search-icon.svg");
 }
-.header-button{
+
+.header-button {
     width: 180px;
     height: 42px;
     margin-right: 50px;
     font-size: 18px;
     letter-spacing: 0.05em;
     line-height: 1.2;
-    color: var(---main-white-color);
+    color: var(---main-white);
     border: none;
 }
-
