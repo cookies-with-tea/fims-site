@@ -2,13 +2,11 @@
     --main-text: #000;
     --main-white: #fefefe;
 }
-
 *,
 ::after,
 *::before {
     box-sizing: border-box;
 }
-
 @font-face {
     font-family: 'Sitka';
     font-style: normal;
@@ -18,7 +16,6 @@
         url(../fonts/sitka-small-599.woff2) format("woff2"),
         url(../fonts/sitka-small-599.woff) format("woff");
 }
-
 @font-face {
     font-family: 'Sitka';
     font-style: normal;
@@ -28,7 +25,6 @@
         url(../fonts/sitka-small-652.woff2) format("woff2"),
         url(../fonts/sitka-small-652.woff) format("woff");
 }
-
 @font-face {
     font-family: 'Sitka';
     font-style: normal;
@@ -38,7 +34,6 @@
         url(../fonts/sitka-small-815.woff2) format("woff2"),
         url(../fonts/sitka-small-815.woff) format("woff");
 }
-
 body {
     font-family: 'Sitka-small';
     font-style: normal;
@@ -49,43 +44,38 @@ body {
     color: var(--main-white);
     background: #241b2c;
 }
-
 .container {
     max-width: 1470px;
     margin: 0 auto;
     padding: 0px 15px;
 }
-
 .button {
     background: #2d8984;
     border-radius: 8px;
 }
-
+.main-header{
+    margin-bottom: 130px;
+}
 .main-header__nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 36px;
 }
-
 .header-list {
     display: flex;
     margin-right: 83px;
 }
-
 .header-list__item+.header-list__item {
     margin-left: 50px;
 }
-
 .main-header__logo {
     margin-right: 75px;
 }
-
 .main-header__group {
     display: flex;
     align-items: center;
 }
-
 .header-search {
     font-family: 'Sitka-small';
     font-style: normal;
@@ -102,7 +92,6 @@ body {
     margin-right: 50px;
     position: relative;
 }
-
 .header-search::after {
     width: 14px;
     height: 14px;
@@ -113,7 +102,6 @@ body {
     transform: translate(-50%);
     background: center / cover no-repeat url("../img/search-icon.svg");
 }
-
 .header-button {
     width: 180px;
     height: 42px;
@@ -123,4 +111,21 @@ body {
     line-height: 1.2;
     color: var(---main-white);
     border: none;
+}
+/* .main-hero{
+    display: flex;
+} */
+.main-hero__title{
+    font-family: 'Sitka';
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 43px;
+    letter-spacing: 0.05em;
+    text-align: left;
+    margin-bottom: 18px;
+}
+.main-hero__right{
+    width: 20px;
+    height: 160px;
+    justify-content: space-between;
 }

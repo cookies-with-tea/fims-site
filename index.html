@@ -7,8 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main anonim</title>
 
-    <link href="stylesheet/reset.css" rel="stylesheet">
-    <link href="stylesheet/style.css" rel="stylesheet">
+    <link href="stylesheet/reset.css" rel="stylesheet" />
+    <link href="stylesheet/style.css" rel="stylesheet" />
+    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="stylesheet/swiper.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -43,9 +47,82 @@
                 </div>
             </nav>
         </header>
-        <main></main>
-        <footer class="main-footer"></footer>
+        <main>
+            <div class="main-hero">
+                <h2 class="main-hero__title">Лучшие фильмы</h2>
+                <div class="main-hero__container">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <img class="swiper-slide__item" src="img/movie1.jpg" alt="movie1">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <img class="swiper-slide__item" src="img/movie2.jpg" alt="movie2">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <img class="swiper-slide__item" src="img/movie1.jpg" alt="movie1">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <img class="swiper-slide__item" src="img/movie1.jpg" alt="movie1">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <img class="swiper-slide__item" src="img/movie1.jpg" alt="movie1">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <img class="swiper-slide__item" src="img/movie1.jpg" alt="movie1">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <img class="swiper-slide__item" src="img/movie1.jpg" alt="movie1">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <img class="swiper-slide__item" src="img/movie1.jpg" alt="movie1">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="swiper-slide__inner">
+                                    <img class="swiper-slide__item" src="img/movie2.jpg" alt="movie2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <aside class="main-hero__right">
+                        <object data="header-users.svg" type="image/svg+xml">
+                            <img src="img/instagramIcon.svg" alt="instagram">
+                        </object>
+                        <object data="header-users.svg" type="image/svg+xml">
+                            <img src="img/telegrammIcon.svg" alt="telegramm">
+                        </object>
+                        <object data="header-users.svg" type="image/svg+xml">
+                            <img src="img/inIcon.svg" alt="in">
+                        </object>
+                    </aside>
+                </div>
+            </div>
+        </main>
+        <footer class="main-footer">
+        </footer>
     </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="script/main.js"></script>
 </body>
 
 </html>
