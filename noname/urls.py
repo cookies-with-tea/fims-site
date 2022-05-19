@@ -30,9 +30,18 @@ urlpatterns = [
     # SWAGGER
     path('swagger/', schema_view),
     # MY_APP
+    path('film/', include('film.urls')),
 
 
 ]
 
 if settings.DEBUG:
+    import debug_toolbar
+    import mimetypes
+
+    mimetypes.add_type("application/javascript", ".js", True)
+
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns = [
+                      path('__debug__/', include(debug_toolbar.urls))
+                  ] + urlpatterns
