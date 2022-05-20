@@ -1,4 +1,3 @@
-from django.contrib.auth.models import AnonymousUser
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, status
 from rest_framework.response import Response
@@ -10,6 +9,7 @@ from rest_framework.views import APIView
 from film.serializers import FilmRetrieveSerializers, FilmListSerializers, FilmAllFieldsSerializers, \
     CommentAllFieldsSerializers
 from film.models import Film
+from userlibrary.service import AddUserFilmService
 
 
 class FilmRetrieveAPIView(APIView):
@@ -19,29 +19,32 @@ class FilmRetrieveAPIView(APIView):
         film = Film.objects.\
             filter(pk=kwargs['pk']).\
             prefetch_related('comment__owner')\
-            .only('title', 'cover', 'year', 'country', 'genre__title', 'starring__id',
-                  'starring__first_name', 'starring__last_name', 'description', 'age', 'time', 'rating',)
+            .only('title',
+                  'cover',
+                  'year',
+                  'country',
+                  'genre__title',
+                  'starring__id',
+                  'starring__first_name',
+                  'starring__last_name',
+                  'description',
+                  'age',
+                  'time',
+                  'rating',)
         serializer = FilmRetrieveSerializers(film, many=True)
         return Response(serializer.data)
 
     def post(self, request, *args, **kwargs):
         serializer = CommentAllFieldsSerializers(data=request.data)
         film = Film.objects.get(pk=kwargs['pk'])
-        try:
-            if serializer.is_valid():
-                serializer.validated_data['owner'] = request.user
-                serializer.validated_data['film'] = film
-                serializer.save()
-
-                from userlibrary.models import UserFilm, UserLibrary
-                library = UserLibrary.objects.get(owner=request.user)
-                UserFilm.objects.get_or_create(owner=request.user, library=library,
-                                               film=film, rating=serializer.validated_data['rating'])
-
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        except ValueError:
-            raise ValueError("GO TO LOGIN")
+        # не допускать сюда анонимов
+        if serializer.is_valid():
+            serializer.validated_data['owner'] = request.user
+            serializer.validated_data['film'] = film
+            serializer.save()
+            AddUserFilmService.create_user_library(self, request, film, serializer)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class FilmRUDOFAdminAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -55,8 +58,16 @@ class FilmListAPIView(generics.ListAPIView):
 
     queryset = Film.objects.\
         all().\
-        only('id', 'title', 'cover_mini', 'year', 'country', 'genre',
-             'description', 'age', 'time', 'rating')
+        only('id',
+             'title',
+             'cover_mini',
+             'year',
+             'country',
+             'genre',
+             'description',
+             'age',
+             'time',
+             'rating',)
     serializer_class = FilmListSerializers
     permission_classes = (IsAuthenticated,)
 

@@ -15,6 +15,9 @@ class UserLibrary(models.Model):
     def __str__(self):
         return f'Библиотека - {self.owner}'
 
+    def add_user_film(self, film):
+        self.films.add(film)
+
 
 class UserFilm(models.Model):
 
@@ -41,6 +44,12 @@ class UserFilm(models.Model):
 
     def __str__(self):
         return f'Фильм в библиотеки под названием- "{self.film.title}"'
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.library.add_user_film(self)
+
+
 
 
 

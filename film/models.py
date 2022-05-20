@@ -1,5 +1,6 @@
 from django.db import models
 
+
 from user.models import User
 
 
@@ -86,6 +87,11 @@ class Film(models.Model):
 
     def __str__(self):
         return f'{self.title}: {self.year}'
+
+    def update_rating(self, is_film, *args, **kwargs):
+        from film.services import FilmRating
+        self.rating = FilmRating.average_rating(self, is_film)
+        super().save(*args, **kwargs)
 
 
 class Comment(models.Model):
