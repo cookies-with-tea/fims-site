@@ -9,6 +9,6 @@ new Swiper(".mySwiper", {
     },
     mousewheel: true,
     keyboard: true,
-    slidesPerView: 3,
+    slidesPerView: 2.8,
     spaceBetween: 20,
 });
