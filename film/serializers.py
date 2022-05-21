@@ -3,10 +3,6 @@ from rest_framework import serializers
 from film.models import Film, Genre, People, Comment
 
 
-# -------------------------------------------------
-# Comment
-# -------------------------------------------------
-
 class CommentOnFilmSerializers(serializers.ModelSerializer):
     """Comment Film """
     owner = serializers.ReadOnlyField(source='owner.username')

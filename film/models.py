@@ -89,8 +89,8 @@ class Film(models.Model):
         return f'{self.title}: {self.year}'
 
     def update_rating(self, is_film, *args, **kwargs):
-        from film.services import FilmRating
-        self.rating = FilmRating.average_rating(self, is_film)
+        from film.service import average_rating
+        self.rating = average_rating(is_film)
         super().save(*args, **kwargs)
 
 
