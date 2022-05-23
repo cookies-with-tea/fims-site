@@ -1,7 +1,9 @@
-.swiper {
+.swiper {    
+    width: 100%;
+}
+.main-hero__swiper {
     max-width: 1197px;
     max-height: 541px;
-    width: 100%;
 }
 .swiper-slide {
     text-align: center;

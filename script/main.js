@@ -1,4 +1,4 @@
-new Swiper(".mySwiper", {
+new Swiper(".main-hero__swiper", {
     cssMode: true,
     navigation: {
       nextEl: ".swiper-button-next",

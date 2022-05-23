@@ -122,7 +122,8 @@ body {
     text-align: left;
     margin-bottom: 18px;
 }
-.main-hero__container {    
+.main-hero__container {  
+    position: relative;  
     margin-right: 166px;
     width: 1300px;
     height: 578px;
@@ -132,8 +133,7 @@ body {
     max-width: 1197px;
     max-height: 576px;
 }
-.main-hero__list {    
-    width: 20px;
+.main-hero__list {  
     height: 160px;
     position: relative;
     top: 230px;
@@ -143,14 +143,12 @@ body {
     list-style-type: none;
 }
 .hero-arrow__right { 
-    top: -50%;   
-    position: relative;
-    float: right;
+    top: 50%;
+    left: 90%;   
+    position: absolute;
 }
 .hero-arrow__left {
-    top: -50%;  
-    position: relative;
-    float: left;
+    position: absolute;
 }
 .hero-pagination {
     position: relative;
