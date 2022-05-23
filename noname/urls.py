@@ -44,7 +44,8 @@ if settings.DEBUG:
 
     mimetypes.add_type("application/javascript", ".js", True)
 
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
     urlpatterns = [
                       path('__debug__/', include(debug_toolbar.urls))
                   ] + urlpatterns

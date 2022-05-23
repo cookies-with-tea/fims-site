@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t6++$8k$1zeq06dr#(u@+jan&pc*f2h)g-@n!(k=lc&$k9@8ni'
+SECRET_KEY = \
+    'django-insecure-t6++$8k$1zeq06dr#(u@+jan&pc*f2h)g-@n!(k=lc&$k9@8ni'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -69,8 +70,7 @@ ROOT_URLCONF = 'noname.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,16 +111,32 @@ SOCIAL_AUTH_JSONFIELD_ENABLED = True
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.'
+        'auth.password_validation.'
+        'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.'
+        'auth.password_validation.'
+        'MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.'
+        'contrib.'
+        'auth.'
+        'password_validation.'
+        'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.'
+        'contrib.'
+        'auth.'
+        'password_validation.'
+        'NumericPasswordValidator',
     },
 ]
 
@@ -143,7 +159,9 @@ USE_TZ = True
 #     'django.contrib.auth.backends.ModelBackend',
 # )
 
-# внизу должны быть ключи, но я хз, какие сети будем использовать, тк на разных старницах разные
+# внизу должны быть ключи, но я хз,
+# какие сети будем использовать,
+# тк на разных старницах разные
 # ну и мне лень создавать приложения
 
 # SOCIAL_AUTH_VK_OAUTH2_KEY = '********'
@@ -197,5 +215,3 @@ DJOSER = {
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
-
-
