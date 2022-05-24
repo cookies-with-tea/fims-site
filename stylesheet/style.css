@@ -144,10 +144,11 @@ body {
 }
 .hero-arrow__right { 
     top: 50%;
-    left: 90%;   
+    right: 8%; 
     position: absolute;
 }
 .hero-arrow__left {
+    left: auto;
     position: absolute;
 }
 .hero-pagination {
