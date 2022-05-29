@@ -5,7 +5,7 @@ class AddUserFilmService:
         from userlibrary.models import UserFilm, UserLibrary
         library = UserLibrary.objects.get(owner=request.user)
         UserFilm.objects.get_or_create(owner=request.user,
-                                        library=library,
-                                        film=film,
-                                        rating=serializer.validated_data['rating'])
+                                       library=library,
+                                       film=film,
+                                       rating=serializer.validated_data['rating'])
         film.update_rating(film)

@@ -6,7 +6,8 @@ from user.models import User
 
 class Award(models.Model):
     title = models.CharField('Название награды', max_length=255)
-    photo = models.ImageField('Фото награды', upload_to='photo/award/%Y/%m/%d', null=True, blank=True,)
+    photo = models.ImageField('Фото награды', upload_to='photo/award/%Y/%m/%d',
+                              null=True, blank=True,)
     description = models.TextField('Описание награды', max_length=1024)
     year = models.PositiveIntegerField('Год выпуска награды',)
     slug = models.SlugField(('Слаг награды'), max_length=255, unique=True, db_index=True, )
