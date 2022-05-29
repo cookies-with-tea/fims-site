@@ -34,6 +34,7 @@ urlpatterns = [
     # MY_APP
     path('film/', include('film.urls')),
     path('library/', include('userlibrary.urls')),
+    path('email/', include('sendemail.urls')),
 
 
 ]
