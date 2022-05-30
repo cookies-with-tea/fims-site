@@ -5,10 +5,13 @@ from rest_framework.response import Response
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework.views import APIView
+from rest_framework import viewsets
 
+from film.permissions import IsOwnerOrAdmin
 from film.serializers import FilmRetrieveSerializers, FilmListSerializers, FilmAllFieldsSerializers, \
-    CommentAllFieldsSerializers
-from film.models import Film
+    CommentAllFieldsSerializers, FilmSuggestSerializer, FilmSuggestAdminSerializer
+from film.models import Film, SuggestedFilm
+from film.service import film_accepted
 from userlibrary.service import AddUserFilmService
 
 
@@ -82,3 +85,62 @@ class FilmCreateAPIView(generics.CreateAPIView):
     queryset = Film
     serializer_class = FilmAllFieldsSerializers
     permission_classes = (IsAdminUser,)
+
+
+class SuggestedFilmViewSets(viewsets.ModelViewSet):
+
+    serializer_class = {
+        'list': FilmSuggestSerializer,
+        'retrieve': FilmSuggestAdminSerializer,
+        'create': FilmSuggestSerializer,
+        'update': FilmSuggestAdminSerializer,
+        'destroy': FilmSuggestAdminSerializer,
+    }
+
+    default_serializer_class = FilmSuggestSerializer
+
+    def get_queryset(self):
+        return SuggestedFilm.objects.all()
+
+    def get_serializer_class(self):
+        return self.serializer_class.get(self.action, self.default_serializer_class)
+
+    def get_permissions(self):
+        if self.action == 'retrieve' or self.action == 'destroy':
+            permissions_classes = [IsOwnerOrAdmin]
+        elif self.action == 'create':
+            permissions_classes = [IsAuthenticated]
+        else:
+            permissions_classes = [IsAdminUser]
+        return [permission() for permission in permissions_classes]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.validated_data['owner'] = request.user
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def update(self, request, *args, **kwargs):
+        update = super().update(request, *args, **kwargs)
+        if update.data['is_published']:
+            film_accepted(update)
+        return update
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from film.models import Film, Award, Genre, People, Comment
+from film.models import Film, Award, Genre, People, Comment, SuggestedFilm
 
 
 @admin.register(Film)
@@ -10,6 +10,23 @@ class FilmAdmin(admin.ModelAdmin):
     readonly_fields = ('get_image',)
     search_fields = ('title', )
     ordering = ('title', )
+    save_as = True
+
+    def get_image(self, obj):
+        try:
+            return mark_safe(f'<img src={obj.cover.url} width="150" height="100"')
+        except ValueError:
+            return None
+
+    get_image.short_description = 'Обложка фильма'
+
+
+@admin.register(SuggestedFilm)
+class SuggestFilmAdmin(admin.ModelAdmin):
+    list_display = ('title', 'owner', 'get_image', 'country', 'age',)
+    readonly_fields = ('get_image',)
+    search_fields = ('title', 'owner',)
+    ordering = ('title', 'owner',)
     save_as = True
 
     def get_image(self, obj):

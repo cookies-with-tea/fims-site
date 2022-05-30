@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from film.models import Film, Genre, People, Comment
+from film.models import Film, Genre, People, Comment, SuggestedFilm
 
 
 class CommentOnFilmSerializers(serializers.ModelSerializer):
@@ -65,4 +65,21 @@ class FilmAllFieldsSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Film
+        fields = '__all__'
+
+
+class FilmSuggestSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    is_published = serializers.ReadOnlyField()
+
+    class Meta:
+        model = SuggestedFilm
+        fields = '__all__'
+
+
+class FilmSuggestAdminSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = SuggestedFilm
         fields = '__all__'
