@@ -12,3 +12,26 @@ new Swiper(".main-hero__swiper", {
     slidesPerView: 2.8,
     spaceBetween: 20,
 });
+
+document.addEventListener('DOMContentLoaded', function(event) {
+  const modalOpen = document.querySelector('.main-modal__open')
+  const modal = document.querySelector('.main-modal')
+
+  const modalClose = modal.querySelector('.modal__close')
+  const modalWrapper = modal.querySelector('.main-modal__wrapper')
+
+  const handleOpenModal = () => {
+      modal.classList.add('active')
+  }
+
+  const handleCloseModal = () => {
+      modal.classList.remove('active')
+  }
+  
+  modalOpen.addEventListener('click' , handleOpenModal)
+  modalClose.addEventListener('click' , handleCloseModal)
+  modal.addEventListener('click', handleCloseModal)
+  modalWrapper.addEventListener('click', (e) => {
+      e.stopPropagation()
+  })
+})

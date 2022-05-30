@@ -10,6 +10,7 @@
     <link href="stylesheet/reset.css" rel="stylesheet" />
     <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet" />
     <link href="stylesheet/swiper.css" rel="stylesheet">
+    <link href="stylesheet/modal.css" rel="stylesheet">
     <link href="stylesheet/style.css" rel="stylesheet" />
 
 
@@ -38,14 +39,44 @@
                 </div>
                 <div class="main-header__group">
                     <button class="header-search">Поиск</button>
-                    <button class="button header-button">
+                    <button class="button header-button main-modal__open">
                         Вход
                     </button>
+
                     <object data="header-users.svg" type="image/svg+xml">
                         <img src="img/header-users.svg" alt="users">
                     </object>
                 </div>
             </nav>
+
+            <div class="main-modal">
+                <div class="main-modal__wrapper">
+                    <div class="modal__title">
+                        Регистрация
+                    </div>
+                    <div class="modal__close">
+                        <button class="cross">
+                            <img src="img/cross.svg" alt="cross">
+                        </button>
+                    </div>
+                    <ul class="modal-body">
+                        <li class="modal-body__item">
+                            <label class="modal-title__item" for="email">Почта</label>
+                            <input class="modal-input" type="text" placeholder="Email" name="email" required>
+                        </li>
+                        <li class="madal-body__item">
+                            <label class="modal-title__item" for="name">Имя</label>
+                            <input class="modal-input" type="username" placeholder="Username" name="name" required>
+                        </li>
+                        <li class="madal-body__item">
+                            <label class="modal-title__item" for="psw">Пароль</label>
+                            <input class="modal-input" type="password" placeholder="Password" name="psw" required>
+                        </li>
+                        <button type="submit" class="button registerbtn">Register</button>
+                        <span class="modal-subtitle">Или войти через</span>
+                    </ul>
+                </div>
+            </div>
         </header>
         <main>
             <div class="main-hero">
