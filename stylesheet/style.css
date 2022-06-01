@@ -3,6 +3,8 @@
     --main-white: #fefefe;
     --main-back: #241b2c;
     --modal-back: rgb(36,27,44,0.7);
+    --button-color: #fefefe;
+    --button-background-color: #2d8984;
 }
 *,
 ::after,
@@ -52,7 +54,7 @@ body {
     padding: 0px 15px;
 }
 .button {
-    background: #2d8984;
+    background: var(--button-background-color);
     border-radius: 8px;
 }
 .main-header {

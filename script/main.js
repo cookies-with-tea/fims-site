@@ -13,12 +13,12 @@ new Swiper(".main-hero__swiper", {
     spaceBetween: 20,
 });
 
-document.addEventListener('DOMContentLoaded', function(event) {
-  const modalOpen = document.querySelector('.main-modal__open')
-  const modal = document.querySelector('.main-modal')
+document.addEventListener('DOMContentLoaded', function() {
+  const modalOpen = document.querySelector('.anonim-modal__open')
+  const modal = document.querySelector('.anonim-modal')
 
-  const modalClose = modal.querySelector('.modal__close')
-  const modalWrapper = modal.querySelector('.main-modal__wrapper')
+  const modalClose = modal.querySelector('.anonim-modal__close')
+  const modalWrapper = modal.querySelector('.anonim-modal__wrapper')
 
   const handleOpenModal = () => {
       modal.classList.add('active')

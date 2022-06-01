@@ -1,7 +1,11 @@
 /*modal*/
 
-.main-modal {
-    display: none;
+.anonim-modal {
+    display: none;    
+}
+
+.anonim-modal.active {
+    display: block;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -13,11 +17,7 @@
     background-color: var(--modal-back);
 }
 
-.main-modal.active {
-    display: block;
-}
-
-.main-modal__wrapper {
+.anonim-modal__wrapper {
     position: relative;
     left: 50%;
     right: 0;
@@ -50,14 +50,11 @@
     text-align: center;
 }
 
-.modal__close {
+.anonim-modal__close {
     position: absolute;
-    font-size: 22px;
-    color: rgb(55, 117, 211);
     right: 1px;
     top: 1px;
     padding: 20px 20px 0 0;
-    /* cursor: pointer; */
 }
 
 .cross {
@@ -70,16 +67,22 @@
 }
 
 .modal-title__item {
-    margin-bottom: 10px;
+    
+}
+
+.modal-body__link {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    list-style: none;
 }
 
 .modal-input {
-    border: 1px solid #4CD1D1;
+    border: 1px solid #4cd1d1;
     border-radius: 16px;
 }
 
 input[type=text],
-input[type=username],
 input[type=password] {
     width: 100%;
     padding: 15px;
@@ -90,14 +93,14 @@ input[type=password] {
 }
 
 input[type=text]:focus,
-input[type=username],
 input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
 
-.registerbtn {
-    color: white;
+.register-btn {
+    color: var(--button-color);
+    background-color: var(--button-background-color);
     display: block;
     margin: 0 auto 20px;
     padding: 16px 20px;
@@ -106,6 +109,7 @@ input[type=password]:focus {
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
+    border-radius: 16px;
 }
 
 .registerbtn:hover {
@@ -113,7 +117,9 @@ input[type=password]:focus {
 }
 
 .modal-subtitle {
-    width: 100%;
-    display: block;
-    margin: 0 auto; 
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 20px;
+    color: #cecece;
+    font-size: 18px;
 }
