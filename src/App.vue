@@ -1,13 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  <div>
-    <el-button>Message</el-button>
-  </div>  
+  <router-view />
 </template>
-
-<style scoped>
-
-</style>
