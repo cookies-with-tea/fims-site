@@ -18,8 +18,8 @@
   </template>
 
   <style scoped lang="scss">
-    .common-layout {
-        background-color: #241B2C;
-        color: antiquewhite;
+    .common-layout {       
+      background-color: #241B2C;
+      color: antiquewhite;
     }
   </style>
