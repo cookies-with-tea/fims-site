@@ -1,0 +1,15 @@
+.el-input {
+    &.common-header__search {
+        .el-input {
+            &__wrapper {
+                padding: 0;
+                outline: none;                
+                box-shadow: none;
+                background-color: $color--defaultlayout;
+                border-bottom: solid 1px #fefefe;
+                border-radius:0;
+                justify-content:flex-start;
+            }
+        }
+    }
+}

@@ -11,6 +11,6 @@
   <style scoped lang="scss">
   
     .common-layout {        
-      color: antiquewhite;
+      color: #fefefe;
     }
   </style>
