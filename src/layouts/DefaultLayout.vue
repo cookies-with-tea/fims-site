@@ -2,15 +2,23 @@
   <div class="common-layout">
     <div class="container">
       <div class="common-layout__wrapper">
-        <common-header />
+        <common-header @open-dialog="dialogVisibleChange" />
       </div>
-    </div>    
+    </div>
+    <auth-dialog :visible="isAuthDialogVisible" @close-dialog="dialogVisibleChange" />    
   </div>
 </template>
+<script lang="ts" setup>
+import { ref } from "@vue/reactivity"
 
-  <style scoped lang="scss">
-  
-    .common-layout {        
-      color: #fefefe;
-    }
-  </style>
+const isAuthDialogVisible = ref(false)
+
+const dialogVisibleChange = (): void => {
+  isAuthDialogVisible.value = !isAuthDialogVisible.value
+}
+</script>
+<style scoped lang="scss">
+.common-layout {        
+  color: #fefefe;
+}
+</style>

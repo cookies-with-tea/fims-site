@@ -10,6 +10,14 @@
                 border-radius:0;
                 justify-content:flex-start;
             }
+
+            &__inner {
+                color: #fefefe;
+                
+                &::placeholder { 
+                    color: #fefefe;
+                }
+            }
         }
     }
 }
