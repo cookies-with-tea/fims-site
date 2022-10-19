@@ -6,11 +6,10 @@
       :before-close="closeDialog"
     >    
     
-      <auth-dialog-form :visible="isLoginFormVisible" @selectp-form="formVisibleChange"/>
-      <reg-dialog-form :visible="!isLoginFormVisible"  @selectp-form="formVisibleChange"/>      
+      <auth-dialog-form :visible="isLoginFormVisible" @select-form="formVisibleChange"/>
+      <reg-dialog-form :visible="!isLoginFormVisible"  @select-form="formVisibleChange"/>      
 
-      <template #footer>
-        <el-button type="primary" @click="selectorForm">Регистрация</el-button>
+      <template #footer>        
         <span class="dialog-footer">
             close
           <!-- <el-button @click="dialogVisible = false">Cancel</el-button>
@@ -28,7 +27,6 @@ import { ElMessageBox } from 'element-plus'
 
 const emit = defineEmits<{
   (e: 'close-dialog'): void
-  (e: 'select-form'): void
 }>()
 
 const props = defineProps({
@@ -38,19 +36,15 @@ const props = defineProps({
     }
 })
 
-const isLoginFormVisible = ref(false)
-
-const selectorForm = (): void => {
-    emit('select-form')
-}
+const isLoginFormVisible = ref(true)
 
 const closeDialog = (): void => {
     emit('close-dialog')
+    isLoginFormVisible.value = true
 }
 
 const formVisibleChange = (): void => {
   isLoginFormVisible.value = !isLoginFormVisible.value
-  console.log(props.visible)
 }
 
 // const dialogVisible = ref(false)
