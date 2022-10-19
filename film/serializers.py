@@ -1,10 +1,28 @@
 from rest_framework import serializers
 
+from film.models import Film, Genre, People, Comment, SuggestedFilm
+
+
+class CommentOnFilmSerializers(serializers.ModelSerializer):
+    """Comment Film """
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = Comment
+        fields = '__all__'
+
+
+class CommentAllFieldsSerializers(serializers.ModelSerializer):
+    """Comment Create """
+
+    class Meta:
+        model = Comment
+        fields = ('body', 'rating', 'parent',)
+
 
 # -------------------------------------------------
 # Film
 # -------------------------------------------------
-from film.models import Film, Genre, People
 
 
 class GenreOnFilmSerializers(serializers.ModelSerializer):
@@ -24,11 +42,13 @@ class PeopleOnFilmSerializers(serializers.ModelSerializer):
 class FilmRetrieveSerializers(serializers.ModelSerializer):
     genre = GenreOnFilmSerializers(many=True)
     starring = PeopleOnFilmSerializers(many=True)
+    comment = CommentOnFilmSerializers(many=True)
 
     class Meta:
         model = Film
         fields = ('id', 'title', 'cover', 'year', 'country', 'genre',
-                  'starring', 'description', 'age', 'time', 'rating',)
+                  'starring', 'description', 'age', 'time', 'rating',
+                  'comment',)
 
 
 class FilmListSerializers(serializers.ModelSerializer):
@@ -45,4 +65,21 @@ class FilmAllFieldsSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Film
+        fields = '__all__'
+
+
+class FilmSuggestSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    is_published = serializers.ReadOnlyField()
+
+    class Meta:
+        model = SuggestedFilm
+        fields = '__all__'
+
+
+class FilmSuggestAdminSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = SuggestedFilm
         fields = '__all__'

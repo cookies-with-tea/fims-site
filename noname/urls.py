@@ -24,6 +24,8 @@ schema_view = get_swagger_view(title='Pastebin API')
 urlpatterns = [
     # DJANGO
     path('admin/', admin.site.urls),
+    # OAUTH
+    # path('oauth/', include('social_django.urls', namespace='social')),
     # DJOSER
     path('auth/', include('djoser.urls')),
     re_path('auth/', include('djoser.urls.authtoken')),
@@ -31,6 +33,8 @@ urlpatterns = [
     path('swagger/', schema_view),
     # MY_APP
     path('film/', include('film.urls')),
+    path('library/', include('userlibrary.urls')),
+    path('email/', include('sendemail.urls')),
 
 
 ]
@@ -41,7 +45,8 @@ if settings.DEBUG:
 
     mimetypes.add_type("application/javascript", ".js", True)
 
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
     urlpatterns = [
                       path('__debug__/', include(debug_toolbar.urls))
                   ] + urlpatterns

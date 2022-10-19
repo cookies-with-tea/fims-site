@@ -28,6 +28,11 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
+    def save(self, *args, **kwargs):
+        from userlibrary.models import UserLibrary
+        super().save(*args, **kwargs)
+        UserLibrary.objects.create(owner=self)
+
 
 class User(AbstractBaseUser, PermissionsMixin):
 
@@ -58,6 +63,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return f'Пользователь - {self.email} ({self.username})'
+
+
 
     def get_full_name(self):
         return self.username

@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t6++$8k$1zeq06dr#(u@+jan&pc*f2h)g-@n!(k=lc&$k9@8ni'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -44,13 +48,13 @@ INSTALLED_APPS = [
     'djoser',
     'rest_framework_swagger',
     'django_filters',
+    # 'social_django',
     'debug_toolbar',
 
     'user.apps.UserConfig',
     'film.apps.FilmConfig',
-
-
-
+    'userlibrary.apps.UserlibraryConfig',
+    'sendemail.apps.SendemailConfig',
 
 ]
 
@@ -70,8 +74,7 @@ ROOT_URLCONF = 'noname.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,7 +96,7 @@ WSGI_APPLICATION = 'noname.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-
+# не забыть запихнуть в env
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -105,21 +108,29 @@ DATABASES = {
     }
 }
 
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.'
+        'auth.password_validation.'
+        'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -134,6 +145,27 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+# AUTHENTICATION_BACKENDS = (
+#     'social_core.backends.vk.VKOAuth2',
+#     'social_core.backends.github.GithubOAuth2',
+#     'social_core.backends.google.GoogleOAuth2',
+#     'django.contrib.auth.backends.ModelBackend',
+# )
+
+# внизу должны быть ключи, но я хз,
+# какие сети будем использовать,
+# тк на разных старницах разные
+# ну и мне лень создавать приложения
+
+# SOCIAL_AUTH_VK_OAUTH2_KEY = '********'
+# SOCIAL_AUTH_VK_OAUTH2_SECRET = '*************'
+#
+# SOCIAL_AUTH_GITHUB_KEY = '********'
+# SOCIAL_AUTH_GITHUB_SECRET = '*************'
+#
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '********'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '*************'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -161,6 +193,7 @@ REST_FRAMEWORK = {
 
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 
+
 }
 
 DJOSER = {
@@ -174,7 +207,13 @@ DJOSER = {
 
 }
 
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+RECIPIENT_ADDRESS = env('RECIPIENT_ADDRESS')
+
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
-

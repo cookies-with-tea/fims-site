@@ -1,12 +1,51 @@
-.idea
-idea
-
-venv
-
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*/__pycache__/
 *.py[cod]
-.pyc
-*.pyc
+*$py.class
+# C extensions
+*.so
 
-media
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+
+# Environments
+.venv
+*/.env
+.env
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+virt/
+.virt
+
+# Pyre type checker
+.pyre/
+.idea/*
+.env
+.virt
+
+# local env files
+.env
+
+media/
