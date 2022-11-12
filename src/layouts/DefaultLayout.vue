@@ -3,6 +3,7 @@
     <div class="container">
       <div class="common-layout__wrapper">
         <common-header @open-dialog="dialogVisibleChange" />
+        <common-swiper />
       </div>
     </div>
     <auth-dialog :visible="isAuthDialogVisible" @close-dialog="dialogVisibleChange" />    

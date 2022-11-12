@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     AuthDialog: typeof import('./src/components/dialogs/AuthDialog.vue')['default']
     AuthDialogForm: typeof import('./src/components/forms/AuthDialogForm.vue')['default']
     CommonHeader: typeof import('./src/components/CommonHeader.vue')['default']
+    CommonSwiper: typeof import('./src/components/CommonSwiper.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElDialog: typeof import('element-plus/es')['ElDialog']

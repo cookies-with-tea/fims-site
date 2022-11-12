@@ -47,17 +47,6 @@ const formVisibleChange = (): void => {
   isLoginFormVisible.value = !isLoginFormVisible.value
 }
 
-// const dialogVisible = ref(false)
-
-// const handleClose = (done: () => void) => {
-//   ElMessageBox.confirm('Are you sure to close this dialog?')
-//     .then(() => {
-//       done()
-//     })
-//     .catch(() => {
-//       // catch error
-//     })
-// }
 </script>
 <style scoped>
 .dialog-footer button:first-child {
