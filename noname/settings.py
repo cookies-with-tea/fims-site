@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_filters',
     # 'social_django',
     'debug_toolbar',
+    'corsheaders',
 
     'user.apps.UserConfig',
     'film.apps.FilmConfig',
@@ -61,6 +62,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -216,4 +218,9 @@ RECIPIENT_ADDRESS = env('RECIPIENT_ADDRESS')
 
 INTERNAL_IPS = [
     '127.0.0.1',
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8080',
+    'http://127.0.0.1:8080'
 ]
