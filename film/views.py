@@ -91,7 +91,7 @@ class SuggestedFilmViewSets(viewsets.ModelViewSet):
 
     serializer_class = {
         'list': FilmSuggestSerializer,
-        'retrieve': FilmSuggestAdminSerializer,
+        '': FilmSuggestAdminSerializer,
         'create': FilmSuggestSerializer,
         'update': FilmSuggestAdminSerializer,
         'destroy': FilmSuggestAdminSerializer,
@@ -114,13 +114,8 @@ class SuggestedFilmViewSets(viewsets.ModelViewSet):
             permissions_classes = [IsAdminUser]
         return [permission() for permission in permissions_classes]
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.validated_data['owner'] = request.user
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
     def update(self, request, *args, **kwargs):
         update = super().update(request, *args, **kwargs)

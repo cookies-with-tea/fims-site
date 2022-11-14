@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'django_filters',
     'debug_toolbar',
+    'corsheaders',
 
     'user.apps.UserConfig',
     'film.apps.FilmConfig',
@@ -60,6 +61,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -216,4 +218,9 @@ if env.bool('EMAIL_INCLUDED'):
 
 INTERNAL_IPS = [
     '127.0.0.1',
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8080',
+    'http://127.0.0.1:8080'
 ]
