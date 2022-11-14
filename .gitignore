@@ -27,3 +27,4 @@ virt/
 .env
 
 media/
+static/
