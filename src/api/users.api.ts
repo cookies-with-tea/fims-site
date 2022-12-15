@@ -1,5 +1,5 @@
-import {AxiosService} from "@/api/axiosService";
 import type {AxiosRequestConfig} from "axios";
+import {AxiosService} from "@/api/axiosService";
 
 class UsersApi extends AxiosService {
     constructor(config?: AxiosRequestConfig) {
