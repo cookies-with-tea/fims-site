@@ -42,10 +42,10 @@ const registerUserData = reactive({
 
 const signUp = async (): Promise<void> => {
   await axios({
-    method: 'get',
-    url: 'https://jsonplaceholder.typicode.com/posts/1',
+    method: 'post',
+    url: 'http://localhost:8000/auth/users/',
     headers: { 'Content-Type': 'application/json' },
-    // data: registerUserData,
+    data: registerUserData,
     withCredentials: false,
   })
 };
