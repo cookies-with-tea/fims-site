@@ -13,6 +13,14 @@ class UsersApi extends AxiosService {
             data: payload
         })
     }
+
+    async userAuthorization(payload: any) {
+        return this.axiosCall<any>({
+            method: 'post',
+            url: 'http://localhost:8000/auth/token/login',
+            data: payload
+        })
+    }
 }
 
 export default new UsersApi({

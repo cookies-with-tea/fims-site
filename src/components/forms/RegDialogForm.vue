@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from "vue";
-import usersApi from "@/api/users.api.ts";
+import usersApi from "@/api/users.api";
 import {ElMessage} from "element-plus";
 
 const labelPosition = ref("top");
