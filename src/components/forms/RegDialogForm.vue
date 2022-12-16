@@ -23,9 +23,9 @@
 </template>
 
 <script lang="ts" setup>
-import axios from 'axios'
-import { method } from 'lodash';
 import { reactive, ref } from "vue";
+import usersApi from "@/api/users.api";
+import {ElMessage} from "element-plus";
 
 const labelPosition = ref("top");
 const props = defineProps({
@@ -35,20 +35,21 @@ const props = defineProps({
   },
 });
 const registerUserData = reactive({
+  email: "",
   username: "",
-  email: "",  
   password: "",
 });
 
 const signUp = async (): Promise<void> => {
-  await axios({
-    method: 'post',
-    url: 'http://localhost:8000/auth/users/',
-    headers: { 'Content-Type': 'application/json' },
-    data: registerUserData,
-    withCredentials: false,
-  })
-};
+  const [error, data] = await usersApi.userRegister(registerUserData)
+
+  if (!error && data) {
+    ElMessage({
+      type: 'success',
+      message: 'Success'
+    })
+  }
+}
 
 </script>
 <!-- http://localhost:8000/auth/users/ -->
