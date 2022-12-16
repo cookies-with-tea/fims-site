@@ -49,7 +49,7 @@ const signUp = async (): Promise<void> => {
       message: 'Success'
     })
   }
-};
+}
 
 </script>
 <!-- http://localhost:8000/auth/users/ -->
