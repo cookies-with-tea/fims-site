@@ -43,6 +43,7 @@ const currentSlide = ref(null)
 .swiper {
   width: 1280px;
   height: 600px;
+  border: 1px solid red;
 }
 .swiper-slide {
   background-color: black;
@@ -51,10 +52,7 @@ const currentSlide = ref(null)
 }
 .main-slider {
   &__arrow-prev {
-    transform: rotate(180deg);
+    display: flex;
   }
-}
-.swiper-wrapper {
-  border: 1px solid red;
 }
 </style>
