@@ -1,12 +1,15 @@
 <template>
   <div>
     <swiper
-          :slidesPerView="2.45"
-          :spaceBetween="40"
+          :slidesPerView="2.5"
+          :spaceBetween="22"
+          :width="1197"
+          :height="543"
           :loopFillGroupWithBlank="true"
           :pagination="{
-            el: '.main-slider__fractions',
-            type: 'custom',
+            el: '.main-slider__pagination',
+            bulletClass: 'swiper-pagination-bullet',
+            bulletActiveClass: 'swiper-pagination-bullet-active'
             }"
           :navigation="{
           nextEl: '.main-slider__arrow-next',
@@ -21,6 +24,7 @@
       <swiper-slide>Slide 5 Lorem, ipsum dolor sit amet consectetur adipisicing elit. At sapiente possimus quis, sunt esse veritatis.</swiper-slide>
       <swiper-slide>Slide 6 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos quaerat cumque totam nostrum sit nobis fugiat ullam pariatur labore nihil.</swiper-slide>
     </swiper>
+    <div class="main-slider__pagination swiper-pagination-bullet"></div>
     <div class="main-slider__arrow-next"><img src="../assets/arrow.png" alt="arrow" /></div>
     <div class="main-slider__arrow-prev"><img src="../assets/arrow.png" alt="arrow" /></div>    
   </div>
@@ -28,9 +32,8 @@
 
 <script lang="ts" setup>
 import {ref} from "vue";
- import { Swiper, SwiperSlide } from 'swiper/vue';
- import "swiper/swiper-bundle.min.css";
- import "swiper/swiper.min.css";
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import "swiper/swiper-bundle.min.css";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 
 
@@ -42,17 +45,23 @@ const currentSlide = ref(null)
 <style lang="scss">
 .swiper {
   width: 1280px;
-  height: 600px;
-  border: 1px solid red;
+  height: 600px;  
 }
 .swiper-slide {
-  background-color: black;
-  max-width: 465px;
-  max-height: 540px;
+  margin: 0px;
+  background :url("./src/assets/movie1.jpg") no-repeat;
+  width: 465px;
+  height: 560px;
 }
 .main-slider {
   &__arrow-prev {
     display: flex;
-  }
+  }  
+}
+.swiper-pagination-bullet {
+  background-color: #fff;
+}
+.swiper-pagination-bullet-active {
+  color: #fff;
 }
 </style>
