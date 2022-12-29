@@ -35,7 +35,6 @@ import {ref} from "vue";
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import "swiper/swiper-bundle.min.css";
 import SwiperCore, { Pagination, Navigation } from "swiper";
-import 
 
 
 SwiperCore.use([Pagination, Navigation]);
@@ -59,15 +58,5 @@ const currentSlide = ref(null)
     display: flex;
   }  
 }
-.swiper-pagination-bullet {
-    background-color:  rgb(170, 170, 170);
-}
-.swiper-pagination-bullet-active {
-    background-color: #fff;
-}
- .main-slider {
-    &__pagination {
-        background-color: #fff;
-    }
- }
+
 </style>
