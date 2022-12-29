@@ -17,7 +17,6 @@ declare module '@vue/runtime-core' {
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElRow: typeof import('element-plus/es')['ElRow']
-    HeroSlider: typeof import('./src/components/HeroSlider.vue')['default']
     HeroSwiper: typeof import('./src/components/HeroSwiper.vue')['default']
     MainHero: typeof import('./src/components/MainHero.vue')['default']
     RegDialogForm: typeof import('./src/components/forms/RegDialogForm.vue')['default']
