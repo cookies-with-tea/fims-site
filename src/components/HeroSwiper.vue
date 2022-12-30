@@ -24,7 +24,7 @@
       <swiper-slide>Slide 5 Lorem, ipsum dolor sit amet consectetur adipisicing elit. At sapiente possimus quis, sunt esse veritatis.</swiper-slide>
       <swiper-slide>Slide 6 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos quaerat cumque totam nostrum sit nobis fugiat ullam pariatur labore nihil.</swiper-slide>
     </swiper>
-    <div class="main-slider__pagination swiper-pagination-bullet"></div>
+    <div class="main-slider__pagination"></div> <!--swiper-pagination-bullet-->
     <div class="main-slider__arrow-next"><img src="../assets/arrow.png" alt="arrow" /></div>
     <div class="main-slider__arrow-prev"><img src="../assets/arrow.png" alt="arrow" /></div>    
   </div>
@@ -58,5 +58,6 @@ const currentSlide = ref(null)
     display: flex;
   }  
 }
+
 
 </style>

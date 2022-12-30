@@ -1,11 +1,15 @@
-.swiper-pagination-bullet {
-    background-color:  rgb(170, 170, 170);
-}
-.swiper-pagination-bullet-active {
-    background-color: #fff;
-}
  .main-slider {
     &__pagination {
-        background-color: #fff;
+        background-color: none;
+    }
+        
+ }
+ .swiper-pagination-bullets {
+       
+    .swiper-pagination-bullet {        
+        background:  rgb(170, 170, 170);
+    }
+    .swiper-pagination-bullet-active {
+        background: #fff;
     }
  }
