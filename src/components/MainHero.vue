@@ -27,7 +27,6 @@ import {heroSocialNetworks} from "@/constants/mainHero"
   .main-hero {
     max-width: 1440px;
     max-height: 880px;
-    border: 1px solid blue;
 
     &__title {
     font-style: normal;
@@ -48,7 +47,6 @@ import {heroSocialNetworks} from "@/constants/mainHero"
     max-width: 1254px;
     max-height: 578px;
     margin-right: 165px;
-    border: 1px solid red;
   }
 
   &__content-aside {
