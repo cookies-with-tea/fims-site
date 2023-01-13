@@ -4,6 +4,7 @@ import '@/styles/main.scss'
 
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import "swiper/swiper-bundle.min.css";
 import 'swiper/css';
 
 import App from '@/App.vue'

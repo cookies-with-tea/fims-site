@@ -29,7 +29,7 @@
         </el-input>
       </el-col>
       <el-col :span="3">
-        <el-button type="primary" @click="handleDialogVisivbleChange">Вход</el-button>
+        <el-button class="common-header__button" type="primary" @click="handleDialogVisivbleChange">Вход</el-button>
       </el-col>
     </el-row>
   </div>
