@@ -3,10 +3,10 @@
     <div class="main-slider-inner">
       <!-- <div class="main-slider__arrow-prev"><img src="../assets/arrow.png" alt="arrow" /></div>  -->
       <swiper
-        :slidesPerView="2.5"
+        :slidesPerView="2.7"
         :spaceBetween="22"
-        :width="1197"
-        :height="543"
+        :width="1200"
+        :height="545"
         :loopFillGroupWithBlank="true"
         :pagination="{
           el: '.main-slider__pagination',
@@ -81,7 +81,8 @@ const currentSlide = ref(null);
 }
 
 .main-slider {
-  &__arrow-prev {
+  &__arrow-next {
+    margin-left: 30px;
     display: flex;
   }
   
@@ -90,6 +91,8 @@ const currentSlide = ref(null);
   padding-left: 50%;
 }
 .main-slider-inner {
+  width: 1200px;
+  height: 580px;
   display: flex;
   align-items: center;
 }
