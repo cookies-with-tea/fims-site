@@ -1,8 +1,9 @@
 import instagramIcon from "@/assets/icons/instagramIcon.svg"
 import inIcon from "@/assets/icons/in.svg"
 import telegremIcon from "@/assets/icons/telegram.svg"
+import type { heroSocialNetworkType } from "@/src/types/social-network.type"
 
-export const heroSocialNetworks: {id: number; alt: string; url: string }[] = [
+export  const heroSocialNetworks: heroSocialNetworkType[] = [
     {   
       id: 0,
       alt: "iconca1",
@@ -17,5 +18,5 @@ export const heroSocialNetworks: {id: number; alt: string; url: string }[] = [
       id: 2,
       alt: "2",
       url: telegremIcon,
-    }
+    },
   ]

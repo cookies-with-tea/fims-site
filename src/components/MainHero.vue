@@ -8,7 +8,7 @@
           <li
             v-for="item in heroSocialNetworks"
             :key="item.id"            
-            class="list-content__list-item"
+            class="list-content__item"
           >
            <img :src="item.url" :alt="item.alt">
           </li>
@@ -20,35 +20,28 @@
 
 <script lang="ts" setup>
 import {heroSocialNetworks} from "@/constants/mainHero"
-
 </script>
 
 <style lang="scss" scoped>
   .main-hero {
     max-width: 1440px;
     max-height: 880px;
-
     &__title {
     font-style: normal;
     font-weight: 200;
     font-size: 24px;
     line-height: 120%;
-
-    letter-spacing: 0.05em; 
-    
+    letter-spacing: 0.05em;     
     margin-bottom: 18px;
   }
-
   &__content {
     display: flex;  
   }
-
   &__content-swiper {
     max-width: 1254px;
     max-height: 578px;
     margin-right: 165px;
   }
-
   &__content-aside {
     display: flex;
     align-items: center;    

@@ -1,13 +1,12 @@
 <template>
   <div>
     <div class="main-slider-inner">
-      <!-- <div class="main-slider__arrow-prev"><img src="../assets/arrow.png" alt="arrow" /></div>  -->
       <swiper
-        :slidesPerView="2.7"
-        :spaceBetween="22"
+        :slides-per-view="2.7"
+        :space-between="22"
         :width="1200"
         :height="545"
-        :loopFillGroupWithBlank="true"
+        :loop-fill-group-with-blank="true"
         :pagination="{
           el: '.main-slider__pagination',
           bulletClass: 'swiper-pagination-bullet',
@@ -16,42 +15,30 @@
         :navigation="{
           nextEl: '.main-slider__arrow-next',
           prevEl: '.main-slider__arrow-prev',
-        }"
+        }"        
         class="main-slider swiper"
       >
         <swiper-slide
-          >Slide 1 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Dignissimos iusto ullam quis ratione molestias nostrum dolorem
-          inventore corrupti maiores eos.</swiper-slide
+          ><img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"></swiper-slide
         >
         <swiper-slide
-          >Slide 2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. At
-          sapiente possimus quis, sunt esse veritatis.</swiper-slide
+          ><img class="swiper-slide__image" src="../assets/movie2.jpg" alt="movie"></swiper-slide
+        > 
+        <swiper-slide
+          ><img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"></swiper-slide
         >
         <swiper-slide
-          >Slide 3 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos
-          quaerat cumque totam nostrum sit nobis fugiat ullam pariatur labore
-          nihil.</swiper-slide
+          ><img class="swiper-slide__image" src="../assets/movie2.jpg" alt="movie"></swiper-slide
+        >  
+        <swiper-slide
+          ><img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"></swiper-slide
         >
         <swiper-slide
-          >Slide 4 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Dignissimos iusto ullam quis ratione molestias nostrum dolorem
-          inventore corrupti maiores eos.</swiper-slide
-        >
+          ><img class="swiper-slide__image" src="../assets/movie2.jpg" alt="movie"></swiper-slide
+        >  
         <swiper-slide
-          >Slide 5 Lorem, ipsum dolor sit amet consectetur adipisicing elit. At
-          sapiente possimus quis, sunt esse veritatis.</swiper-slide
-        >
-        <swiper-slide
-          >Slide 6 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos
-          quaerat cumque totam nostrum sit nobis fugiat ullam pariatur labore
-          nihil.</swiper-slide
-        >
-        <swiper-slide
-          >Slide 6 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos
-          quaerat cumque totam nostrum sit nobis fugiat ullam pariatur labore
-          nihil.</swiper-slide
-        >
+          ><img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"></swiper-slide
+        >       
       </swiper>
       <div class="main-slider__arrow-next">
         <img src="../assets/arrow.png" alt="arrow" />
@@ -64,10 +51,10 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/swiper-bundle.min.css";
 import SwiperCore, { Pagination, Navigation } from "swiper";
 
 SwiperCore.use([Pagination, Navigation]);
+
 const lastSlide = ref(null);
 const currentSlide = ref(null);
 </script>
@@ -77,20 +64,19 @@ const currentSlide = ref(null);
   width: 1280px;
   height: 600px;
 }
-
 .swiper-slide {
-  margin: 0px;
-  background: url("./src/assets/movie1.jpg") no-repeat;
+  margin: 0px;  
   width: 465px;
-  height: 560px;
+  height: 560px;  
+  &__image {
+    width: 100%;
+  }
 }
-
 .main-slider {
   &__arrow-next {
     margin-left: 30px;
     display: flex;
-  }
-  
+  }  
 }
 .main-slider__pagination {
   padding-left: 50%;
