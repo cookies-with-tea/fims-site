@@ -47,6 +47,11 @@
           quaerat cumque totam nostrum sit nobis fugiat ullam pariatur labore
           nihil.</swiper-slide
         >
+        <swiper-slide
+          >Slide 6 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos
+          quaerat cumque totam nostrum sit nobis fugiat ullam pariatur labore
+          nihil.</swiper-slide
+        >
       </swiper>
       <div class="main-slider__arrow-next">
         <img src="../assets/arrow.png" alt="arrow" />
