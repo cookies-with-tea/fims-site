@@ -1,0 +1,12 @@
+.el-scrollbar {
+    &__view {
+        max-width: 1460px;
+        max-height: 586px;
+        display: grid;
+        grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+    }
+    &__thumb {
+        background-color: #2D8984;
+
+    }
+}

@@ -18,7 +18,7 @@
         }"        
         class="main-slider swiper"
       >
-        <swiper-slide
+        <swiper-slide 
           ><img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"></swiper-slide
         >
         <swiper-slide

@@ -21,6 +21,14 @@ class UsersApi extends AxiosService {
             data: payload
         })
     }
+
+    async getMovie(payload: any) {
+        return this.axiosCall<any>({
+            method: 'get',
+            url: 'http://localhost:8000/film/home',
+            data: payload
+        }) 
+    }
 }
 
 export default new UsersApi({

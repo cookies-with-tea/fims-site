@@ -4,6 +4,9 @@
       <div class="common-layout__wrapper">
         <common-header @open-dialog="dialogVisibleChange" />
         <main-hero />
+        <common-recommend />
+        <most-popular />
+        <!-- <main-movie /> -->
       </div>
     </div>
     <auth-dialog :visible="isAuthDialogVisible" @close-dialog="dialogVisibleChange" />    
@@ -21,5 +24,11 @@ const dialogVisibleChange = (): void => {
 <style scoped lang="scss">
 .common-layout {        
   color: #fefefe;
+}
+.main-hero {
+  margin-bottom: 120px;
+}
+.common-recommend {
+  margin-bottom: 120px;
 }
 </style>
