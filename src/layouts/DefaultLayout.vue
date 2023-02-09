@@ -3,10 +3,11 @@
     <div class="container">
       <div class="common-layout__wrapper">
         <common-header @open-dialog="dialogVisibleChange" />
-        <main-hero />
-        <common-recommend />
-        <most-popular />
+        <main-hero class="main-hero"/>
+        <common-recommend class="common-recommend" />
+        <most-popular class="most-popular" />
         <!-- <main-movie /> -->
+        <common-footer class="common-footer" />
       </div>
     </div>
     <auth-dialog :visible="isAuthDialogVisible" @close-dialog="dialogVisibleChange" />    
@@ -29,6 +30,9 @@ const dialogVisibleChange = (): void => {
   margin-bottom: 120px;
 }
 .common-recommend {
-  margin-bottom: 120px;
+  margin-bottom: 120px; 
+}
+.common-footer {
+  
 }
 </style>

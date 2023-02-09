@@ -66,7 +66,7 @@ const currentSlide = ref(null);
 }
 .swiper-slide {
   margin: 0px;  
-  width: 465px;
+  width: 465px !important;
   height: 560px;  
   &__image {
     width: 100%;
@@ -76,6 +76,7 @@ const currentSlide = ref(null);
   &__arrow-next {
     margin-left: 30px;
     display: flex;
+    transform: rotate(180deg)
   }  
 }
 .main-slider__pagination {

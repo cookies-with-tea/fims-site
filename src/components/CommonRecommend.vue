@@ -1,13 +1,13 @@
 <template>
-  <h2 class="common-title">Наши рекомендации</h2>
-  <el-scrollbar height="490px">
-    <div v-for="item in 20" :key="item">
-      <div class="scrollbar-demo-item recommend-item">
-        фильм
+  <div>
+    <h2 class="common-title">Наши рекомендации</h2>
+    <el-scrollbar height="490px">
+      <div v-for="item in 20" :key="item">
+        <div class="scrollbar-demo-item recommend-item">фильм</div>
+        <p class="recommend-item__title">Название фильма</p>
       </div>
-      <p class="recommend-item__title">Название фильма</p>
-    </div>    
-  </el-scrollbar>
+    </el-scrollbar>
+  </div>
 </template>
 
 <script lang="ts">
@@ -34,6 +34,6 @@
   }
 }
 .common-title {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 </style>

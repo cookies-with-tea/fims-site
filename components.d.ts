@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AuthDialog: typeof import('./src/components/dialogs/AuthDialog.vue')['default']
     AuthDialogForm: typeof import('./src/components/forms/AuthDialogForm.vue')['default']
+    CommonFooter: typeof import('./src/components/CommonFooter.vue')['default']
     CommonHeader: typeof import('./src/components/CommonHeader.vue')['default']
     CommonRecommend: typeof import('./src/components/CommonRecommend.vue')['default']
     CommonSwiper: typeof import('./src/components/CommonSwiper.vue')['default']
