@@ -13,7 +13,7 @@
 <script lang="ts">
 </script>
   
-<style lang="scss">
+<style lang="scss" scoped>
 .scrollbar-demo-item {
   display: flex;
   align-items: center;

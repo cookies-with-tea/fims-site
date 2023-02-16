@@ -9,7 +9,7 @@ class UsersApi extends AxiosService {
     async userRegister(payload: any) {
         return this.axiosCall<any>({
             method: 'post',
-            url: 'http://localhost:8000/auth/users/',
+            url: 'http://localhost:8000/auth/users',
             data: payload
         })
     }
@@ -17,7 +17,7 @@ class UsersApi extends AxiosService {
     async userAuthorization(payload: any) {
         return this.axiosCall<any>({
             method: 'post',
-            url: 'http://localhost:8000/auth/token/login',
+            url: 'http://localhost:8000/auth/users',
             data: payload
         })
     }
