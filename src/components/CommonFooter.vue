@@ -30,7 +30,6 @@
           </ul>
         </div>
       </el-col>
-      <el-col :span="3"> </el-col>
     </el-row>
   </div>
 </template>
@@ -62,13 +61,9 @@ const footerMenuItems: { title: string; url: string }[] = [
   },
 ];
 
-const handleDialogVisivbleChange = (): void => {
-  emit("open-dialog");
-};
 </script>
   
   <style lang="scss" scoped>
-@import "../styles/variables.scss";
 .common-footer {
   align-items: center;
   margin: 26px 0 122px;
