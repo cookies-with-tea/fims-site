@@ -27,11 +27,21 @@ const isAuthDialogVisible = ref(false);
 const dialogVisibleChange = (): void => {
   isAuthDialogVisible.value = !isAuthDialogVisible.value;
 };
-
 </script>
 <style scoped lang="scss">
 .common-layout {
   color: #fefefe;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.common-layout::before {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: url("@/assets/background-image.png");
+  opacity: 0.2;
 }
 .main-hero {
   margin-bottom: 120px;

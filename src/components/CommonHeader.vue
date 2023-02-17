@@ -77,6 +77,7 @@ const handleDialogVisivbleChange = (): void => {
     display: flex;
 
     &-item {
+      position: relative;
       &:not(:last-child) {
         margin-right: 50px;
       }
@@ -84,6 +85,14 @@ const handleDialogVisivbleChange = (): void => {
       a {
         color: #fefefe;
       }
+    }
+    &-item:hover {
+      // position: absolute;
+      a {
+        color: $color--defaulthovereffect;        
+      }
+      padding-bottom: 10px;
+      border-bottom: $color--defaulthovereffect solid 2px;
     }
   }
 
