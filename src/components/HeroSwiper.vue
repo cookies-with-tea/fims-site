@@ -1,4 +1,5 @@
 <template>
+  <button class="test" @click="getAllMovie">movie+</button>
   <div>
     <div class="main-slider-inner">
       <swiper
@@ -20,11 +21,12 @@
       >
         <swiper-slide class="swiper-slide">
           <img
+            v-for="movie in 6" :key="movie"
             class="swiper-slide__image"
-            src="../assets/movie1.jpg"
+            src="$data.results[movie].image"
             alt="movie"
         /></swiper-slide>
-        <swiper-slide class="swiper-slide">
+        <!-- <swiper-slide class="swiper-slide">
           <img
             class="swiper-slide__image"
             src="../assets/movie2.jpg"
@@ -59,28 +61,40 @@
             class="swiper-slide__image"
             src="../assets/movie1.jpg"
             alt="movie"
-        /></swiper-slide>
+        /></swiper-slide> -->
       </swiper>
       <div class="main-slider__arrow-next">
         <img src="../assets/arrow.png" alt="arrow" />
       </div>
     </div>
     <div class="main-slider__pagination"></div>
-  </div>
+  </div>  
 </template>
 
 <script lang="ts" setup scoped>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Pagination, Navigation } from "swiper";
+import MovieApi from "@/api/movie.api"
+import type { data } from "dom7";
+import { resultProps } from "element-plus";
 
 SwiperCore.use([Pagination, Navigation]);
 
-const lastSlide = ref(null);
-const currentSlide = ref(null);
+const getAllMovie = async(): Promise<void> => {
+  const [error, data] = await MovieApi.getAll()
+  if (!error && data) {
+  console.log(data)
+}
+}
+
 </script>
 
 <style lang="scss">
+.test {
+  background-color: #fff;
+  width: 100px;
+}
 .swiper {
   width: 1280px;
   height: 600px;
