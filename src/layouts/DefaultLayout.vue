@@ -13,7 +13,7 @@
         <common-footer class="common-footer" />
       </div>
     </div>
-    <auth-dialog
+    <authorization-dialog
       :visible="isAuthDialogVisible"
       @close-dialog="dialogVisibleChange"
     />

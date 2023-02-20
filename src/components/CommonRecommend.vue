@@ -1,9 +1,9 @@
 <template>
   <div>
     <h2 class="common-title">Наши рекомендации</h2>
-    <el-scrollbar height="490px">
+    <el-scrollbar>
       <div v-for="item in 20" :key="item">
-        <div class="scrollbar-demo-item recommend-item">фильм</div>
+        <div class="scrollbar-item recommend-item">фильм</div>
         <p class="recommend-item__title">Название фильма</p>
       </div>
     </el-scrollbar>
@@ -14,7 +14,10 @@
 </script>
   
 <style lang="scss" scoped>
-.scrollbar-demo-item {
+.el-scrollbar {
+  max-height: 490px;
+}
+.scrollbar-item {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,6 +31,7 @@
 .recommend-item {
   width: 345px;
   height: 380px;
+  
   &__title {
     margin-bottom: 0px;
     text-align: center;

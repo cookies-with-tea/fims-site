@@ -15,11 +15,11 @@
     }}</swiper-slide>
   </swiper>
   <div class="popular-slider__arrow-prev">
-    <img src="@/assets/arrow.png" alt="arrow" />
+    <img src="@/assets/arrow.png" />
   </div>
 
   <div class="popular-slider__arrow-next">
-    <img src="@/assets/arrow.png" alt="arrow" />
+    <img src="@/assets/arrow.png" />
   </div>
 </template> 
 
@@ -30,27 +30,25 @@ import SwiperCore, { Navigation } from "swiper";
 
 SwiperCore.use([Navigation]);
 
-const lastSlide = ref(null);
-const currentSlide = ref(null);
 </script>
   
-<style lang="scss">
+<style lang="scss" scoped>
 .most-popular {
   &__inner {
     height: 200px;
   }
 }
 .popular-swiper {
-  width: 1440px !important;
-  height: 200px !important;
+  width: 1440px;
+  height: 200px;
   display: flex;
   margin: 0;
-  // position: absolute;
 }
 .swiper-slide {
   background-color: #c4c4c4;
   width: 467px;
-  height: 200px !important;
+  height: 200px;
+
   &__popular {
     color: #000;
   }
@@ -67,7 +65,7 @@ const currentSlide = ref(null);
     z-index: 5;
     left: 15px;
     top: -160px;
-    transform: scale(-1, 1);
+    transform: rotate(3.142rad);
   }
 }
 </style>

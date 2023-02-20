@@ -37,9 +37,6 @@
   <script lang="ts" setup>
 import { ref } from "vue";
 import {heroSocialNetworks} from "@/constants/mainHero"
-const emit = defineEmits<{
-  (e: "open-dialog"): void;
-}>();
 
 
 const footerMenuItems: { title: string; url: string }[] = [
@@ -73,10 +70,6 @@ const footerMenuItems: { title: string; url: string }[] = [
     &-item {
       &:not(:last-child) {
         margin-right: 50px;
-      }
-
-      a {
-        color: #fefefe;
       }
     }
   }
