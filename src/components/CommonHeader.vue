@@ -73,10 +73,13 @@ const handleDialogVisivbleChange = (): void => {
 .common-header {
   align-items: center;
   margin: 26px 0 122px;
+
   &__menu {
     display: flex;
 
     &-item {
+      position: relative;
+
       &:not(:last-child) {
         margin-right: 50px;
       }
@@ -84,6 +87,13 @@ const handleDialogVisivbleChange = (): void => {
       a {
         color: #fefefe;
       }
+    }
+    &-item:hover {      
+      a {
+        color: $hover-effect;        
+      }
+      padding-bottom: 10px;
+      border-bottom: $hover-effect solid 2px;
     }
   }
 

@@ -54,6 +54,7 @@ const signIn = async(): Promise<void> => {
       type: 'success',
       message: 'Success'
     })
+    localStorage.setItem('token', data.auth_token);
   }
 }
 </script>

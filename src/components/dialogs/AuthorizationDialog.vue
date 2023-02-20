@@ -1,8 +1,7 @@
 <template> 
     <el-dialog
       v-model="props.visible"
-      title="Tips"
-      width="30%"
+      width="600px"
       :before-close="closeDialog"
     >    
     
@@ -10,13 +9,13 @@
       <reg-dialog-form :visible="!isLoginFormVisible"  @select-form="formVisibleChange"/>      
 
       <template #footer>        
-        <span class="dialog-footer">
-            close
-          <!-- <el-button @click="dialogVisible = false">Cancel</el-button>
-          <el-button type="primary" @click="dialogVisible = false">
-            Confirm
-        </el-button> -->
-        </span>
+        <ul class="dialog-list">
+          <li  v-for="item in dialogSocialNetworks"
+            :key="item.id"            
+            class="dialog-list__item">
+            <img :src="item.url" :alt="item.alt">
+          </li>
+        </ul>
       </template>
     </el-dialog>
   </template>
@@ -24,6 +23,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { ElMessageBox } from 'element-plus'
+import {dialogSocialNetworks} from "@/constants/mainHero"
 
 const emit = defineEmits<{
   (e: 'close-dialog'): void
