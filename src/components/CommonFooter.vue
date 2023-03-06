@@ -14,10 +14,10 @@
           </ul>
         </nav>
       </el-col>
-      <el-col :span="6">
+      <el-col :span="5">
         <div class="common-footer__logo">Логотип уехал на бали</div></el-col
       >
-      <el-col :span="5">
+      <el-col :span="7">
         <div class="common-footer__content-aside">
           <ul class="list-content">
             <li
@@ -36,8 +36,7 @@
   
   <script lang="ts" setup>
 import { ref } from "vue";
-import {heroSocialNetworks} from "@/constants/mainHero"
-
+import { heroSocialNetworks } from "@/constants/mainHero";
 
 const footerMenuItems: { title: string; url: string }[] = [
   {
@@ -57,11 +56,15 @@ const footerMenuItems: { title: string; url: string }[] = [
     url: "/tops",
   },
 ];
-
 </script>
   
   <style lang="scss" scoped>
 .common-footer {
+  .el-row {
+    width: 1440px;
+    justify-content: space-between;
+  }
+
   align-items: center;
   margin: 26px 0 122px;
   &__menu {
@@ -76,10 +79,25 @@ const footerMenuItems: { title: string; url: string }[] = [
 
   &__logo {
     margin-right: 75px;
+    display: flex;
   }
+}
 
-  &__search {
-    width: 220px;
+.list-content {
+  display: flex;
+  
+  &__item {
+    width: 40px;
+    height: 40px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:not(:last-child) {
+        margin-right: 52px;
+    }
   }
 }
 </style>

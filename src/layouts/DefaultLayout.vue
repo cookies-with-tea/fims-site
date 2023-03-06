@@ -3,7 +3,8 @@
     <div class="container">
       <div class="common-layout__wrapper">
         <common-header @open-dialog="dialogVisibleChange" />
-        <main-hero class="main-hero" />
+        <main-hero class="main-hero" 
+          :movies="moviesData"/>
         <common-recommend class="common-recommend" />
         <most-popular class="most-popular" />
         <!-- <main-movie /> -->
@@ -20,13 +21,27 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from "@vue/reactivity";
+import { onMounted, reactive, ref } from "vue";
+import MovieApi from "@/api/movie.api"
 
 const isAuthDialogVisible = ref(false);
+const moviesData = ref()
+
+onMounted(()=>{
+  getAllMovie()
+})
 
 const dialogVisibleChange = (): void => {
   isAuthDialogVisible.value = !isAuthDialogVisible.value;
 };
+
+const getAllMovie = async(): Promise<void> => {
+  const [error, data] = await MovieApi.getAll()
+  if (!error && data) {  
+  moviesData.value = data.results
+  console.log(data.results[0].image)
+}
+}
 </script>
 <style scoped lang="scss">
 .common-layout {

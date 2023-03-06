@@ -1,5 +1,5 @@
 <template>
-  <button class="test" @click="getAllMovie">movie+</button>
+  <!-- <button class="test" @click="getAllMovie">movie+</button> -->
   <div>
     <div class="main-slider-inner">
       <swiper
@@ -19,75 +19,40 @@
         }"
         class="main-slider swiper"
       >
-        <swiper-slide class="swiper-slide">
-          <img
-            v-for="movie in 6" :key="movie"
-            class="swiper-slide__image"
-            src="$data.results[movie].image"
-            alt="movie"
-        /></swiper-slide>
-        <!-- <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie2.jpg"
-            alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie1.jpg"
-            alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie2.jpg"
-            alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie1.jpg"
-            alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie2.jpg"
-            alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie1.jpg"
-            alt="movie"
-        /></swiper-slide> -->
+        <swiper-slide
+          v-for="movie in props.movies"
+          :key="movie.id"
+          class="swiper-slide"
+        >
+          <div class="swiper-slide__wrapper">
+            <img class="swiper-slide__image" :src="movie.image" alt="movie" />
+          </div>
+        </swiper-slide>
       </swiper>
       <div class="main-slider__arrow-next">
         <img src="../assets/arrow.png" alt="arrow" />
       </div>
     </div>
     <div class="main-slider__pagination"></div>
-  </div>  
+  </div>
 </template>
 
 <script lang="ts" setup scoped>
-import { reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import SwiperCore, { Pagination, Navigation } from "swiper";
-import MovieApi from "@/api/movie.api"
 import type { data } from "dom7";
 import { resultProps } from "element-plus";
 
 SwiperCore.use([Pagination, Navigation]);
 
-const getAllMovie = async(): Promise<void> => {
-  const [error, data] = await MovieApi.getAll()
-  if (!error && data) {
-  console.log(data)
-}
-}
+type Props = {
+  movies: any;
+};
 
+const props = withDefaults(defineProps<Props>(), {
+  movies: () => [],
+});
 </script>
 
 <style lang="scss">
@@ -106,10 +71,11 @@ const getAllMovie = async(): Promise<void> => {
 
   &__image {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 .main-slider {
-
   &__arrow-next {
     margin-left: 30px;
     display: flex;

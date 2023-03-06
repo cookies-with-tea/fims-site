@@ -9,7 +9,7 @@ class MovieApi extends AxiosService {
     async getAll(payload?: unknown) {
         return this.axiosCall<any>({
             method: 'get',
-            url: '/films/'
+            url: '/core/'
         })
     }
 }

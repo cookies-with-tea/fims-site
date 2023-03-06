@@ -2,7 +2,9 @@
   <div class="main-hero">
     <h3 class="main-hero__title">Лучшие фильмы</h3>
     <div class="main-hero__content">      
-      <hero-swiper class="main-hero__content-swiper"/>              
+      <hero-swiper 
+        :movies="props.movies" 
+        class="main-hero__content-swiper"/>              
       <div class="main-hero__content-aside">
         <ul class="list-content">
           <li
@@ -20,6 +22,15 @@
 
 <script lang="ts" setup>
 import {heroSocialNetworks} from "@/constants/mainHero"
+
+type Props = {
+  movies: any
+}
+
+const props = withDefaults(defineProps<Props>(),{
+  movies: () => []
+})
+
 </script>
 
 <style lang="scss" scoped>
