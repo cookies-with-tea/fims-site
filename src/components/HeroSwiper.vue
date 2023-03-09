@@ -55,7 +55,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .test {
   background-color: #fff;
   width: 100px;
@@ -70,9 +70,10 @@ const props = withDefaults(defineProps<Props>(), {
   height: 560px;
 
   &__image {
-    width: 100%;
-    height: 100%;
+    width: 465px;
+    height: 545px;
     object-fit: cover;
+    border-radius: 10px;
   }
 }
 .main-slider {

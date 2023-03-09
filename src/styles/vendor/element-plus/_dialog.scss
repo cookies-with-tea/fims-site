@@ -1,7 +1,48 @@
 .el-overlay {
+    font-family: SourceSansPro;
+
     .el-dialog {
         background-color: $color--defaultlayout;
         width: 600px;
         height: 742px;
+
+        &__body {
+            color: $color-default;
+        }
+    }
+
+    h2 {
+        font-weight: 100;
+        font-size: 48px;
+        line-height: 100%;
+        letter-spacing: 0.05em;
+    }
+
+    .el-form {
+        width: 400px;
+        margin: auto;
+    }
+
+    .el-form-item {
+        &__label {
+            color: #CECECE;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0.05em;
+        }
+    }
+
+    .el-input {
+        width: 400px;
+        height: 54px;
+        border: 1px solid #4CD1D1;
+        border-radius: 16px;
+        padding: 16px 12px;
+
+        &__wrapper {
+            background-color: transparent;
+            padding: 0;
+            box-shadow: none;
+        }
     }
 }
