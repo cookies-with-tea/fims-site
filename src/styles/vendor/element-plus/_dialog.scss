@@ -1,7 +1,9 @@
+@use '@/styles/resources/variables' as *;
+
 .el-overlay {
-    .el-dialog {
-        background-color: $color--defaultlayout;
-        width: 600px;
-        height: 742px;
-    }
+  .el-dialog {
+    width: 600px;
+    height: 742px;
+    background-color: $color--primary;
+  }
 }

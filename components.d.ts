@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     AuthDialog: typeof import('./src/components/dialogs/AuthDialog.vue')['default']
     AuthDialogForm: typeof import('./src/components/forms/AuthDialogForm.vue')['default']
     AuthorizationDialog: typeof import('./src/components/dialogs/AuthorizationDialog.vue')['default']
+    CInput: typeof import('./src/components/CInput/CInput.vue')['default']
     CommonFooter: typeof import('./src/components/CommonFooter.vue')['default']
     CommonHeader: typeof import('./src/components/CommonHeader.vue')['default']
     CommonMovie: typeof import('./src/components/CommonMovie.vue')['default']
@@ -27,11 +28,13 @@ declare module '@vue/runtime-core' {
     HeroMovie: typeof import('./src/components/HeroMovie.vue')['default']
     HeroSlider: typeof import('./src/components/HeroSlider.vue')['default']
     HeroSwiper: typeof import('./src/components/HeroSwiper.vue')['default']
+    IconTemplate: typeof import('./src/components/common/IconTemplate.vue')['default']
     MainHero: typeof import('./src/components/MainHero.vue')['default']
     MainMovie: typeof import('./src/components/MainMovie.vue')['default']
     MostPopular: typeof import('./src/components/MostPopular.vue')['default']
     RegDialogForm: typeof import('./src/components/forms/RegDialogForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SInput: typeof import('@/components/CInput/CInput.vue')['default']
   }
 }

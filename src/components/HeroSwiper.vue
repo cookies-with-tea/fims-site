@@ -19,65 +19,40 @@
         class="main-slider swiper"
       >
         <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie1.jpg"
-            alt="movie"
+          <img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"
         /></swiper-slide>
         <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie2.jpg"
-            alt="movie"
+          <img class="swiper-slide__image" src="../assets/movie2.jpg" alt="movie"
         /></swiper-slide>
         <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie1.jpg"
-            alt="movie"
+          <img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"
         /></swiper-slide>
         <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie2.jpg"
-            alt="movie"
+          <img class="swiper-slide__image" src="../assets/movie2.jpg" alt="movie"
         /></swiper-slide>
         <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie1.jpg"
-            alt="movie"
+          <img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"
         /></swiper-slide>
         <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie2.jpg"
-            alt="movie"
+          <img class="swiper-slide__image" src="../assets/movie2.jpg" alt="movie"
         /></swiper-slide>
         <swiper-slide class="swiper-slide">
-          <img
-            class="swiper-slide__image"
-            src="../assets/movie1.jpg"
-            alt="movie"
+          <img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"
         /></swiper-slide>
       </swiper>
       <div class="main-slider__arrow-next">
         <img src="../assets/arrow.png" alt="arrow" />
       </div>
     </div>
-    <div class="main-slider__pagination"></div>
+    <div class="main-slider__pagination" />
   </div>
 </template>
 
-<script lang="ts" setup scoped>
-import { ref } from "vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import SwiperCore, { Pagination, Navigation } from "swiper";
+<script lang="ts" setup>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import SwiperCore, { Pagination, Navigation } from 'swiper'
 
-SwiperCore.use([Pagination, Navigation]);
-
-const lastSlide = ref(null);
-const currentSlide = ref(null);
+SwiperCore.use([Pagination, Navigation])
 </script>
 
 <style lang="scss">
@@ -85,27 +60,29 @@ const currentSlide = ref(null);
   width: 1280px;
   height: 600px;
 }
+
 .swiper-slide {
-  margin: 0px;
-  min-width: 465px;
   height: 560px;
+  min-width: 465px;
+  margin: 0;
 
   &__image {
     width: 100%;
   }
 }
-.main-slider {
 
+.main-slider {
   &__arrow-next {
-    margin-left: 30px;
     display: flex;
     transform: rotate(180deg);
+    margin-left: 30px;
   }
 
   &__pagination {
     padding-left: 50%;
   }
 }
+
 .main-slider-inner {
   width: 1200px;
   height: 580px;

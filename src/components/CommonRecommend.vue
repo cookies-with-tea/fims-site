@@ -10,33 +10,33 @@
   </div>
 </template>
 
-<script lang="ts">
-</script>
-  
 <style lang="scss" scoped>
 .el-scrollbar {
   max-height: 490px;
 }
+
 .scrollbar-item {
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  margin: 20px 20px 20px 0;
-  text-align: center;
   border-radius: 4px;
-  background: var(--el-color-primary-light-9);
+  text-align: center;
   color: var(--el-color-primary);
+  background: var(--el-color-primary-light-9);
+  margin: 20px 20px 20px 0;
 }
+
 .recommend-item {
   width: 345px;
   height: 380px;
-  
+
   &__title {
-    margin-bottom: 0px;
     text-align: center;
+    margin-bottom: 0;
   }
 }
+
 .common-title {
   margin-bottom: 40px;
 }
