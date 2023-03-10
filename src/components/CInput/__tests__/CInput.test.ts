@@ -16,7 +16,9 @@ const CInputPO = {
 }
 
 test('CInput Snapshot', () => {
-  const wrapper = mount(CInput, { modelValue: 'snapshot' })
+  const wrapper = mount(CInput, {
+    props: { modelValue: 'snapshot' },
+  })
 
   expect(wrapper.element).toMatchSnapshot()
 })
