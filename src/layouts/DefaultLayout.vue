@@ -13,45 +13,49 @@
         <common-footer class="common-footer" />
       </div>
     </div>
-    <authorization-dialog
-      :visible="isAuthDialogVisible"
-      @close-dialog="dialogVisibleChange"
-    />
+    <authorization-dialog :visible="isAuthDialogVisible" @close-dialog="dialogVisibleChange" />
   </div>
 </template>
-<script lang="ts" setup>
-import { ref } from "@vue/reactivity";
 
-const isAuthDialogVisible = ref(false);
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const isAuthDialogVisible = ref(false)
 
 const dialogVisibleChange = (): void => {
-  isAuthDialogVisible.value = !isAuthDialogVisible.value;
-};
+  isAuthDialogVisible.value = !isAuthDialogVisible.value
+}
 </script>
+
 <style scoped lang="scss">
 .common-layout {
-  color: #fefefe;
   position: relative;
-  z-index: 1;
+  color: #fefefe;
   overflow: hidden;
+  z-index: 1;
 }
+
 .common-layout::before {
-  z-index: -1;
-  position: absolute;
-  left: 0;
+  content: url('@/assets/background-image.png');
   top: 0;
-  content: url("@/assets/background-image.png");
+  left: 0;
+  position: absolute;
   opacity: 0.2;
+  z-index: -1;
 }
+
 .main-hero {
   margin-bottom: 120px;
 }
+
 .common-recommend {
   margin-bottom: 120px;
 }
+
 .hero-catalog {
   margin-bottom: 120px;
 }
+
 .common-footer {
   display: flex;
 }

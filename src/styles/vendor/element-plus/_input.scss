@@ -1,24 +1,25 @@
-.el-input {
-    &.common-header__search {
-        .el-input {
-            &__wrapper {
-                padding: 0;
-                outline: none;                
-                box-shadow: none;
-                background-color: $color--defaultlayout;
-                border-bottom: solid 1px #fefefe;
-                border-radius:0;
-                justify-content:flex-start;
-                background-color: transparent;
-            }
+@use '@/styles/resources/variables' as *;
 
-            &__inner {
-                color: #fefefe;
-                
-                &::placeholder { 
-                    color: #fefefe;
-                }
-            }
+.el-input {
+  &.common-header__search {
+    .el-input {
+      &__wrapper {
+        justify-content: flex-start;
+        outline: none;
+        border-bottom: solid 1px #fefefe;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+        padding: 0;
+      }
+
+      &__inner {
+        color: $color--white-secondary;
+
+        &::placeholder {
+          color: #fefefe;
         }
+      }
     }
+  }
 }
