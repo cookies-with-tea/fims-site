@@ -9,6 +9,12 @@
         &__body {
             color: $color-default;
         }
+
+        &__footer {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+        }
     }
 
     h2 {
@@ -43,6 +49,14 @@
             background-color: transparent;
             padding: 0;
             box-shadow: none;
+
+            &:hover {
+                box-shadow: none;
+            }
+
+            &.is-focus {
+                box-shadow: none;
+            }
         }
     }
 }

@@ -24,11 +24,19 @@
       Войти
     </el-button>
     <div class="auth-dialog__bottom">
-      <span class="bottom-span">Забыли пароль?</span>
-      <div class="bottom-partition" />
-      <span class="bottom-span" @click="selectorForm">Регистрация</span>
+      <ul class="flex bottom-list">
+        <li class="bottom-list__item">
+          <span class="item-span">Забыли пароль?</span>
+        </li>
+        <li class="bottom-list__item">
+          <div class="item-partition" />
+        </li>
+        <li class="bottom-list__item">
+          <span class="item-span" @click="selectorForm">Регистрация</span>
+        </li>
+      </ul>
+      <span class="bottom-span">Или войти через</span>
     </div>
-    <!-- <el-button type="primary" @click="selectorForm">Регистрация</el-button> -->
   </div>
 </template>
 
@@ -79,18 +87,43 @@ const signIn = async (): Promise<void> => {
   }
 
   &__bottom {
-    margin-left: 161px;
+    // margin-left: 155px;
     display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 
     .bottom-span {
-      margin-right: 12px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 120%;
+      letter-spacing: 0.05em;
+      color: $span--color-white;
     }
-    .bottom-partition {
+  }
+}
+
+.bottom-list {
+  margin-bottom: 25px;
+
+  &__item {
+    .item-span {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 100%;
+      color: $span--color-dark;
+    }
+    .item-partition {
       width: 2px;
       height: 18px;
-      margin-right: 12px;
-      background: #666666;
+      background: $span--color-dark;
     }
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 12px;
   }
 }
 
@@ -103,9 +136,8 @@ const signIn = async (): Promise<void> => {
 .el-button--primary {
   width: 260px;
   height: 42px;
-  margin: 30px 0 25px 168px;
-  background: #2d8984;
+  margin: 30px 0 25px 150px;
+  border: none;
   border-radius: 16px;
-
 }
 </style>

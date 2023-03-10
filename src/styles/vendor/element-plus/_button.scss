@@ -4,6 +4,25 @@
             width: 150px;
             background-color: #2D8984;
             border: none;
-        }     
+
+            &:hover {
+                background-color: $button--primary;
+            }
+            &:focus {
+                background-color: $button--primary;
+            }
+            
+        }
+    }
+
+    &.el-button--primary {
+        background-color: $button--primary;
+
+        &:hover {
+            background-color: $button--primary;
+        }
+        &:focus {
+            background-color: $button--primary;
+        }
     }
 }
