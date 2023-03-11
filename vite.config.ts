@@ -28,7 +28,7 @@ const fontsConfig = VitePluginFonts({
       {
         name: 'SourceSansPro',
         local: 'SourceSansPro',
-        src: './src/styles/fonts/*.ttf',
+        src: './src/assets/fonts/*.ttf',
       },
     ],
   },
