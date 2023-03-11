@@ -93,7 +93,7 @@
   const emit = defineEmits<Emits>()
 
   const user = 'Пользователь'
-  let id = ref(1)
+  const id = ref(1)
 
   const userWithId = computed(() => `${user} ${id}`)
 
