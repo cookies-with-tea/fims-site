@@ -3,8 +3,7 @@
     <div class="container">
       <div class="common-layout__wrapper">
         <common-header @open-dialog="dialogVisibleChange" />
-        <main-hero class="main-hero" 
-          :movies="moviesData"/>
+        <main-hero class="main-hero" :movies="moviesData" />
         <common-recommend class="common-recommend" />
         <most-popular class="most-popular" />
         <!-- <main-movie /> -->
@@ -14,59 +13,65 @@
         <common-footer class="common-footer" />
       </div>
     </div>
-    <authorization-dialog
-      :visible="isAuthDialogVisible"
-      @close-dialog="dialogVisibleChange"
-    />
+    <authorization-dialog :visible="isAuthDialogVisible" @close-dialog="dialogVisibleChange" />
   </div>
 </template>
-<script lang="ts" setup>
-import { onMounted, reactive, ref } from "vue";
-import MovieApi from "@/api/movie.api"
 
-const isAuthDialogVisible = ref(false);
+<script lang="ts" setup>
+import { onMounted, reactive, ref } from 'vue'
+import MovieApi from '@/api/movie.api'
+
+const isAuthDialogVisible = ref(false)
 const moviesData = ref()
 
-onMounted(()=>{
+onMounted(() => {
   getAllMovie()
 })
 
 const dialogVisibleChange = (): void => {
-  isAuthDialogVisible.value = !isAuthDialogVisible.value;
-};
-
-const getAllMovie = async(): Promise<void> => {
-  const [error, data] = await MovieApi.getAll()
-  if (!error && data) {  
-  moviesData.value = data.results
-  console.log(data.results[0].image)
+  isAuthDialogVisible.value = !isAuthDialogVisible.value
 }
+
+const getAllMovie = async (): Promise<void> => {
+  const [error, data] = await MovieApi.getAll()
+
+  if (!error && data) {
+    moviesData.value = data.results
+
+    console.log(data.results[0].image)
+  }
 }
 </script>
+
 <style scoped lang="scss">
 .common-layout {
-  color: #fefefe;
   position: relative;
-  z-index: 1;
+  color: #fefefe;
   overflow: hidden;
+  z-index: 1;
 }
+
 .common-layout::before {
-  z-index: -1;
-  position: absolute;
-  left: 0;
+  content: url('@/assets/background-image.png');
   top: 0;
-  content: url("@/assets/background-image.png");
+  left: 0;
+  position: absolute;
   opacity: 0.2;
+  z-index: -1;
 }
+
 .main-hero {
   margin-bottom: 120px;
 }
+
 .common-recommend {
   margin-bottom: 120px;
 }
+
 .hero-catalog {
   margin-bottom: 120px;
 }
+
 .common-footer {
   display: flex;
 }

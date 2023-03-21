@@ -11,45 +11,45 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
 type Props = {
-  title: string;
-};
-const props = defineProps<Props>();
+  title: string
+}
+
+const props = defineProps<Props>()
 </script>
 
 <style lang="scss" scoped>
 .scrollbar-demo-item {
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  margin: 20px 20px 0 0;
   text-align: center;
-  background: var(--el-color-primary-light-9);
   color: var(--el-color-primary);
+  background: var(--el-color-primary-light-9);
+  margin: 20px 20px 0 0;
 }
+
 .hero-catalog {
   &__item {
     width: 345px;
     height: 287px;
   }
+
+  &__title {
+    margin-bottom: 50px;
+  }
+
   &__item-title {
-    background-color: #9c8080;
     width: 345px;
     height: 59px;
-    margin-bottom: 0px;
-    text-align: center;
-    padding-top: 15px;
     font-weight: 400;
     font-size: 24px;
     line-height: 120%;
-  }
-}
-.hero-catalog {
-  &__title {
-    margin-bottom: 50px;
+    text-align: center;
+    background-color: #9c8080;
+    padding-top: 15px;
+    margin-bottom: 0;
   }
 }
 </style>

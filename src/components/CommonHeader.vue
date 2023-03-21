@@ -4,28 +4,16 @@
       <el-col :span="10">
         <nav>
           <ul class="common-header__menu">
-            <li
-              v-for="item in headerMenuItems"
-              :key="item.title"
-              class="common-header__menu-item"
-            >
+            <li v-for="item in headerMenuItems" :key="item.title" class="common-header__menu-item">
               <router-link :to="item.url">{{ item.title }}</router-link>
             </li>
           </ul>
         </nav>
       </el-col>
-      <el-col :span="6">
-        <div class="common-header__logo">Логотип уехал на бали</div></el-col
-      >
+      <el-col :span="6"> <div class="common-header__logo">Логотип уехал на бали</div></el-col>
       <el-col :span="5">
-        <el-input
-          v-model="searchValue"
-          placeholder="Поиск"
-          class="common-header__search"
-        >
-          <template #suffix>
-            <img src="../assets/icons/lupe.svg" alt="lupe" />
-          </template>
+        <el-input v-model="searchValue" placeholder="Поиск" class="common-header__search">
+          <template #suffix> <img src="../assets/icons/lupe.svg" alt="lupe" /> </template>qwd
         </el-input>
       </el-col>
       <el-col :span="3">
@@ -36,32 +24,32 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 
 const emit = defineEmits<{
   (e: 'open-dialog'): void
 }>()
 
-const searchValue = ref("");
+const searchValue = ref('')
 
 const headerMenuItems: { title: string; url: string }[] = [
   {
-    title: "Главная",
-    url: "/",
+    title: 'Главная',
+    url: '/',
   },
   {
-    title: "Новинки",
-    url: "/news",
+    title: 'Новинки',
+    url: '/news',
   },
   {
-    title: "Фильмы",
-    url: "/movies",
+    title: 'Фильмы',
+    url: '/movies',
   },
   {
-    title: "Топы",
-    url: "/tops",
+    title: 'Топы',
+    url: '/tops',
   },
-];
+]
 
 const handleDialogVisivbleChange = (): void => {
   emit('open-dialog')
@@ -69,7 +57,6 @@ const handleDialogVisivbleChange = (): void => {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/variables.scss";
 .common-header {
   align-items: center;
   margin: 26px 0 122px;
@@ -88,12 +75,9 @@ const handleDialogVisivbleChange = (): void => {
         color: #fefefe;
       }
     }
-    &-item:hover {      
-      a {
-        color: $hover-effect;        
-      }
+
+    &-item:hover {
       padding-bottom: 10px;
-      border-bottom: $hover-effect solid 2px;
     }
   }
 

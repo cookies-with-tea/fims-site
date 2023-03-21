@@ -1,28 +1,29 @@
 .el-button {
-    &.common-header {
-        &__button {
-            width: 150px;
-            background-color: #2D8984;
-            border: none;
+  &.common-header {
+    &__button {
+      width: 150px;
+      border: none;
+      background-color: #2d8984;
 
-            &:hover {
-                background-color: $button--primary;
-            }
-            &:focus {
-                background-color: $button--primary;
-            }
-            
-        }
-    }
-
-    &.el-button--primary {
+      &:hover {
         background-color: $button--primary;
+      }
 
-        &:hover {
-            background-color: $button--primary;
-        }
-        &:focus {
-            background-color: $button--primary;
-        }
+      &:focus {
+        background-color: $button--primary;
+      }
     }
+  }
+
+  &.el-button--primary {
+    background-color: $button--primary;
+
+    &:hover {
+      background-color: $button--primary;
+    }
+
+    &:focus {
+      background-color: $button--primary;
+    }
+  }
 }

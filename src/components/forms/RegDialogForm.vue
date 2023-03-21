@@ -1,12 +1,7 @@
 <template>
   <div v-if="props.visible">
     Регистрация
-    <el-form
-      :label-position="labelPosition"
-      label-width="100px"
-      :model="registerUserData"
-      style="max-width: 460px"
-    >
+    <el-form label-width="100px" :model="registerUserData" style="max-width: 460px">
       <el-form-item label="Почта">
         <el-input v-model="registerUserData.email" />
       </el-form-item>
@@ -15,30 +10,29 @@
       </el-form-item>
       <el-form-item label="Пароль">
         <el-input v-model="registerUserData.password" />
-      </el-form-item>           
+      </el-form-item>
     </el-form>
-    <el-button type="primary" @click="signUp">Создать аккаунт</el-button> 
+    <el-button type="primary" @click="signUp">Создать аккаунт</el-button>
     <span>Или войти через</span>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
-import usersApi from "@/api/users.api";
-import {ElMessage} from "element-plus";
+import { reactive } from 'vue'
+import usersApi from '@/api/users.api'
+import { ElMessage } from 'element-plus'
 
-const labelPosition = ref("top");
 const props = defineProps({
   visible: {
     type: Boolean,
     default: false,
   },
-});
+})
 const registerUserData = reactive({
-  email: "",
-  username: "",
-  password: "",
-});
+  email: '',
+  username: '',
+  password: '',
+})
 
 const signUp = async (): Promise<void> => {
   const [error, data] = await usersApi.userRegister(registerUserData)
@@ -46,10 +40,9 @@ const signUp = async (): Promise<void> => {
   if (!error && data) {
     ElMessage({
       type: 'success',
-      message: 'Success'
+      message: 'Success',
     })
   }
 }
-
 </script>
 <!-- http://localhost:8000/auth/users/ -->

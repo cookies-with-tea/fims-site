@@ -1,15 +1,17 @@
- .main-slider {
-    &__pagination {
-        background-color: none;
-    }
-        
- }
- .swiper-pagination-bullets {
-    justify-content: center;   
-    .swiper-pagination-bullet {        
-        background:  rgb(170, 170, 170);
-    }
-    .swiper-pagination-bullet-active {
-        background: #fff;
-    }
- }
+.main-slider {
+  &__pagination {
+    background: none;
+  }
+}
+
+.swiper-pagination-bullets {
+  justify-content: center;
+
+  .swiper-pagination-bullet {
+    background: rgb(170 170 170);
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #fff;
+  }
+}

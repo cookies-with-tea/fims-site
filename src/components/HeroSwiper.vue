@@ -19,11 +19,7 @@
         }"
         class="main-slider swiper"
       >
-        <swiper-slide
-          v-for="movie in props.movies"
-          :key="movie.id"
-          class="swiper-slide"
-        >
+        <swiper-slide v-for="movie in props.movies" :key="movie.id" class="swiper-slide">
           <div class="swiper-slide__wrapper">
             <img class="swiper-slide__image" :src="movie.image" alt="movie" />
           </div>
@@ -33,60 +29,61 @@
         <img src="../assets/arrow.png" alt="arrow" />
       </div>
     </div>
-    <div class="main-slider__pagination"></div>
+    <div class="main-slider__pagination" />
   </div>
 </template>
 
-<script lang="ts" setup scoped>
-import { onMounted, reactive, ref } from "vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import SwiperCore, { Pagination, Navigation } from "swiper";
-import type { data } from "dom7";
-import { resultProps } from "element-plus";
+<script lang="ts" setup>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import SwiperCore, { Pagination, Navigation } from 'swiper'
 
-SwiperCore.use([Pagination, Navigation]);
+SwiperCore.use([Pagination, Navigation])
 
 type Props = {
-  movies: any;
-};
+  movies: any
+}
 
 const props = withDefaults(defineProps<Props>(), {
   movies: () => [],
-});
+})
 </script>
 
 <style lang="scss" scoped>
 .test {
-  background-color: #fff;
   width: 100px;
+  background-color: #fff;
 }
+
 .swiper {
   width: 1280px;
   height: 600px;
 }
+
 .swiper-slide {
-  margin: 0px;
-  min-width: 465px;
   height: 560px;
+  min-width: 465px;
+  margin: 0;
 
   &__image {
     width: 465px;
     height: 545px;
-    object-fit: cover;
     border-radius: 10px;
+    object-fit: cover;
   }
 }
+
 .main-slider {
   &__arrow-next {
-    margin-left: 30px;
     display: flex;
     transform: rotate(180deg);
+    margin-left: 30px;
   }
 
   &__pagination {
     padding-left: 50%;
   }
 }
+
 .main-slider-inner {
   width: 1200px;
   height: 580px;
