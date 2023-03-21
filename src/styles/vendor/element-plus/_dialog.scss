@@ -1,4 +1,5 @@
 @use '@/styles/resources/variables' as *;
+
 .el-overlay {
   .el-dialog {
     width: 600px;
@@ -30,6 +31,7 @@
 
   .el-form-item {
     display: block;
+
     &__label {
       display: flex;
       justify-content: start;
