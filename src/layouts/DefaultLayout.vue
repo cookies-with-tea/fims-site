@@ -37,8 +37,6 @@ const getAllMovie = async (): Promise<void> => {
 
   if (!error && data) {
     moviesData.value = data.results
-
-    console.log(data.results[0].image)
   }
 }
 </script>

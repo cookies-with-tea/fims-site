@@ -1,5 +1,5 @@
 <template>
-  <div v-if="props.visible" class="auth-dialog-forms">
+  <div v-if="props.visible" class="auth-dialog__forms">
     <h2 class="auth-dialog__title">Вход</h2>
     <el-form label-width="100px" :model="authorizationUserData" style="max-width: 460px">
       <el-form-item label="Почта">
@@ -9,7 +9,7 @@
         <el-input v-model="authorizationUserData.password" placeholder="Введите пароль" />
       </el-form-item>
     </el-form>
-    <el-button type="primary" class="enter-button" @click="signIn"> Войти </el-button>
+    <el-button type="primary" class="enter-button" @click="handleFormSubmit"> Войти </el-button>
     <div class="auth-dialog__bottom">
       <ul class="flex bottom-list">
         <li class="bottom-list__item">
@@ -19,7 +19,7 @@
           <div class="item-partition" />
         </li>
         <li class="bottom-list__item">
-          <span class="item-span" @click="selectorForm">Регистрация</span>
+          <span class="item-span" @click="handleFormChange">Регистрация</span>
         </li>
       </ul>
       <span class="bottom-span">Или войти через</span>
@@ -43,7 +43,7 @@ const emit = defineEmits<{
   (e: 'select-form'): void
 }>()
 
-const selectorForm = (): void => {
+const handleFormChange = (): void => {
   emit('select-form')
 }
 
@@ -52,7 +52,7 @@ const authorizationUserData = reactive({
   password: '',
 })
 
-const signIn = async (): Promise<void> => {
+const handleFormSubmit = async (): Promise<void> => {
   const [error, data] = await usersApi.userAuthorization(authorizationUserData)
 
   if (!error && data) {
@@ -70,14 +70,13 @@ const signIn = async (): Promise<void> => {
 .auth-dialog {
   &__title {
     text-align: center;
+    margin-bottom: 45px;
   }
 
   &__bottom {
-    // margin-left: 155px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
 
     .bottom-span {
@@ -86,26 +85,29 @@ const signIn = async (): Promise<void> => {
       font-size: 18px;
       line-height: 120%;
       letter-spacing: 0.05em;
-      color: $span--color-white;
+      color: $color--span-white;
     }
   }
 }
 
 .bottom-list {
+  display: flex;
   margin-bottom: 25px;
 
   &__item {
+    display: flex;
+
     .item-span {
       font-weight: 400;
       font-size: 18px;
       line-height: 100%;
-      color: $span--color-dark;
+      color: $color--span-dark;
     }
 
     .item-partition {
       width: 2px;
       height: 18px;
-      background: $span--color-dark;
+      background: $color--span-dark;
     }
   }
 
@@ -120,11 +122,15 @@ const signIn = async (): Promise<void> => {
   }
 }
 
-.el-button--primary {
-  width: 260px;
-  height: 42px;
+.enter-button {
+  width: fit-content;
+  height: fit-content;
   border: none;
   border-radius: 16px;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  padding: 10px 105px;
   margin: 30px 0 25px 150px;
 }
 </style>

@@ -1,11 +1,12 @@
+@use '@/styles/resources/variables' as *;
 .el-overlay {
   .el-dialog {
     width: 600px;
     height: 742px;
-    background-color: $color--defaultlayout;
+    background-color: $color--primary;
 
     &__body {
-      color: $color-default;
+      color: $color--white;
     }
 
     &__footer {
@@ -28,7 +29,10 @@
   }
 
   .el-form-item {
+    display: block;
     &__label {
+      display: flex;
+      justify-content: start;
       font-size: 18px;
       line-height: 100%;
       letter-spacing: 0.05em;

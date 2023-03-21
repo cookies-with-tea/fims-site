@@ -1,3 +1,5 @@
+@use '@/styles/resources/variables' as *;
+
 .el-button {
   &.common-header {
     &__button {
@@ -6,24 +8,24 @@
       background-color: #2d8984;
 
       &:hover {
-        background-color: $button--primary;
+        background-color: $color--primary-secondary;
       }
 
       &:focus {
-        background-color: $button--primary;
+        background-color: $color--primary-secondary;
       }
     }
   }
 
   &.el-button--primary {
-    background-color: $button--primary;
+    background-color: $color--primary-secondary;
 
     &:hover {
-      background-color: $button--primary;
+      background-color: $color--primary-secondary;
     }
 
     &:focus {
-      background-color: $button--primary;
+      background-color: $color--primary-secondary;
     }
   }
 }

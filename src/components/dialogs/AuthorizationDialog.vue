@@ -1,7 +1,7 @@
 <template>
   <el-dialog :model-value="props.visible" width="600px" :show-close="false" :before-close="closeDialog">
     <template #header="{ close }">
-      <div class="my-header">
+      <div class="modal-header">
         <el-button class="close-button" @click="close">
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 1L25 25M1 25L25 1" stroke="#777777" />
@@ -52,7 +52,7 @@ const formVisibleChange = (): void => {
 </script>
 
 <style lang="scss" scoped>
-.my-header {
+.modal-header {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

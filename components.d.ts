@@ -18,7 +18,6 @@ declare module '@vue/runtime-core' {
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
-    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
@@ -30,6 +29,5 @@ declare module '@vue/runtime-core' {
     RegDialogForm: typeof import('./src/components/forms/RegDialogForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SInput: typeof import('@/components/CInput/CInput.vue')['default']
   }
 }
