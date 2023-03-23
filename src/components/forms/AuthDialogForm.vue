@@ -85,7 +85,7 @@ const handleFormSubmit = async (): Promise<void> => {
       font-size: 18px;
       line-height: 120%;
       letter-spacing: 0.05em;
-      color: $color--span-white;
+      color: $color--white-secondary;
     }
   }
 }
@@ -101,13 +101,13 @@ const handleFormSubmit = async (): Promise<void> => {
       font-weight: 400;
       font-size: 18px;
       line-height: 100%;
-      color: $color--span-dark;
+      color: $color--white-default;
     }
 
     .item-partition {
       width: 2px;
       height: 18px;
-      background: $color--span-dark;
+      background: $color--dark-secondary;
     }
   }
 

@@ -1,6 +1,6 @@
 <template>
   <div class="common-footer">
-    <el-row>
+    <el-row class="common-footer__wrapper">
       <el-col :span="10">
         <nav>
           <ul class="common-footer__menu">
@@ -17,7 +17,7 @@
         <div class="common-footer__content-aside">
           <ul class="list-content">
             <li v-for="item in heroSocialNetworks" :key="item.id" class="list-content__item">
-              <img :src="item.icon" :alt="item.alt" />
+              <icon-template :name="item.icon" class="icon-30 item-icon" />
             </li>
           </ul>
         </div>
@@ -55,7 +55,7 @@ const footerMenuItems: { title: string; url: string }[] = [
   align-items: center;
   margin: 26px 0 122px;
 
-  .el-row {
+  &__wrapper {
     width: 1440px;
     justify-content: space-between;
   }
@@ -83,7 +83,7 @@ const footerMenuItems: { title: string; url: string }[] = [
     width: 40px;
     height: 40px;
 
-    img {
+    .item-icon {
       width: 100%;
       height: 100%;
     }
