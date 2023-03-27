@@ -1,5 +1,4 @@
 <template>
-  <!-- <button class="test" @click="getAllMovie">movie+</button> -->
   <div>
     <div class="main-slider-inner">
       <swiper
@@ -21,7 +20,7 @@
       >
         <swiper-slide v-for="movie in props.movies" :key="movie.id" class="swiper-slide">
           <div class="swiper-slide__wrapper">
-            <img class="swiper-slide__image" :src="movie.image" alt="movie" />
+            <img class="swiper-slide__image" :src="movie.image" :alt="movie.title" />
           </div>
         </swiper-slide>
       </swiper>
@@ -36,11 +35,12 @@
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import SwiperCore, { Pagination, Navigation } from 'swiper'
+import { MovieType } from '@/types/movie.type'
 
 SwiperCore.use([Pagination, Navigation])
 
 type Props = {
-  movies: any
+  movies: MovieType[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -49,11 +49,6 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <style lang="scss" scoped>
-.test {
-  width: 100px;
-  background-color: #fff;
-}
-
 .swiper {
   width: 1280px;
   height: 600px;

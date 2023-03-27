@@ -1,12 +1,10 @@
 <template>
   <el-dialog :model-value="props.visible" width="600px" :show-close="false" :before-close="closeDialog">
-    <template #header="{ close }">
-      <div class="modal-header">
-        <el-button class="close-button" @click="close">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L25 25M1 25L25 1" stroke="#777777" />
-          </svg>
-        </el-button>
+    <template #header>
+      <div class="header-inner w-100 d-f jc-fe">
+        <button class="close-button" @click="closeDialog">
+          <icon-template name="closing-cross" :width="24" :height="24" />
+        </button>
       </div>
     </template>
 
@@ -31,11 +29,12 @@ const emit = defineEmits<{
   (e: 'close-dialog'): void
 }>()
 
-const props = defineProps({
-  visible: {
-    type: Boolean,
-    default: false,
-  },
+type Props = {
+  visible: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  visible: false,
 })
 
 const isLoginFormVisible = ref(true)
@@ -52,23 +51,14 @@ const formVisibleChange = (): void => {
 </script>
 
 <style lang="scss" scoped>
-.modal-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.close-button {
-  top: 25px;
-  left: 530px;
-  position: absolute;
-  border: none;
-  background-color: transparent;
-}
-
 .dialog-list {
   width: 220px;
   display: flex;
   justify-content: space-between;
+}
+
+.close-button {
+  color: inherit;
+  cursor: pointer;
 }
 </style>

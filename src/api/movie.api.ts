@@ -1,14 +1,14 @@
 import type { AxiosRequestConfig } from 'axios'
 import { AxiosService } from '@/api/axiosService'
-import { MovieType } from '@/types/MoviesParamsType.type'
+import { ApiMoviesResponseType, MoviesParamsType } from '@/types/movie.type'
 
 class MovieApi extends AxiosService {
   constructor(config?: AxiosRequestConfig) {
     super(config)
   }
 
-  async getAll(payload?: MovieType) {
-    return this.axiosCall<any>({
+  async getAll(payload?: MoviesParamsType) {
+    return this.axiosCall<ApiMoviesResponseType>({
       method: 'get',
       url: '/',
     })

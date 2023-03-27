@@ -16,9 +16,10 @@
 
 <script lang="ts" setup>
 import { heroSocialNetworks } from '@/constants/mainHero'
+import { MovieType } from '@/types/movie.type'
 
 type Props = {
-  movies: any
+  movies: MovieType[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
