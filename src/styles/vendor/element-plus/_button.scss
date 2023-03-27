@@ -1,7 +1,31 @@
+@use '@/styles/resources/variables' as *;
+
 .el-button {
   &.common-header {
     &__button {
       width: 150px;
+      border: none;
+      background-color: #2d8984;
+
+      &:hover {
+        background-color: $color--primary-secondary;
+      }
+
+      &:focus {
+        background-color: $color--primary-secondary;
+      }
+    }
+  }
+
+  &.el-button--primary {
+    background-color: $color--primary-secondary;
+
+    &:hover {
+      background-color: $color--primary-secondary;
+    }
+
+    &:focus {
+      background-color: $color--primary-secondary;
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="common-footer">
-    <el-row>
+    <el-row class="common-footer__wrapper">
       <el-col :span="10">
         <nav>
           <ul class="common-footer__menu">
@@ -10,12 +10,14 @@
           </ul>
         </nav>
       </el-col>
-      <el-col :span="6"> <div class="common-footer__logo">Логотип уехал на бали</div></el-col>
       <el-col :span="5">
+        <div class="common-footer__logo">Логотип уехал на бали</div>
+      </el-col>
+      <el-col :span="7">
         <div class="common-footer__content-aside">
           <ul class="list-content">
             <li v-for="item in heroSocialNetworks" :key="item.id" class="list-content__item">
-              <img :src="item.icon" :alt="item.alt" />
+              <icon-template :name="item.icon" class="icon-30 item-icon" />
             </li>
           </ul>
         </div>
@@ -25,6 +27,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue'
 import { heroSocialNetworks } from '@/constants/mainHero'
 
 const footerMenuItems: { title: string; url: string }[] = [
@@ -52,6 +55,11 @@ const footerMenuItems: { title: string; url: string }[] = [
   align-items: center;
   margin: 26px 0 122px;
 
+  &__wrapper {
+    width: 1440px;
+    justify-content: space-between;
+  }
+
   &__menu {
     display: flex;
 
@@ -63,11 +71,26 @@ const footerMenuItems: { title: string; url: string }[] = [
   }
 
   &__logo {
+    display: flex;
     margin-right: 75px;
   }
+}
 
-  &__search {
-    width: 220px;
+.list-content {
+  display: flex;
+
+  &__item {
+    width: 40px;
+    height: 40px;
+
+    .item-icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:not(:last-child) {
+      margin-right: 52px;
+    }
   }
 }
 </style>

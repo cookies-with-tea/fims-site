@@ -6,7 +6,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
@@ -52,25 +52,42 @@ const svgIconsConfig = createSvgIconsPlugin({
 })
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    deps: {
-      inline: ['element-plus'],
-    },
-  },
-  plugins: [vue(), styleLintConfig, eslintConfig, fontsConfig, autoImportConfig, componentsConfig, svgIconsConfig],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: '@use "@/styles/resources" as *; @use "@/styles/vendor" as *;',
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+
+  return {
+    server: {
+      proxy: {
+        '/api/': {
+          target: env.VITE_BASE_URL,
+          changeOrigin: true,
+          secure: false,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        },
       },
     },
-  },
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+
+
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      deps: {
+        inline: ['element-plus'],
+      },
     },
-  },
+    plugins: [vue(), styleLintConfig, eslintConfig, fontsConfig, autoImportConfig, componentsConfig, svgIconsConfig],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/styles/resources" as *; @use "@/styles/vendor" as *;',
+        },
+      },
+    },
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    },
+  }
 })
+

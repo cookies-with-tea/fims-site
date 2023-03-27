@@ -20,6 +20,10 @@ body {
   margin: 0 auto;
 }
 
+a {
+  color: $color--white-default;
+}
+
 .h1,
 h1 {
   @include text-h1;
@@ -64,12 +68,8 @@ h4 {
 
 // Colors
 @each $_class-name,
-$_color
-in (
-    ('primary', $color--primary),
-    ('white', $color--white),
-    ('white-secondary', $color--white-secondary)
-) {
+  $_color in (('primary', $color--primary), ('white', $color--white), ('white-secondary', $color--white-secondary))
+{
   // @sample
   // .bg-primary
   // .color-primary

@@ -18,27 +18,11 @@
         }"
         class="main-slider swiper"
       >
-        <swiper-slide class="swiper-slide">
-          <img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img class="swiper-slide__image" src="../assets/movie2.jpg" alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img class="swiper-slide__image" src="../assets/movie2.jpg" alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img class="swiper-slide__image" src="../assets/movie2.jpg" alt="movie"
-        /></swiper-slide>
-        <swiper-slide class="swiper-slide">
-          <img class="swiper-slide__image" src="../assets/movie1.jpg" alt="movie"
-        /></swiper-slide>
+        <swiper-slide v-for="movie in props.movies" :key="movie.id" class="swiper-slide">
+          <div class="swiper-slide__wrapper">
+            <img class="swiper-slide__image" :src="movie.image" :alt="movie.title" />
+          </div>
+        </swiper-slide>
       </swiper>
       <div class="main-slider__arrow-next">
         <img src="../assets/arrow.png" alt="arrow" />
@@ -51,11 +35,20 @@
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import SwiperCore, { Pagination, Navigation } from 'swiper'
+import { MovieType } from '@/types/movie.type'
 
 SwiperCore.use([Pagination, Navigation])
+
+type Props = {
+  movies: MovieType[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  movies: () => [],
+})
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .swiper {
   width: 1280px;
   height: 600px;
@@ -67,7 +60,10 @@ SwiperCore.use([Pagination, Navigation])
   margin: 0;
 
   &__image {
-    width: 100%;
+    width: 465px;
+    height: 545px;
+    border-radius: 10px;
+    object-fit: cover;
   }
 }
 
