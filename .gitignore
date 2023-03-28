@@ -7,12 +7,30 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Folders
 node_modules
-.DS_Store
 dist
 dist-ssr
 coverage
-*.local
+
+# env files
+.env
+.env.local
+.env.*.local
+.env.test
+.env.*.test
+
+# Cashe
+.npm
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+.yarn-cache
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
 
 /cypress/videos/
 /cypress/screenshots/
@@ -27,6 +45,5 @@ coverage
 *.sln
 *.sw?
 
-.stylelintcache
 components.d.ts
 auto-imports.d.ts
