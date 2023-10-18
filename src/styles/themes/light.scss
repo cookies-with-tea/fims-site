@@ -1,0 +1,11 @@
+@import "src/styles/resources/variables/colors";
+
+.theme--light{
+  --color--background: #{$base-color--f5};
+  --color--accent: #{$base-color--blue};
+  --color--accent-secondary: #{$base-color--blue-20};
+  --color--item: #{$base-color--whit};
+  --color--text: #{$base-color--text};
+  --color--switch-bg: #{$base-color--text};
+  --color--switch-circle: #{$base-color--dark};
+}

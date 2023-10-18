@@ -2,9 +2,7 @@
 </script>
 
 <template>
-	<div>
-		hello world
-	</div>
+	<div/>
 </template>
 
 <style lang="scss" scoped>

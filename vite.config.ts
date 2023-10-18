@@ -1,6 +1,5 @@
 // import EslintPlugin from 'vite-plugin-eslint';
 // import StyleLintPlugin from 'vite-plugin-stylelint';
-// import AutoImport from 'unplugin-auto-import/vite';
 
 import { defineConfig, loadEnv } from 'vite';
 
@@ -28,7 +27,7 @@ export default defineConfig(({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "@/styles/resources" as *; @use "@/styles/vendor" as *;',
+          additionalData: '@use "@/styles/resources" as *;',
         },
       },
     },

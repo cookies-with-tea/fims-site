@@ -1,0 +1,11 @@
+@import "src/styles/resources/variables/colors";
+
+.theme--dark{
+  --color--background: #{$base-color--dark};
+  --color--accent: #{$base-color--beige};
+  --color--accent-secondary: #{$base-color--beig};
+  --color--item: #{$base-color--text};
+  --color--text: #{$base-color--whit};
+  --color--switch-bg: #{$base-color--beige};
+  --color--switch-circle: #{$base-color--whit};
+}
