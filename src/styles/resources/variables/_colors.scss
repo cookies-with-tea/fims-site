@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $base-color--non: #bfbfbf;
 $base-color--active: #555;
 $base-color--green-u: #57f82f;
@@ -7,7 +9,7 @@ $base-color--beige: #f7d4a4;
 $base-color--dark: #1f2024;
 $base-color--f5: #f4f5f5;
 $base-color--orange: #f88f2f;
-$base-color--text-or: #ac6755;
+$base-color--text-or: #ac6 755;
 $base-color--red: #eb5757;
 $base-color--beig: #e59e6a;
 $base-color--none-new: #dce3eb;
@@ -19,3 +21,6 @@ $base-color--red-u: #eb1313;
 $base-color--non-20: #bfbfbf;
 $base-color--green: #219653;
 $base-color--blue-20: #e1f7fa;
+
+$base-color--blue-darken: color.scale($base-color--blue, $lightness: -30%);
+$base-color--beige-darken: color.scale($base-color--beige, $lightness: -10%);
