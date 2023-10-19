@@ -3,9 +3,11 @@
 .theme--dark {
   --color--background: #{$base-color--dark};
   --color--accent: #{$base-color--beige};
+  --color--accent-alt: #{$base-color--beige-darken};
   --color--accent-secondary: #{$base-color--beig};
   --color--item: #{$base-color--text};
   --color--text: #{$base-color--whit};
+  --color--text-secondary: #{$base-color--text};
   --color--switch-bg: #{$base-color--beige};
   --color--switch-circle: #{$base-color--whit};
 }

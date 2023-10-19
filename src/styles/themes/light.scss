@@ -3,9 +3,11 @@
 .theme--light {
   --color--background: #{$base-color--f5};
   --color--accent: #{$base-color--blue};
+  --color--accent-alt: #{$base-color--blue-darken};
   --color--accent-secondary: #{$base-color--blue-20};
   --color--item: #{$base-color--whit};
-  --color--text: #{$base-color--whit};
+  --color--text: #{$base-color--text};
+  --color--text-secondary: #{$base-color--whit};
   --color--switch-bg: #{$base-color--text};
   --color--switch-circle: #{$base-color--dark};
 }
