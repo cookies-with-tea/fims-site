@@ -1,0 +1,9 @@
+@use "@/styles/resources/variables/fonts" as *;
+@use "@/styles/resources/variables/vars" as *;
+
+body{
+  font-size: $font-size;
+  line-height: $line-height;
+  font-family: $font--main;
+  color: $color--text;
+}
