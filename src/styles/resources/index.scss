@@ -1,5 +1,4 @@
-@use "mixins" as *;
-@use "variables" as *;
-
-@forward "mixins";
-@forward "variables";
+@use 'mixins' as *;
+@use 'variables' as *;
+@forward 'mixins';
+@forward 'variables';

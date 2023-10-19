@@ -1,6 +1,6 @@
-@import "src/styles/resources/variables/colors";
+@use '@/styles/resources/variables/colors' as *;
 
-.theme--dark{
+.theme--dark {
   --color--background: #{$base-color--dark};
   --color--accent: #{$base-color--beige};
   --color--accent-secondary: #{$base-color--beig};
