@@ -1,21 +1,8 @@
-import EslintPlugin from 'vite-plugin-eslint';
-import StyleLintPlugin from 'vite-plugin-stylelint';
-
 import { defineConfig, loadEnv } from 'vite';
 
 import vue from '@vitejs/plugin-vue';
-import { URL, fileURLToPath } from 'node:url';
-
-const styleLintConfig = StyleLintPlugin({
-  files: ['src/**/*.{vue,scss}'],
-  fix: true,
-  cache: false,
-});
-
-const eslintConfig = EslintPlugin({
-  fix: true,
-  cache: false,
-});
+import { fileURLToPath, URL } from 'node:url';
+import { svgIconsPlugin, styleLintPlugin, eslintPlugin } from './plugins';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -23,7 +10,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '') as ImportMetaEnv;
 
   return {
-    plugins: [vue(), styleLintConfig, eslintConfig],
+    plugins: [vue(), styleLintPlugin, eslintPlugin, svgIconsPlugin],
     css: {
       preprocessorOptions: {
         scss: {
