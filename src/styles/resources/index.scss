@@ -1,4 +1,6 @@
 @use 'mixins' as *;
 @use 'variables' as *;
+@use "common" as *;
 @forward 'mixins';
 @forward 'variables';
+@forward "common";
