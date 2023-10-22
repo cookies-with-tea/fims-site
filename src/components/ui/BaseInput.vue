@@ -3,13 +3,20 @@
     <input v-model="inputText" :type="currentInputType" class="base-input__input" @input="handleInputInput" />
     <base-icon
       v-if="type === 'password'"
-      :name="iconName"
+      :name="eyeIconName"
       color="black"
       width="14"
       height="7.5"
       @click="handleEyeStatusChange"
     />
-    <base-icon v-if="validators && isError" class="icon-error" name="x" width="8" height="8" />
+    <base-icon
+      v-if="validators"
+      class="base-input__icon"
+      :class="validationIconClass"
+      :name="validationIconName"
+      width="8"
+      height="8"
+    />
   </div>
 </template>
 
@@ -34,7 +41,9 @@ const inputText = ref<string>('');
 const isError = ref<boolean>(true);
 const currentInputType = ref<'password' | 'text'>(props.type);
 
-const iconName = computed(() => (currentInputType.value === 'password' ? 'eye-closed' : 'eye-opened'));
+const eyeIconName = computed(() => (currentInputType.value === 'password' ? 'eye-closed' : 'eye-opened'));
+const validationIconName = computed(() => (isError.value ? 'x' : 'daw'));
+const validationIconClass = computed(() => (isError.value ? 'icon-error' : 'icon-success'));
 
 const handleInputInput = () => {
   for (let validator of props.validators || []) {
@@ -60,6 +69,7 @@ const handleEyeStatusChange = () => {
 
 <style scoped lang="scss">
 .base-input {
+  min-width: 150px;
   display: flex;
   border-radius: 8px;
   box-shadow: 5px 5px 20px 0 rgb(188 188 188 / 0.25);
@@ -72,7 +82,8 @@ const handleEyeStatusChange = () => {
   }
 
   &__input {
-    flex: 1 0;
+    min-width: 0;
+    flex-grow: 1;
     margin-right: 10px;
   }
 }
