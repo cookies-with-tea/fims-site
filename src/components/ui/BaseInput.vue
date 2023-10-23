@@ -15,14 +15,7 @@
       height="7.5"
       @click="handleEyeStatusChange"
     />
-    <base-icon
-      v-if="validators"
-      class="base-input__icon"
-      :class="validationIconClass"
-      :name="validationIconName"
-      width="8"
-      height="8"
-    />
+    <base-icon v-if="validators" :class="validationIconClass" :name="validationIconName" width="8" height="8" />
   </div>
 </template>
 
