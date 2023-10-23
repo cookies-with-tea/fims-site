@@ -1,6 +1,12 @@
 <template>
   <div class="base-input" :class="{ 'base-input-error': isError }">
-    <input v-model="inputText" :type="currentInputType" class="base-input__input" @input="handleInputInput" />
+    <input
+      v-model="inputText"
+      :type="currentInputType"
+      :placeholder="placeholder"
+      class="base-input__input"
+      @input="handleInputInput"
+    />
     <base-icon
       v-if="type === 'password'"
       :name="eyeIconName"
@@ -27,6 +33,7 @@ import { ValidatorType } from '@/components/validatorTypes';
 
 type Props = {
   type: 'text' | 'password';
+  placeholder?: string;
   validators?: ValidatorType<string>[];
 };
 
@@ -34,7 +41,9 @@ type Emits = {
   (e: 'validation', success: boolean, message?: string): void;
 };
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  type: 'text',
+});
 const emits = defineEmits<Emits>();
 
 const inputText = ref<string>('');
@@ -73,6 +82,7 @@ const handleEyeStatusChange = () => {
   display: flex;
   border-radius: 8px;
   box-shadow: 5px 5px 20px 0 rgb(188 188 188 / 0.25);
+  color: $base-color--active;
   background-color: $base-color--whit;
   padding: 20px;
   gap: 10px;
