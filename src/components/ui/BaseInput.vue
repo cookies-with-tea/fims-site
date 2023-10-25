@@ -1,71 +1,50 @@
 <template>
-  <div class="base-input" :class="{ 'base-input-error': isError }">
+  <div class="base-input" :class="{ 'base-input-error': props.validationStatus === 'error' }">
+    <slot name="before" />
+
     <input
+      v-bind="$attrs"
       v-model="inputText"
       :type="currentInputType"
       :placeholder="placeholder"
       class="base-input__input"
-      @input="handleInputInput"
+      v-on="$attrs"
     />
+
     <base-icon
       v-if="type === 'password'"
-      :name="eyeIconName"
+      :name="currentInputTypeEyeIconName"
       color="black"
       width="14"
       height="7.5"
       @click="handleEyeStatusChange"
     />
-    <base-icon v-if="validators" :class="validationIconClass" :name="validationIconName" width="8" height="8" />
+    <slot name="after" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import BaseIcon from '@/components/ui/BaseIcon.vue';
-import { ValidatorType } from '@/components/validatorTypes';
 
 type Props = {
-  type: 'text' | 'password';
+  type?: 'text' | 'password';
   placeholder?: string;
-  validators?: ValidatorType<string>[];
-};
-
-type Emits = {
-  (e: 'validation', success: boolean, message?: string): void;
+  validationStatus?: 'success' | 'error';
 };
 
 const props = withDefaults(defineProps<Props>(), {
   type: 'text',
 });
-const emits = defineEmits<Emits>();
 
-const inputText = ref<string>('');
-const isError = ref<boolean>(true);
+const inputText = ref('');
 const currentInputType = ref<'password' | 'text'>(props.type);
-
-const eyeIconName = computed(() => (currentInputType.value === 'password' ? 'eye-closed' : 'eye-opened'));
-const validationIconName = computed(() => (isError.value ? 'x' : 'daw'));
-const validationIconClass = computed(() => (isError.value ? 'icon-error' : 'icon-success'));
-
-const handleInputInput = () => {
-  for (let validator of props.validators || []) {
-    const [success, message] = validator(inputText.value);
-
-    if (!success) {
-      isError.value = true;
-
-      return emits('validation', success, message);
-    }
-  }
-
-  isError.value = false;
-
-  emits('validation', true);
-};
+const currentInputTypeEyeIconName = computed(() =>
+  currentInputType.value === 'password' ? 'eye-closed' : 'eye-opened'
+);
 
 const handleEyeStatusChange = () => {
-  if (currentInputType.value === 'password') currentInputType.value = 'text';
-  else if (currentInputType.value === 'text') currentInputType.value = 'password';
+  currentInputType.value = currentInputType.value === 'password' ? 'text' : 'password';
 };
 </script>
 
