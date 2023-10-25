@@ -1,8 +1,25 @@
 <template>
-  <input class="base-checkbox" type="checkbox" />
+  <input
+    class="base-checkbox"
+    type="checkbox"
+    :value="modelValue"
+    @change="$emit('update:modelValue', $event.target?.checked)"
+  />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+type Props = {
+  modelValue: boolean;
+};
+
+type Emits = {
+  (e: 'update:modelValue', value: boolean): void;
+};
+
+defineProps<Props>();
+
+defineEmits<Emits>();
+</script>
 
 <style scoped lang="scss">
 @supports (-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none) {
