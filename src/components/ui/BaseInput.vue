@@ -4,11 +4,12 @@
 
     <input
       v-bind="$attrs"
-      v-model="inputText"
+      :value="modelValue"
       :type="currentInputType"
       :placeholder="placeholder"
       class="base-input__input"
       v-on="$attrs"
+      @input="emits('update:modelValue', $event.target?.value)"
     />
 
     <base-icon
@@ -28,16 +29,22 @@ import { computed, ref } from 'vue';
 import BaseIcon from '@/components/ui/BaseIcon.vue';
 
 type Props = {
+  modelValue: string;
   type?: 'text' | 'password';
   placeholder?: string;
   validationStatus?: 'success' | 'error';
+};
+
+type Emits = {
+  (e: 'update:modelValue', value: string): void;
 };
 
 const props = withDefaults(defineProps<Props>(), {
   type: 'text',
 });
 
-const inputText = ref('');
+const emits = defineEmits<Emits>();
+
 const currentInputType = ref<'password' | 'text'>(props.type);
 const currentInputTypeEyeIconName = computed(() =>
   currentInputType.value === 'password' ? 'eye-closed' : 'eye-opened'
