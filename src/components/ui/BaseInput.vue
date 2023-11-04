@@ -1,15 +1,16 @@
 <template>
-  <div class="base-input" :class="{ 'base-input-error': props.validationStatus === 'error' }">
+  <div class="base-input" :class="{ 'base-input-error': formItemContext?.validationState === 'error' }">
     <slot name="before" />
 
     <input
+      :id="formItemContext?.field"
       v-bind="$attrs"
       :value="modelValue"
       :type="currentInputType"
-      :placeholder="placeholder"
       class="base-input__input"
       v-on="$attrs"
       @input="emits('update:modelValue', $event.target?.value)"
+      @blur="handleBlur"
     />
 
     <base-icon
@@ -20,19 +21,24 @@
       height="7.5"
       @click="handleEyeStatusChange"
     />
-    <slot name="after" />
+    <base-icon
+      v-if="formItemContext?.validationState"
+      :class="`icon-${formItemContext.validationState}`"
+      :name="validationStateIconName"
+      width="8"
+      height="8"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import BaseIcon from '@/components/ui/BaseIcon.vue';
+import { useFormContext } from '@/composables/useFormContext';
 
 type Props = {
   modelValue: string;
   type?: 'text' | 'password';
-  placeholder?: string;
-  validationStatus?: 'success' | 'error';
 };
 
 type Emits = {
@@ -45,6 +51,12 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emits = defineEmits<Emits>();
 
+const { formItemContext } = useFormContext();
+
+const validationStateIconName = computed(() => {
+  return formItemContext?.validationState === 'success' ? 'daw' : 'x';
+});
+
 const currentInputType = ref<'password' | 'text'>(props.type);
 const currentInputTypeEyeIconName = computed(() =>
   currentInputType.value === 'password' ? 'eye-closed' : 'eye-opened'
@@ -53,6 +65,17 @@ const currentInputTypeEyeIconName = computed(() =>
 const handleEyeStatusChange = () => {
   currentInputType.value = currentInputType.value === 'password' ? 'text' : 'password';
 };
+
+const handleBlur = () => {
+  formItemContext?.validate('blur');
+};
+
+watch(
+  () => props.modelValue,
+  () => {
+    formItemContext?.validate('change');
+  }
+);
 </script>
 
 <style scoped lang="scss">
@@ -65,10 +88,6 @@ const handleEyeStatusChange = () => {
   background-color: $base-color--whit;
   padding: 20px;
   gap: 10px;
-
-  &-error {
-    border: 1px solid $base-color--red;
-  }
 
   &__input {
     min-width: 0;
