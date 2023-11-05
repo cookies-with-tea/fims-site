@@ -13,7 +13,8 @@
     "@types/node": "^20.8.6",
     "async-validator": "^4.2.5",
     "vite-plugin-stylelint": "^5.1.1",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@types/node": "^20.8.6",
