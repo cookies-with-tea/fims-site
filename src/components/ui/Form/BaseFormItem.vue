@@ -99,5 +99,9 @@ onBeforeUnmount(() => {
   &__error {
     margin: 12px 0;
   }
+
+  &:not(:last-child) {
+    margin-bottom: 29px;
+  }
 }
 </style>
