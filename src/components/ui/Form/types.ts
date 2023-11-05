@@ -10,9 +10,11 @@ export interface FormItemRule extends RuleItem {
   trigger?: FormItemTrigger;
 }
 
+export type FormRules = Record<string, FormItemRule[]>;
+
 export type FormProps = {
   modelValue: object;
-  rules: { [key: string]: FormItemRule[] };
+  rules: FormRules;
 };
 
 export type FormEmits = {
