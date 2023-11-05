@@ -56,11 +56,15 @@ const validate = (trigger?: FormItemTrigger) => {
       errors.value = [];
 
       validationState.value = 'success';
+
+      formContext?.emit('validate', props.field, 'success');
     })
     .catch(({ fields }) => {
       errors.value = fields[props.field];
 
       validationState.value = 'error';
+
+      formContext?.emit('validate', props.field, 'error', errors.value[0]?.message);
     });
 
   return errors.value.length === 0;

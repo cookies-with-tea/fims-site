@@ -2,7 +2,9 @@ import { RuleItem, ValidateError } from 'async-validator';
 
 export type FormItemTrigger = 'blur' | 'change';
 
-export type ValidationState = 'success' | 'error' | '';
+export type ValidationStatus = 'success' | 'error';
+
+export type ValidationState = ValidationStatus | '';
 
 export interface FormItemRule extends RuleItem {
   trigger?: FormItemTrigger;
@@ -11,6 +13,10 @@ export interface FormItemRule extends RuleItem {
 export type FormProps = {
   modelValue: object;
   rules: { [key: string]: FormItemRule[] };
+};
+
+export type FormEmits = {
+  (e: 'validate', field: string, status: ValidationStatus, message?: string): void;
 };
 
 export type FormItemProps = {
@@ -28,4 +34,5 @@ export type FormItemContext = FormItemProps & {
 export type FormContext = FormProps & {
   addField: (field: FormItemContext) => void;
   removeField: (field: FormItemContext) => void;
+  emit: FormEmits;
 };

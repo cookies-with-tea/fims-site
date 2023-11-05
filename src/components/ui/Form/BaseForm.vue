@@ -5,11 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import { FormItemContext, FormProps } from '@/components/ui/Form/types';
+import { FormEmits, FormItemContext, FormProps } from '@/components/ui/Form/types';
 import { computed, provide, reactive, ref, toRefs } from 'vue';
 import { formContextInjectionKey } from '@/constants/injectionKeys';
 
 const props = defineProps<FormProps>();
+const emit = defineEmits<FormEmits>();
+
 const fields = ref<FormItemContext[]>([]);
 
 const addField = (field: FormItemContext) => {
@@ -30,6 +32,7 @@ provide(
     ...toRefs(props),
     addField,
     removeField,
+    emit,
   })
 );
 
