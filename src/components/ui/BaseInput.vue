@@ -22,8 +22,8 @@
       @click="handleEyeStatusChange"
     />
     <base-icon
-      v-if="formItemContext?.validationState"
-      :class="`icon-${formItemContext.validationState}`"
+      v-if="currentValidationState"
+      :class="validationStateClass"
       :name="validationStateIconName"
       width="8"
       height="8"
@@ -53,8 +53,16 @@ const emits = defineEmits<Emits>();
 
 const { formItemContext } = useFormContext();
 
+const currentValidationState = computed(() => {
+  if (!formItemContext?.validationState && !formItemContext?.foreignError) return;
+
+  return formItemContext?.validationState === 'error' || formItemContext?.foreignError ? 'error' : 'success';
+});
 const validationStateIconName = computed(() => {
-  return formItemContext?.validationState === 'success' ? 'daw' : 'x';
+  return currentValidationState.value === 'error' ? 'x' : 'daw';
+});
+const validationStateClass = computed(() => {
+  return currentValidationState.value === 'error' ? 'icon-error' : 'icon-success';
 });
 
 const currentInputType = ref<'password' | 'text'>(props.type);
