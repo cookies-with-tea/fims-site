@@ -1,0 +1,13 @@
+{
+  "auth": {
+    "forgotPassword": "Forgot password?",
+    "logIn": "Log In",
+    "login": "Username",
+    "password": "Password",
+    "rememberData": "Remember me"
+  },
+  "errors": {
+    "requiredFieldCommon": "Required",
+    "requiredFieldIs": "{field} is required"
+  }
+}

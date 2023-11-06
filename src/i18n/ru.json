@@ -1,0 +1,13 @@
+{
+  "auth": {
+    "forgotPassword": "Забыли пароль?",
+    "logIn": "Войти",
+    "login": "Логин",
+    "password": "Пароль",
+    "rememberData": "Запомнить данные"
+  },
+  "errors": {
+    "requiredFieldCommon": "Это обязательное поле",
+    "requiredFieldIs": "{field} это обязательное поле"
+  }
+}
