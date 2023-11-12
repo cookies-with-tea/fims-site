@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import AuthForm from '@/components/Forms/AuthForm.vue';
+import AuthForm from '@/components/forms/AuthForm.vue';
 import BaseIcon from '@/components/ui/BaseIcon.vue';
 </script>
 

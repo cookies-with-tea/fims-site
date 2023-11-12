@@ -10,5 +10,9 @@
   --color--text-secondary: #{$base-color--whit};
   --color--switch-bg: #{$base-color--text};
   --color--switch-circle: #{$base-color--dark};
-  --color--checkbox: #{$base-color--active}
+  --color--checkbox: #{$base-color--active};
+  --color--sidebar: #{$base-color--whit};
+  --color--selection: #{$base-color--blue-20};
+  --color--selection-text: #{$base-color--text};
+  --color--sidebar-shadow: rgba(188, 188, 188, 0.25);
 }

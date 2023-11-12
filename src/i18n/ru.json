@@ -9,5 +9,12 @@
   "errors": {
     "requiredFieldCommon": "Это обязательное поле",
     "requiredFieldIs": "{field} это обязательное поле"
+  },
+  "leftSidebar": {
+    "admins": "Администраторы",
+    "main": "Главная",
+    "settings": "Настройки",
+    "statistics": "Статистика",
+    "users": "Пользователи"
   }
 }

@@ -9,5 +9,12 @@
   "errors": {
     "requiredFieldCommon": "Required",
     "requiredFieldIs": "{field} is required"
+  },
+  "leftSidebar": {
+    "admins": "Administrators",
+    "main": "Main",
+    "settings": "Settings",
+    "statistics": "Statistics",
+    "users": "Users"
   }
 }

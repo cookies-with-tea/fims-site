@@ -25,8 +25,8 @@
       v-if="currentValidationState"
       :class="validationStateClass"
       :name="validationStateIconName"
-      width="8"
-      height="8"
+      width="15"
+      height="15"
     />
   </div>
 </template>
