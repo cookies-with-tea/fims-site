@@ -2,12 +2,16 @@ import { StorageItemsEnum } from '@/enums/storageItemEnum';
 import { ThemesEnum } from '@/enums/themesEnum';
 
 export function useTheme(document: Document, localStorage: Storage) {
-  const setThemeClass = (theme: ThemesEnum | string) => {
+  const setThemeClass = (theme: ThemesEnum) => {
     document.documentElement.className = theme;
   };
 
   const loadTheme = () => {
-    setThemeClass(localStorage.getItem(StorageItemsEnum.THEME) || ThemesEnum.LIGHT);
+    setThemeClass(getTheme());
+  };
+
+  const getTheme = (): ThemesEnum => {
+    return (localStorage.getItem(StorageItemsEnum.THEME) || ThemesEnum.LIGHT) as ThemesEnum;
   };
 
   const setTheme = (theme: ThemesEnum) => {
@@ -16,5 +20,5 @@ export function useTheme(document: Document, localStorage: Storage) {
     localStorage.setItem(StorageItemsEnum.THEME, theme);
   };
 
-  return { setTheme, loadTheme };
+  return { setTheme, getTheme, loadTheme };
 }
