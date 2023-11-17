@@ -1,13 +1,14 @@
-// import { useState } from 'react'
+import Button from "./UI/Button/Button"
+import "./scss/style.scss"
 
 function App() {
-  // const [count, setCount] = useState(0)
-
-  return (
-    <>
-      
-    </>
-  )
+    return (
+        <Button 
+            children="Вход" 
+            variant="primary"
+            disabled={false}
+        />
+    )
 }
 
 export default App
