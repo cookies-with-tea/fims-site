@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "dev": "vite --mode development",
+    "build": "vue-tsc --noEmit && vite build --mode production",
+    "preview": "vite preview --mode production"
   },
   "dependencies": {
     "@rushstack/eslint-patch": "^1.5.1",
@@ -43,6 +43,7 @@
     "stylelint-config-standard-scss": "^11.0.0",
     "stylelint-prettier": "^4.0.2",
     "typescript": "^5.2.2",
+    "unplugin-fonts": "^1.1.1",
     "vite": "^4.4.5",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-stylelint": "^5.1.1",

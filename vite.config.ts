@@ -2,15 +2,17 @@ import { defineConfig, loadEnv } from 'vite';
 
 import vue from '@vitejs/plugin-vue';
 import { fileURLToPath, URL } from 'node:url';
-import { eslintPlugin, styleLintPlugin, svgIconsPlugin } from './plugins';
+import { fontsPlugin, svgIconsPlugin, eslintPlugin, styleLintPlugin } from './plugins';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
+export default defineConfig(async ({ mode }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const env = loadEnv(mode, process.cwd(), '') as ImportMetaEnv;
 
+  const isDevelopment = mode === 'development';
+
   return {
-    plugins: [vue(), styleLintPlugin, eslintPlugin, svgIconsPlugin],
+    plugins: [vue(), svgIconsPlugin, fontsPlugin, isDevelopment && eslintPlugin, isDevelopment && styleLintPlugin],
     css: {
       preprocessorOptions: {
         scss: {
