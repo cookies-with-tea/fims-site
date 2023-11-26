@@ -1,20 +1,18 @@
 import cls from 'classnames';
-// import style from "./icon.module.scss"
+import style from "./icon.module.scss"
 
 interface IProps {
     name: string
     className?: string
     prefix?: string
-    reverse?: boolean
     width?: number | string
     height?: number | string
 }
 
 
-export const SIcon = ({ prefix = 'icon', reverse = false, className, name, width = '1em', height = '1em' }: IProps) => {
-    const classNames = cls('s-icon', cls({ 's-icon--reversed': reverse }), className, `s-icon--${name}`)
+export const Icon = ({ prefix = 'icon', className, name, width = '1em', height = '1em' }: IProps) => {
+    const classNames = cls(style.icon,  className, `icon__${name}`)
     const symbolId = `#${prefix}-${name}`
-
     return (
         <>
             <svg 

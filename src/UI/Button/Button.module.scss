@@ -1,13 +1,15 @@
+@import "../../scss/variables";
+
 .btn{
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     height: 42px;
-    font-size: 18px;
+    font-size: $fz;
     line-height: 120%;
     letter-spacing: 0.9px;
-    color: #FEFEFE;
+    color: $cl-white;
     &:disabled,
     &.disabled {
         opacity: .8;
@@ -24,10 +26,10 @@
 }
 // variant
 .primary{
-    background: #2D8984;
+    background: $bg;
 }
 .secondary{
-    background: #745D78;
+    background: $bg-secondary;
 }
 // size
 .md{
@@ -39,17 +41,12 @@
 .xs{
     width: 145px;
 }
-// secondary size
-.secondary-md {
-    width: 260px;
+
+
+// radius
+.border-max{
+    border-radius: 16px
 }
-.secondary-sm {
-    width: 245px;
-}
-.secondary-xs {
-    width: 200px;
-}
-// link
-.link{
-    width: 100%;
+.border-min{
+    border-radius: 8px;
 }

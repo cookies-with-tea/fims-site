@@ -10,6 +10,7 @@ interface ButtonProps {
     className?:string,
     children?:ReactNode,
     type?: "button"| "submit",
+    radius?: "min" | "max"
     disabled?: boolean,
 }
 
@@ -19,6 +20,7 @@ export const Button = ({
         className="",
         children,
         type= "button", 
+        radius="min",
         disabled=false
     }:ButtonProps) => {
 
@@ -26,7 +28,8 @@ export const Button = ({
         className,
         style.btn,
         style[variant],
-        style[size]
+        style[size],
+        style[`border-${radius}`]
     );
     
     return <button type={type} className={classes} disabled={disabled}>{children}</button>
