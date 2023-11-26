@@ -1,24 +1,33 @@
 // import React from 'react'
 import cls from 'classnames';
 import style from "./Button.module.scss"
-import { Link } from 'react-router-dom';
+import { ReactNode } from 'react';
+// import { Link } from 'react-router-dom';
 
-function Button({ 
-        variant, borderSize="min",children,
-        type= "button",  size="md", typeSize="primary",
-        disabled, href=""
-    }) {
+interface ButtonProps {
+    size?:'md' | 'sm' | 'xs',
+    variant?:"primary"| "secondary",
+    className?:string,
+    children?:ReactNode,
+    type?: "button"| "submit",
+    disabled?: boolean,
+}
+
+export const Button = ({ 
+        size="md",
+        variant="primary", 
+        className="",
+        children,
+        type= "button", 
+        disabled=false
+    }:ButtonProps) => {
 
     const classes = cls(
+        className,
         style.btn,
         style[variant],
-        style[`border-${borderSize}`],
-        !href ? style[`${typeSize}-${size}`]:style.link,
+        style[size]
     );
     
-    return href ? (
-        <Link to={href} className={classes}>{children}</Link>
-    ):(<button type={type} className={classes} disabled={disabled}>{children}</button>)
-    
+    return <button type={type} className={classes} disabled={disabled}>{children}</button>
 }
-export default Button
