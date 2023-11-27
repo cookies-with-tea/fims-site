@@ -1,7 +1,7 @@
 @import "../../scss/variables";
 
 .btn{
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -10,19 +10,21 @@
     line-height: 120%;
     letter-spacing: 0.9px;
     color: $cl-white;
+    cursor: pointer;
     &:disabled,
     &.disabled {
         opacity: .8;
         pointer-events: none;
     }
 }
-
-// border
-.border-min{
-    border-radius: 8px;
+// icon
+.suffix-icon{
+    display: flex;
+    margin-left: 25px;
 }
-.border-max{
-    border-radius: 16px;
+.prefix-icon{
+    display: flex;
+    margin-right: 12px;
 }
 // variant
 .primary{
@@ -33,15 +35,18 @@
 }
 // size
 .md{
-    width: 185px;
+    padding: 0 40px;
 }
 .sm{
-    width: 165px;
+    font-size: 16px;
+    height: 35px;
+    padding: 0 35px;
 }
 .xs{
-    width: 145px;
+    font-size: 14px;
+    height: 30px;
+    padding: 0 30px;
 }
-
 
 // radius
 .border-max{

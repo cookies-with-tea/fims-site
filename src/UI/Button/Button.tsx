@@ -1,8 +1,9 @@
-// import React from 'react'
-import cls from 'classnames';
 import style from "./Button.module.scss"
+import { Link } from 'react-router-dom';
 import { ReactNode } from 'react';
-// import { Link } from 'react-router-dom';
+
+import cnBind from 'classnames/bind'
+
 
 interface ButtonProps {
     size?:'md' | 'sm' | 'xs',
@@ -12,25 +13,78 @@ interface ButtonProps {
     type?: "button"| "submit",
     radius?: "min" | "max"
     disabled?: boolean,
+    href?:string,
+    prefixIcon?:ReactNode,
+    postfixIcon?:ReactNode, 
+    icon?:ReactNode,
+    onClick?:(event: React.MouseEvent<HTMLButtonElement>) => void,
 }
 
 export const Button = ({ 
         size="md",
         variant="primary", 
         className="",
-        children,
         type= "button", 
         radius="min",
-        disabled=false
+        disabled=false,
+        href="",
+        children,
+        prefixIcon,
+        postfixIcon,
+        icon,
+        onClick
     }:ButtonProps) => {
 
-    const classes = cls(
-        className,
-        style.btn,
-        style[variant],
-        style[size],
-        style[`border-${radius}`]
-    );
+    const cx = cnBind.bind(style)
     
-    return <button type={type} className={classes} disabled={disabled}>{children}</button>
+    const classes = cx(
+        "btn",
+        `border-${radius}`,
+        {"prefixIcon": !!prefixIcon },
+        {"postfixIcon": !!postfixIcon },
+        className,
+        variant,
+        size,
+    );
+    if(!href){
+        return (
+            <button type={type} onClick={onClick} className={classes} disabled={disabled}>
+                { icon && !children && icon }
+
+                { prefixIcon && (
+                    <div className={cx('prefix-icon')}>
+                        { prefixIcon }
+                    </div>
+                ) }
+
+                { children && children }
+
+                { postfixIcon && (
+                    <div className={cx('suffix-icon')}>
+                        { postfixIcon }
+                    </div>
+                ) }
+            </button>
+        )
+    }else{
+        return (
+            <Link to={href} className={classes}>
+                { icon && !children && icon }
+
+                { prefixIcon && (
+                    <div className={cx('prefix-icon')}>
+                        { prefixIcon }
+                    </div>
+                ) }
+
+                { children && children }
+
+                { postfixIcon && (
+                    <div className={cx('suffix-icon')}>
+                        { postfixIcon }
+                    </div>
+                ) }
+            </Link>
+        )
+    }
 }
