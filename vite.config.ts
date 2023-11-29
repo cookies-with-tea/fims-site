@@ -17,4 +17,13 @@ export default defineConfig({
     react(),
     svgIconsConfig
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+            @use "./src/scss/_variables.scss" as *;
+          `,
+      },
+    },
+  },
 })
