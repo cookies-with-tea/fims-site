@@ -5,10 +5,10 @@
     justify-content: center;
     text-align: center;
     height: 42px;
-    font-size: $fz;
+    font-size: $fontSize--button;
     line-height: 120%;
     letter-spacing: 0.9px;
-    color: $cl--white;
+    color: $color--white;
     cursor: pointer;
     &:disabled,
     &.disabled {
@@ -16,6 +16,7 @@
         pointer-events: none;
     }
 }
+
 // icon
 .suffix-icon{
     display: flex;
@@ -25,22 +26,27 @@
     display: flex;
     margin-right: 12px;
 }
+
 // variant
 .primary{
-    background: $bg--blue;
+    background: $background--blue;
 }
+
 .secondary{
-    background: $bg--brown;
+    background: $background--brown;
 }
+
 // size
 .md{
     padding: 0 40px;
 }
+
 .sm{
     font-size: 16px;
     height: 35px;
     padding: 0 35px;
 }
+
 .xs{
     font-size: 14px;
     height: 30px;
@@ -51,6 +57,7 @@
 .border-max{
     border-radius: 16px
 }
+
 .border-min{
     border-radius: 8px;
 }

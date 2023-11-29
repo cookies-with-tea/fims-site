@@ -1,23 +1,22 @@
 import style from "./Button.module.scss"
 import { Link } from 'react-router-dom';
 import { ReactNode } from 'react';
-
 import cnBind from 'classnames/bind'
 
 
 interface ButtonProps {
-    size?:'md' | 'sm' | 'xs',
-    variant?:"primary"| "secondary",
-    className?:string,
-    children?:ReactNode,
-    type?: "button"| "submit",
+    size?: 'md' | 'sm' | 'xs'
+    variant?: "primary"| "secondary"
+    className?: string
+    children?: ReactNode
+    type?: "button"| "submit"
     radius?: "min" | "max"
-    disabled?: boolean,
-    href?:string,
-    prefixIcon?:ReactNode,
-    postfixIcon?:ReactNode, 
-    icon?:ReactNode,
-    onClick?:(event: React.MouseEvent<HTMLButtonElement>) => void,
+    disabled?: boolean
+    href?: string
+    prefixIcon?: ReactNode
+    postfixIcon?: ReactNode
+    icon?: ReactNode
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export const Button = ({ 
