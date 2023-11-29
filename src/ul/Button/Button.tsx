@@ -66,25 +66,24 @@ export const Button = ({
                 ) }
             </button>
         )
-    }else{
-        return (
-            <Link to={href} className={classes}>
-                { icon && !children && icon }
-
-                { prefixIcon && (
-                    <div className={cx('prefix-icon')}>
-                        { prefixIcon }
-                    </div>
-                ) }
-
-                { children && children }
-
-                { postfixIcon && (
-                    <div className={cx('suffix-icon')}>
-                        { postfixIcon }
-                    </div>
-                ) }
-            </Link>
-        )
     }
+    return (
+        <Link to={href} className={classes}>
+            { icon && !children && icon }
+
+            { prefixIcon && (
+                <div className={cx('prefix-icon')}>
+                    { prefixIcon }
+                </div>
+            ) }
+
+            { children && children }
+
+            { postfixIcon && (
+                <div className={cx('suffix-icon')}>
+                    { postfixIcon }
+                </div>
+            ) }
+        </Link>
+    )
 }

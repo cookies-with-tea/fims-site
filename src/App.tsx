@@ -1,11 +1,11 @@
-import {Button} from "./UI/Button/Button"
-import {Icon} from "./UI/icon/Icon"
+import {Button} from "./ul/Button/Button"
+import {Icon} from "./ul/icon/Icon"
 import "./scss/style.scss"
 
 
 function App() {
     return (
-        <Button prefixIcon={<Icon name="filter"/>} onClick={()=> alert(1)}>
+        <Button prefixIcon={<Icon name="filter"/>}>
             Вход
         </Button>
     )
