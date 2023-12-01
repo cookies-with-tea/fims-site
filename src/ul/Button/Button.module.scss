@@ -5,7 +5,7 @@
     justify-content: center;
     text-align: center;
     height: 42px;
-    font-size: $fontSize--button;
+    font-size: $font--size-large;
     line-height: 120%;
     letter-spacing: 0.9px;
     color: $color--white;
@@ -42,13 +42,13 @@
 }
 
 .sm{
-    font-size: 16px;
+    font-size: $font--size-medium;
     height: 35px;
     padding: 0 35px;
 }
 
 .xs{
-    font-size: 14px;
+    font-size: $font--size-small;
     height: 30px;
     padding: 0 30px;
 }

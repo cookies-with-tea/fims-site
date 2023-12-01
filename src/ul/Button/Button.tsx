@@ -35,7 +35,6 @@ export const Button = ({
     }:ButtonProps) => {
 
     const cx = cnBind.bind(style)
-    
     const classes = cx(
         "btn",
         `border-${radius}`,
@@ -45,11 +44,10 @@ export const Button = ({
         variant,
         size,
     );
-    if(!href){
+    function conditionalRender():ReactNode{
         return (
-            <button type={type} onClick={onClick} className={classes} disabled={disabled}>
+            <>
                 { icon && !children && icon }
-
                 { prefixIcon && (
                     <div className={cx('prefix-icon')}>
                         { prefixIcon }
@@ -63,26 +61,19 @@ export const Button = ({
                         { postfixIcon }
                     </div>
                 ) }
+            </>
+        )
+    }
+    if(!href){
+        return (
+            <button type={type} onClick={onClick} className={classes} disabled={disabled}>
+                {conditionalRender()}
             </button>
         )
     }
     return (
         <Link to={href} className={classes}>
-            { icon && !children && icon }
-
-            { prefixIcon && (
-                <div className={cx('prefix-icon')}>
-                    { prefixIcon }
-                </div>
-            ) }
-
-            { children && children }
-
-            { postfixIcon && (
-                <div className={cx('suffix-icon')}>
-                    { postfixIcon }
-                </div>
-            ) }
+            {conditionalRender()}
         </Link>
     )
 }
