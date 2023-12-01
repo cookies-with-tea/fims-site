@@ -4,7 +4,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 
 const svgIconsConfig = createSvgIconsPlugin({
-  iconDirs: [path.resolve(process.cwd(), 'src/assets/img')],
+  iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
   symbolId: 'icon-[dir]-[name]',
   inject: 'body-first',
   customDomId: '__svg__icons__dom__',

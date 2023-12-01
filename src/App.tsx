@@ -1,5 +1,5 @@
-import {Button} from "./ul/Button/Button"
-import {Icon} from "./ul/icon/Icon"
+import {Button} from "./ui/Button/Button"
+import {Icon} from "./ui/icon/Icon"
 import "./scss/style.scss"
 
 
