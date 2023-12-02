@@ -43,7 +43,8 @@ export const Button = ({
         variant,
         size,
     );
-    function conditionalRender():ReactNode{
+
+    const ConditionalRender = (): ReactNode => {
         return (
             <>
                 { icon && !children && icon }
@@ -61,6 +62,7 @@ export const Button = ({
             </>
         )
     }
+
     if(!href){
         return (
             <button 
@@ -68,13 +70,14 @@ export const Button = ({
                 onClick={onClick} 
                 className={classes} 
                 disabled={disabled}>
-                {conditionalRender()}
+                {<ConditionalRender/>}
             </button>
         )
     }
+    
     return (
         <Link to={href} className={classes}>
-            {conditionalRender()}
+            {<ConditionalRender/>}
         </Link>
     )
 }
