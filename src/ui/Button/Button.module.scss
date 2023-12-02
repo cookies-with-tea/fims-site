@@ -1,0 +1,63 @@
+
+.btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 42px;
+    font-size: $font--size-large;
+    line-height: 120%;
+    letter-spacing: 0.9px;
+    color: $color--white;
+    cursor: pointer;
+    &:disabled,
+    &.disabled {
+        opacity: .8;
+        pointer-events: none;
+    }
+}
+
+// icon
+.suffix-icon{
+    display: flex;
+    margin-left: 25px;
+}
+.prefix-icon{
+    display: flex;
+    margin-right: 12px;
+}
+
+// variant
+.primary{
+    background: $background--blue;
+}
+
+.secondary{
+    background: $background--brown;
+}
+
+// size
+.md{
+    padding: 0 40px;
+}
+
+.sm{
+    font-size: $font--size-medium;
+    height: 35px;
+    padding: 0 30px;
+}
+
+.xs{
+    font-size: $font--size-small;
+    height: 30px;
+    padding: 0 20px;
+}
+
+// radius
+.border-max{
+    border-radius: 16px
+}
+
+.border-min{
+    border-radius: 8px;
+}
