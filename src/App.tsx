@@ -1,13 +1,10 @@
-import {Button} from "./ui/Button/Button"
-import {Icon} from "./ui/icon/Icon"
+import { Input } from "./ui/input/input"
 import "./scss/style.scss"
 
 
 function App() {
     return (
-        <Button prefixIcon={<Icon name="filter"/>}>
-            Вход
-        </Button>
+        <Input placeholder="Username"/>
     )
 }
 export default App

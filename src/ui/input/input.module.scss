@@ -1,0 +1,15 @@
+.input{
+    // width: 400px;
+    // height: 54px;
+    border-radius: $font--size-medium;
+    border: 1px solid $background--blue-2;
+    padding: 16px 20px 16px 12px;
+    font-size: $font--size-large;
+    &::placeholder{
+        color:$color--black-gray;
+    }
+    &:disabled{
+        opacity: .8;
+        pointer-events: none;
+    }
+}
