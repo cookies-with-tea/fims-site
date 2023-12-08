@@ -1,6 +1,7 @@
 import { ReactNode} from "react"
 import style from "./input.module.scss"
 import cnBind from 'classnames/bind'
+import { Icon } from "../icon/Icon"
 
 const cx = cnBind.bind(style)
 
@@ -33,15 +34,31 @@ export const Input = ({
         onChange
     }: InputProps) => {
     
-    // const [passwordShown, setPasswordShown] = useState(false);
+    const [passwordShown, setPasswordShown] = useState(false);
     
     const classes = cx(
         className,
         "input",
     )
+
+    const RenderIcon = (): ReactNode => {
+        const classIcon = cx({
+            "prefix-icon":!!prefixIcon,
+            "postfix-icon":!!postfixIcon,
+        })
+        return (
+            <>
+                <div className={classIcon}>
+                    { prefixIcon && prefixIcon}
+                    { postfixIcon && postfixIcon}
+                </div>
+            </>
+        )
+    }
+
     return (
         <div className={cx("input--wrapper")}>
-            
+            {<RenderIcon/>}
             <input
                 className={classes}
                 value={value}
@@ -52,20 +69,18 @@ export const Input = ({
                 onChange={(event) => onChange(event.target.value)}
             />
             
-            { clearable && (
-                <div className={cx('postfix-icon')} onClick={() => onChange("")}>
-                    { clearable }
-                </div>
-            )}
+            <div className={cx('postfix-icon')} onClick={() => onChange("")}>
+                {clearable ? clearable: <Icon name="close" className="icon-input"/>}
+            </div>
         </div>
         
     )
 }
-{/* { prefixIcon && (
+/* { prefixIcon && (
     <div className={cx('prefix-icon')}>
         { prefixIcon }
     </div>
-)} */}
+)} */
 
 // { postfixIcon && (
 //     <div className={cx('postfix-icon')}>

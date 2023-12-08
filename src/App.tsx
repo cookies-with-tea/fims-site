@@ -1,5 +1,5 @@
 import { Input } from "./ui/input/Input"
-import { Icon } from "./ui/icon/Icon"
+// import { Icon } from "./ui/icon/Icon"
 import "./scss/style.scss"
 import { useState } from "react"
 
@@ -13,7 +13,6 @@ function App() {
             placeholder="Username" 
             value={value}
             onChange={setValue}
-            clearable={<Icon name="close" className="icon-input"/>}
         />
     )
 }
