@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ReactNode, MouseEvent } from 'react';
 import cnBind from 'classnames/bind'
 
+const cx = cnBind.bind(style)
+
 interface ButtonProps {
     size?: 'md' | 'sm' | 'xs'
     variant?: "primary"| "secondary"
@@ -31,9 +33,8 @@ export const Button = ({
         postfixIcon,
         icon,
         onClick
-    }:ButtonProps) => {
+    }: ButtonProps) => {
 
-    const cx = cnBind.bind(style)
     const classes = cx(
         "btn",
         `border-${radius}`,

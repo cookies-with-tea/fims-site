@@ -1,15 +1,35 @@
+.input--wrapper{
+    display: inline-flex;
+    position: relative;
+}
+
 .input{
-    // width: 400px;
+    width: 400px;
     // height: 54px;
+
     border-radius: $font--size-medium;
     border: 1px solid $background--blue-2;
     padding: 16px 20px 16px 12px;
     font-size: $font--size-large;
     &::placeholder{
-        color:$color--black-gray;
+        color: $color--black-gray;
     }
     &:disabled{
         opacity: .8;
         pointer-events: none;
     }
+}
+
+// icon
+
+.prefix-icon{
+    position: absolute;
+    top: 10px;
+    left: 13px;
+}
+
+.postfix-icon{
+    position: absolute;
+    top: 10px;
+    right: 13px;
 }
