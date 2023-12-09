@@ -1,7 +1,6 @@
-import { ReactNode} from "react"
+import { ReactNode, useState} from "react"
 import style from "./input.module.scss"
 import cnBind from 'classnames/bind'
-import { Icon } from "../icon/Icon"
 
 const cx = cnBind.bind(style)
 
@@ -12,9 +11,8 @@ interface InputProps {
     disabled?: boolean
     prefixIcon?: ReactNode
     postfixIcon?: ReactNode
-    icon?: ReactNode
+    iconPassword?: ReactNode
     clearable?: ReactNode
-    // name?: string
     // size?: 'sm' | 'md'
     value?: string | number
     onChange: (value: string) => void
@@ -41,54 +39,38 @@ export const Input = ({
         "input",
     )
 
-    const RenderIcon = (): ReactNode => {
-        const classIcon = cx({
-            "prefix-icon":!!prefixIcon,
-            "postfix-icon":!!postfixIcon,
-        })
-        return (
-            <>
-                <div className={classIcon}>
-                    { prefixIcon && prefixIcon}
-                    { postfixIcon && postfixIcon}
-                </div>
-            </>
-        )
-    }
-
     return (
         <div className={cx("input--wrapper")}>
-            {<RenderIcon/>}
+            { iconPassword && (
+                <div className={cx('postfix-icon')} onClick={() => setPasswordShown(!passwordShown)}>
+                    { iconPassword }
+                </div>
+            )}
+            { prefixIcon && (
+                <div className={cx('prefix-icon')}>
+                    { prefixIcon }
+                </div>
+            )} 
             <input
                 className={classes}
                 value={value}
-                // type={passwordShown ? "text" : type} 
-                type={type}
+                type={passwordShown ? "text" : type} 
                 placeholder={placeholder}
                 disabled={disabled}
                 onChange={(event) => onChange(event.target.value)}
             />
-            
-            <div className={cx('postfix-icon')} onClick={() => onChange("")}>
-                {clearable ? clearable: <Icon name="close" className="icon-input"/>}
-            </div>
+            {clearable && value && (
+                    <div className={cx('postfix-icon')} onClick={() => onChange("")}>
+                        {clearable}
+                    </div>
+                )
+            }
+            { postfixIcon && (
+                <div className={cx('postfix-icon')}>
+                    { postfixIcon }
+                </div>
+            )}
         </div>
         
     )
 }
-/* { prefixIcon && (
-    <div className={cx('prefix-icon')}>
-        { prefixIcon }
-    </div>
-)} */
-
-// { postfixIcon && (
-//     <div className={cx('postfix-icon')}>
-//         { postfixIcon }
-//     </div>
-// )}
-// { iconPassword && (
-//     <div className={cx('postfix-icon')} onClick={() => setPasswordShown(!passwordShown)}>
-//         { iconPassword }
-//     </div>
-// )}
