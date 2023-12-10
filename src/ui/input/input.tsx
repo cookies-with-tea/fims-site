@@ -1,4 +1,5 @@
 import { ReactNode, useState} from "react"
+import { Icon } from "../icon/Icon"
 import style from "./input.module.scss"
 import cnBind from 'classnames/bind'
 
@@ -34,27 +35,22 @@ export const Input = ({
     
     const [passwordShown, setPasswordShown] = useState(false);
     
+    const inputType = passwordShown ? "text" : type
     const classes = cx(
         className,
         "input",
     )
-
     return (
-        <div className={cx("input--wrapper")}>
-            { iconPassword && (
-                <div className={cx('postfix-icon')} onClick={() => setPasswordShown(!passwordShown)}>
-                    { iconPassword }
-                </div>
-            )}
+        <div className={cx("input--wrapper")} style={{maxWidth:"400px"}}>
             { prefixIcon && (
-                <div className={cx('prefix-icon')}>
+                <div className={cx('prefix-icon', "icon-input")}>
                     { prefixIcon }
                 </div>
             )} 
             <input
                 className={classes}
                 value={value}
-                type={passwordShown ? "text" : type} 
+                type={inputType} 
                 placeholder={placeholder}
                 disabled={disabled}
                 onChange={(event) => onChange(event.target.value)}
@@ -65,6 +61,11 @@ export const Input = ({
                     </div>
                 )
             }
+            { type === "password" && (
+                <div className={cx('postfix-icon', "icon-input")} onClick={() => setPasswordShown(!passwordShown)}>
+                    {<Icon name={`${iconPassword ? iconPassword: "password"}`} className={cx("icon-input")}/>}
+                </div>
+            )}
             { postfixIcon && (
                 <div className={cx('postfix-icon')}>
                     { postfixIcon }

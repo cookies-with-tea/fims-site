@@ -14,7 +14,6 @@ function App() {
             type="password"
             value={value}
             onChange={setValue}
-            iconPassword={<Icon name="password" className="icon-input"/>}
             clearable={<Icon name="close" className="icon-input"/>}
         />
     )

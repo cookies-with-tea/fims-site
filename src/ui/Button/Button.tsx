@@ -64,21 +64,20 @@ export const Button = ({
         )
     }
 
-    if(!href){
+    if(href){
         return (
-            <button 
-                type={type} 
-                onClick={onClick} 
-                className={classes} 
-                disabled={disabled}>
+            <Link to={href} className={classes}>
                 {<ConditionalRender/>}
-            </button>
+            </Link>
         )
     }
-    
     return (
-        <Link to={href} className={classes}>
+        <button 
+            type={type} 
+            onClick={onClick} 
+            className={classes} 
+            disabled={disabled}>
             {<ConditionalRender/>}
-        </Link>
+        </button>
     )
 }
