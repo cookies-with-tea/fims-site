@@ -67,7 +67,7 @@ export const Button = ({
     if(href){
         return (
             <Link to={href} className={classes}>
-                {<ConditionalRender/>}
+                <ConditionalRender/>
             </Link>
         )
     }
@@ -77,7 +77,7 @@ export const Button = ({
             onClick={onClick} 
             className={classes} 
             disabled={disabled}>
-            {<ConditionalRender/>}
+            <ConditionalRender/>
         </button>
     )
 }
