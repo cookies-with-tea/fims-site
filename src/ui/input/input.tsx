@@ -55,16 +55,17 @@ export const Input = ({
         className,
         "input",
     )
-    const RenderIcon = ({prefix, postfix}:IconProps): ReactNode =>{
+    const RenderIcon = ({prefix, postfix}: IconProps): ReactNode =>{
+        const currentChildren = prefix ? prefix : postfix;
         const classIcon = cx("icon-input",{
             "prefix":!!prefix,
             "postfix":!!postfix,
         })
         return (
             <>
-                { (prefix || postfix) && (
+                { currentChildren && (
                     <div className={classIcon}>
-                        { prefix || postfix }
+                        {currentChildren}
                     </div>
                 )}
             </>
