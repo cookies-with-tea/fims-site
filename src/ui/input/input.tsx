@@ -22,6 +22,10 @@ interface InputProps {
     append?: string | ReactNode
     onChange: (value: string) => void
 }
+interface IconProps{
+    prefix?: ReactNode
+    postfix?: ReactNode
+}
 
 export const Input = ({
         // size="",
@@ -51,26 +55,25 @@ export const Input = ({
         className,
         "input",
     )
-    const renderIcon = (children: ReactNode): ReactNode =>{
+    const RenderIcon = ({prefix, postfix}:IconProps): ReactNode =>{
+        const classIcon = cx("icon-input",{
+            "prefix":!!prefix,
+            "postfix":!!postfix,
+        })
         return (
             <>
-                { children && (
-                    <div className={cx("prefix","icon-input")}>
-                        { children }
+                { (prefix || postfix) && (
+                    <div className={classIcon}>
+                        { prefix || postfix }
                     </div>
                 )}
             </>
         )
-        
     }
     return (
         <div className={cx("input__wrapper")}>
-            {prepend && (
-                <div className={cx('prefix')}>
-                    { prepend }
-                </div>
-            )}
-            {renderIcon(prefixIcon)}
+            <RenderIcon prefix={prepend}/>
+            <RenderIcon prefix={prefixIcon}/>
             <input
                 className={classes}
                 value={value}
@@ -79,8 +82,8 @@ export const Input = ({
                 disabled={disabled}
                 onChange={OnChangeInput}
             />
-            {clearable && (
-                    <div  onClick={() => onChange("")}>
+            { clearable && (
+                    <div onClick={() => onChange("")}>
                         {iconClear ? iconClear: <Icon name="clear" className={cx("icon-input")}/>}
                     </div>
                 )
@@ -105,7 +108,8 @@ export const Input = ({
                     }
                 </div>
             )}
-            {renderIcon(postfixIcon)}
+            <RenderIcon postfix={postfixIcon}/>
+            <RenderIcon postfix={append}/>
         </div>
     )
 }
