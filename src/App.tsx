@@ -11,9 +11,10 @@ function App() {
     return (
         <Input 
             placeholder="Username" 
-            // type="password"
+            type="password"
             value={value}
             onChange={setValue}
+            prepend="вход"
             // clearable={true}
         />
     )
