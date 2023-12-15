@@ -92,7 +92,7 @@ export const Input = ({
             { type === "password" && (
                 <div className={cx('postfix')} onClick={() => setPasswordShown(!passwordShown)}>
                     {passwordShown && (
-                            passwordHideIcon ? passwordHideIcon:(
+                            passwordHideIcon ?? (
                                 <Icon
                                     name={`password-close`} 
                                     className={cx("icon-input")}
@@ -100,7 +100,7 @@ export const Input = ({
                         )
                     }
                     {!passwordShown && (
-                            passwordShowIcon ? passwordShowIcon:(
+                            passwordShowIcon ?? (
                                 <Icon
                                 name={`password-open`} 
                                 className={cx("icon-input")}
