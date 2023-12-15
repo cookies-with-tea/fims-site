@@ -12,8 +12,8 @@ interface InputProps {
     disabled?: boolean
     prefixIcon?: ReactNode
     postfixIcon?: ReactNode
-    iconClose?: ReactNode
-    iconOpen?: ReactNode
+    passwordHideIcon?: ReactNode
+    passwordShowIcon?: ReactNode
     iconClear?: ReactNode
     clearable?: boolean
     // size?: 'sm' | 'md'
@@ -36,8 +36,8 @@ export const Input = ({
         clearable=false, 
         postfixIcon,
         prefixIcon,
-        iconClose,
-        iconOpen,
+        passwordHideIcon,
+        passwordShowIcon,
         iconClear,
         value,
         onChange,
@@ -47,7 +47,7 @@ export const Input = ({
     
     const [passwordShown, setPasswordShown] = useState(false);
     
-    const OnChangeInput = (event:ChangeEvent<HTMLInputElement>) => {
+    const onValueChange = (event: ChangeEvent<HTMLInputElement>) => {
         onChange(event.target.value)
     }
     const inputType = passwordShown ? "text" : type
@@ -81,7 +81,7 @@ export const Input = ({
                 type={inputType} 
                 placeholder={placeholder}
                 disabled={disabled}
-                onChange={OnChangeInput}
+                onChange={onValueChange}
             />
             { clearable && (
                     <div onClick={() => onChange("")}>
@@ -92,7 +92,7 @@ export const Input = ({
             { type === "password" && (
                 <div className={cx('postfix')} onClick={() => setPasswordShown(!passwordShown)}>
                     {passwordShown && (
-                            iconClose ? iconClose:(
+                            passwordHideIcon ? passwordHideIcon:(
                                 <Icon
                                     name={`password-close`} 
                                     className={cx("icon-input")}
@@ -100,7 +100,7 @@ export const Input = ({
                         )
                     }
                     {!passwordShown && (
-                            iconOpen ? iconOpen:(
+                            passwordShowIcon ? passwordShowIcon:(
                                 <Icon
                                 name={`password-open`} 
                                 className={cx("icon-input")}

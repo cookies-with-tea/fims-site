@@ -1,4 +1,4 @@
-import { Input } from "./ui/input/Input"
+import { Input } from "./ui/input/input"
 import { Icon } from "./ui/icon/Icon"
 import "./scss/style.scss"
 import { useState } from "react"
