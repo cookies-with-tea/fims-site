@@ -94,7 +94,7 @@ export const Input = ({
                     {passwordShown && (
                             passwordHideIcon ?? (
                                 <Icon
-                                    name={`password-close`} 
+                                    name={`eye-off`} 
                                     className={cx("icon-input")}
                                 />)
                         )
@@ -102,7 +102,7 @@ export const Input = ({
                     {!passwordShown && (
                             passwordShowIcon ?? (
                                 <Icon
-                                name={`password-open`} 
+                                name={`eye-on`} 
                                 className={cx("icon-input")}
                             />)
                         )
