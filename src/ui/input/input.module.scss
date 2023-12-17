@@ -42,23 +42,23 @@
     }
 
     &:disabled {
-        background: #cacaca2e;
+        background: $background--transparent-white;
         
         &::placeholder {
-            color: white;
+            color: $color--white;
         }
     }
 }
 
-.md{
+.md {
     height: 54px;
 }
 
-.sm{
+.sm {
     height: 44px;
 }
 
-.xs{
+.xs {
     height: 35px
 }
 
@@ -94,5 +94,4 @@
 
 .input__icon {
     font-size: 30px;
-    
 }

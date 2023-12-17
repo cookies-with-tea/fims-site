@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { Button } from "../Button/Button"
-import { Icon } from "../icon/Icon"
-import { Input } from "../input/input"
+import { Button } from "src/ui/Button/Button"
+import { Icon } from "src/ui/icon/Icon"
+import { Input } from "src/ui/input/input"
 import stl from "./uikit.module.scss"
 
 
@@ -9,19 +9,22 @@ export const Uikit = () => {
     const [value, setValue] = useState("")
     return (
         <div className={stl.uikit}>
-            <div className={stl.df}>
+            <div className={stl["d-f"]}>
                 <Button>
                     Вход
                 </Button>
 
                 <Button 
                     variant="secondary" 
-                    size="sm">
+                    size="sm"
+                    >
                     Вход
                 </Button>
 
-                <Button size="xs" 
-                        radius="max">
+                <Button 
+                    size="xs" 
+                    radius="max"
+                    >
                     Вход
                 </Button>
 
@@ -41,7 +44,8 @@ export const Uikit = () => {
             <div style={{margin:"20px 0"}}>
                 <Button 
                     prefixIcon={<Icon name="filter"/>} 
-                    href="/">
+                    href="/"
+                    >
                     Вход
                 </Button>
             </div>
@@ -97,9 +101,10 @@ export const Uikit = () => {
                 <Input 
                     type="textarea"
                     placeholder="вход"
+                    disabled={true}
                     value={value}
                     onChange={setValue}
-                    />
+                />
             </div>
         </div>
     )
