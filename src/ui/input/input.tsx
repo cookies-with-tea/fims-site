@@ -33,6 +33,8 @@ interface ContentProps{
     append?: ReactNode
 }
 
+type InputChangeEventHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+
 export const Input = ({
         size = "md",
         className = "",
@@ -53,8 +55,8 @@ export const Input = ({
     }: InputProps) => {
     
     const [passwordShown, setPasswordShown] = useState(false);
-    
-    const onValueChange = (event: ChangeEvent<HTMLInputElement>) => {
+
+    const onValueChange: InputChangeEventHandler = (event) => {
         onChange(event.target.value)
     }
 
