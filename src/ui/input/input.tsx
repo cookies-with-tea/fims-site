@@ -8,7 +8,7 @@ const cx = cnBind.bind(style)
 interface InputProps {
     className?: string
     placeholder?: string
-    type?: 'text' | 'password' | 'textarea' | 'number'
+    type?: 'text' | 'password' | 'textarea' | 'number'| 'email'
     disabled?: boolean
     prefixIcon?: ReactNode
     postfixIcon?: ReactNode
@@ -34,13 +34,13 @@ interface ContentProps{
 }
 
 export const Input = ({
-        size="md",
-        className="",
-        placeholder="",
-        type="text",
-        disabled=false,
-        clearable=false, 
-        rows=4,
+        size = "md",
+        className = "",
+        placeholder = "",
+        type = "text",
+        disabled = false,
+        clearable = false, 
+        rows = 4,
         postfixIcon,
         prefixIcon,
         passwordHideIcon,
@@ -57,6 +57,7 @@ export const Input = ({
     const onValueChange = (event: ChangeEvent<HTMLInputElement>) => {
         onChange(event.target.value)
     }
+
     const inputType = passwordShown ? "text" : type
     const classes = cx(
         className,
@@ -64,7 +65,8 @@ export const Input = ({
     )
     const RenderIcon = ({prefix, postfix}: IconProps): ReactNode =>{
         const currentChildren = prefix ?? postfix;
-        const classIcon = cx("icon", {
+
+        const classIcon = cx("input__icon", {
             prefix,
             postfix,
         })
@@ -80,6 +82,7 @@ export const Input = ({
     }
     const RenderContent = ({prepend, append}: ContentProps): ReactNode =>{
         const currentChildren = prepend ?? append;
+
         const classes = cx("input__content", { prepend, append })
         return (
             <>
@@ -103,10 +106,13 @@ export const Input = ({
             />
         )
     }
+
     return (
         <div className={cx("input", size)}>
             <RenderContent prepend={prepend}/>
+
             <RenderIcon prefix={prefixIcon}/>
+
             <input
                 className={classes}
                 value={value}
@@ -115,19 +121,21 @@ export const Input = ({
                 disabled={disabled}
                 onChange={onValueChange}
             />
+
             { clearable && value && (
                     <div onClick={() => onChange("")} className={cx('postfix')}>
-                        {iconClear ?? <Icon name="clear" className={cx("icon")}/>}
+                        {iconClear ?? <Icon name="clear" className={cx("input__icon")}/>}
                     </div>
                 )
             }
+
             { type === "password" && (
                 <div className={cx('postfix')} onClick={() => setPasswordShown(!passwordShown)}>
                     {passwordShown && (
                             passwordHideIcon ?? (
                                 <Icon
                                     name={`eye-off`} 
-                                    className={cx("icon")}
+                                    className={cx("input__icon")}
                                 />)
                         )
                     }
@@ -135,13 +143,15 @@ export const Input = ({
                             passwordShowIcon ?? (
                                 <Icon
                                     name={`eye-on`} 
-                                    className={cx("icon")}
+                                    className={cx("input__icon")}
                             />)
                         )
                     }
                 </div>
             )}
+
             <RenderIcon postfix={postfixIcon}/>
+
             <RenderContent append={append}/>
         </div>
     )

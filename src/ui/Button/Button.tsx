@@ -21,13 +21,13 @@ interface ButtonProps {
 }
 
 export const Button = ({ 
-        size="md",
-        variant="primary", 
-        className="",
-        type= "button", 
-        radius="min",
-        disabled=false,
-        href="",
+        size = "md",
+        variant = "primary", 
+        className = "",
+        type = "button", 
+        radius = "min",
+        disabled = false,
+        href = "",
         children,
         prefixIcon,
         postfixIcon,
