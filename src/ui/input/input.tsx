@@ -16,10 +16,11 @@ interface InputProps {
     passwordShowIcon?: ReactNode
     iconClear?: ReactNode
     clearable?: boolean
-    // size?: 'sm' | 'md'
+    size?: 'md' | 'sm' | 'xs'
     value?: string | number
     prepend?: string | ReactNode
     append?: string | ReactNode
+    rows?: number
     onChange: (value: string) => void
 }
 interface IconProps{
@@ -33,12 +34,13 @@ interface ContentProps{
 }
 
 export const Input = ({
-        // size="",
+        size="md",
         className="",
         placeholder="",
         type="text",
         disabled=false,
         clearable=false, 
+        rows=4,
         postfixIcon,
         prefixIcon,
         passwordHideIcon,
@@ -47,7 +49,7 @@ export const Input = ({
         value,
         onChange,
         prepend,
-        append, 
+        append,
     }: InputProps) => {
     
     const [passwordShown, setPasswordShown] = useState(false);
@@ -62,7 +64,7 @@ export const Input = ({
     )
     const RenderIcon = ({prefix, postfix}: IconProps): ReactNode =>{
         const currentChildren = prefix ?? postfix;
-        const classIcon = cx("icon",{
+        const classIcon = cx("icon", {
             prefix,
             postfix,
         })
@@ -96,13 +98,13 @@ export const Input = ({
                 placeholder={placeholder}
                 value={value}
                 disabled={disabled}
-                rows={4}
+                rows={rows}
                 onChange={onValueChange}
             />
         )
     }
     return (
-        <div className={cx("input")}>
+        <div className={cx("input", size)}>
             <RenderContent prepend={prepend}/>
             <RenderIcon prefix={prefixIcon}/>
             <input
