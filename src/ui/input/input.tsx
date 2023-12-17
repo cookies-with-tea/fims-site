@@ -32,7 +32,6 @@ interface ContentProps{
     append?: ReactNode
 }
 
-
 export const Input = ({
         // size="",
         className="",
@@ -63,7 +62,7 @@ export const Input = ({
     )
     const RenderIcon = ({prefix, postfix}: IconProps): ReactNode =>{
         const currentChildren = prefix ?? postfix;
-        const classIcon = cx("icon-input",{
+        const classIcon = cx("icon",{
             prefix,
             postfix,
         })
@@ -79,7 +78,7 @@ export const Input = ({
     }
     const RenderContent = ({prepend, append}: ContentProps): ReactNode =>{
         const currentChildren = prepend ?? append;
-        const classes = cx("input__content",{ prepend, append })
+        const classes = cx("input__content", { prepend, append })
         return (
             <>
                 { currentChildren && (
@@ -104,7 +103,7 @@ export const Input = ({
             />
             { clearable && (
                     <div onClick={() => onChange("")} className={cx('postfix')}>
-                        {iconClear ? iconClear: <Icon name="clear" className={cx("icon-input")}/>}
+                        {iconClear ?? <Icon name="clear" className={cx("icon")}/>}
                     </div>
                 )
             }
@@ -114,15 +113,15 @@ export const Input = ({
                             passwordHideIcon ?? (
                                 <Icon
                                     name={`eye-off`} 
-                                    className={cx("icon-input")}
+                                    className={cx("icon")}
                                 />)
                         )
                     }
                     {!passwordShown && (
                             passwordShowIcon ?? (
                                 <Icon
-                                name={`eye-on`} 
-                                className={cx("icon-input")}
+                                    name={`eye-on`} 
+                                    className={cx("icon")}
                             />)
                         )
                     }
