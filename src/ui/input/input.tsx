@@ -79,7 +79,7 @@ export const Input = ({
     }
     const RenderContent = ({prepend, append}: ContentProps): ReactNode =>{
         const currentChildren = prepend ?? append;
-        const classes = cx({ prepend, append })
+        const classes = cx("input__content",{ prepend, append })
         return (
             <>
                 { currentChildren && (

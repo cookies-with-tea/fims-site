@@ -14,8 +14,8 @@ function App() {
             // type="password"
             value={value}
             onChange={setValue}
-            // prepend="вход"
-            append="вход"
+            prepend="вход"
+            append="Вход"
             // prefixIcon={<Icon name="filter"/>}
             // postfixIcon={<Icon name="filter"/>}
             // clearable={true}
