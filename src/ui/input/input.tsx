@@ -89,6 +89,18 @@ export const Input = ({
             </>
         )
     }
+    if(type === "textarea"){
+        return(
+            <textarea 
+                className={cx("textarea")}
+                placeholder={placeholder}
+                value={value}
+                disabled={disabled}
+                rows={4}
+                onChange={onValueChange}
+            />
+        )
+    }
     return (
         <div className={cx("input")}>
             <RenderContent prepend={prepend}/>
@@ -101,7 +113,7 @@ export const Input = ({
                 disabled={disabled}
                 onChange={onValueChange}
             />
-            { clearable && (
+            { clearable && value && (
                     <div onClick={() => onChange("")} className={cx('postfix')}>
                         {iconClear ?? <Icon name="clear" className={cx("icon")}/>}
                     </div>
