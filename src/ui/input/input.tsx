@@ -133,7 +133,7 @@ export const Input = ({
 
             { type === "password" && (
                 <div className={cx('postfix')} onClick={() => setPasswordShown(!passwordShown)}>
-                    {passwordShown ? (
+                    {!passwordShown ? (
                             passwordHideIcon ?? (
                                 <Icon
                                     name={`eye-off`} 
