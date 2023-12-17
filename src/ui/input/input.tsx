@@ -27,6 +27,12 @@ interface IconProps{
     postfix?: ReactNode
 }
 
+interface ContentProps{
+    prepend?: ReactNode
+    append?: ReactNode
+}
+
+
 export const Input = ({
         // size="",
         className="",
@@ -53,13 +59,13 @@ export const Input = ({
     const inputType = passwordShown ? "text" : type
     const classes = cx(
         className,
-        "input",
+        "input__inner",
     )
     const RenderIcon = ({prefix, postfix}: IconProps): ReactNode =>{
-        const currentChildren = prefix ? prefix : postfix;
+        const currentChildren = prefix ?? postfix;
         const classIcon = cx("icon-input",{
-            "prefix":!!prefix,
-            "postfix":!!postfix,
+            prefix,
+            postfix,
         })
         return (
             <>
@@ -71,9 +77,22 @@ export const Input = ({
             </>
         )
     }
+    const RenderContent = ({prepend, append}: ContentProps): ReactNode =>{
+        const currentChildren = prepend ?? append;
+        const classes = cx({ prepend, append })
+        return (
+            <>
+                { currentChildren && (
+                    <div className={classes}>
+                        {currentChildren}
+                    </div>
+                )}
+            </>
+        )
+    }
     return (
-        <div className={cx("input__wrapper")}>
-            <RenderIcon prefix={prepend}/>
+        <div className={cx("input")}>
+            <RenderContent prepend={prepend}/>
             <RenderIcon prefix={prefixIcon}/>
             <input
                 className={classes}
@@ -84,7 +103,7 @@ export const Input = ({
                 onChange={onValueChange}
             />
             { clearable && (
-                    <div onClick={() => onChange("")}>
+                    <div onClick={() => onChange("")} className={cx('postfix')}>
                         {iconClear ? iconClear: <Icon name="clear" className={cx("icon-input")}/>}
                     </div>
                 )
@@ -110,7 +129,7 @@ export const Input = ({
                 </div>
             )}
             <RenderIcon postfix={postfixIcon}/>
-            <RenderIcon postfix={append}/>
+            <RenderContent append={append}/>
         </div>
     )
 }

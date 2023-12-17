@@ -15,9 +15,9 @@ function App() {
             value={value}
             onChange={setValue}
             // prepend="вход"
-            // append="вход"
+            append="вход"
             // prefixIcon={<Icon name="filter"/>}
-            postfixIcon={<Icon name="filter"/>}
+            // postfixIcon={<Icon name="filter"/>}
             // clearable={true}
         />
     )

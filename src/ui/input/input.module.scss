@@ -1,19 +1,19 @@
 .input {
-    width:  100%;
-    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 54px;
+    border-radius: $font--size-medium;
+    border: 2px solid $background--blue-2;
     font-size: $font--size-large;
-    border-radius: $font--size-medium 0px 0px $font--size-medium;
-    padding: 0px 12px;
-    background: transparent;
     
-    &__wrapper {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 54px;
-        border-radius: $font--size-medium;
-        border: 2px solid $background--blue-2;
+    &__inner {
+        width:  100%;
+        height: 100%;
         font-size: $font--size-large;
+        border-radius: $font--size-medium 0px 0px $font--size-medium;
+        padding: 0px 12px;
+        background: transparent;
     }
     
     &::placeholder {
@@ -26,25 +26,28 @@
     }
 }
 
-
 .prefix {
-    display: flex;
-    align-items: center;
-    height: 100%;
     padding: 0 10px;
     cursor: pointer;
-    border-right: 2px solid $background--blue-2;
 }
 
 .postfix {
-    display: flex;
-    align-items: center;
-    height: 100%;
     padding: 0 10px;
     cursor: pointer;
-    border-left: 2px solid $background--blue-2;
 }
 
+.append {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px;
+
+}
+.prepend{
+
+}
 .icon-input{
     font-size: 30px;
+    
 }
