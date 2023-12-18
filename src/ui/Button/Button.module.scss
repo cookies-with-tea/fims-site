@@ -10,6 +10,7 @@
     letter-spacing: 0.9px;
     color: $color--white;
     cursor: pointer;
+    
     &:disabled,
     &.disabled {
         opacity: .8;
@@ -18,46 +19,46 @@
 }
 
 // icon
-.suffix-icon{
+.suffix-icon {
     display: flex;
-    margin-left: 25px;
+    margin-left: 15px;
 }
-.prefix-icon{
+.prefix-icon {
     display: flex;
-    margin-right: 12px;
+    margin-right: 15px;
 }
 
 // variant
-.primary{
+.primary {
     background: $background--blue;
 }
 
-.secondary{
+.secondary {
     background: $background--brown;
 }
 
 // size
-.md{
+.md {
     padding: 0 40px;
 }
 
-.sm{
+.sm {
     font-size: $font--size-medium;
     height: 35px;
     padding: 0 30px;
 }
 
-.xs{
+.xs {
     font-size: $font--size-small;
     height: 30px;
     padding: 0 20px;
 }
 
 // radius
-.border-max{
+.border-max {
     border-radius: 16px
 }
 
-.border-min{
+.border-min {
     border-radius: 8px;
 }

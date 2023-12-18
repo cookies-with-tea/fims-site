@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ReactNode, MouseEvent } from 'react';
 import cnBind from 'classnames/bind'
 
+const cx = cnBind.bind(style)
+
 interface ButtonProps {
     size?: 'md' | 'sm' | 'xs'
     variant?: "primary"| "secondary"
@@ -19,21 +21,20 @@ interface ButtonProps {
 }
 
 export const Button = ({ 
-        size="md",
-        variant="primary", 
-        className="",
-        type= "button", 
-        radius="min",
-        disabled=false,
-        href="",
+        size = "md",
+        variant = "primary", 
+        className = "",
+        type = "button", 
+        radius = "min",
+        disabled = false,
+        href = "",
         children,
         prefixIcon,
         postfixIcon,
         icon,
         onClick
-    }:ButtonProps) => {
+    }: ButtonProps) => {
 
-    const cx = cnBind.bind(style)
     const classes = cx(
         "btn",
         `border-${radius}`,
@@ -63,21 +64,20 @@ export const Button = ({
         )
     }
 
-    if(!href){
+    if(href){
         return (
-            <button 
-                type={type} 
-                onClick={onClick} 
-                className={classes} 
-                disabled={disabled}>
-                {<ConditionalRender/>}
-            </button>
+            <Link to={href} className={classes}>
+                <ConditionalRender/>
+            </Link>
         )
     }
-    
     return (
-        <Link to={href} className={classes}>
-            {<ConditionalRender/>}
-        </Link>
+        <button 
+            type={type} 
+            onClick={onClick} 
+            className={classes} 
+            disabled={disabled}>
+            <ConditionalRender/>
+        </button>
     )
 }

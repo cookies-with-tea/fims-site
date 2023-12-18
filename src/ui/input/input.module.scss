@@ -1,0 +1,102 @@
+.input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: $font--size-medium;
+    border: 2px solid $background--blue-2;
+    font-size: $font--size-large;
+    
+    &__inner {
+        width:  100%;
+        height: 100%;
+        font-size: $font--size-large;
+        border-radius: 13px 0px 0px 13px;
+        padding: 0px 12px;
+        background: transparent;
+        color: $color--white;
+
+        &::placeholder {
+            color: $color--black-gray;
+        }
+
+    }
+    
+    &:disabled {
+        opacity: .8;
+        pointer-events: none;
+    }
+}
+
+.textarea {
+    width:  100%;
+    font-size: $font--size-large;
+    border: 1px solid $background--blue-2;
+    padding: 10px;
+    color: $color--white;
+    border-radius: 10px;
+    resize: vertical;
+    min-height: 50px;
+
+    &::placeholder {
+        color: $color--black-gray;
+    }
+
+    &:disabled {
+        background: $background--transparent-white;
+        
+        &::placeholder {
+            color: $color--white;
+        }
+    }
+}
+
+.md {
+    height: 54px;
+}
+
+.sm {
+    height: 44px;
+}
+
+.xs {
+    height: 35px
+}
+
+.prefix {
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.postfix {
+    padding: 0 10px;
+    cursor: pointer;
+    transition: all 500ms ease-in-out;
+    
+    &:hover{
+        fill: rgb(169, 165, 162);
+    }
+}
+
+.input__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px;
+    background: #4cd1d13d;
+    color: $color--white;
+}
+
+.append {
+    border-radius:  0 13px 13px 0px;
+    border-left: 1px solid $background--blue-2;
+}
+
+.prepend {
+    border-radius: 13px 0px 0px 13px;
+    border-right: 1px solid $background--blue-2;
+}
+
+.input__icon {
+    font-size: 30px;
+}

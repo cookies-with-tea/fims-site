@@ -1,13 +1,13 @@
-import {Button} from "./ui/Button/Button"
-import {Icon} from "./ui/icon/Icon"
+// import { Input } from "./ui/input/input"
+// import { Icon } from "./ui/icon/Icon"
 import "./scss/style.scss"
+import { Uikit } from "./ui/uikit/Uikit"
+// import { useState } from "react"
 
 
 function App() {
     return (
-        <Button prefixIcon={<Icon name="filter"/>}>
-            Вход
-        </Button>
+        <Uikit/>
     )
 }
 export default App

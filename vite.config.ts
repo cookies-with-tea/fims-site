@@ -16,6 +16,11 @@ export default defineConfig({
     react(),
     svgIconsConfig
   ],
+  resolve: {
+    alias: {
+      src:"/src",
+    },
+  },
   css: {
     preprocessorOptions: {
       scss: {
