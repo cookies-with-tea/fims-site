@@ -1,6 +1,10 @@
 .form{
-    width: 400px;
+    width: 440px;
     color: $color--white;
+    border: 1px solid $color--black;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 1px 2px 2px 1px $color--black;
     &__title{
         font-size: $font--size-Xlarge;
         margin-bottom: 30px;
