@@ -1,10 +1,11 @@
+import { GuestLayout } from "./components/pages/auth/GuestLayou"
 import "./scss/style.scss"
-import { Uikit } from "./uikit/Uikit"
-
 
 function App() {
     return (
-        <Uikit/>
+        <div className="container">
+            <GuestLayout/>
+        </div>
     )
 }
 export default App

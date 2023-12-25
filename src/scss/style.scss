@@ -7,5 +7,11 @@
     display: flex;
     flex-direction: column;
 }
-
-body{background: rgb(39, 34, 34);}
+body{
+    background: #241B2C;
+}
+.container{
+    max-width: 1350px;
+    margin: 0 auto;
+    width: 96%;
+}
