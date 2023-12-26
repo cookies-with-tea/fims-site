@@ -1,6 +1,11 @@
-.auth__container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
+.auth{
+    background: #241B2C;
+    height: 100vh;
+    &__container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 50px;
+    }
 }
+
