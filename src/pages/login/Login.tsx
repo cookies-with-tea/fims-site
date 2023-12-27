@@ -10,7 +10,6 @@ const cx = cnBind.bind(style)
 export const Login = () => {
     return (
         <form className={cx("form")}>
-
             <div className={cx("form__title")}>
                 Вход
             </div>

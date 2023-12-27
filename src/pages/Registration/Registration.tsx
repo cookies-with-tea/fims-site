@@ -7,10 +7,9 @@ import { Icon } from 'src/ui/icon/Icon'
 
 const cx = cnBind.bind(style)
 
-export const Register = () => {
+export const Registration = () => {
     return (
         <form className={cx("form")}>
-
             <div className={cx("form__title")}>
                 Регистрация
             </div>
