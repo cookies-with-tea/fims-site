@@ -1,6 +1,6 @@
 import { GuestLayout } from "src/layouts/guest/GuestLayout";
-import { Login } from "src/pages/login/Login";
-import { Registration } from "src/pages/Registration/Registration";
+import { PageLogin } from "src/pages/login/PageLogin";
+import { PageRegistration } from "src/pages/Registration/PageRegistration";
 import { createBrowserRouter } from "react-router-dom";
 
 
@@ -11,11 +11,11 @@ export const router = createBrowserRouter([
         children:[
             {
                 path: "/",
-                element: <Login/>
+                element: <PageLogin/>
             },
             {
                 path: "/registration",
-                element: <Registration/>
+                element: <PageRegistration/>
             }
         ] 
     },

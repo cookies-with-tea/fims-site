@@ -2,22 +2,27 @@ import { Button } from 'src/ui/Button/Button'
 import { Input } from 'src/ui/input/input'
 import { Link } from 'react-router-dom'
 import cnBind from 'classnames/bind'
-import style from "./Login.module.scss"
+import style from "./Registration.module.scss"
 import { Icon } from 'src/ui/icon/Icon'
 
 const cx = cnBind.bind(style)
 
-export const Login = () => {
+export const PageRegistration = () => {
     return (
         <form className={cx("form")}>
             <div className={cx("form__title")}>
-                Вход
+                Регистрация
             </div>
 
             <div className={cx("form__inner")}>
                 <div className={cx("form__item")}>
-                    <label className={cx("form__label")}>Почта или имя</label>
-                    <Input placeholder='Email or username'/>
+                    <label className={cx("form__label")}>Почта</label>
+                    <Input placeholder='Email'/>
+                </div>
+
+                <div className={cx("form__item")}>
+                    <label className={cx("form__label")}>Имя</label>
+                    <Input placeholder='Username'/>
                 </div>
 
                 <div className={cx("form__item")}>
