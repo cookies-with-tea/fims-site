@@ -2,7 +2,7 @@ import { Button } from 'src/ui/Button/Button'
 import { Input } from 'src/ui/input/input'
 import { Link } from 'react-router-dom'
 import cnBind from 'classnames/bind'
-import style from "./Register.module.scss"
+import style from "./Registration.module.scss"
 import { Icon } from 'src/ui/icon/Icon'
 
 const cx = cnBind.bind(style)
