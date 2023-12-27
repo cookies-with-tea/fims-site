@@ -1,6 +1,6 @@
 import { GuestLayout } from "src/layouts/guest/GuestLayout";
 import { PageLogin } from "src/pages/login/PageLogin";
-import { PageRegistration } from "src/pages/Registration/PageRegistration";
+import { PageRegistration } from "src/pages/registration/PageRegistration";
 import { createBrowserRouter } from "react-router-dom";
 
 
