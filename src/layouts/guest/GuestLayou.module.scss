@@ -1,12 +1,8 @@
 .auth {
     background: $background--black;
     height: 100vh;
-
-    &__container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 50px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
