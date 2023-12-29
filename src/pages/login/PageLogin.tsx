@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Icon } from 'src/ui/icon/Icon'
 import { ChangeEvent, useState } from 'react'
 import cnBind from 'classnames/bind'
-import style from "./Login.module.scss"
+import style from "./PageLogin.module.scss"
 
 const cx = cnBind.bind(style)
 
@@ -16,7 +16,6 @@ export const PageLogin = () => {
             password:""
         })
     
-    console.log(formData)
     const onClearValue = (name: string): void => {
         setFormData({ ...formData, [name]:""})
     }
@@ -67,29 +66,23 @@ export const PageLogin = () => {
             </div>
             
             <div className={cx("form__entrance")}>
-                <div className={cx("form__sabtitle")}>
+                <div className={cx("form__subtitle")}>
                     Или войти через
                 </div>
 
                 <div className={cx("form__log-in")}>
-                    <div className={cx("form__icon")}>
-                        <Link to={"/"}>
+                        <Link to={"/"} className={cx("form__icon")}>
                             <Icon name='telegram'/>
                         </Link>
-                    </div>
 
-                    <div className={cx("form__icon")}>
-                        <Link to={"/"}>
+                        <Link to={"/"} className={cx("form__icon")}>
                             <Icon name='google'/>
 
                         </Link>
-                    </div>
 
-                    <div className={cx("form__icon")}>
-                        <Link to={"/"}>
+                        <Link to={"/"} className={cx("form__icon")}>
                             <Icon name='github'/>
                         </Link>
-                    </div>
                 </div>
             </div>
         </form>
