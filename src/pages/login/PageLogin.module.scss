@@ -1,18 +1,4 @@
 .form {
-    width: 440px;
-    color: $color--white;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: rgb(125 90 141 / 56%) 0px 22px 70px 4px;
-
-    &__title {
-        font-size: $font--size-xl;
-        margin-bottom: 30px;
-        line-height: 120%;
-        letter-spacing: 2.4px;
-        text-align:center;
-    }
-
     &__inner {
         margin-bottom: 30px;
     }
@@ -56,4 +42,12 @@
             margin: 0 35px;
         }
     }
+}
+
+.auth__title {
+    font-size: $font--size-xl;
+    margin-bottom: 30px;
+    line-height: 120%;
+    letter-spacing: 2.4px;
+    text-align:center;
 }

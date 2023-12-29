@@ -4,5 +4,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &__body {
+        width: 440px;
+        color: $color--white;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: rgb(125 90 141 / 56%) 0px 22px 70px 4px;
+    } 
 }
 
