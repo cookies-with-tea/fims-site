@@ -1,13 +1,30 @@
 import { Button } from 'src/ui/Button/Button'
 import { Input } from 'src/ui/input/input'
 import { Link } from 'react-router-dom'
+import { Icon } from 'src/ui/icon/Icon'
+import { ChangeEvent, useState } from 'react'
 import cnBind from 'classnames/bind'
 import style from "./Login.module.scss"
-import { Icon } from 'src/ui/icon/Icon'
 
 const cx = cnBind.bind(style)
 
+type InputChangeEventHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+
 export const PageLogin = () => {
+    const [formData, setFormData] = useState({
+            email:"", 
+            password:""
+        })
+    
+    console.log(formData)
+    const onClearValue = (name: string): void => {
+        setFormData({ ...formData, [name]:""})
+    }
+
+    const onValueChange: InputChangeEventHandler = (event) => {
+        setFormData({ ...formData, [event.target.name]: event.target.value})
+    }
+
     return (
         <form className={cx("form")}>
             <div className={cx("form__title")}>
@@ -17,14 +34,25 @@ export const PageLogin = () => {
             <div className={cx("form__inner")}>
                 <div className={cx("form__item")}>
                     <label className={cx("form__label")}>Почта или имя</label>
-                    <Input placeholder='Email or username'/>
+                    <Input 
+                        value={formData.email}
+                        placeholder='Email or username'
+                        onChange={onValueChange}
+                        onClearValue={onClearValue}
+                        // DEBT: в дальнешем пересмотреть надобность функции onClearValue
+                        clearable={true}
+                        name='email'
+                        />
                 </div>
 
                 <div className={cx("form__item")}>
                     <label className={cx("form__label")}>Пароль</label>
                     <Input 
+                        value={formData.password}
                         placeholder='Password'
+                        onChange={onValueChange}
                         type='password'
+                        name='password'
                     />
                 </div>
             </div>
