@@ -1,0 +1,92 @@
+.form {
+    &__content {
+        margin-bottom: 30px;
+    }
+
+    &__item {
+
+        &:not(:last-child) {
+            margin-bottom: 25px;
+        }
+    }
+
+    &__label {
+        display: block;
+        font-size: $font--size-large;
+        margin-bottom: 10px;
+    }
+
+    &__btn {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    &__subtitle {
+        font-size: $font--size-large;
+        line-height: 120%;
+        letter-spacing: 0.9px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    &__log-in {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__icon {
+        font-size: 50px;
+
+        &:nth-child(2) {
+            margin: 0 35px;
+        }
+    }
+
+    &__possibilities {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: $font--size-large;
+        line-height: 100%;
+        margin-bottom: 25px;
+        color: $color--black-gray;
+    }
+    
+    &__lost-password {
+        cursor: pointer;
+        transition: color  200ms ease-in;
+
+        &:hover{
+            color: $color--white;
+        }
+    }
+
+    &__link {
+        margin-left: 26px;
+        color: $color--black-gray;
+        position: relative;
+        transition: color  200ms ease-in;
+
+        &::before{
+            content: "";
+            position: absolute;
+            background: $color--black-gray;
+            top: 0;
+            left: -12px;
+            width: 2px;
+            height: 18px;
+        }
+
+        &:hover{
+            color: $color--white;
+        }
+    }
+}
+
+.auth__title {
+    font-size: $font--size-xl;
+    margin-bottom: 30px;
+    line-height: 120%;
+    letter-spacing: 2.4px;
+    text-align:center;
+}
