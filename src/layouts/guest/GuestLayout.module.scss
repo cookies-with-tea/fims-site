@@ -6,7 +6,8 @@
     align-items: center;
 
     &__body {
-        width: 440px;
+        max-width: 460px;
+        width: 100%;
         color: $color--white;
         border-radius: 20px;
         padding: 40px 30px 40px 30px;
