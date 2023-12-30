@@ -8,8 +8,6 @@ import style from "src/pages/auth/authForm.module.scss"
 
 const cx = cnBind.bind(style)
 
-type InputChangeEventHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-
 export const PageLogin = () => {
     const [formData, setFormData] = useState({
             email:"", 
@@ -17,13 +15,13 @@ export const PageLogin = () => {
         })
     
     const onClearValue = (name: string): void => {
-        setFormData({ ...formData, [name]:""})
+        setFormData({ ...formData, [name]:"" })
     }
     // DEBT: в дальнешем пересмотреть надобность функции onClearValue
-
-    const onValueChange: InputChangeEventHandler = (event) => {
+    const onValueChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [event.target.name]: event.target.value})
     }
+
     return (
         <>
             <h3 className={cx("auth__title")}>Вход</h3>
@@ -58,13 +56,14 @@ export const PageLogin = () => {
                     <Button
                         type='submit' 
                         radius='max'
+                        className={cx("form__btn-item")}
                         >
                         Войти в аккаунт
                     </Button>
                 </div>
                 
                 <div className={cx("form__possibilities")}>
-                    <span className={cx("form__lost-password")}>Забыли пароль?</span> 
+                    <span className={cx("form__forgot-password")}>Забыли пароль?</span> 
                     <Link to={"/registration"} className={cx("form__link")}>Регистрация</Link>
                 </div>
 

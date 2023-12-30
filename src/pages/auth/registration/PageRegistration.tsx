@@ -8,8 +8,6 @@ import { useState , ChangeEvent} from 'react'
 
 const cx = cnBind.bind(style)
 
-type InputChangeEventHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-
 export const PageRegistration = () => {
     const [formData, setFormData] = useState({
         email:"", 
@@ -18,15 +16,14 @@ export const PageRegistration = () => {
     })
 
     const onClearValue = (name: string): void => {
-        setFormData({ ...formData, [name]:""})
+        setFormData({ ...formData, [name]:"" })
     }
     // DEBT: в дальнешем пересмотреть надобность функции onClearValue
-
-    const onValueChange: InputChangeEventHandler = (event) => {
+    const onValueChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [event.target.name]: event.target.value})
     }
+
     return (
-        
         <>
             <h3 className={cx("auth__title")}>Регистрация</h3>
             <form className={cx("form")}>
