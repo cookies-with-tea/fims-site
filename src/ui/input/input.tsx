@@ -21,8 +21,11 @@ interface InputProps {
     prepend?: string | ReactNode
     append?: string | ReactNode
     rows?: number
-    onChange: (value: string) => void
+    onChange: InputChangeEventHandler
+    onClearValue?: (value: string) => void;
+    name: string
 }
+
 interface IconProps{
     prefix?: ReactNode
     postfix?: ReactNode
@@ -50,15 +53,13 @@ export const Input = ({
         iconClear,
         value,
         onChange,
+        onClearValue,
         prepend,
         append,
+        name,
     }: InputProps) => {
     
     const [passwordShown, setPasswordShown] = useState(false);
-
-    const onValueChange: InputChangeEventHandler = (event) => {
-        onChange(event.target.value)
-    }
 
     const inputType = passwordShown ? "text" : type
     const classes = cx(
@@ -104,7 +105,8 @@ export const Input = ({
                 value={value}
                 disabled={disabled}
                 rows={rows}
-                onChange={onValueChange}
+                onChange={onChange}
+                name={name}
             />
         )
     }
@@ -121,11 +123,12 @@ export const Input = ({
                 type={inputType} 
                 placeholder={placeholder}
                 disabled={disabled}
-                onChange={onValueChange}
+                onChange={onChange}
+                name={name}
             />
 
             { clearable && value && (
-                    <div onClick={() => onChange("")} className={cx('postfix')}>
+                    <div onClick={() => onClearValue && onClearValue(name)} className={cx('postfix')}>
                         {iconClear ?? <Icon name="clear" className={cx("input__icon")}/>}
                     </div>
                 )

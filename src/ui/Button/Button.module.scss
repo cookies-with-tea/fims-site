@@ -1,10 +1,9 @@
 
-.btn{
+.btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 42px;
     font-size: $font--size-large;
     line-height: 120%;
     letter-spacing: 0.9px;
@@ -39,18 +38,19 @@
 
 // size
 .md {
+    height: 46px;
     padding: 0 40px;
 }
 
 .sm {
     font-size: $font--size-medium;
-    height: 35px;
+    height: 40px;
     padding: 0 30px;
 }
 
 .xs {
     font-size: $font--size-small;
-    height: 30px;
+    height: 35px;
     padding: 0 20px;
 }
 
