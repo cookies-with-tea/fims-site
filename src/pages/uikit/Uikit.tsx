@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { Button } from "src/ui/Button/Button"
-import { Icon } from "src/ui/Icon/Icon"
-import { Input } from "src/ui/Input/input"
+import { Button } from "src/ui/button/Button"
+import { Icon } from "src/ui/icon/Icon"
+import { Input } from "src/ui/input/input"
 import stl from "./uikit.module.scss"
 
 

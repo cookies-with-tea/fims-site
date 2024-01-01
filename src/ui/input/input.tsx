@@ -1,5 +1,5 @@
 import { ReactNode, ChangeEvent, useState} from "react"
-import { Icon } from "../Icon/Icon"
+import { Icon } from "../icon/Icon"
 import style from "./input.module.scss"
 import cnBind from 'classnames/bind'
 
