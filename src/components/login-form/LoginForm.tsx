@@ -8,7 +8,7 @@ import style from "src/pages/auth/authForm.module.scss"
 
 const cx = cnBind.bind(style)
 
-export const LoginForm = () => {
+export const LoginForm = ({toggleModal}) => {
     const [formData, setFormData] = useState({
         email:"", 
         password:""
@@ -63,7 +63,7 @@ export const LoginForm = () => {
                 </div>
                 
                 <div className={cx("form__possibilities")}>
-                    <span className={cx("form__forgot-password")}>Забыли пароль?</span> 
+                    <span className={cx("form__forgot-password")} onClick={() => toggleModal()}>Забыли пароль?</span> 
                     <Link to={"/registration"} className={cx("form__link")}>Регистрация</Link>
                 </div>
 
