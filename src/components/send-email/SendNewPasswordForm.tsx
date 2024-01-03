@@ -7,24 +7,21 @@ interface PasswordForm {
 }
 
 export const SendNewPasswordForm = ({ show }: PasswordForm) => {
-    const [formData, setFormData] = useState({
-        email:"", 
-        password:""
-    })
+    const [formData, setFormData] = useState("")
 
-    const onClearValue = (name: string): void => {
-        setFormData({ ...formData, [name]:"" })
+    const onClearValue = (): void => {
+        setFormData("")
     }
     // DEBT: в дальнешем пересмотреть надобность функции onClearValue
     const onValueChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({ ...formData, [event.target.name]: event.target.value})
+        setFormData(event.target.value)
     }
     return (
         <Dialog show={show}>
             <form className={"form"}>
                 <label className={"form__label"}>Почта или имя</label>
                 <Input 
-                    value={formData.email}
+                    value={formData}
                     placeholder='Email or username'
                     onChange={onValueChange}
                     type='email'

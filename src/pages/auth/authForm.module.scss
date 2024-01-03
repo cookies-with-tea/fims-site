@@ -58,6 +58,8 @@
     &__forgot-password {
         cursor: pointer;
         transition: color 200ms ease-in;
+        color: $color--black-gray;
+        font-size: $font--size-large;
 
         &:hover{
             color: $color--white;

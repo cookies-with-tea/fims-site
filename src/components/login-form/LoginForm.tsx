@@ -67,7 +67,14 @@ export const LoginForm = ({ toggleModal }: LoginForm) => {
                 </div>
                 
                 <div className={cx("form__possibilities")}>
-                    <span className={cx("form__forgot-password")} onClick={() => toggleModal()}>Забыли пароль?</span> 
+                    <button 
+                        type='button'
+                        className={cx("form__forgot-password")} 
+                        onClick={() => toggleModal()}
+                    >
+                        Забыли пароль?
+                    </button> 
+
                     <Link to={"/registration"} className={cx("form__link")}>Регистрация</Link>
                 </div>
 
