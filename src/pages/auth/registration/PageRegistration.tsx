@@ -37,7 +37,7 @@ export const PageRegistration = () => {
                             onChange={onValueChange}
                             type='email'
                             onClearValue={onClearValue}
-                            clearable={true}
+                            clearable
                         />
                     </div>
 
@@ -49,7 +49,7 @@ export const PageRegistration = () => {
                             value={formData.userName}
                             onChange={onValueChange}
                             onClearValue={onClearValue}
-                            clearable={true}
+                            clearable
                         />
                     </div>
 

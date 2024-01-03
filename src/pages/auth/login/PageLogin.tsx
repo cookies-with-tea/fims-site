@@ -35,7 +35,7 @@ export const PageLogin = () => {
                             onChange={onValueChange}
                             type='email'
                             onClearValue={onClearValue}
-                            clearable={true}
+                            clearable
                             name='email'
                             />
                     </div>
