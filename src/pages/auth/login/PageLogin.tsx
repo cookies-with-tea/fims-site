@@ -4,7 +4,7 @@ import { useModal } from "src/hooks/modal/modal"
 
 export const PageLogin = () => {
     const [isShowingModal, toggleModal] = useModal();
-
+    console.log(toggleModal)
     return (
         <>
             <LoginForm toggleModal={toggleModal}/>

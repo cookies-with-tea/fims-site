@@ -8,7 +8,11 @@ import style from "src/pages/auth/authForm.module.scss"
 
 const cx = cnBind.bind(style)
 
-export const LoginForm = ({toggleModal}) => {
+interface LoginForm {
+    toggleModal: () => void;
+}
+
+export const LoginForm = ({ toggleModal }: LoginForm) => {
     const [formData, setFormData] = useState({
         email:"", 
         password:""
