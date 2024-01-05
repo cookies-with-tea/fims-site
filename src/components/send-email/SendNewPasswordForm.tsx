@@ -1,12 +1,14 @@
 import { Dialog } from "src/ui/dialog/Dialog"
 import { Input } from "src/ui/input/input"
 import { ChangeEvent, useState } from 'react'
+import { Button } from "src/ui/button/Button";
 
 interface PasswordForm {
     show: boolean;
+    toggleModal: () => void;
 }
 
-export const SendNewPasswordForm = ({ show }: PasswordForm) => {
+export const SendNewPasswordForm = ({ show , closeModal}: PasswordForm) => {
     const [formData, setFormData] = useState("")
 
     const onClearValue = (): void => {
@@ -29,6 +31,7 @@ export const SendNewPasswordForm = ({ show }: PasswordForm) => {
                     clearable
                     name='email'
                 />
+                <Button type="button">jddwmodw</Button>
             </form>
         </Dialog>
     )
