@@ -7,7 +7,7 @@ export const PageLogin = () => {
     return (
         <>
             <LoginForm toggleModal={toggleModal}/>
-            <SendNewPasswordForm show={isShowingModal}  closeModal={isShowingModal}/>
+            <SendNewPasswordForm show={isShowingModal}  onClose={toggleModal}/>
         </>
     )
 }

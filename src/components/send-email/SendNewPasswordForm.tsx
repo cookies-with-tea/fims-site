@@ -4,11 +4,11 @@ import { ChangeEvent, useState } from 'react'
 import { Button } from "src/ui/button/Button";
 
 interface PasswordForm {
-    show: boolean;
-    toggleModal: () => void;
+    show: boolean
+    onClose: () => void
 }
 
-export const SendNewPasswordForm = ({ show , closeModal}: PasswordForm) => {
+export const SendNewPasswordForm = ({ show , onClose }: PasswordForm) => {
     const [formData, setFormData] = useState("")
 
     const onClearValue = (): void => {
@@ -19,7 +19,7 @@ export const SendNewPasswordForm = ({ show , closeModal}: PasswordForm) => {
         setFormData(event.target.value)
     }
     return (
-        <Dialog show={show}>
+        <Dialog show={show} onClose={onClose}>
             <form className={"form"}>
                 <label className={"form__label"}>Почта или имя</label>
                 <Input 
@@ -31,7 +31,7 @@ export const SendNewPasswordForm = ({ show , closeModal}: PasswordForm) => {
                     clearable
                     name='email'
                 />
-                <Button type="button">jddwmodw</Button>
+                <Button type="button" onClick={() => onClose()}>jddwmodw</Button>
             </form>
         </Dialog>
     )

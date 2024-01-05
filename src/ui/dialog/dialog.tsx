@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import {createPortal} from 'react-dom';
 import style from "./dialog.module.scss"
 
 interface DialogProps{
@@ -7,6 +7,7 @@ interface DialogProps{
     show?: boolean
     title?: string
     closeEscape?: boolean
+    onClose?: () => void
 }
 
 export const Dialog = ({ 
@@ -14,39 +15,39 @@ export const Dialog = ({
         show,
         title,
         closeEscape,
+        onClose,
     }: DialogProps) => {
-
     
-    
-    useEffect(() => {
-        const handleEscape = (event: KeyboardEvent) => {
-            if (event.code === 'Escape') {
-                console.log(false)
-            }
+    const handleEscape = (event: KeyboardEvent) => {
+        if (event.code === 'Escape') {
+            console.log(false)
         }
+    }
 
+    useEffect(() => {
         if(closeEscape){
             document.addEventListener('keydown', handleEscape)
             return () => document.removeEventListener('keydown', handleEscape)
         }
     })
     
-
-    if (!show) {
-        return null;
-    }
-
-    return ReactDOM.createPortal(
-        <div className={style.modal}>
-            <div className={style.modal__body}>
-                <div className={style.modal__content}>
-                    <div className="modal__header">
-                        <h3 className="modal__title">{title}</h3>
+    return ( 
+        <>
+            { show && createPortal(
+                <>
+                    <div className={style.modal}>
+                        <div className={style.modal__body}>
+                            <div className={style.modal__content}>
+                                <div className="modal__header">
+                                    <h3 className="modal__title">{title}</h3>
+                                    <button type='button' onClick={() => onClose && onClose()}>ddf33333333</button>
+                                </div>
+                                {children}
+                            </div>
+                        </div>
                     </div>
-                    {children}
-                </div>
-            </div>
-        </div>
-        , document.body
+                </>, document.body
+            )}
+        </>
     )
 }
