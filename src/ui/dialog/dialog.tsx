@@ -2,7 +2,7 @@ import { ReactNode, useEffect } from 'react';
 import {createPortal} from 'react-dom';
 import style from "./dialog.module.scss"
 
-interface DialogProps{
+interface DialogProps {
     children?: ReactNode
     show?: boolean
     title?: string
@@ -20,15 +20,12 @@ export const Dialog = ({
     
     const handleEscape = (event: KeyboardEvent) => {
         if (event.code === 'Escape') {
-            console.log(false)
+            onClose?.()
         }
     }
 
     useEffect(() => {
-        if(closeEscape){
-            document.addEventListener('keydown', handleEscape)
-            return () => document.removeEventListener('keydown', handleEscape)
-        }
+        closeEscape && document.addEventListener('keydown', handleEscape, {once: true})
     })
     
     return ( 
@@ -40,7 +37,7 @@ export const Dialog = ({
                             <div className={style.modal__content}>
                                 <div className="modal__header">
                                     <h3 className="modal__title">{title}</h3>
-                                    <button type='button' onClick={() => onClose && onClose()}>ddf33333333</button>
+                                    <button type='button' onClick={() => onClose?.()}>ddf33333333</button>
                                 </div>
                                 {children}
                             </div>

@@ -1,5 +1,5 @@
 import { Button } from 'src/ui/button/Button'
-import { Input } from 'src/ui/input/input'
+import { Input } from 'src/ui/input/Input'
 import { Link } from 'react-router-dom'
 import { Icon } from 'src/ui/icon/Icon'
 import { ChangeEvent, useState } from 'react'

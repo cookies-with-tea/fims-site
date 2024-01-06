@@ -1,14 +1,14 @@
 import { Dialog } from "src/ui/dialog/Dialog"
-import { Input } from "src/ui/input/input"
+import { Input } from "src/ui/input/Input"
 import { ChangeEvent, useState } from 'react'
 import { Button } from "src/ui/button/Button";
 
-interface PasswordForm {
+interface PropsSendEmail {
     show: boolean
     onClose: () => void
 }
 
-export const SendNewPasswordForm = ({ show , onClose }: PasswordForm) => {
+export const SendNewPasswordForm = ({ show , onClose }: PropsSendEmail) => {
     const [formData, setFormData] = useState("")
 
     const onClearValue = (): void => {
@@ -19,7 +19,7 @@ export const SendNewPasswordForm = ({ show , onClose }: PasswordForm) => {
         setFormData(event.target.value)
     }
     return (
-        <Dialog show={show} onClose={onClose}>
+        <Dialog show={show} onClose={onClose} closeEscape>
             <form className={"form"}>
                 <label className={"form__label"}>Почта или имя</label>
                 <Input 

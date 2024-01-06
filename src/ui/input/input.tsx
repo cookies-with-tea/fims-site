@@ -128,7 +128,7 @@ export const Input = ({
             />
 
             { clearable && value && (
-                    <div onClick={() => onClearValue && onClearValue(name)} className={cx('postfix')}>
+                    <div onClick={() => onClearValue?.(name)} className={cx('postfix')}>
                         {iconClear ?? <Icon name="clear" className={cx("input__icon")}/>}
                     </div>
                 )

@@ -1,5 +1,4 @@
-/* modal */
-.modal{
+.modal {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -12,14 +11,16 @@
     min-height: 100%;
     background: rgba(0, 0, 0, 0.801);
     transition: all 2s ease;
-    &__body{
+
+    &__body {
         display: flex;
         justify-content: center;
         align-items: center;
         max-width: 100%;
         padding: 10px;
     }
-    &__content{
+
+    &__content {
         width: 550px;
         box-shadow: -2px 43px 122px rgba(0, 0, 0, 0.1);
         // background: #ffffff;
@@ -27,7 +28,8 @@
         padding: 30px;
         position: relative;
     }
-    &__close{
+
+    &__close {
         position: absolute;
         cursor: pointer;
         top: 15px;
