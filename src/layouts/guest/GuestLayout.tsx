@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom"
-
 import style from "./GuestLayout.module.scss"
 
 export const GuestLayout = () => {

@@ -8,7 +8,7 @@ interface PropsSendEmail {
     onClose: () => void
 }
 
-export const SendNewPasswordForm = ({ show , onClose }: PropsSendEmail) => {
+export const SendNewPasswordForm = ({ show, onClose }: PropsSendEmail) => {
     const [formData, setFormData] = useState("")
 
     const onClearValue = (): void => {
@@ -19,20 +19,24 @@ export const SendNewPasswordForm = ({ show , onClose }: PropsSendEmail) => {
         setFormData(event.target.value)
     }
     return (
-        <Dialog show={show} onClose={onClose} closeEscape>
-            <form className={"form"}>
-                <label className={"form__label"}>Почта или имя</label>
-                <Input 
-                    value={formData}
-                    placeholder='Email or username'
-                    onChange={onValueChange}
-                    type='email'
-                    onClearValue={onClearValue}
-                    clearable
-                    name='email'
-                />
-                <Button type="button" onClick={() => onClose()}>jddwmodw</Button>
-            </form>
-        </Dialog>
+        <>
+            {show && (
+                <Dialog onClose={onClose} closeEscape lockScroll>
+                    <form className={"form"}>
+                        <label className={"form__label"}>Почта или имя</label>
+                        <Input 
+                            value={formData}
+                            placeholder='Email or username'
+                            onChange={onValueChange}
+                            type='email'
+                            onClearValue={onClearValue}
+                            clearable
+                            name='email'
+                        />
+                        <Button type="button" onClick={() => onClose()}>jddwmodw</Button>
+                    </form>
+                </Dialog>)
+            }
+        </>
     )
 }
