@@ -32,7 +32,7 @@ export const Dialog = ({
             onClose?.()
         }
     }
-    
+
     const handleBackgroundClose = ({ target }: MouseEvent) => {
         if(refDialog.current && target && !refDialog.current.contains(target as HTMLDivElement)){
             onClose?.()

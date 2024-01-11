@@ -75,6 +75,8 @@ export const LoginForm = ({ toggleModal }: LoginForm) => {
                         Забыли пароль?
                     </button> 
 
+                    <div className={cx("divider")}></div>
+
                     <Link to={"/registration"} className={cx("form__link")}>Регистрация</Link>
                 </div>
 

@@ -76,6 +76,9 @@ export const PageRegistration = () => {
 
                 <div className={cx("form__possibilities")}>
                     <span>Есть аккаунт?</span> 
+
+                    <div className={cx("divider")}></div>
+
                     <Link to={"/"} className={cx("form__link")}>Войти</Link>
                 </div>
 
