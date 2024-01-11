@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
     top:0;
     left: 0;
     width: 100%;
@@ -12,7 +11,7 @@
     background: rgba(0, 0, 0, 0.801);
     transition: all 2s ease;
 
-    &__body {
+    &__overlay {
         display: flex;
         justify-content: center;
         align-items: center;
