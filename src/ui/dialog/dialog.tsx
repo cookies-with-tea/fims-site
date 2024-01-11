@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef} from 'react';
+import { ReactNode, useEffect, useRef, MouseEvent} from 'react';
 import {createPortal} from 'react-dom';
 import style from "./dialog.module.scss"
 // import { Icon } from '../icon/Icon';
@@ -32,15 +32,12 @@ export const Dialog = ({
             onClose?.()
         }
     }
-    const handleBackgroundClose = (event: MouseEvent) => {
-        if(refDialog.current && !refDialog.current.contains(event.target as Node)){
+    
+    const handleBackgroundClose = ({ target }: MouseEvent) => {
+        if(refDialog.current && target && !refDialog.current.contains(target as HTMLDivElement)){
             onClose?.()
         }
     }
-
-    useEffect(() => {
-        overlayClosable && document.addEventListener("click", handleBackgroundClose, {once: true})
-    }, [overlayClosable])
 
     useEffect(() => {
         closeEscape && document.addEventListener('keydown', handleEscape, {once: true})
@@ -52,7 +49,15 @@ export const Dialog = ({
 
     return (
         createPortal(
-            <div className={style.modal} style={{zIndex: zIndex}}>
+            <div 
+                className={style.modal} 
+                style={{zIndex: zIndex}}
+                onClick={(event: MouseEvent<HTMLDivElement>) => {
+                    if(!overlayClosable) return
+
+                    handleBackgroundClose(event)
+                }}
+                >
                 <div className={style.modal__overlay}>
                     <div className={style.modal__content} ref={refDialog}>
                         <header className={style.modal__header}>
