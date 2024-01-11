@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useRef} from 'react';
 import {createPortal} from 'react-dom';
 import style from "./dialog.module.scss"
 // import { Icon } from '../icon/Icon';
@@ -25,19 +25,26 @@ export const Dialog = ({
         zIndex = 1000
     }: DialogProps) => {
     
+    const refDialog = useRef<HTMLDivElement>(null)
+    
     const handleEscape = (event: KeyboardEvent) => {
         if (event.code === 'Escape') {
             onClose?.()
         }
     }
+    const handleBackgroundClose = (event: MouseEvent) => {
+        if(refDialog.current && !refDialog.current.contains(event.target as Node)){
+            onClose?.()
+        }
+    }
+
+    useEffect(() => {
+        overlayClosable && document.addEventListener("click", handleBackgroundClose, {once: true})
+    }, [overlayClosable])
 
     useEffect(() => {
         closeEscape && document.addEventListener('keydown', handleEscape, {once: true})
     }, [closeEscape])
-
-    // useEffect(() => {
-    //     overlayClosable && document.addEventListener('keydown', handleEscape, {once: true})
-    // }, [overlayClosable])
 
     useEffect(() => {
         lockScroll ? document.body.style.overflowY = 'hidden': document.body.style.overflowY = 'auto';
@@ -47,7 +54,7 @@ export const Dialog = ({
         createPortal(
             <div className={style.modal} style={{zIndex: zIndex}}>
                 <div className={style.modal__overlay}>
-                    <div className={style.modal__content}>
+                    <div className={style.modal__content} ref={refDialog}>
                         <header className={style.modal__header}>
                             <h3 className={style.modal__title}>{title}</h3>
                             <button type='button' onClick={() => onClose?.()}>
