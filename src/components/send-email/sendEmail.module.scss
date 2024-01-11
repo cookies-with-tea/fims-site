@@ -1,0 +1,25 @@
+.form {
+    
+    &__label {
+        display: block;
+        font-size: $font--size-large;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    &__input{
+        color: $color--black;
+        
+        &::placeholder{
+            color: $color--black;
+        }
+    }
+
+    &__close{
+        font-size: 40px;
+
+        &:hover{
+            fill: red;
+        }
+    }
+}

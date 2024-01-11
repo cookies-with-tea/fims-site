@@ -21,21 +21,27 @@
     }
 
     &__content {
-        width: 550px;
+        width: 350px;
         box-shadow: -2px 43px 122px rgba(0, 0, 0, 0.1);
-        // background: #ffffff;
+        background: #ffffff;
         border-radius: 15px;
         padding: 30px;
         position: relative;
     }
 
-    &__close {
-        position: absolute;
-        cursor: pointer;
-        top: 15px;
-        right: 15px;
-        font-size: 26px;
-        font-weight: 500;
-        color: #f2bb15cb;
+    &__title{
+        font-size: $font--size-large;
+        line-height: 120%;
+        letter-spacing: 2.4px;
     }
+
+    // &__close {
+    //     position: absolute;
+    //     cursor: pointer;
+    //     top: 15px;
+    //     right: 15px;
+    //     font-size: 26px;
+    //     font-weight: 500;
+    //     color: #f2bb15cb;
+    // }
 }

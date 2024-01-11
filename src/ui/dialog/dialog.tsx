@@ -1,13 +1,14 @@
 import { ReactNode, useEffect } from 'react';
 import {createPortal} from 'react-dom';
 import style from "./dialog.module.scss"
-import { Icon } from '../icon/Icon';
+// import { Icon } from '../icon/Icon';
 
 interface DialogProps {
     children?: ReactNode
+    closeIcon?: ReactNode
     title?: string
-    closeEscape?: boolean
     onClose?: () => void
+    closeEscape?: boolean
     lockScroll?: boolean
 }
 
@@ -17,6 +18,7 @@ export const Dialog = ({
         closeEscape,
         onClose,
         lockScroll,
+        closeIcon
     }: DialogProps) => {
     
     const handleEscape = (event: KeyboardEvent) => {
@@ -37,10 +39,10 @@ export const Dialog = ({
                 <div className={style.modal}>
                     <div className={style.modal__body}>
                         <div className={style.modal__content}>
-                            <div className="modal__header">
-                                <h3 className="modal__title">{title}</h3>
+                            <div className={style.modal__header}>
+                                <h3 className={style.modal__title}>{title}</h3>
                                 <button type='button' onClick={() => onClose?.()}>
-                                    <Icon name='clear'/>
+                                    {closeIcon}
                                 </button>
                             </div>
                             {children}

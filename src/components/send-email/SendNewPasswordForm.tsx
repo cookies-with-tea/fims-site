@@ -2,6 +2,8 @@ import { Dialog } from "src/ui/dialog/Dialog"
 import { Input } from "src/ui/input/Input"
 import { ChangeEvent, useState } from 'react'
 import { Button } from "src/ui/button/Button";
+import style from "./sendEmail.module.scss"
+import { Icon } from "src/ui/icon/Icon";
 
 interface PropsSendEmail {
     show: boolean
@@ -21,21 +23,29 @@ export const SendNewPasswordForm = ({ show, onClose }: PropsSendEmail) => {
     return (
         <>
             {show && (
-                <Dialog onClose={onClose} closeEscape lockScroll>
-                    <form className={"form"}>
-                        <label className={"form__label"}>Почта или имя</label>
+                <Dialog 
+                    onClose={onClose} 
+                    closeEscape 
+                    lockScroll 
+                    title="Восстановление аккаунта"
+                    closeIcon={<Icon name="close" className={style.form__close}/>}
+                    >
+                    <form className={style.form}>
+                        <label className={style.form__label}>Почта</label>
                         <Input 
                             value={formData}
-                            placeholder='Email or username'
+                            placeholder='Email'
                             onChange={onValueChange}
                             type='email'
                             onClearValue={onClearValue}
                             clearable
                             name='email'
+                            className={style.form__input}
                         />
-                        <Button type="button" onClick={() => onClose()}>jddwmodw</Button>
+                        <Button type="button" onClick={() => onClose()}>Отправить</Button>
                     </form>
-                </Dialog>)
+                </Dialog>
+                )
             }
         </>
     )
