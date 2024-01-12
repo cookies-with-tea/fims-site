@@ -1,15 +1,14 @@
 import { ReactNode, useEffect, useRef, MouseEvent} from 'react';
 import {createPortal} from 'react-dom';
 import style from "./dialog.module.scss"
-// import { Icon } from '../icon/Icon';
+import { Icon } from '../icon/Icon';
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
 
-
 interface DialogProps {
     children?: ReactNode
-    closeIcon?: ReactNode
+    closeIcon?: ReactNode | boolean
     title?: string
     onClose?: () => void
     closeEscape?: boolean
@@ -25,7 +24,7 @@ export const Dialog = ({
         closeEscape,
         onClose,
         lockScroll,
-        closeIcon,
+        closeIcon=<Icon name='close' className={cx("modal__close")}/>,
         overlayClosable,
         zIndex = 1000,
         className
@@ -38,7 +37,6 @@ export const Dialog = ({
             onClose?.()
         }
     }
-
     const handleBackgroundClose = ({ target }: MouseEvent) => {
         if(refDialog.current && target && !refDialog.current.contains(target as HTMLDivElement)){
             onClose?.()
@@ -69,9 +67,12 @@ export const Dialog = ({
                         <header className={cx("modal__header")}>
                             <h3 className={cx("modal__title")}>{title}</h3>
 
-                            <button type='button' onClick={() => onClose?.()}>
-                                {closeIcon}
-                            </button>
+                            {closeIcon && (
+                                    <button type='button' onClick={() => onClose?.()}>
+                                        {closeIcon} 
+                                    </button>
+                                )
+                            }
                         </header>
                         
                         {children}

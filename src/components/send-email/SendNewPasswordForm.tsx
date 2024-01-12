@@ -3,7 +3,6 @@ import { Input } from "src/ui/input/Input"
 import { ChangeEvent, useState } from 'react'
 import { Button } from "src/ui/button/Button";
 import style from "./sendEmail.module.scss"
-import { Icon } from "src/ui/icon/Icon";
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
@@ -32,7 +31,6 @@ export const SendNewPasswordForm = ({ show, onClose }: PropsSendEmail) => {
                     lockScroll 
                     overlayClosable
                     title="Восстановление аккаунта"
-                    closeIcon={<Icon name="close" className={cx("form__close")}/>}
                 >
                     <form className={cx("form")}>
                         <div className={cx("form__content")}>

@@ -10,17 +10,7 @@
         margin-bottom: 10px;
     }
 
-    &__close {
-        display: flex;
-        font-size: 25px;
-        transition: color 200ms ease-in-out;
-        color: $color--white;
-        cursor: pointer;
-
-        &:hover {
-            color: $color--black-gray;
-        }
-    }
+    
     
     &__btn {
         width: 100%;

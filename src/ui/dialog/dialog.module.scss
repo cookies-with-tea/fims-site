@@ -39,5 +39,16 @@
     &__title {
         font-size: $font--size-large-2;
     }
+    
+    &__close {
+        display: flex;
+        font-size: 25px;
+        transition: color 200ms ease-in-out;
+        color: $color--white;
+        cursor: pointer;
 
+        &:hover {
+            color: $color--black-gray;
+        }
+    }
 }
