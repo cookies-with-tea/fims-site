@@ -10,6 +10,7 @@
     min-height: 100%;
     background: rgba(0, 0, 0, 0.801);
     transition: all 2s ease;
+    color: $color--white;
 
     &__overlay {
         display: flex;
@@ -21,10 +22,10 @@
 
     &__content {
         width: 450px;
-        box-shadow: -2px 43px 122px rgba(0, 0, 0, 0.1);
-        background: #ffffff;
+        box-shadow: rgba(125, 90, 141, 0.56) 0px 22px 70px 4px;
+        background: $background--black;
         border-radius: 15px;
-        padding: 30px;
+        padding: 45px;
         position: relative;
     }
 
@@ -32,21 +33,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 55px;
     }
 
     &__title {
-        font-size: $font--size-large;
-        line-height: 120%;
-        letter-spacing: 2.4px;
+        font-size: $font--size-large-2;
     }
 
-    // &__close {
-    //     position: absolute;
-    //     cursor: pointer;
-    //     top: 15px;
-    //     right: 15px;
-    //     font-size: 26px;
-    //     font-weight: 500;
-    //     color: #f2bb15cb;
-    // }
 }

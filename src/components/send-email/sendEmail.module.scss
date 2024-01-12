@@ -1,29 +1,28 @@
 .form {
-    
+
+    &__content {
+        margin-bottom: 30px;
+    }
+
     &__label {
         display: block;
         font-size: $font--size-large;
-        font-weight: 500;
         margin-bottom: 10px;
-    }
-
-    &__input {
-        color: $color--black;
-        
-        &::placeholder {
-            color: $color--black;
-        }
     }
 
     &__close {
         display: flex;
         font-size: 25px;
-        transition: color 500ms ease-in-out;
-        color: $color--black-gray;
+        transition: color 200ms ease-in-out;
+        color: $color--white;
         cursor: pointer;
 
         &:hover {
-            color: $color--black
+            color: $color--black-gray;
         }
+    }
+    
+    &__btn {
+        width: 100%;
     }
 }

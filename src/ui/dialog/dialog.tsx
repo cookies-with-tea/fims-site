@@ -2,6 +2,10 @@ import { ReactNode, useEffect, useRef, MouseEvent} from 'react';
 import {createPortal} from 'react-dom';
 import style from "./dialog.module.scss"
 // import { Icon } from '../icon/Icon';
+import cnBind from 'classnames/bind'
+
+const cx = cnBind.bind(style)
+
 
 interface DialogProps {
     children?: ReactNode
@@ -12,6 +16,7 @@ interface DialogProps {
     lockScroll?: boolean
     overlayClosable?: boolean
     zIndex?: number
+    className?: string
 }
 
 export const Dialog = ({ 
@@ -22,9 +27,10 @@ export const Dialog = ({
         lockScroll,
         closeIcon,
         overlayClosable,
-        zIndex = 1000
+        zIndex = 1000,
+        className
     }: DialogProps) => {
-    
+
     const refDialog = useRef<HTMLDivElement>(null)
     
     const handleEscape = (event: KeyboardEvent) => {
@@ -50,7 +56,7 @@ export const Dialog = ({
     return (
         createPortal(
             <div 
-                className={style.modal} 
+                className={cx("modal")} 
                 style={{zIndex: zIndex}}
                 onClick={(event: MouseEvent<HTMLDivElement>) => {
                     if(!overlayClosable) return
@@ -58,10 +64,10 @@ export const Dialog = ({
                     handleBackgroundClose(event)
                 }}
                 >
-                <div className={style.modal__overlay}>
-                    <div className={style.modal__content} ref={refDialog}>
-                        <header className={style.modal__header}>
-                            <h3 className={style.modal__title}>{title}</h3>
+                <div className={cx("modal__overlay")}>
+                    <div className={cx("modal__content", className)} ref={refDialog}>
+                        <header className={cx("modal__header")}>
+                            <h3 className={cx("modal__title")}>{title}</h3>
 
                             <button type='button' onClick={() => onClose?.()}>
                                 {closeIcon}

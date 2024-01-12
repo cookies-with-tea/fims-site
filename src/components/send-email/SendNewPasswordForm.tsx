@@ -4,6 +4,9 @@ import { ChangeEvent, useState } from 'react'
 import { Button } from "src/ui/button/Button";
 import style from "./sendEmail.module.scss"
 import { Icon } from "src/ui/icon/Icon";
+import cnBind from 'classnames/bind'
+
+const cx = cnBind.bind(style)
 
 interface PropsSendEmail {
     show: boolean
@@ -29,21 +32,31 @@ export const SendNewPasswordForm = ({ show, onClose }: PropsSendEmail) => {
                     lockScroll 
                     overlayClosable
                     title="Восстановление аккаунта"
-                    closeIcon={<Icon name="close" className={style.form__close}/>}
+                    closeIcon={<Icon name="close" className={cx("form__close")}/>}
                 >
-                    <form className={style.form}>
-                        <label className={style.form__label}>Почта</label>
-                        <Input 
-                            value={formData}
-                            placeholder='Email'
-                            onChange={onValueChange}
-                            type='email'
-                            onClearValue={onClearValue}
-                            clearable
-                            name='email'
-                            className={style.form__input}
-                        />
-                        <Button type="button" onClick={() => onClose()}>Отправить</Button>
+                    <form className={cx("form")}>
+                        <div className={cx("form__content")}>
+                            <label className={cx("form__label")}>Почта</label>
+                            
+                            <Input 
+                                name='email'
+                                className={cx("form__input")}
+                                placeholder='Email'
+                                value={formData}
+                                type='email'
+                                onChange={onValueChange}
+                                onClearValue={onClearValue}
+                                clearable
+                            />
+                        </div>
+                        
+                        <Button 
+                            type="button" 
+                            className={cx("form__btn")}
+                            onClick={() => onClose()}
+                        >
+                            Отправить
+                        </Button>
                     </form>
                 </Dialog>
                 )
