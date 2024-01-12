@@ -7,19 +7,23 @@
         margin-bottom: 10px;
     }
 
-    &__input{
+    &__input {
         color: $color--black;
         
-        &::placeholder{
+        &::placeholder {
             color: $color--black;
         }
     }
 
-    &__close{
-        font-size: 40px;
+    &__close {
+        display: flex;
+        font-size: 25px;
+        transition: color 500ms ease-in-out;
+        color: $color--black-gray;
+        cursor: pointer;
 
-        &:hover{
-            fill: red;
+        &:hover {
+            color: $color--black
         }
     }
 }

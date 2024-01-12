@@ -62,10 +62,12 @@ export const Dialog = ({
                     <div className={style.modal__content} ref={refDialog}>
                         <header className={style.modal__header}>
                             <h3 className={style.modal__title}>{title}</h3>
+
                             <button type='button' onClick={() => onClose?.()}>
                                 {closeIcon}
                             </button>
                         </header>
+                        
                         {children}
                     </div>
                 </div>

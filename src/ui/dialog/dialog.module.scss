@@ -20,7 +20,7 @@
     }
 
     &__content {
-        width: 350px;
+        width: 450px;
         box-shadow: -2px 43px 122px rgba(0, 0, 0, 0.1);
         background: #ffffff;
         border-radius: 15px;
@@ -28,7 +28,13 @@
         position: relative;
     }
 
-    &__title{
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
         font-size: $font--size-large;
         line-height: 120%;
         letter-spacing: 2.4px;

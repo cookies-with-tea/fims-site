@@ -25,12 +25,12 @@ export const SendNewPasswordForm = ({ show, onClose }: PropsSendEmail) => {
             {show && (
                 <Dialog 
                     onClose={onClose} 
-                    // closeEscape 
-                    // lockScroll 
+                    closeEscape 
+                    lockScroll 
                     overlayClosable
                     title="Восстановление аккаунта"
                     closeIcon={<Icon name="close" className={style.form__close}/>}
-                    >
+                >
                     <form className={style.form}>
                         <label className={style.form__label}>Почта</label>
                         <Input 
