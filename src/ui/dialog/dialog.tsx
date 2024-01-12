@@ -24,7 +24,7 @@ export const Dialog = ({
         closeEscape,
         onClose,
         lockScroll,
-        closeIcon=<Icon name='close' className={cx("modal__close")}/>,
+        closeIcon = <Icon name='close' className={cx("modal__close")}/>,
         overlayClosable,
         zIndex = 1000,
         className
