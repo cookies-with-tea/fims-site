@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
 export const useModal = (): [boolean, () => void] => {
-    const [isShowing, setIsShowing] = useState<boolean>(false);
+    const [isVisible, setIsVisible] = useState<boolean>(false);
 
-    const toggle = () => {
-        setIsShowing(!isShowing);
+    const changeVisible = () => {
+        setIsVisible(!isVisible);
     }
 
     return [
-        isShowing,
-        toggle
+        isVisible,
+        changeVisible
     ]
 }

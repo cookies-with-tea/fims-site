@@ -8,11 +8,11 @@ import cnBind from 'classnames/bind'
 const cx = cnBind.bind(style)
 
 interface PropsSendEmail {
-    show: boolean
+    visible: boolean
     onClose: () => void
 }
 
-export const SendNewPasswordForm = ({ show, onClose }: PropsSendEmail) => {
+export const SendNewPasswordForm = ({ visible, onClose }: PropsSendEmail) => {
     const [formData, setFormData] = useState("")
 
     const onClearValue = (): void => {
@@ -24,7 +24,7 @@ export const SendNewPasswordForm = ({ show, onClose }: PropsSendEmail) => {
     }
     return (
         <>
-            {show && (
+            {visible && (
                 <Dialog 
                     onClose={onClose} 
                     closeEscape 

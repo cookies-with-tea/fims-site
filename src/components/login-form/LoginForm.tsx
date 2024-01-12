@@ -9,10 +9,10 @@ import style from "src/pages/auth/authForm.module.scss"
 const cx = cnBind.bind(style)
 
 interface LoginForm {
-    toggleModal: () => void;
+    handleModalVisibleToggle: () => void;
 }
 
-export const LoginForm = ({ toggleModal }: LoginForm) => {
+export const LoginForm = ({ handleModalVisibleToggle }: LoginForm) => {
     const [formData, setFormData] = useState({
         email:"", 
         password:""
@@ -70,7 +70,7 @@ export const LoginForm = ({ toggleModal }: LoginForm) => {
                     <button 
                         type='button'
                         className={cx("form__forgot-password")} 
-                        onClick={() => toggleModal()}
+                        onClick={() => handleModalVisibleToggle()}
                     >
                         Забыли пароль?
                     </button> 
