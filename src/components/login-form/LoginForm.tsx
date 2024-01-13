@@ -2,6 +2,7 @@ import { Button } from 'src/ui/button/Button'
 import { Input } from 'src/ui/input/Input'
 import { Link } from 'react-router-dom'
 import { Icon } from 'src/ui/icon/Icon'
+import { SendNewPasswordForm } from 'src/components/send-email/SendNewPasswordForm'
 import { ChangeEvent, useState } from 'react'
 import cnBind from 'classnames/bind'
 import style from "src/pages/auth/authForm.module.scss"
@@ -9,10 +10,11 @@ import style from "src/pages/auth/authForm.module.scss"
 const cx = cnBind.bind(style)
 
 interface LoginForm {
-    handleModalVisibleToggle: () => void;
+    handleModalVisibleToggle: () => void
+    visible: boolean
 }
 
-export const LoginForm = ({ handleModalVisibleToggle }: LoginForm) => {
+export const LoginForm = ({ handleModalVisibleToggle , visible}: LoginForm) => {
     const [formData, setFormData] = useState({
         email:"", 
         password:""
@@ -100,6 +102,7 @@ export const LoginForm = ({ handleModalVisibleToggle }: LoginForm) => {
                     </div>
                 </div>
             </form>
+            <SendNewPasswordForm visible={visible} onClose={handleModalVisibleToggle}/>
         </>
     )
 }
