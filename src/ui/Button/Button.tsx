@@ -1,4 +1,4 @@
-import style from "./Button.module.scss"
+import style from "./button.module.scss"
 import { Link } from 'react-router-dom';
 import { ReactNode, MouseEvent } from 'react';
 import cnBind from 'classnames/bind'

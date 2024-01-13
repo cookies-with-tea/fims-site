@@ -1,18 +1,23 @@
 import { Button } from 'src/ui/button/Button'
 import { Input } from 'src/ui/input/input'
 import { Link } from 'react-router-dom'
+import { Icon } from 'src/ui/icon/Icon'
+import { SendNewPasswordForm } from 'src/components/send-email/SendNewPasswordForm'
+import { ChangeEvent, useState } from 'react'
 import cnBind from 'classnames/bind'
 import style from "src/pages/auth/authForm.module.scss"
-import { Icon } from 'src/ui/icon/Icon'
-import { useState , ChangeEvent} from 'react'
 
 const cx = cnBind.bind(style)
 
-export const PageRegistration = () => {
+interface LoginForm {
+    handleModalVisibleToggle: () => void
+    visible: boolean
+}
+
+export const LoginForm = ({ handleModalVisibleToggle , visible}: LoginForm) => {
     const [formData, setFormData] = useState({
         email:"", 
-        password:"",
-        userName:"",
+        password:""
     })
 
     const onClearValue = (name: string): void => {
@@ -25,42 +30,29 @@ export const PageRegistration = () => {
 
     return (
         <>
-            <h3 className={cx("auth__title")}>Регистрация</h3>
+            <h3 className={cx("auth__title")}>Вход</h3>
             <form className={cx("form")}>
                 <div className={cx("form__content")}>
                     <div className={cx("form__item")}>
-                        <label className={cx("form__label")}>Почта</label>
+                        <label className={cx("form__label")}>Почта или имя</label>
                         <Input 
-                            placeholder='Email'
-                            name='email'
                             value={formData.email}
+                            placeholder='Email or username'
                             onChange={onValueChange}
                             type='email'
                             onClearValue={onClearValue}
-                            
-                        />
-                    </div>
-
-                    <div className={cx("form__item")}>
-                        <label className={cx("form__label")}>Имя</label>
-                        <Input 
-                            placeholder='Username'
-                            name='userName'
-                            value={formData.userName}
-                            onChange={onValueChange}
-                            onClearValue={onClearValue}
-                            
-                        />
+                            name='email'
+                            />
                     </div>
 
                     <div className={cx("form__item")}>
                         <label className={cx("form__label")}>Пароль</label>
                         <Input 
-                            placeholder='Password'
                             name='password'
-                            value={formData.password}
-                            onChange={onValueChange}
                             type='password'
+                            value={formData.password}
+                            placeholder='Password'
+                            onChange={onValueChange}
                             clearable={false}
                         />
                     </div>
@@ -70,17 +62,24 @@ export const PageRegistration = () => {
                     <Button
                         type='submit' 
                         radius='max'
-                    >
-                        Создать аккаунт
+                        className={cx("form__btn-item")}
+                        >
+                        Войти в аккаунт
                     </Button>
                 </div>
-
+                
                 <div className={cx("form__possibilities")}>
-                    <span>Есть аккаунт?</span> 
+                    <button 
+                        type='button'
+                        className={cx("form__forgot-password")} 
+                        onClick={() => handleModalVisibleToggle()}
+                    >
+                        Забыли пароль?
+                    </button> 
 
                     <div className={cx("divider")}></div>
 
-                    <Link to={"/"} className={cx("form__link")}>Войти</Link>
+                    <Link to={"/registration"} className={cx("form__link")}>Регистрация</Link>
                 </div>
 
                 <div className={cx("form__entrance")}>
@@ -103,6 +102,7 @@ export const PageRegistration = () => {
                     </div>
                 </div>
             </form>
+            <SendNewPasswordForm visible={visible} onClose={handleModalVisibleToggle}/>
         </>
     )
 }

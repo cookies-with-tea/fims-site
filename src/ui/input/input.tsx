@@ -14,8 +14,7 @@ interface InputProps {
     postfixIcon?: ReactNode
     passwordHideIcon?: ReactNode
     passwordShowIcon?: ReactNode
-    iconClear?: ReactNode
-    clearable?: boolean
+    clearable?: boolean | ReactNode
     size?: 'md' | 'sm' | 'xs'
     value?: string | number
     prepend?: string | ReactNode
@@ -44,13 +43,12 @@ export const Input = ({
         placeholder = "",
         type = "text",
         disabled = false,
-        clearable = false, 
+        clearable = <Icon name="clear" className={cx("input__icon")}/>, 
         rows = 4,
         postfixIcon,
         prefixIcon,
-        passwordHideIcon,
-        passwordShowIcon,
-        iconClear,
+        passwordHideIcon = <Icon name={`eye-off`} className={cx("input__icon")}/>,
+        passwordShowIcon = <Icon name={`eye-on`} className={cx("input__icon")}/>,
         value,
         onChange,
         onClearValue,
@@ -128,26 +126,15 @@ export const Input = ({
             />
 
             { clearable && value && (
-                    <div onClick={() => onClearValue && onClearValue(name)} className={cx('postfix')}>
-                        {iconClear ?? <Icon name="clear" className={cx("input__icon")}/>}
+                    <div onClick={() => onClearValue?.(name)} className={cx('postfix')}>
+                        {clearable}
                     </div>
                 )
             }
 
             { type === "password" && (
                 <div className={cx('postfix')} onClick={() => setPasswordShown(!passwordShown)}>
-                    {!passwordShown ? (
-                            passwordHideIcon ?? (
-                                <Icon
-                                    name={`eye-off`} 
-                                    className={cx("input__icon")}
-                                />)
-                        ): passwordShowIcon ?? (
-                            <Icon
-                                name={`eye-on`} 
-                                className={cx("input__icon")}
-                        />)
-                    }
+                    {!passwordShown ? passwordHideIcon : passwordShowIcon}
                 </div>
             )}
 

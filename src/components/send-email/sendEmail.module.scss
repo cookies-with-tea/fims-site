@@ -1,0 +1,15 @@
+.form {
+    &__content {
+        margin-bottom: 30px;
+    }
+
+    &__label {
+        display: block;
+        font-size: $font--size-large;
+        margin-bottom: 10px;
+    }
+
+    &__btn {
+        width: 100%;
+    }
+}
