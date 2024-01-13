@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, MouseEvent} from 'react';
+import { ReactNode, useEffect, useRef, MouseEvent, useState} from 'react';
 import {createPortal} from 'react-dom';
 import style from "./dialog.module.scss"
 import { Icon } from '../icon/Icon';
@@ -16,6 +16,7 @@ interface DialogProps {
     overlayClosable?: boolean
     zIndex?: number
     className?: string
+    visible?: boolean
 }
 
 export const Dialog = ({ 
@@ -27,9 +28,12 @@ export const Dialog = ({
         closeIcon = <Icon name='close' className={cx("modal__close")}/>,
         overlayClosable,
         zIndex = 1000,
-        className
+        className,
+        visible
     }: DialogProps) => {
 
+    const [active, setActive] = useState(false); 
+    const [aniClassName, setAniClassName] = useState('')
     const refDialog = useRef<HTMLDivElement>(null)
     
     const handleEscape = (event: KeyboardEvent) => {
@@ -43,25 +47,62 @@ export const Dialog = ({
         }
     }
 
-    useEffect(() => {
-        closeEscape && document.addEventListener('keydown', handleEscape, {once: true})
-    }, [closeEscape])
+    const onTransitionEnd = () => {
+        setAniClassName(visible ? 'enter-done' : 'exit-done');
+        if (!visible) {
+            setActive(false);
+        }
+    };
 
     useEffect(() => {
-        lockScroll ? document.body.style.overflowY = 'hidden': document.body.style.overflowY = 'auto';
-    }, [lockScroll]);
+        if (visible && closeEscape) document.addEventListener('keydown', handleEscape, {once: true})
+        
+    }, [visible, closeEscape])
+
+    useEffect(() => {
+        if (visible && lockScroll) {
+            document.body.style.overflowY = 'hidden'
+        } else {
+            document.body.style.overflowY = 'auto';
+        }
+    }, [visible, lockScroll]);
+
+    useEffect(() => {
+        if (visible) {
+            setActive(true);
+
+            setAniClassName("enter");
+
+            setTimeout(() => {
+                setAniClassName("enter-active");
+            });
+
+        } else {
+            setAniClassName("exit");
+
+            setTimeout(() => {
+                setAniClassName("exit-active");
+            });
+        }
+
+    }, [visible]);
+
+    if (!visible && !active) {
+        return null;
+    }
 
     return (
         createPortal(
             <div 
-                className={cx("modal")} 
+                className={cx("modal", aniClassName)}
+                onTransitionEnd={onTransitionEnd} 
                 style={{zIndex: zIndex}}
                 onClick={(event: MouseEvent<HTMLDivElement>) => {
                     if(!overlayClosable) return
 
                     handleBackgroundClose(event)
                 }}
-                >
+            >
                 <div className={cx("modal__overlay")}>
                     <div className={cx("modal__content", className)} ref={refDialog}>
                         <header className={cx("modal__header")}>

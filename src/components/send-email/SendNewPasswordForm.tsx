@@ -1,4 +1,4 @@
-import { Dialog } from "src/ui/dialog/Dialog"
+import { Dialog } from "src/ui/dialog/dialog"
 import { Input } from "src/ui/input/input"
 import { ChangeEvent, useState } from 'react'
 import { Button } from "src/ui/button/Button";
@@ -23,42 +23,38 @@ export const SendNewPasswordForm = ({ visible, onClose }: PropsSendEmail) => {
         setFormData(event.target.value)
     }
     return (
-        <>
-            {visible && (
-                <Dialog 
-                    onClose={onClose} 
-                    closeEscape 
-                    lockScroll 
-                    overlayClosable
-                    title="Восстановление аккаунта"
-                >
-                    <form className={cx("form")}>
-                        <div className={cx("form__content")}>
-                            <label className={cx("form__label")}>Почта</label>
-                            
-                            <Input 
-                                name='email'
-                                className={cx("form__input")}
-                                placeholder='Email'
-                                value={formData}
-                                type='email'
-                                onChange={onValueChange}
-                                onClearValue={onClearValue}
-                                
-                            />
-                        </div>
+        <Dialog 
+            onClose={onClose} 
+            closeEscape 
+            lockScroll 
+            overlayClosable
+            visible={visible}
+            title="Восстановление аккаунта"
+        >
+            <form className={cx("form")}>
+                <div className={cx("form__content")}>
+                    <label className={cx("form__label")}>Почта</label>
+                    
+                    <Input 
+                        name='email'
+                        className={cx("form__input")}
+                        placeholder='Email'
+                        value={formData}
+                        type='email'
+                        onChange={onValueChange}
+                        onClearValue={onClearValue}
                         
-                        <Button 
-                            type="button" 
-                            className={cx("form__btn")}
-                            onClick={() => onClose()}
-                        >
-                            Отправить
-                        </Button>
-                    </form>
-                </Dialog>
-                )
-            }
-        </>
+                    />
+                </div>
+                
+                <Button 
+                    type="button" 
+                    className={cx("form__btn")}
+                    onClick={() => onClose()}
+                >
+                    Отправить
+                </Button>
+            </form>
+        </Dialog>
     )
 }
