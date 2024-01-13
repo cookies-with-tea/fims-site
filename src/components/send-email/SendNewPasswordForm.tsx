@@ -1,5 +1,5 @@
 import { Dialog } from "src/ui/dialog/Dialog"
-import { Input } from "src/ui/input/Input"
+import { Input } from "src/ui/input/input"
 import { ChangeEvent, useState } from 'react'
 import { Button } from "src/ui/button/Button";
 import style from "./sendEmail.module.scss"

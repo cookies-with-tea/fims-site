@@ -1,5 +1,5 @@
 import { Button } from 'src/ui/button/Button'
-import { Input } from 'src/ui/input/Input'
+import { Input } from 'src/ui/input/input'
 import { Link } from 'react-router-dom'
 import { Icon } from 'src/ui/icon/Icon'
 import { SendNewPasswordForm } from 'src/components/send-email/SendNewPasswordForm'

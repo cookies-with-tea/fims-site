@@ -1,5 +1,5 @@
 import { Button } from 'src/ui/button/Button'
-import { Input } from 'src/ui/input/Input'
+import { Input } from 'src/ui/input/input'
 import { Link } from 'react-router-dom'
 import cnBind from 'classnames/bind'
 import style from "src/pages/auth/authForm.module.scss"
