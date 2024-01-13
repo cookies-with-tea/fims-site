@@ -41,7 +41,6 @@ export const LoginForm = ({ handleModalVisibleToggle , visible}: LoginForm) => {
                             onChange={onValueChange}
                             type='email'
                             onClearValue={onClearValue}
-                            clearable
                             name='email'
                             />
                     </div>
@@ -49,11 +48,12 @@ export const LoginForm = ({ handleModalVisibleToggle , visible}: LoginForm) => {
                     <div className={cx("form__item")}>
                         <label className={cx("form__label")}>Пароль</label>
                         <Input 
+                            name='password'
+                            type='password'
                             value={formData.password}
                             placeholder='Password'
                             onChange={onValueChange}
-                            type='password'
-                            name='password'
+                            clearable={false}
                         />
                     </div>
                 </div>

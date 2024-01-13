@@ -44,7 +44,7 @@ export const SendNewPasswordForm = ({ visible, onClose }: PropsSendEmail) => {
                                 type='email'
                                 onChange={onValueChange}
                                 onClearValue={onClearValue}
-                                clearable
+                                
                             />
                         </div>
                         

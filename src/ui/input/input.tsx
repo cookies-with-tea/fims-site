@@ -14,8 +14,7 @@ interface InputProps {
     postfixIcon?: ReactNode
     passwordHideIcon?: ReactNode
     passwordShowIcon?: ReactNode
-    iconClear?: ReactNode
-    clearable?: boolean
+    clearable?: boolean | ReactNode
     size?: 'md' | 'sm' | 'xs'
     value?: string | number
     prepend?: string | ReactNode
@@ -44,13 +43,12 @@ export const Input = ({
         placeholder = "",
         type = "text",
         disabled = false,
-        clearable = false, 
+        clearable = <Icon name="clear" className={cx("input__icon")}/>, 
         rows = 4,
         postfixIcon,
         prefixIcon,
         passwordHideIcon,
         passwordShowIcon,
-        iconClear,
         value,
         onChange,
         onClearValue,
@@ -129,7 +127,7 @@ export const Input = ({
 
             { clearable && value && (
                     <div onClick={() => onClearValue?.(name)} className={cx('postfix')}>
-                        {iconClear ?? <Icon name="clear" className={cx("input__icon")}/>}
+                        {clearable}
                     </div>
                 )
             }
