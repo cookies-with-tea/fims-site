@@ -1,5 +1,6 @@
 // import { Icon } from 'src/ui/icon/Icon';
 // import { useState } from 'react';
+import { Navbar } from "src/components/navbar/Navbar"
 import style from "./header.module.scss"
 import cnBind from 'classnames/bind'
 
@@ -9,9 +10,8 @@ export const Header = () => {
     return (
         <header className={cx("header")}>
             <div className="container">
-
+                <Navbar/>
             </div>
-
         </header>
     )
 }
