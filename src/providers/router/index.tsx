@@ -3,12 +3,19 @@ import { PageLogin } from "src/pages/auth/login/PageLogin";
 import { PageRegistration } from "src/pages/auth/registration/PageRegistration";
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "src/layouts/main-layout/MainLayout";
+import { MainPage } from "src/pages/mainPage/MainPage";
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <MainLayout/>
+        element: <MainLayout/>,
+        children:[
+            {
+                path:"/",
+                element: <MainPage/>
+            }
+        ]
     },
     
     {

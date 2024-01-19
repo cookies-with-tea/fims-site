@@ -3,10 +3,14 @@
 // import { Outlet } from "react-router-dom"
 // const cx = cnBind.bind(style)
 
+import { Outlet } from "react-router-dom"
 import { Header } from "src/components/header/Header"
 
 export const MainLayout = () => {
     return (
-        <Header/>
+        <>  
+            <Header/>
+            <Outlet/>
+        </>
     )
 }
