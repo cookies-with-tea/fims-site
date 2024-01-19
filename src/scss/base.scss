@@ -13,3 +13,19 @@
     margin: 0 auto;
     padding: 0 15px;
 }
+
+.active {
+    color: $background--blue-2;
+    position: relative;
+
+    &::before {
+        content: "";
+        height: 2px;
+        width: 100%;
+        background: currentColor;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+    }
+
+}
