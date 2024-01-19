@@ -5,6 +5,7 @@ import cnBind from 'classnames/bind'
 const cx = cnBind.bind(style)
 
 export const Navbar = () => {
+    // DEBT: до реализации компонента popover данный компонент приостановлен
     const navigation = [
         {name:"Главная", path:"/"},
         {name:"Новинки", path:"/new-anime"},
