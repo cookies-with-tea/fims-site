@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import style from "./navbar.module.scss"
 import cnBind from 'classnames/bind'
+import { Popover } from "src/ui/popover/popover"
 
 const cx = cnBind.bind(style)
 
@@ -20,7 +21,7 @@ export const Navbar = () => {
                     navigation.map((item, index) => (
                         <li key={index} className={cx("menu__item")}>
                             <NavLink to={item.path} className={cx("menu__link")}>
-                                {item.name}
+                                {index != 2 ? item.name : <Popover content="111"> {item.name}</Popover>}
                             </NavLink>
                         </li>
                     ))

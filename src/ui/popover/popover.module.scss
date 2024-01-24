@@ -1,0 +1,39 @@
+.popover {
+    display: inline-block;
+    position: relative;
+
+    &__hidden-text {
+        position: absolute;
+        padding: 10px;
+        border-radius: 3px;
+        background: #EDEDED;
+        width: 300px;
+        font-size: 12px;
+        box-shadow: 1px 1px 10px #777;
+        
+    }
+}
+
+.top {
+    bottom: 130%;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+.bottom {
+    top: 130%;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+.right {
+    left: 130%;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.left {
+    right: 130%;
+    transform: translateY(-50%);
+    top: 50%;
+}
