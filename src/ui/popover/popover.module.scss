@@ -4,10 +4,12 @@
 
     &__hidden-text {
         position: absolute;
+        top: 0;
+        left: 0;
         padding: 10px;
         border-radius: 3px;
         background: #EDEDED;
-        width: 300px;
+        width: 100px;
         font-size: 12px;
         box-shadow: 1px 1px 10px #777;
         
