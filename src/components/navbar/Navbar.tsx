@@ -21,7 +21,7 @@ export const Navbar = () => {
                     navigation.map((item, index) => (
                         <li key={index} className={cx("menu__item")}>
                             {/* <NavLink to={item.path} className={cx("menu__link")}> */}
-                                {index != 2 ? item.name : <Popover content="Аниме" trigger="click" position="left"> {item.name}</Popover>}
+                                {index != 2 ? item.name : <Popover content="Аниме" trigger="click" position="right"> {item.name}</Popover>}
                             {/* </NavLink> */}
                         </li>
                     ))

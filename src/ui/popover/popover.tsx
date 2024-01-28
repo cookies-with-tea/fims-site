@@ -34,41 +34,54 @@ export const Popover = ({
         const triggerRect = triggerRef.current.getBoundingClientRect();
         const tooltipRect = tooltipRef.current.getBoundingClientRect();
         let top;
-        const a = {
-            top: () => (triggerRect.top + window.scrollY) - tooltipRect.height - 8,
-            bottom: () =>  triggerRect.top + window.scrollY + triggerRect.height + 8,
-            left: () => {
+
+        const location = {
+            // y - вертикальное местоположениие элемента (префиксы)
+            // x - горизонтальное местоположениие элемента
+            currentX: 0,
+            currentY: 0,
+            yTop: () => (triggerRect.top + window.scrollY) - tooltipRect.height - 8,
+            yBottom: () =>  triggerRect.top + window.scrollY + triggerRect.height + 8,
+            xCenter: () => (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2),
+            yCenter: () => (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2),
+            yLeft: () => triggerRect.x - tooltipRect.width - window.scrollX - 8,
+            yRight: () => triggerRect.x + triggerRect.width + window.scrollX + 8,
+            vertical(){
                 if(position === "top" || position === "bottom"){
-                    return (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2);
+                    return this.xCenter()
                 } 
-            }
+            },
+            // appendY(a){
+            //     this.currentY = a()
+            // }
         }
+        // location.appendX(location.yTop)
+        // console.log(location.currentX)
         if(position === "top") {
-            top = a.top()
+            top = location.yTop()
             if(window.scrollY > top) {
-                top = a.bottom();
+                top = location.yBottom();
             }
         } else if(position === "bottom") {
-            top = a.bottom();
+            top = location.yBottom();
 
             const currentLocation = window.innerHeight - (top - window.scrollY + tooltipRect.height)
             if(currentLocation < 0) {
-                top = a.top()
+                top = location.yTop()
             }
         }else if(position === "right") {
-            top = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
-            const left = triggerRect.x + triggerRect.width + window.scrollX + 8
+            top = location.yCenter()
+            const left = location.yRight()
             tooltipRef.current.style.transform = `translate(${left}px, ${top}px)`;
         }else if(position === "left") {
-            top = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
-            const left = triggerRect.x - tooltipRect.width - window.scrollX - 8;
+            top = location.yCenter()
+            const left = location.yLeft()
             console.log(left)
             tooltipRef.current.style.transform = `translate(${left}px, ${top}px)`;
         }
         
-        console.log(triggerRef.current.getBoundingClientRect())
         // console.log(a.left())
-        tooltipRef.current.style.transform = `translate(${a.left()}px, ${top}px)`;
+        // tooltipRef.current.style.transform = `translate(${location.xCenter()}px, ${top}px)`;
     }, [popoverVisible, triggerRef, tooltipRef, position]);
 
     const classes = cx(
