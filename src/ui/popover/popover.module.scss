@@ -10,7 +10,10 @@
         border-radius: 3px;
         background: #EDEDED;
         width: 100px;
-        font-size: 12px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        font-size: 20px;
         box-shadow: 1px 1px 10px #777;
         
     }
