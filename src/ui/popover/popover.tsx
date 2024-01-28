@@ -40,21 +40,28 @@ export const Popover = ({
             if(window.scrollY > top) {
                 top = triggerRect.top + window.scrollY + triggerRect.height + 8;
             }
-            
-            
             left = triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2;
+
         } else if(position === "bottom") {
-            top = triggerRect.top + window.scrollY + triggerRect.height + 8;
+            // top = (triggerRect.top + window.scrollY) + triggerRect.height + 8;
+            top = (triggerRect.top + window.scrollY) + triggerRect.height + 8;
+            const currentLocation = window.innerHeight - (top - window.scrollY + tooltipRect.height)
+            if(currentLocation < 0) {
+                top = (triggerRect.top + window.scrollY) - tooltipRect.height - 8
+            }
             left = triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2;
 
         }else if(position === "right"){
+            // error
             top = triggerRect.top + window.scrollY + triggerRect.height + 8;
             left = triggerRect.left + triggerRect.width + window.scrollX + 8;
         }
+        console.log(window.innerHeight)
         console.log(`${top} - top` )
         console.log(`${window.scrollY} - скролл` )
         // x - положение относительно горизонтали (слева)
         // y - положение относительно вертикали (с верху)
+
         console.log(triggerRef.current.getBoundingClientRect())
         console.log(tooltipRef.current.getBoundingClientRect())
     
