@@ -56,18 +56,15 @@ export const Popover = ({
                 top = a.top()
             }
         }else if(position === "right") {
-            top = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
-            const left = triggerRect.x + triggerRect.width + window.scrollX + 8;
+            top = (triggerRect.bottom - (triggerRect.height + tooltipRect.height) / 2)
+            const left = triggerRect.x + triggerRect.width + window.scrollX + 8
+            tooltipRef.current.style.transform = `translate(${left}px, ${top}px)`;
+        }else if(position === "left") {
+            top = (triggerRect.bottom - (triggerRect.height + tooltipRect.height) / 2)
+            const left = triggerRect.x - tooltipRect.width - window.scrollX - 8;
             tooltipRef.current.style.transform = `translate(${left}px, ${top}px)`;
         }
-        // else if(position === "left"){
-        //     top = (triggerRect.bottom - window.scrollY) - tooltipRect.height
-        //     const left = triggerRect.left - triggerRect.width - window.scrollX;
-        //     tooltipRef.current.style.transform = `translate(${left}px, ${top}px)`;
-        // }
         
-        console.log(`${top} - top` )
-        console.log(`${window.scrollY} - скролл` )
         console.log(triggerRef.current.getBoundingClientRect())
         // console.log(a.left())
         tooltipRef.current.style.transform = `translate(${a.left()}px, ${top}px)`;
