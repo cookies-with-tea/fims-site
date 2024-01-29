@@ -4,6 +4,7 @@
 
     &__hidden-text {
         position: absolute;
+        z-index: 1000;
         top: 0;
         left: 0;
         padding: 10px;

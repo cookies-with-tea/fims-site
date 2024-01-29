@@ -21,7 +21,7 @@ export const Navbar = () => {
                     navigation.map((item, index) => (
                         <li key={index} className={cx("menu__item")}>
                             {/* <NavLink to={item.path} className={cx("menu__link")}> */}
-                                {index != 2 ? item.name : <Tooltip content="Аниме" trigger="click" position="top"> {item.name}</Tooltip>}
+                                {index != 2 ? item.name : <Tooltip content="Аниме" trigger="click" placement="top"> {item.name}</Tooltip>}
                             {/* </NavLink> */}
                         </li>
                     ))

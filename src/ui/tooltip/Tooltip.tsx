@@ -8,16 +8,18 @@ interface PopoverProps {
     className?: string
     children: ReactNode | string
     content: ReactNode | string
-    position?: "top" | "bottom" | "right" | "left"
-    trigger?: "hover" | "click"     
+    offset?: number    
+    placement?: "top" | "bottom" | "right" | "left"
+    trigger?: "hover" | "click" 
 }
 
 export const Tooltip = ({ 
         children,
         content, 
-        position,
+        placement,
         className = "",
-        trigger
+        offset = 10,
+        trigger, 
     }: PopoverProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const triggerRef = useRef<HTMLDivElement>(null)
@@ -41,12 +43,12 @@ export const Tooltip = ({
             // x - горизонтальное местоположениие элемента
             currentX: 0,
             currentY: 0,
-            yTop: () => (triggerRect.top + window.scrollY) - tooltipRect.height - 8,
-            yBottom: () =>  triggerRect.top + window.scrollY + triggerRect.height + 8,
-            xLeft: () => triggerRect.x - tooltipRect.width - window.scrollX - 8,
-            xRight: () => triggerRect.x + triggerRect.width + window.scrollX + 8,
+            yTop: () => (triggerRect.top + window.scrollY) - tooltipRect.height - offset,
+            yBottom: () =>  triggerRect.top + window.scrollY + triggerRect.height + offset,
+            xLeft: () => triggerRect.x - tooltipRect.width - window.scrollX - offset,
+            xRight: () => triggerRect.x + triggerRect.width + window.scrollX + offset,
             center() {
-                if(position === "top" || position === "bottom"){
+                if(placement === "top" || placement === "bottom"){
                     return this.currentX = (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2)
                 } else{
                     return this.currentY = triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2
@@ -62,23 +64,23 @@ export const Tooltip = ({
             }
         }
 
-        if(position === "top") {
+        if(placement === "top") {
             location.changeVertical(location.yTop)
             if(window.scrollY > location.currentY) location.changeVertical(location.yBottom)
 
-        } else if(position === "bottom") {
+        } else if(placement === "bottom") {
             location.changeVertical(location.yBottom)
 
             const currentLocation = window.innerHeight - (location.currentY- window.scrollY + tooltipRect.height)
             if(currentLocation < 0) location.changeVertical(location.yTop)
-        } else if(position === "right") {
+        } else if(placement === "right") {
             location.changeHorizontal(location.xRight)
-        } else if(position === "left") {
+        } else if(placement === "left") {
             location.changeHorizontal(location.xLeft)
         }
         
         tooltipRef.current.style.transform = `translate(${location.currentX}px, ${location.currentY}px)`;
-    }, [tooltipVisible, triggerRef, tooltipRef, position]);
+    }, [tooltipVisible, triggerRef, tooltipRef, placement, offset]);
 
     const classes = cx(
         'tooltip__hidden-text',
