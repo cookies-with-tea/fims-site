@@ -1,12 +1,12 @@
 // import { NavLink } from "react-router-dom"
 import style from "./navbar.module.scss"
 import cnBind from 'classnames/bind'
-import { Popover } from "src/ui/popover/popover"
+import { Tooltip } from "src/ui/tooltip/Tooltip"
 
 const cx = cnBind.bind(style)
 
 export const Navbar = () => {
-    // DEBT: до реализации компонента popover данный компонент приостановлен
+    // DEBT: до реализации компонента Tooltip данный компонент приостановлен
     const navigation = [
         {name:"Главная", path:"/"},
         {name:"Новинки", path:"/new-anime"},
@@ -21,7 +21,7 @@ export const Navbar = () => {
                     navigation.map((item, index) => (
                         <li key={index} className={cx("menu__item")}>
                             {/* <NavLink to={item.path} className={cx("menu__link")}> */}
-                                {index != 2 ? item.name : <Popover content="Аниме" trigger="click" position="top"> {item.name}</Popover>}
+                                {index != 2 ? item.name : <Tooltip content="Аниме" trigger="click" position="top"> {item.name}</Tooltip>}
                             {/* </NavLink> */}
                         </li>
                     ))
