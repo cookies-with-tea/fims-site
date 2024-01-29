@@ -25,7 +25,6 @@ export const Tooltip = ({
     const triggerRef = useRef<HTMLDivElement>(null)
     const tooltipRef = useRef<HTMLDivElement>(null);
 
-    // event: MouseEvent<HTMLDivElement>
     const onClick = () => {
         setTooltipVisible(!tooltipVisible)
     }
@@ -100,7 +99,7 @@ export const Tooltip = ({
             } 
             
             <div 
-                className="popover__content" 
+                className="tooltip__content" 
                 ref={triggerRef}
                 onClick={() => trigger === "click" && onClick()}
                 onMouseEnter={() => trigger === "hover" && setTooltipVisible(true)} 
