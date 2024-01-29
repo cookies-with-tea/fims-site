@@ -19,19 +19,20 @@ export const Tooltip = ({
         className = "",
         trigger
     }: PopoverProps) => {
-    const [popoverVisible, setPopoverVisible] = useState(false)
+    const [tooltipVisible, setTooltipVisible] = useState(false)
     const triggerRef = useRef<HTMLDivElement>(null)
     const tooltipRef = useRef<HTMLDivElement>(null);
 
     // event: MouseEvent<HTMLDivElement>
     const onClick = () => {
-        setPopoverVisible(!popoverVisible)
+        setTooltipVisible(!tooltipVisible)
     }
-
+    
     useEffect(() => {
-        if (!popoverVisible || !triggerRef.current || !tooltipRef.current) {
+        if (!tooltipVisible || !triggerRef.current || !tooltipRef.current) {
             return;
         }
+        
         const triggerRect = triggerRef.current.getBoundingClientRect();
         const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
@@ -77,16 +78,16 @@ export const Tooltip = ({
         }
         
         tooltipRef.current.style.transform = `translate(${location.currentX}px, ${location.currentY}px)`;
-    }, [popoverVisible, triggerRef, tooltipRef, position]);
+    }, [tooltipVisible, triggerRef, tooltipRef, position]);
 
     const classes = cx(
-        'popover__hidden-text',
+        'tooltip__hidden-text',
         className
     );
 
     return (
-        <div className={cx("popover")}>
-            {popoverVisible && createPortal(
+        <div className={cx("tooltip")}>
+            {tooltipVisible && createPortal(
                 <div 
                     className={classes}
                     ref={tooltipRef}
@@ -100,8 +101,8 @@ export const Tooltip = ({
                 className="popover__content" 
                 ref={triggerRef}
                 onClick={() => trigger === "click" && onClick()}
-                onMouseEnter={() => trigger === "hover" && setPopoverVisible(true)} 
-                onMouseLeave={() => trigger === "hover" && setPopoverVisible(false)}
+                onMouseEnter={() => trigger === "hover" && setTooltipVisible(true)} 
+                onMouseLeave={() => trigger === "hover" && setTooltipVisible(false)}
             >
                 {children}
             </div>
