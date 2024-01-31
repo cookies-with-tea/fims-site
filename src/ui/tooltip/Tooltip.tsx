@@ -6,16 +6,18 @@ const cx = cnBind.bind(style)
 
 interface PopoverProps {
     className?: string
-    children: ReactNode | string
-    content: ReactNode | string
+    children?: ReactNode | string
+    content?: ReactNode | string
     offset?: number    
     placement?: "top" | "bottom" | "right" | "left"
     trigger?: "hover" | "click" 
+    teleportTarget?: HTMLElement
 }
 
 export const Tooltip = ({ 
         children,
         content, 
+        teleportTarget = document.body,
         placement = "bottom",
         className = "",
         offset = 10,
@@ -45,10 +47,10 @@ export const Tooltip = ({
             xLeft: () => triggerRect.x - tooltipRect.width - window.scrollX - offset,
             xRight: () => triggerRect.x + triggerRect.width + window.scrollX + offset,
             center() {
-                if(placement === "top" || placement === "bottom"){
-                    return this.currentX = (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2)
-                } else{
-                    return this.currentY = triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2
+                if(placement === "top" || placement === "bottom") {
+                    this.currentX = (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2)
+                } else {
+                    this.currentY = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
                 }
             },
             changeVertical(verticalLocation: () => number): void {
@@ -86,6 +88,9 @@ export const Tooltip = ({
             case "left":
                 location.changeHorizontal(location.xLeft)
                 break;
+            
+            default:
+                console.log(1)
         }
         
         tooltipRef.current.style.transform = `translate(${location.currentX}px, ${location.currentY}px)`;
@@ -93,7 +98,8 @@ export const Tooltip = ({
 
     const classes = cx(
         'tooltip__hidden-text',
-        className
+        className,
+        placement
     );
 
     return (
@@ -105,7 +111,7 @@ export const Tooltip = ({
                 >
                     {content}
                 </div>, 
-                document.body)
+                teleportTarget)
             } 
             
             <div 
