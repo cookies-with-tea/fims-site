@@ -16,10 +16,10 @@ interface PopoverProps {
 export const Tooltip = ({ 
         children,
         content, 
-        placement,
+        placement = "bottom",
         className = "",
         offset = 10,
-        trigger, 
+        trigger = "hover", 
     }: PopoverProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const triggerRef = useRef<HTMLDivElement>(null)
@@ -38,8 +38,6 @@ export const Tooltip = ({
         const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
         const location = {
-            // y - вертикальное местоположениие элемента (префиксы)
-            // x - горизонтальное местоположениие элемента
             currentX: 0,
             currentY: 0,
             yTop: () => (triggerRect.top + window.scrollY) - tooltipRect.height - offset,
@@ -62,20 +60,32 @@ export const Tooltip = ({
                 this.currentX = horizontalLocation()
             }
         }
+        
+        switch (placement) {
+            case "top":
+                location.changeVertical(location.yTop)
 
-        if(placement === "top") {
-            location.changeVertical(location.yTop)
-            if(window.scrollY > location.currentY) location.changeVertical(location.yBottom)
+                if(window.scrollY > location.currentY) location.changeVertical(location.yBottom)
 
-        } else if(placement === "bottom") {
-            location.changeVertical(location.yBottom)
+                break;
 
-            const currentLocation = window.innerHeight - (location.currentY- window.scrollY + tooltipRect.height)
-            if(currentLocation < 0) location.changeVertical(location.yTop)
-        } else if(placement === "right") {
-            location.changeHorizontal(location.xRight)
-        } else if(placement === "left") {
-            location.changeHorizontal(location.xLeft)
+            case "bottom": {
+                location.changeVertical(location.yBottom)
+
+                const currentLocation = window.innerHeight - (location.currentY - window.scrollY + tooltipRect.height)
+
+                if(currentLocation < 0) location.changeVertical(location.yTop)
+
+                break;
+            }
+
+            case "right":
+                location.changeHorizontal(location.xRight)
+                break;
+
+            case "left":
+                location.changeHorizontal(location.xLeft)
+                break;
         }
         
         tooltipRef.current.style.transform = `translate(${location.currentX}px, ${location.currentY}px)`;
