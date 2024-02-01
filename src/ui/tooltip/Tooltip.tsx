@@ -67,7 +67,9 @@ export const Tooltip = ({
             case "top":
                 location.changeVertical(location.yTop)
 
-                if(window.scrollY > location.currentY) location.changeVertical(location.yBottom)
+                if(window.scrollY > location.currentY) {
+                    location.changeVertical(location.yBottom)
+                } 
 
                 break;
 
@@ -76,7 +78,9 @@ export const Tooltip = ({
 
                 const currentLocation = window.innerHeight - (location.currentY - window.scrollY + tooltipRect.height)
 
-                if(currentLocation < 0) location.changeVertical(location.yTop)
+                if(currentLocation < 0) {
+                    location.changeVertical(location.yTop)
+                } 
 
                 break;
             }
@@ -88,18 +92,14 @@ export const Tooltip = ({
             case "left":
                 location.changeHorizontal(location.xLeft)
                 break;
-            
-            default:
-                console.log(1)
         }
         
         tooltipRef.current.style.transform = `translate(${location.currentX}px, ${location.currentY}px)`;
     }, [tooltipVisible, triggerRef, tooltipRef, placement, offset]);
 
     const classes = cx(
-        'tooltip__hidden-text',
+        'tooltip__content',
         className,
-        placement
     );
 
     return (
@@ -109,19 +109,22 @@ export const Tooltip = ({
                     className={classes}
                     ref={tooltipRef}
                 >
+                    <div className={cx("tooltip__arrow", placement)}></div>
+
                     {content}
                 </div>, 
                 teleportTarget)
             } 
             
             <div 
-                className="tooltip__content" 
+                className="tooltip__trigger" 
                 ref={triggerRef}
                 onClick={() => trigger === "click" && onClick()}
                 onMouseEnter={() => trigger === "hover" && setTooltipVisible(true)} 
                 onMouseLeave={() => trigger === "hover" && setTooltipVisible(false)}
             >
                 {children}
+
             </div>
         </div>
     )
