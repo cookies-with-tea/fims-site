@@ -24,6 +24,7 @@ export const Tooltip = ({
         trigger = "hover", 
     }: PopoverProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
+    const [positionArrow, setPositionArrow] = useState(placement)
     const triggerRef = useRef<HTMLDivElement>(null)
     const tooltipRef = useRef<HTMLDivElement>(null);
 
@@ -66,11 +67,14 @@ export const Tooltip = ({
         switch (placement) {
             case "top":
                 location.changeVertical(location.yTop)
-
+                
                 if(window.scrollY > location.currentY) {
                     location.changeVertical(location.yBottom)
+                    setPositionArrow("bottom")
+                    break
                 } 
 
+                setPositionArrow("top")
                 break;
 
             case "bottom": {
@@ -80,8 +84,11 @@ export const Tooltip = ({
 
                 if(currentLocation < 0) {
                     location.changeVertical(location.yTop)
+                    setPositionArrow("top")
+                    break
                 } 
 
+                setPositionArrow("bottom")
                 break;
             }
 
@@ -93,10 +100,8 @@ export const Tooltip = ({
                 location.changeHorizontal(location.xLeft)
                 break;
         }
-        
         tooltipRef.current.style.transform = `translate(${location.currentX}px, ${location.currentY}px)`;
-    }, [tooltipVisible, triggerRef, tooltipRef, placement, offset]);
-
+    }, [tooltipVisible, positionArrow, placement, offset]);
     const classes = cx(
         'tooltip__content',
         className,
@@ -109,7 +114,7 @@ export const Tooltip = ({
                     className={classes}
                     ref={tooltipRef}
                 >
-                    <div className={cx("tooltip__arrow", placement)}></div>
+                    <div className={cx("tooltip__arrow", positionArrow)}></div>
 
                     {content}
                 </div>, 
