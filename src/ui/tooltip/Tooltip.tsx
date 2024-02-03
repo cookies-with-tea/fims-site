@@ -31,7 +31,7 @@ export const Tooltip = ({
     const onClick = () => {
         setTooltipVisible(!tooltipVisible)
     }
-    
+    // DEBT: Добавить анимацию при появление/скрытие 
     useEffect(() => {
         if (!tooltipVisible || !triggerRef.current || !tooltipRef.current) {
             return;
