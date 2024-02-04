@@ -40,7 +40,7 @@ export const Tooltip = ({
         const triggerRect = triggerRef.current.getBoundingClientRect();
         const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
-        const location = {
+        const positions = {
             currentX: 0,
             currentY: 0,
             yTop: () => (triggerRect.top + window.scrollY) - tooltipRect.height - offset,
@@ -54,22 +54,22 @@ export const Tooltip = ({
                     this.currentY = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
                 }
             },
-            changeVertical(verticalLocation: () => number): void {
+            changeVerticalPosition(verticalPosition: () => number): void {
                 this.center()
-                this.currentY = verticalLocation()
+                this.currentY = verticalPosition()
             },
-            changeHorizontal(horizontalLocation: () => number): void {
+            changeHorizontalPosition(horizontalPosition: () => number): void {
                 this.center()
-                this.currentX = horizontalLocation()
+                this.currentX = horizontalPosition()
             }
         }
         
         switch (placement) {
             case "top":
-                location.changeVertical(location.yTop)
+                positions.changeVerticalPosition(positions.yTop)
                 
-                if(window.scrollY > location.currentY) {
-                    location.changeVertical(location.yBottom)
+                if(window.scrollY > positions.currentY) {
+                    positions.changeVerticalPosition(positions.yBottom)
                     setPositionArrow("bottom")
                     break
                 } 
@@ -78,12 +78,12 @@ export const Tooltip = ({
                 break;
 
             case "bottom": {
-                location.changeVertical(location.yBottom)
+                positions.changeVerticalPosition(positions.yBottom)
 
-                const currentLocation = window.innerHeight - (location.currentY - window.scrollY + tooltipRect.height)
+                const currentpositions = window.innerHeight - (positions.currentY - window.scrollY + tooltipRect.height)
 
-                if(currentLocation < 0) {
-                    location.changeVertical(location.yTop)
+                if(currentpositions < 0) {
+                    positions.changeVerticalPosition(positions.yTop)
                     setPositionArrow("top")
                     break
                 } 
@@ -93,14 +93,14 @@ export const Tooltip = ({
             }
 
             case "right":
-                location.changeHorizontal(location.xRight)
+                positions.changeHorizontalPosition(positions.xRight)
                 break;
 
             case "left":
-                location.changeHorizontal(location.xLeft)
+                positions.changeHorizontalPosition(positions.xLeft)
                 break;
         }
-        tooltipRef.current.style.transform = `translate(${location.currentX}px, ${location.currentY}px)`;
+        tooltipRef.current.style.transform = `translate(${positions.currentX}px, ${positions.currentY}px)`;
     }, [tooltipVisible, positionArrow, placement, offset]);
     const classes = cx(
         'tooltip__content',
