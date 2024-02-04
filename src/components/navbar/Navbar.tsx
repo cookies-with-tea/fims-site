@@ -20,6 +20,7 @@ export const Navbar = () => {
                 {
                     navigation.map((item, index) => (
                         <li key={index} className={cx("menu__item")}>
+                            {/* TODO: Будет исправленно по окончанию реализации navbar */}
                             {/* <NavLink to={item.path} className={cx("menu__link")}> */}
                                 {index != 2 ? item.name : <Tooltip content="Аниме" trigger="click" placement="top"> {item.name}</Tooltip>}
                             {/* </NavLink> */}

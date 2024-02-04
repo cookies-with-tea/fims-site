@@ -6,9 +6,10 @@ const cx = cnBind.bind(style)
 
 interface PopoverProps {
     className?: string
-    children?: ReactNode | string
-    content?: ReactNode | string
-    offset?: number    
+    children?: ReactNode
+    content?: ReactNode
+    offsetX?: number    
+    offsetY?: number    
     placement?: "top" | "bottom" | "right" | "left"
     trigger?: "hover" | "click" 
     teleportTarget?: HTMLElement
@@ -20,7 +21,8 @@ export const Tooltip = ({
         teleportTarget = document.body,
         placement = "bottom",
         className = "",
-        offset = 10,
+        offsetX = 10,
+        offsetY = 10,
         trigger = "hover", 
     }: PopoverProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
@@ -43,10 +45,10 @@ export const Tooltip = ({
         const positions = {
             currentX: 0,
             currentY: 0,
-            yTop: () => (triggerRect.top + window.scrollY) - tooltipRect.height - offset,
-            yBottom: () =>  triggerRect.top + window.scrollY + triggerRect.height + offset,
-            xLeft: () => triggerRect.x - tooltipRect.width - window.scrollX - offset,
-            xRight: () => triggerRect.x + triggerRect.width + window.scrollX + offset,
+            yTop: () => (triggerRect.top + window.scrollY) - tooltipRect.height - offsetY,
+            yBottom: () =>  triggerRect.top + window.scrollY + triggerRect.height + offsetY,
+            xLeft: () => triggerRect.x - tooltipRect.width - window.scrollX - offsetX,
+            xRight: () => triggerRect.x + triggerRect.width + window.scrollX + offsetX,
             center() {
                 if(placement === "top" || placement === "bottom") {
                     this.currentX = (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2)
@@ -101,7 +103,7 @@ export const Tooltip = ({
                 break;
         }
         tooltipRef.current.style.transform = `translate(${positions.currentX}px, ${positions.currentY}px)`;
-    }, [tooltipVisible, positionArrow, placement, offset]);
+    }, [tooltipVisible, positionArrow, placement, offsetY, offsetX]);
     const classes = cx(
         'tooltip__content',
         className,
