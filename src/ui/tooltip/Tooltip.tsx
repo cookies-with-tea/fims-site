@@ -1,4 +1,4 @@
-import { ReactNode, useRef, useState, useEffect } from "react"
+import { ReactNode, useRef, useState, useEffect} from "react"
 import {createPortal} from 'react-dom';
 import style from "./tooltip.module.scss"
 import cnBind from 'classnames/bind'
@@ -12,6 +12,7 @@ interface PopoverProps {
     offsetY?: number    
     placement?: "top" | "bottom" | "right" | "left"
     trigger?: "hover" | "click" 
+    clickOutside?: boolean
     teleportTarget?: HTMLElement
     arrow?: boolean
 }
@@ -25,6 +26,7 @@ export const Tooltip = ({
         offsetX = 10,
         offsetY = 10,
         trigger = "hover",
+        clickOutside = true,
         arrow = false
     }: PopoverProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
@@ -35,6 +37,22 @@ export const Tooltip = ({
     const onClick = () => {
         setTooltipVisible(!tooltipVisible)
     }
+
+    useEffect(() => {
+        function handlerOutsideClick(event) {
+            if (!triggerRef.current?.contains(event.target) && 
+                !tooltipRef.current?.contains(event.target)) {
+                setTooltipVisible(!tooltipVisible);
+            }
+        }
+        
+        if(tooltipVisible && clickOutside) {
+            window.addEventListener('click', handlerOutsideClick)
+
+            return () => window.addEventListener('click', handlerOutsideClick)
+        } 
+    }, [tooltipVisible, clickOutside]);
+
     // DEBT: Добавить анимацию при появление/скрытие 
     useEffect(() => {
         if (!tooltipVisible || !triggerRef.current || !tooltipRef.current) {
