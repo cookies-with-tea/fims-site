@@ -13,6 +13,7 @@ interface PopoverProps {
     placement?: "top" | "bottom" | "right" | "left"
     trigger?: "hover" | "click" 
     teleportTarget?: HTMLElement
+    arrow?: boolean
 }
 
 export const Tooltip = ({ 
@@ -23,7 +24,8 @@ export const Tooltip = ({
         className = "",
         offsetX = 10,
         offsetY = 10,
-        trigger = "hover", 
+        trigger = "hover",
+        arrow = false
     }: PopoverProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const [positionArrow, setPositionArrow] = useState(placement)
@@ -116,7 +118,7 @@ export const Tooltip = ({
                     className={classes}
                     ref={tooltipRef}
                 >
-                    <div className={cx("tooltip__arrow", positionArrow)}></div>
+                    {arrow && <div className={cx("tooltip__arrow", positionArrow)}></div>}
 
                     {content}
                 </div>, 
