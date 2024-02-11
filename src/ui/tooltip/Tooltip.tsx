@@ -63,8 +63,12 @@ export const Tooltip = ({
         const positions = {
             currentX: 0,
             currentY: 0,
-            yTop: () =>  (triggerRect.top + window.scrollY) - tooltipRect.height - offsetY,
-            yBottom: () =>  triggerRect.top + window.scrollY + triggerRect.height + offsetY,
+            yTop(){
+                this.currentY = (triggerRect.top + window.scrollY) - tooltipRect.height - offsetY
+            },
+            yBottom (){
+                this.currentY = triggerRect.top + window.scrollY + triggerRect.height + offsetY
+            },
             xLeft: () => triggerRect.x - tooltipRect.width - window.scrollX - offsetX,
             xRight: () => triggerRect.x + triggerRect.width + window.scrollX + offsetX,
             reversePositioning(){
@@ -84,29 +88,23 @@ export const Tooltip = ({
                 }
             },
             top() {
-                this.currentY = this.yTop()
                 this.currentX = (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2)
                 this.reversePositioning()
             },
             topStart() {
-                this.currentY = this.yTop()
                 this.currentX = triggerRect.left
             },
             topEnd() {
-                this.currentY = this.yTop()
                 this.currentX = triggerRect.right - tooltipRect.width
             },
             bottom() {
-                this.currentY = this.yBottom()
                 this.currentX = (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2)
                 this.reversePositioning()
             },
             bottomStart() {
-                this.currentY = this.yBottom()
                 this.currentX = triggerRect.left
             },
             bottomEnd() {
-                this.currentY = this.yBottom()
                 this.currentX = triggerRect.right - tooltipRect.width
             },
             right() {
@@ -119,8 +117,15 @@ export const Tooltip = ({
                 this.currentX = triggerRect.x - tooltipRect.width - window.scrollX - offsetX
             }
         }
-        // if()
+
+
+        if(placement.startsWith("top")){
+            positions.yTop()
+        }else if(placement.startsWith("bottom")) {
+            positions.yBottom()
+        }
         positions[placement]()
+
         // switch (placement) {
         //     case "top":
         //         positions.top()
