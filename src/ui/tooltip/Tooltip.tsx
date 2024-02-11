@@ -39,9 +39,10 @@ export const Tooltip = ({
     }
 
     useEffect(() => {
-        function handlerOutsideClick(event) {
-            if (!triggerRef.current?.contains(event.target) && 
-                !tooltipRef.current?.contains(event.target)) {
+        const handlerOutsideClick = (event: MouseEvent) => {
+            const getClickWindow = (event.target as HTMLElement)
+            if (!triggerRef.current?.contains(getClickWindow) && 
+                !tooltipRef.current?.contains(getClickWindow)) {
                 setTooltipVisible(!tooltipVisible);
             }
         }
