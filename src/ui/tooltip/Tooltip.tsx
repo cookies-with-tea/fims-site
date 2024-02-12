@@ -4,7 +4,7 @@ import style from "./tooltip.module.scss"
 import cnBind from 'classnames/bind'
 const cx = cnBind.bind(style)
 
-interface PopoverProps {
+interface TooltipProps {
     className?: string
     children?: ReactNode
     content?: ReactNode
@@ -16,24 +16,25 @@ interface PopoverProps {
     teleportTarget?: HTMLElement
     arrow?: boolean
 }
-type PositionObject = {
-    currentX: number;
-    currentY: number;
-    yTop(): void;
-    yBottom(): void;
-    xLeft(): void;
-    xRight(): void;
-    reversePositioning(): void;
-    topAndBottom(changeVerticalPosition?: boolean): void;
-    topAndBottomStart(changeVerticalPosition?: boolean): void;
-    topAndBottomEnd(changeVerticalPosition?: boolean): void;
-    right(): void;
-    rightStart(): void;
-    rightEnd(): void;
-    left(): void;
-    leftStart(): void;
-    leftEnd(): void;
-}
+
+// type PositionObject = {
+//     currentX: number;
+//     currentY: number;
+//     yTop(): void;
+//     yBottom(): void;
+//     xLeft(): void;
+//     xRight(): void;
+//     reversePositioning(): void;
+//     topAndBottom(changeVerticalPosition?: boolean): void;
+//     topAndBottomStart(changeVerticalPosition?: boolean): void;
+//     topAndBottomEnd(changeVerticalPosition?: boolean): void;
+//     right(): void;
+//     rightStart(): void;
+//     rightEnd(): void;
+//     left(): void;
+//     leftStart(): void;
+//     leftEnd(): void;
+// }
 
 export const Tooltip = ({ 
         children,
@@ -46,7 +47,7 @@ export const Tooltip = ({
         trigger = "hover",
         clickOutside = true,
         arrow = false
-    }: PopoverProps) => {
+    }: TooltipProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const [positionArrow, setPositionArrow] = useState(placement)
     const triggerRef = useRef<HTMLDivElement>(null)
@@ -78,7 +79,7 @@ export const Tooltip = ({
         }
         const triggerRect = triggerRef.current.getBoundingClientRect();
         const tooltipRect = tooltipRef.current.getBoundingClientRect();
-        const positions: PositionObject = {
+        const positions = {
             currentX: 0,
             currentY: 0,
             yTop(){
@@ -94,9 +95,8 @@ export const Tooltip = ({
                 this.currentX = triggerRect.x + triggerRect.width + window.scrollX + offsetX
             },
             reversePositioning(){
+                // this[`leftStart`]()
                 const a = (placement.split("-").length > 1) ? placement.split("-").map(item => item[0].toUpperCase() + item.slice(1))[1]:""
-                const c: keyof Person = `topAndBottom${a}`
-                console.log(positions[c as keyof typeof positions])
                 if(placement.startsWith("top")) {
                     this[`topAndBottom${a}`](true)
                     if(window.scrollY > positions.currentY) {
@@ -127,29 +127,18 @@ export const Tooltip = ({
                 changeVerticalPosition ? positions.yTop() : positions.yBottom()
                 this.currentX = triggerRect.right - tooltipRect.width
             },
-            right() {
+            rightAndLeft(changeHorizontalPosition: boolean = false ){
+                changeHorizontalPosition ? this.xRight() : this.xLeft()
                 this.currentY = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
-                this.xRight()
             },
-            rightStart() {
+            rightAndLeftStart(changeHorizontalPosition: boolean = false ){
+                changeHorizontalPosition ? this.xRight() : this.xLeft()
+
                 this.currentY = (triggerRect.top + window.scrollY)
-                this.xRight()
             },
-            rightEnd() {
+            rightAndLeftEnd(changeHorizontalPosition: boolean = false ) {
+                changeHorizontalPosition ? this.xRight() : this.xLeft()
                 this.currentY = (triggerRect.bottom + window.scrollY) - tooltipRect.height
-                this.xRight()
-            },
-            left() {
-                this.currentY = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
-                this.xLeft()
-            },
-            leftStart() {
-                this.currentY = (triggerRect.top - window.scrollY)
-                this.xLeft()
-            },
-            leftEnd() {
-                this.currentY = (triggerRect.bottom + window.scrollY) - tooltipRect.height
-                this.xLeft()
             }
         }
         
