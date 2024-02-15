@@ -4,6 +4,8 @@ import style from "./tooltip.module.scss"
 import cnBind from 'classnames/bind'
 const cx = cnBind.bind(style)
 
+
+
 interface TooltipProps {
     className?: string
     children?: ReactNode
@@ -16,25 +18,6 @@ interface TooltipProps {
     teleportTarget?: HTMLElement
     arrow?: boolean
 }
-
-// type PositionObject = {
-//     currentX: number;
-//     currentY: number;
-//     yTop(): void;
-//     yBottom(): void;
-//     xLeft(): void;
-//     xRight(): void;
-//     reversePositioning(): void;
-//     topAndBottom(isHorizontalChanged?: boolean): void;
-//     topAndBottomStart(isHorizontalChanged?: boolean): void;
-//     topAndBottomEnd(isHorizontalChanged?: boolean): void;
-//     right(): void;
-//     rightStart(): void;
-//     rightEnd(): void;
-//     left(): void;
-//     leftStart(): void;
-//     leftEnd(): void;
-// }
 
 export const Tooltip = ({ 
         children,
@@ -86,47 +69,56 @@ export const Tooltip = ({
                 if(placement.startsWith("top")) {
                     if(window.scrollY > positions.currentY) {
                         const newPosition = placement.replace("top", "bottom")
-                        this.getVerticalPositon(newPosition)
-                        this.getHorizontalPositon(newPosition)
-                        // setPositionArrow("bottom")
+                        this.setVerticalToPositon(newPosition)
+                        this.setHorizontalToPositon(newPosition)
+                        setPositionArrow("bottom")
                     }
                 }else if(placement.startsWith("bottom")) {
                     const currentPositions = window.innerHeight - (positions.currentY - window.scrollY + tooltipRect.height)
                     if(currentPositions < 0) {
                         const newPosition = placement.replace("bottom", "top")
-                        this.getVerticalPositon(newPosition)
-                        this.getHorizontalPositon(newPosition)
+                        this.setVerticalToPositon(newPosition)
+                        this.setHorizontalToPositon(newPosition)
+                        setPositionArrow("top")
                     } 
                 }
             },
-            getVerticalPositon(position: string) {
+            setVerticalToPositon(position: string) {
                 switch(true){
                     case position.startsWith("top"):
                         this.currentY = (triggerRect.top + window.scrollY) - tooltipRect.height - offsetY
-                        break
+                    break
 
                     case position.startsWith("bottom"):
                         this.currentY = triggerRect.top + window.scrollY + triggerRect.height + offsetY
-                        break
+                    break
 
-                    case position.startsWith("left"):
-                    case position.startsWith("right"):
+                    case position === "left":
+                    case position === "right":
                         this.currentY = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
-                        break
+                    break
                     
                     case position ==="left-start":
                     case position === "right-start":
                         this.currentY = (triggerRect.top + window.scrollY)
-                        break
+                    break
 
                     case position ==="left-end":
                     case position === "right-end":
                         this.currentY = (triggerRect.bottom + window.scrollY) - tooltipRect.height
-                        break
+                    break
                 }
             },
-            getHorizontalPositon(position: string) {
+            setHorizontalToPositon(position: string) {
                 switch(true){
+                    case position.startsWith("left"):
+                        this.currentX = triggerRect.x - tooltipRect.width - window.scrollX - offsetX
+                    break
+
+                    case position.startsWith("right"):
+                        this.currentX = triggerRect.x + triggerRect.width + window.scrollX + offsetX
+                    break
+
                     case position === "bottom":
                     case position === "top":
                         this.currentX = (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2)
@@ -142,26 +134,17 @@ export const Tooltip = ({
                         this.currentX = triggerRect.right - tooltipRect.width
                     break
 
-                    case position ==="left":
-                        this.currentX = triggerRect.x - tooltipRect.width - window.scrollX - offsetX
-                    break
-
-                    case position === "right-end":
-                        this.currentX = triggerRect.x + triggerRect.width + window.scrollX + offsetX
-                    break
+                    
                 }
             },
             changePositon(currentPosition: string) {
-                this.getVerticalPositon(currentPosition)
-                this.getHorizontalPositon(currentPosition)
+                this.setVerticalToPositon(currentPosition)
+                this.setHorizontalToPositon(currentPosition)
                 this.reversePositioning()
-            },
-            
+            }
         }
-        console.log(1)
-        // positions.reversePositioning()
+
         positions.changePositon(placement)
-        // console.log( placement.replace("top", "bottom"))
         tooltipRef.current.style.transform = `translate(${positions.currentX}px, ${positions.currentY}px)`;
     }, [tooltipVisible, positionArrow, placement, offsetY, offsetX]);
     const classes = cx(
