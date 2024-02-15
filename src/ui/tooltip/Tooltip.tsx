@@ -83,19 +83,19 @@ export const Tooltip = ({
             currentX: 0,
             currentY: 0,
             reversePositioning() {
-                const newPosition = placement.replace("top", "bottom")
-
                 if(placement.startsWith("top")) {
-
                     if(window.scrollY > positions.currentY) {
+                        const newPosition = placement.replace("top", "bottom")
+                        this.getVerticalPositon(newPosition)
+                        this.getHorizontalPositon(newPosition)
                         // setPositionArrow("bottom")
-                        return
                     }
                 }else if(placement.startsWith("bottom")) {
                     const currentPositions = window.innerHeight - (positions.currentY - window.scrollY + tooltipRect.height)
                     if(currentPositions < 0) {
-                        this.changePositon(newPosition)
-                        return
+                        const newPosition = placement.replace("bottom", "top")
+                        this.getVerticalPositon(newPosition)
+                        this.getHorizontalPositon(newPosition)
                     } 
                 }
             },
@@ -154,8 +154,7 @@ export const Tooltip = ({
             changePositon(currentPosition: string) {
                 this.getVerticalPositon(currentPosition)
                 this.getHorizontalPositon(currentPosition)
-
-                
+                this.reversePositioning()
             },
             
         }
