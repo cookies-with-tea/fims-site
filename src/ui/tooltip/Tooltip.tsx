@@ -25,9 +25,9 @@ interface TooltipProps {
 //     xLeft(): void;
 //     xRight(): void;
 //     reversePositioning(): void;
-//     topAndBottom(changeVerticalPosition?: boolean): void;
-//     topAndBottomStart(changeVerticalPosition?: boolean): void;
-//     topAndBottomEnd(changeVerticalPosition?: boolean): void;
+//     topAndBottom(isHorizontalChanged?: boolean): void;
+//     topAndBottomStart(isHorizontalChanged?: boolean): void;
+//     topAndBottomEnd(isHorizontalChanged?: boolean): void;
 //     right(): void;
 //     rightStart(): void;
 //     rightEnd(): void;
@@ -82,68 +82,87 @@ export const Tooltip = ({
         const positions = {
             currentX: 0,
             currentY: 0,
-            yTop(){
-                this.currentY = (triggerRect.top + window.scrollY) - tooltipRect.height - offsetY
-            },
-            yBottom (){
-                this.currentY = triggerRect.top + window.scrollY + triggerRect.height + offsetY
-            },
-            xLeft() {
-                this.currentX = triggerRect.x - tooltipRect.width - window.scrollX - offsetX
-            },
-            xRight() {
-                this.currentX = triggerRect.x + triggerRect.width + window.scrollX + offsetX
-            },
-            reversePositioning(){
-                // this[`leftStart`]()
-                const a = (placement.split("-").length > 1) ? placement.split("-").map(item => item[0].toUpperCase() + item.slice(1))[1]:""
+            reversePositioning() {
+                const newPosition = placement.replace("top", "bottom")
+
                 if(placement.startsWith("top")) {
-                    this[`topAndBottom${a}`](true)
+
                     if(window.scrollY > positions.currentY) {
-                        this[`topAndBottom${a}`]()
-                        setPositionArrow("bottom")
+                        // setPositionArrow("bottom")
                         return
                     }
-                    
+                }else if(placement.startsWith("bottom")) {
+                    const currentPositions = window.innerHeight - (positions.currentY - window.scrollY + tooltipRect.height)
+                    if(currentPositions < 0) {
+                        this.changePositon(newPosition)
+                        return
+                    } 
                 }
-                // else {
-                //     const a: string = (placement.split("-").length > 1) ? placement.split("-").map(item => item[0].toUpperCase() + item.slice(1))[1]:" "
-                //     const currentpositions = window.innerHeight - (positions.currentY - window.scrollY + tooltipRect.height)
-                //     if(currentpositions < 0) {
-                //         this[`topAndBottom${a}`]()
-                //         setPositionArrow("top")
-                //     } 
-                // }
             },
-            topAndBottom(changeVerticalPosition: boolean = false ){
-                changeVerticalPosition ? positions.yTop() : positions.yBottom()
-                this.currentX = (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2)
-            },
-            topAndBottomStart(changeVerticalPosition: boolean = false ){
-                changeVerticalPosition ? positions.yTop() : positions.yBottom()
-                this.currentX = triggerRect.left
-            },
-            topAndBottomEnd(changeVerticalPosition: boolean = false){
-                changeVerticalPosition ? positions.yTop() : positions.yBottom()
-                this.currentX = triggerRect.right - tooltipRect.width
-            },
-            rightAndLeft(changeHorizontalPosition: boolean = false ){
-                changeHorizontalPosition ? this.xRight() : this.xLeft()
-                this.currentY = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
-            },
-            rightAndLeftStart(changeHorizontalPosition: boolean = false ){
-                changeHorizontalPosition ? this.xRight() : this.xLeft()
+            getVerticalPositon(position: string) {
+                switch(true){
+                    case position.startsWith("top"):
+                        this.currentY = (triggerRect.top + window.scrollY) - tooltipRect.height - offsetY
+                        break
 
-                this.currentY = (triggerRect.top + window.scrollY)
+                    case position.startsWith("bottom"):
+                        this.currentY = triggerRect.top + window.scrollY + triggerRect.height + offsetY
+                        break
+
+                    case position.startsWith("left"):
+                    case position.startsWith("right"):
+                        this.currentY = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
+                        break
+                    
+                    case position ==="left-start":
+                    case position === "right-start":
+                        this.currentY = (triggerRect.top + window.scrollY)
+                        break
+
+                    case position ==="left-end":
+                    case position === "right-end":
+                        this.currentY = (triggerRect.bottom + window.scrollY) - tooltipRect.height
+                        break
+                }
             },
-            rightAndLeftEnd(changeHorizontalPosition: boolean = false ) {
-                changeHorizontalPosition ? this.xRight() : this.xLeft()
-                this.currentY = (triggerRect.bottom + window.scrollY) - tooltipRect.height
-            }
+            getHorizontalPositon(position: string) {
+                switch(true){
+                    case position === "bottom":
+                    case position === "top":
+                        this.currentX = (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2)
+                    break
+
+                    case position === "bottom-start":
+                    case position === "top-start":
+                        this.currentX = triggerRect.left
+                    break
+
+                    case position === "bottom-end":
+                    case position === "top-end":
+                        this.currentX = triggerRect.right - tooltipRect.width
+                    break
+
+                    case position ==="left":
+                        this.currentX = triggerRect.x - tooltipRect.width - window.scrollX - offsetX
+                    break
+
+                    case position === "right-end":
+                        this.currentX = triggerRect.x + triggerRect.width + window.scrollX + offsetX
+                    break
+                }
+            },
+            changePositon(currentPosition: string) {
+                this.getVerticalPositon(currentPosition)
+                this.getHorizontalPositon(currentPosition)
+
+                
+            },
+            
         }
-        
-        positions.reversePositioning()
-
+        console.log(1)
+        // positions.reversePositioning()
+        positions.changePositon(placement)
+        // console.log( placement.replace("top", "bottom"))
         tooltipRef.current.style.transform = `translate(${positions.currentX}px, ${positions.currentY}px)`;
     }, [tooltipVisible, positionArrow, placement, offsetY, offsetX]);
     const classes = cx(
