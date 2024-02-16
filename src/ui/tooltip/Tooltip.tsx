@@ -13,9 +13,9 @@ interface TooltipProps {
     placement?: "top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end" | 
                 "right" | "right-start" | "right-end" | "left" | "left-start"| "left-end"
     trigger?: "hover" | "click" 
-    clickOutside?: boolean
+    closeOutside?: boolean
     teleportTarget?: HTMLElement
-    arrow?: boolean
+    showArrow?: boolean
 }
 
 export const Tooltip = ({ 
@@ -27,8 +27,8 @@ export const Tooltip = ({
         offsetX = 10,
         offsetY = 10,
         trigger = "hover",
-        clickOutside = true,
-        arrow = false
+        closeOutside = true,
+        showArrow = false
     }: TooltipProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const [positionArrow, setPositionArrow] = useState(placement)
@@ -42,19 +42,19 @@ export const Tooltip = ({
     useEffect(() => {
         const handlerOutsideClick = (event: MouseEvent) => {
             const getClickWindow = (event.target as HTMLElement)
-            
+
             if (!triggerRef.current?.contains(getClickWindow) && 
                 !tooltipRef.current?.contains(getClickWindow)) {
                 setTooltipVisible(!tooltipVisible);
             }
         }
         
-        if(tooltipVisible && clickOutside) {
+        if(tooltipVisible && closeOutside) {
             window.addEventListener('click', handlerOutsideClick)
 
             return () => window.addEventListener('click', handlerOutsideClick)
         } 
-    }, [tooltipVisible, clickOutside]);
+    }, [tooltipVisible, closeOutside]);
     // DEBT: Добавить анимацию при появление/скрытие 
     useEffect(() => {
         if (!tooltipVisible || !triggerRef.current || !tooltipRef.current) {
@@ -178,7 +178,7 @@ export const Tooltip = ({
                     className={classes}
                     ref={tooltipRef}
                 >
-                    {arrow && <div className={cx("tooltip__arrow", positionArrow)}></div>}
+                    {showArrow && <div className={cx("tooltip__arrow", positionArrow)}></div>}
 
                     {content}
                 </div>, 
