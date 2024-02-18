@@ -21,37 +21,9 @@
         z-index: 1000;
         width: 8px;
         height: 8px;
-        // transform: rotate(45deg);
+        transform: rotate(45deg);
         // background: inherit;
         background: red;
 
-        &.top {
-            bottom: -4px;
-            left: 50%;
-
-            
-        }
-
-        // &.bottom {
-        //     top: -4px;
-        //     left: 50%;
-        // }
-
-        // &.left {
-        //     top: 50%;
-        //     right: -4px;
-        //     transform: translateX(0%) rotate(45deg);
-        //     &-start {
-        //         top: 8px;
-        //         right: -4px;
-        //         background: #581717;
-        //         transform: translateX(0%) rotate(45deg);
-        //     }
-        // }
-
-        // &.right {
-        //     top: 50%;
-        //     left: 0px;
-        // }
     }
 }

@@ -60,9 +60,70 @@ export const Tooltip = ({
         if (!tooltipVisible || !triggerRef.current || !tooltipRef.current) {
             return;
         }
+
+        const positionsArrow = {
+            changePositionVertical(position: string){
+                if(!tooltipRef.current || !arrowRef.current) return
+    
+                const { height } = arrowRef.current.getBoundingClientRect()
+                switch(true) {
+                    case position.startsWith("top"):
+                        arrowRef.current.style.bottom = '-4px';
+                    break
+    
+                    case position.startsWith("bottom"):
+                        arrowRef.current.style.top = '-4px';
+                    break
+    
+                    case position === "left":
+                    case position === "right":
+                        arrowRef.current.style.top = `50%`;
+                    break
+    
+                    case position === "left-start":
+                    case position === "right-start":
+                        arrowRef.current.style.top = `${(triggerRect.height / 2) - (height / 2)}px`;
+                    break
+    
+                    case position === "left-end":
+                    case position === "right-end":
+                        arrowRef.current.style.bottom = `${(triggerRect.height / 2) - (height / 2)}px`;
+                    break
+                }
+            },
+            changePositionHorizontal(position: string){
+                if(!tooltipRef.current || !arrowRef.current) return
+    
+                switch(true) {
+                    case position.startsWith("right"):
+                        arrowRef.current.style.left = `-4px`;
+                    break
+    
+                    case position.startsWith("left"):
+                        arrowRef.current.style.right = `-4px`;
+                    break
+    
+                    case position === "bottom":
+                    case position === "top":
+                        arrowRef.current.style.left = '50%';
+                    break
+    
+                    case position === "bottom-start":
+                    case position === "top-start":
+                        arrowRef.current.style.left = `${triggerRect.width / 2}px`;
+                    break
+    
+                    case position === "bottom-end":
+                    case position === "top-end":
+                        arrowRef.current.style.right = `${triggerRect.width / 2}px`;
+                    break
+                }
+            }
+        }
+        
         const triggerRect = triggerRef.current.getBoundingClientRect();
         const tooltipRect = tooltipRef.current.getBoundingClientRect();
-        const positions = {
+        const positionsTooltip = {
             currentX: 0,
             currentY: 0,
             reversePositioning() {
@@ -70,18 +131,20 @@ export const Tooltip = ({
 
                 if(placement.startsWith("top")) {
 
-                    if(window.scrollY > positions.currentY) {
+                    if(window.scrollY > this.currentY) {
                         this.setVerticalToHorizontal(getNewPosition("top", "bottom"))
                         this.setPositionToHorizontal(getNewPosition("top", "bottom"))
-                        // setPositionArrow("bottom")
+                        positionsArrow.changePositionVertical(getNewPosition("top", "bottom"))
+                        positionsArrow.changePositionHorizontal(getNewPosition("top", "bottom"))
                     }
                 }else if(placement.startsWith("bottom")) {
-                    const currentPositions = window.innerHeight - (positions.currentY - window.scrollY + tooltipRect.height)
+                    const currentPositions = window.innerHeight - (this.currentY - window.scrollY + tooltipRect.height)
 
                     if(currentPositions < 0) {
                         this.setVerticalToHorizontal(getNewPosition("bottom", "top"))
                         this.setPositionToHorizontal(getNewPosition("bottom", "top"))
-                        // setPositionArrow("top")
+                        positionsArrow.changePositionVertical(getNewPosition("bottom", "top"))
+                        positionsArrow.changePositionHorizontal(getNewPosition("bottom", "top"))
                     } 
                 }
             },
@@ -137,50 +200,18 @@ export const Tooltip = ({
                     break
                 }
             },
-            a(position: string){
-                const { height, width } = arrowRef.current.getBoundingClientRect()
-                switch(true){
-                    case position === "top":
-                        arrowRef.current.style.left = '50%';
-                        arrowRef.current.style.bottom = '-4px';
-                    break
-
-                    case position === "top-start":
-                        arrowRef.current.style.left =  `${triggerRect.width / 2}px`;
-                        arrowRef.current.style.bottom = '-4px';
-                    break
-
-                    case position === "top-end":
-                        arrowRef.current.style.right =  `${triggerRect.width / 2}px`;
-                        arrowRef.current.style.bottom = '-4px';
-                    break
-
-                    case position === "right":
-                        arrowRef.current.style.left =  `-4px`;
-                        arrowRef.current.style.top = '50%';
-                    break
-
-                    case position === "right-start":
-                        arrowRef.current.style.left =  `-4px`;
-                        arrowRef.current.style.top = `${triggerRect.height - height}px`;
-                    break
-
-                    case position === "right-end":
-                        arrowRef.current.style.left =  `-4px`;
-                        arrowRef.current.style.bottom = `${triggerRect.height - height}px`;
-                    break
-                }
-            },
+            
             changePosition(currentPosition: string) {
                 this.setVerticalToHorizontal(currentPosition)
                 this.setPositionToHorizontal(currentPosition)
                 this.reversePositioning()
-                this.a(currentPosition)
+                positionsArrow.changePositionVertical(currentPosition)
+                positionsArrow.changePositionHorizontal(currentPosition)
             }
         }
 
-        positions.changePosition(placement)
-        tooltipRef.current.style.transform = `translate(${positions.currentX}px, ${positions.currentY}px)`;
+        positionsTooltip.changePosition(placement)
+        tooltipRef.current.style.transform = `translate(${positionsTooltip.currentX}px, ${positionsTooltip.currentY}px)`;
     }, [tooltipVisible, placement, offsetY, offsetX]);
 
     const classes = cx(
