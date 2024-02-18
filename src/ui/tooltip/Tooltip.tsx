@@ -62,7 +62,7 @@ export const Tooltip = ({
         } 
         const triggerRefClientRect = triggerRef.current.getBoundingClientRect();
         const contentRefClientRect = tooltipRef.current.getBoundingClientRect();
-
+        // DEBT: В будущем, должным образом сократить код + точно удостовериться в том, что arrow позиционироется по центру тригера
         const positionsArrow = {
             changePositionVertical(position: string) {
                 if(!tooltipRef.current || !arrowRef.current) return
