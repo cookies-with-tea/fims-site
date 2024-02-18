@@ -200,7 +200,6 @@ export const Tooltip = ({
                     break
                 }
             },
-            
             changePosition(currentPosition: string) {
                 this.setVerticalToHorizontal(currentPosition)
                 this.setPositionToHorizontal(currentPosition)
@@ -221,6 +220,16 @@ export const Tooltip = ({
 
     return (
         <div className={cx("tooltip")}>
+            <div 
+                className="tooltip__trigger" 
+                ref={triggerRef}
+                onClick={() => trigger === "click" && onClick()}
+                onMouseEnter={() => trigger === "hover" && setTooltipVisible(true)} 
+                onMouseLeave={() => trigger === "hover" && setTooltipVisible(false)}
+            >
+                {children}
+            </div>
+
             {tooltipVisible && createPortal(
                 <div 
                     className={classes}
@@ -232,17 +241,6 @@ export const Tooltip = ({
                 </div>, 
                 teleportTarget)
             } 
-            
-            <div 
-                className="tooltip__trigger" 
-                ref={triggerRef}
-                onClick={() => trigger === "click" && onClick()}
-                onMouseEnter={() => trigger === "hover" && setTooltipVisible(true)} 
-                onMouseLeave={() => trigger === "hover" && setTooltipVisible(false)}
-            >
-                {children}
-
-            </div>
         </div>
     )
 }
