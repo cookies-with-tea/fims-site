@@ -31,7 +31,7 @@ export const Tooltip = ({
         showArrow = false
     }: TooltipProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
-    const [positionArrow, setPositionArrow] = useState(placement)
+    const arrowRef = useRef<HTMLDivElement>(null)
     const triggerRef = useRef<HTMLDivElement>(null)
     const tooltipRef = useRef<HTMLDivElement>(null);
 
@@ -73,7 +73,7 @@ export const Tooltip = ({
                     if(window.scrollY > positions.currentY) {
                         this.setVerticalToHorizontal(getNewPosition("top", "bottom"))
                         this.setPositionToHorizontal(getNewPosition("top", "bottom"))
-                        setPositionArrow("bottom")
+                        // setPositionArrow("bottom")
                     }
                 }else if(placement.startsWith("bottom")) {
                     const currentPositions = window.innerHeight - (positions.currentY - window.scrollY + tooltipRect.height)
@@ -81,7 +81,7 @@ export const Tooltip = ({
                     if(currentPositions < 0) {
                         this.setVerticalToHorizontal(getNewPosition("bottom", "top"))
                         this.setPositionToHorizontal(getNewPosition("bottom", "top"))
-                        setPositionArrow("top")
+                        // setPositionArrow("top")
                     } 
                 }
             },
@@ -135,36 +135,53 @@ export const Tooltip = ({
                     case position === "top-end":
                         this.currentX = triggerRect.right - tooltipRect.width
                     break
+                }
+            },
+            a(position: string){
+                const { height, width } = arrowRef.current.getBoundingClientRect()
+                switch(true){
+                    case position === "top":
+                        arrowRef.current.style.left = '50%';
+                        arrowRef.current.style.bottom = '-4px';
+                    break
 
-                    
+                    case position === "top-start":
+                        arrowRef.current.style.left =  `${triggerRect.width / 2}px`;
+                        arrowRef.current.style.bottom = '-4px';
+                    break
+
+                    case position === "top-end":
+                        arrowRef.current.style.right =  `${triggerRect.width / 2}px`;
+                        arrowRef.current.style.bottom = '-4px';
+                    break
+
+                    case position === "right":
+                        arrowRef.current.style.left =  `-4px`;
+                        arrowRef.current.style.top = '50%';
+                    break
+
+                    case position === "right-start":
+                        arrowRef.current.style.left =  `-4px`;
+                        arrowRef.current.style.top = `${triggerRect.height - height}px`;
+                    break
+
+                    case position === "right-end":
+                        arrowRef.current.style.left =  `-4px`;
+                        arrowRef.current.style.bottom = `${triggerRect.height - height}px`;
+                    break
                 }
             },
             changePosition(currentPosition: string) {
                 this.setVerticalToHorizontal(currentPosition)
                 this.setPositionToHorizontal(currentPosition)
                 this.reversePositioning()
+                this.a(currentPosition)
             }
         }
 
         positions.changePosition(placement)
         tooltipRef.current.style.transform = `translate(${positions.currentX}px, ${positions.currentY}px)`;
-    }, [tooltipVisible, positionArrow, placement, offsetY, offsetX]);
-
-    useEffect(() => {
-        if (!tooltipVisible || !triggerRef.current || !tooltipRef.current) {
-            return;
-        }
-        
-        const triggerWith = triggerRef.current.getBoundingClientRect()
-        const triggerHeight = triggerRef.current.getBoundingClientRect()
-        const a = {
-            triggerWith: triggerWith.width,
-            triggerHeight: triggerHeight.height, 
-            pozitionTop(){
-                this.triggerWith / 2
-            }
-        }
-    })
+    }, [tooltipVisible, placement, offsetY, offsetX]);
 
     const classes = cx(
         'tooltip__content',
@@ -178,7 +195,7 @@ export const Tooltip = ({
                     className={classes}
                     ref={tooltipRef}
                 >
-                    {showArrow && <div className={cx("tooltip__arrow", positionArrow)}></div>}
+                    {showArrow && <div className={cx("tooltip__arrow")} ref={arrowRef}></div>}
 
                     {content}
                 </div>, 
