@@ -59,10 +59,12 @@ export const Tooltip = ({
     useEffect(() => {
         if (!tooltipVisible || !triggerRef.current || !tooltipRef.current) {
             return;
-        }
+        } 
+        const triggerRefClientRect = triggerRef.current.getBoundingClientRect();
+        const contentRefClientRect = tooltipRef.current.getBoundingClientRect();
 
         const positionsArrow = {
-            changePositionVertical(position: string){
+            changePositionVertical(position: string) {
                 if(!tooltipRef.current || !arrowRef.current) return
     
                 const { height } = arrowRef.current.getBoundingClientRect()
@@ -82,16 +84,16 @@ export const Tooltip = ({
     
                     case position === "left-start":
                     case position === "right-start":
-                        arrowRef.current.style.top = `${(triggerRect.height / 2) - (height / 2)}px`;
+                        arrowRef.current.style.top = `${(triggerRefClientRect.height / 2) - (height / 2)}px`;
                     break
     
                     case position === "left-end":
                     case position === "right-end":
-                        arrowRef.current.style.bottom = `${(triggerRect.height / 2) - (height / 2)}px`;
+                        arrowRef.current.style.bottom = `${(triggerRefClientRect.height / 2) - (height / 2)}px`;
                     break
                 }
             },
-            changePositionHorizontal(position: string){
+            changePositionHorizontal(position: string) {
                 if(!tooltipRef.current || !arrowRef.current) return
     
                 switch(true) {
@@ -110,19 +112,17 @@ export const Tooltip = ({
     
                     case position === "bottom-start":
                     case position === "top-start":
-                        arrowRef.current.style.left = `${triggerRect.width / 2}px`;
+                        arrowRef.current.style.left = `${triggerRefClientRect.width / 2}px`;
                     break
     
                     case position === "bottom-end":
                     case position === "top-end":
-                        arrowRef.current.style.right = `${triggerRect.width / 2}px`;
+                        arrowRef.current.style.right = `${triggerRefClientRect.width / 2}px`;
                     break
                 }
             }
         }
         
-        const triggerRect = triggerRef.current.getBoundingClientRect();
-        const tooltipRect = tooltipRef.current.getBoundingClientRect();
         const positionsTooltip = {
             currentX: 0,
             currentY: 0,
@@ -138,7 +138,7 @@ export const Tooltip = ({
                         positionsArrow.changePositionHorizontal(getNewPosition("top", "bottom"))
                     }
                 }else if(placement.startsWith("bottom")) {
-                    const currentPositions = window.innerHeight - (this.currentY - window.scrollY + tooltipRect.height)
+                    const currentPositions = window.innerHeight - (this.currentY - window.scrollY + contentRefClientRect.height)
 
                     if(currentPositions < 0) {
                         this.setVerticalToHorizontal(getNewPosition("bottom", "top"))
@@ -151,52 +151,52 @@ export const Tooltip = ({
             setVerticalToHorizontal(position: string) {
                 switch(true){
                     case position.startsWith("top"):
-                        this.currentY = (triggerRect.top + window.scrollY) - tooltipRect.height - offsetY
+                        this.currentY = (triggerRefClientRect.top + window.scrollY) - contentRefClientRect.height - offsetY
                     break
 
                     case position.startsWith("bottom"):
-                        this.currentY = triggerRect.top + window.scrollY + triggerRect.height + offsetY
+                        this.currentY = triggerRefClientRect.top + window.scrollY + triggerRefClientRect.height + offsetY
                     break
 
                     case position === "left":
                     case position === "right":
-                        this.currentY = (triggerRect.bottom + window.scrollY - (triggerRect.height + tooltipRect.height) / 2)
+                        this.currentY = (triggerRefClientRect.bottom + window.scrollY - (triggerRefClientRect.height + contentRefClientRect.height) / 2)
                     break
                     
                     case position ==="left-start":
                     case position === "right-start":
-                        this.currentY = (triggerRect.top + window.scrollY)
+                        this.currentY = (triggerRefClientRect.top + window.scrollY)
                     break
 
                     case position ==="left-end":
                     case position === "right-end":
-                        this.currentY = (triggerRect.bottom + window.scrollY) - tooltipRect.height
+                        this.currentY = (triggerRefClientRect.bottom + window.scrollY) - contentRefClientRect.height
                     break
                 }
             },
             setPositionToHorizontal(position: string) {
                 switch(true){
                     case position.startsWith("left"):
-                        this.currentX = triggerRect.x - tooltipRect.width - window.scrollX - offsetX
+                        this.currentX = triggerRefClientRect.x - contentRefClientRect.width - window.scrollX - offsetX
                     break
 
                     case position.startsWith("right"):
-                        this.currentX = triggerRect.x + triggerRect.width + window.scrollX + offsetX
+                        this.currentX = triggerRefClientRect.x + triggerRefClientRect.width + window.scrollX + offsetX
                     break
 
                     case position === "bottom":
                     case position === "top":
-                        this.currentX = (triggerRect.x + window.scrollX + (triggerRect.width - tooltipRect.width) / 2)
+                        this.currentX = (triggerRefClientRect.x + window.scrollX + (triggerRefClientRect.width - contentRefClientRect.width) / 2)
                     break
 
                     case position === "bottom-start":
                     case position === "top-start":
-                        this.currentX = triggerRect.left
+                        this.currentX = triggerRefClientRect.left
                     break
 
                     case position === "bottom-end":
                     case position === "top-end":
-                        this.currentX = triggerRect.right - tooltipRect.width
+                        this.currentX = triggerRefClientRect.right - contentRefClientRect.width
                     break
                 }
             },
