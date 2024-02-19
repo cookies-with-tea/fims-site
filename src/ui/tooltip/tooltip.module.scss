@@ -7,13 +7,6 @@
         z-index: 1000;
         top: 0;
         left: 0;
-        padding: 10px;
-        border-radius: 3px;
-        background: white;
-        width: 100px;
-        height: 50px;
-        font-size: 20px;
-        box-shadow: 1px 1px 10px #777;
     }
 
     &__arrow {
@@ -21,28 +14,7 @@
         z-index: 1000;
         width: 8px;
         height: 8px;
-        transform: translateX(-50%) rotate(45deg);
+        transform: rotate(45deg);
         background: inherit;
-        
-        &.top {
-            bottom: -4px;
-            left: 50%;
-        }
-
-        &.bottom {
-            top: -4px;
-            left: 50%;
-        }
-
-        &.left {
-            top: 50%;
-            right: -4px;
-            transform: translateX(0%) rotate(45deg);
-        }
-
-        &.right {
-            top: 50%;
-            left: 0px;
-        }
     }
 }
