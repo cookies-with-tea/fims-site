@@ -1,0 +1,21 @@
+.anime-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 223px;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+.anime-search__text {
+    color: $color--black;
+    // $color--white
+    font-size: 18px;
+    line-height: 120%;
+}
+
+.anime-search__icon {
+    display: flex;
+    align-self: end;
+    font-size: 16px;
+}

@@ -9,7 +9,7 @@ const cx = cnBind.bind(style)
 export const Header = () => {
     return (
         <header className={cx("header")}>
-            <div className="container">
+            <div className={cx("container", "header__container")}>
                 <Navbar/>
                 <AnimeSearch/>
             </div>
