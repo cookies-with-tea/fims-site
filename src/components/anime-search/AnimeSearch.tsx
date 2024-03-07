@@ -1,4 +1,4 @@
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useState, useCallback} from "react";
 import { Icon } from "src/ui/icon/Icon";
 import { useModal } from "src/hooks/modal/Modal.tsx";
 import { Dialog } from "src/ui/dialog/dialog.tsx";
@@ -19,27 +19,27 @@ const option = {
 
 export const AnimeSearch = () => {
   const [visible, changeVisible] = useModal();
-  // const [search, setSearch] = useState("")
-  const c = useDebounce(() => console.log(1),2000)
-  const c
-  console.log(c)
+  const [search, setSearch] = useState("")
+  // const debounce = useDebounce(() => getDataFilms(),2000)
+  const debounce = useCallback(useDebounce(() => getDataFilms(), 2000), [search])
   const onClearValue = (): void => {
-    // setSearch("" )
+   setSearch("" )
   }
+  const getDataFilms = async () => {
+    try {
+      // const data = await (await (axios.get(url, option))).data.items
+      console.log(search)
+      // console.log(data.filter(item => item.nameRu?.toLowerCase().includes(search.toLowerCase())))
+    } catch (error) {
+      console.log(error, 1221221212121)
+    }
+  }
+
   // DEBT: в дальнешем пересмотреть надобность функции onClearValue
   const onValueChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    c()
-    // setSearch(event.target.value)
+    setSearch(event.target.value)
+    debounce()
   }
-  // useEffect(()=> {
-  //   const  a = async () => {
-  //      const  {data} = await (axios.get(url, option))
-  //      console.log(data)
-  //   }
-  //
-  //   if(search) {
-  //
-  //   }
 
   return (
       <>

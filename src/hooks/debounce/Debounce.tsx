@@ -6,9 +6,9 @@ export const useDebounce = <T extends unknown[]>(
 
   return (...args) => {
     clearTimeout(timer)
+
     timer = setTimeout(() => {
       callback.apply(this, args)
     }, timeout)
-    console.log(timer)
   }
 }
