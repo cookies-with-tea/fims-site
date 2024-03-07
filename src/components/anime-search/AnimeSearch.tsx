@@ -1,4 +1,4 @@
-import {ChangeEvent, useState, useCallback, useRef, useEffect} from "react";
+import {ChangeEvent, useState, useCallback, useRef} from "react";
 import { Icon } from "src/ui/icon/Icon";
 import { useModal } from "src/hooks/modal/Modal.tsx";
 import { Dialog } from "src/ui/dialog/dialog.tsx";
@@ -9,7 +9,7 @@ import style from "./animeSeacrh.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
-const url: string = 'https://kinopoiskapiunofficial.tech/api/v2.2/films'
+const url = (keyword: string) => `https://kinopoiskapiunofficial.tech/api/v2.2/films?keyword=${keyword}`
 const option = {
  headers: {
    'X-API-KEY': '4dc0fb6b-92e7-4e5d-b3c6-960b4ce6443d',
@@ -24,28 +24,19 @@ export const AnimeSearch = () => {
   const ref = useRef(null)
   ref.current = search
 
-  const debounce = useCallback(useDebounce(() => filmsFiltering() , 2000), [])
+  const debounce = useCallback(useDebounce(() => getDataFilms() , 2000), [])
   const onClearValue = (): void => {
    setSearch("" )
   }
 
-  useEffect(() => {
-    const getDataFilms = async () => {
-      try {
-        const data = await (await (axios.get(url, option))).data.items
-        setDataFilms(data)
-      } catch (error) {
-        console.log(`${error} --- error`)
-      }
+  const getDataFilms = async () => {
+    try {
+      const data = await (await (axios.get(url(ref.current), option))).data.items.slice(0, 9)
+      setDataFilms(data)
+    } catch (error) {
+      console.log(`${error} --- error`)
     }
-    getDataFilms()
-  }, [])
-  // if(item.nameRu) {
-  //   return item.nameRu.toLowerCase().includes(search.toLowerCase())
-  // }
-  const filmsFiltering = dataFilms.filter(film => {
-    return film?.nameRu && film.nameRu.toLowerCase().includes(search.toLowerCase())
-  })
+  }
 
   // DEBT: в дальнешем пересмотреть надобность функции onClearValue
   const onValueChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -68,6 +59,12 @@ export const AnimeSearch = () => {
             onChange={onValueChange}
             onClearValue={onClearValue}
           />
+          <ul>
+            {dataFilms.map(item => (
+              <li key={item.kinopoiskId}> {item.nameRu} </li>
+            ))}
+          </ul>
+
         </Dialog>
       </>
   );
