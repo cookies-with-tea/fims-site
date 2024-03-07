@@ -1,4 +1,4 @@
-import {ChangeEvent, useState, useCallback} from "react";
+import {ChangeEvent, useState, useCallback, useRef, useEffect} from "react";
 import { Icon } from "src/ui/icon/Icon";
 import { useModal } from "src/hooks/modal/Modal.tsx";
 import { Dialog } from "src/ui/dialog/dialog.tsx";
@@ -19,21 +19,33 @@ const option = {
 
 export const AnimeSearch = () => {
   const [visible, changeVisible] = useModal();
+  const [dataFilms, setDataFilms] = useState([])
   const [search, setSearch] = useState("")
-  // const debounce = useDebounce(() => getDataFilms(),2000)
-  const debounce = useCallback(useDebounce(() => getDataFilms(), 2000), [search])
+  const ref = useRef(null)
+  ref.current = search
+
+  const debounce = useCallback(useDebounce(() => filmsFiltering() , 2000), [])
   const onClearValue = (): void => {
    setSearch("" )
   }
-  const getDataFilms = async () => {
-    try {
-      // const data = await (await (axios.get(url, option))).data.items
-      console.log(search)
-      // console.log(data.filter(item => item.nameRu?.toLowerCase().includes(search.toLowerCase())))
-    } catch (error) {
-      console.log(error, 1221221212121)
+
+  useEffect(() => {
+    const getDataFilms = async () => {
+      try {
+        const data = await (await (axios.get(url, option))).data.items
+        setDataFilms(data)
+      } catch (error) {
+        console.log(`${error} --- error`)
+      }
     }
-  }
+    getDataFilms()
+  }, [])
+  // if(item.nameRu) {
+  //   return item.nameRu.toLowerCase().includes(search.toLowerCase())
+  // }
+  const filmsFiltering = dataFilms.filter(film => {
+    return film?.nameRu && film.nameRu.toLowerCase().includes(search.toLowerCase())
+  })
 
   // DEBT: в дальнешем пересмотреть надобность функции onClearValue
   const onValueChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
