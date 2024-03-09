@@ -31,8 +31,9 @@ export const AnimeSearch = () => {
 
   const getDataFilms = async () => {
     try {
-      const data = await (await (axios.get(url(ref.current), option))).data.items.slice(0, 9)
+      const data = await (await (axios.get(url(ref.current), option))).data.items.slice(0, 9).filter(item => item.nameRu != null)
       setDataFilms(data)
+      console.log(data)
     } catch (error) {
       console.log(`${error} --- error`)
     }
@@ -50,18 +51,32 @@ export const AnimeSearch = () => {
           <div className={cx("anime-search__text")}>Поиск</div>
           <Icon name="search" className={cx("anime-search__icon")}/>
         </button>
-        <Dialog visible={visible} onClose={changeVisible}>
+        <Dialog
+          visible={visible}
+          onClose={changeVisible}
+          className={cx("dialog__content")}
+        >
           <Input
-            name="seacrh"
+            name="search"
             size={"sm"}
             value={search}
             placeholder="Поиск"
             onChange={onValueChange}
             onClearValue={onClearValue}
           />
-          <ul>
+          <ul className={cx("anime-search__menu")}>
             {dataFilms.map(item => (
-              <li key={item.kinopoiskId}> {item.nameRu} </li>
+              <li key={item.kinopoiskId} className={cx("anime-search__item")}>
+                <Icon name="video" className={cx("anime-search__icon-video")}/>
+                <div className={cx("anime-search__content")}>
+                  <div className={cx("anime-search__name")}>
+                    {item.nameRu}
+                  </div>
+                  <div className={cx("anime-search__year")}>
+                    {item.year}
+                  </div>
+                </div>
+              </li>
             ))}
           </ul>
 

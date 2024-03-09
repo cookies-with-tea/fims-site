@@ -5,17 +5,52 @@
     width: 223px;
     border-bottom: 1px solid black;
     cursor: pointer;
-}
 
-.anime-search__text {
+  &__text {
     color: $color--black;
     // $color--white
     font-size: 18px;
     line-height: 120%;
-}
+  }
 
-.anime-search__icon {
+  &__icon {
     display: flex;
     align-self: end;
     font-size: 16px;
+  }
+
+  &__menu {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 24px 0;
+  }
+
+  &__item {
+    display: flex;
+    //align-items: center;
+    font-size: $font--size-large;
+    line-height: 120%;
+    letter-spacing: 0.9px;
+    padding-top: 8px;
+    flex-basis: 50%;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    margin-left: 10px;
+  }
+
+  &__year {
+    font-size: 13px;
+    margin-top: 5px;
+  }
+
+  &__icon-video {
+    fill: #2D8984;
+    font-size: 22px;
+  }
+}
+
+.dialog__content {
+  width: 800px;
 }
