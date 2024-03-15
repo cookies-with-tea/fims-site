@@ -6,6 +6,10 @@
   border-bottom: 1px solid black;
   cursor: pointer;
 
+  &__title {
+    font-size: $font--size-xl;
+  }
+
   &__text {
     color: $color--black;
     font-size: 18px;

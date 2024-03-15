@@ -2,9 +2,9 @@ import {ChangeEvent, useState, useCallback, useRef} from "react";
 import { Icon } from "src/ui/icon/Icon";
 import { useModal } from "src/hooks/modal/Modal.tsx";
 import { Dialog } from "src/ui/dialog/dialog.tsx";
-import {Input} from "src/ui/input/input.tsx";
-import {useDebounce} from "src/hooks/debounce/Debounce.tsx";
-import {markText} from "src/utils/markText.tsx";
+import { Input } from "src/ui/input/input.tsx";
+import { useDebounce } from "src/hooks/debounce/Debounce.tsx";
+import { markText } from "src/utils/markText.tsx";
 import axios from "axios";
 import style from "./animeSeacrh.module.scss"
 import cnBind from 'classnames/bind'
@@ -33,12 +33,10 @@ export const AnimeSearch = () => {
   const onClearValue = (): void => {
     setSearch("" )
   }
-  console.log(searchRef.current)
   const getDataFilms = async () => {
     try {
       const data = await (await (axios.get(url(searchRef.current), option))).data.items.slice(0, 9).filter(({ nameRu }: DataFilms) => nameRu != null)
       setDataFilms(data)
-      console.log(data)
     } catch (error) {
       console.log(`${error} --- error`)
     }
@@ -59,11 +57,13 @@ export const AnimeSearch = () => {
           visible={visible}
           onClose={changeVisible}
           className={cx("dialog__content")}
-          title="Поиск"
           closeEscape
           overlayClosable
           verticalPosition="flex-start"
         >
+          <div className={cx("anime-search__title")}>
+            Поиск
+          </div>
           <Input
             name="search"
             size={"sm"}
