@@ -1,14 +1,13 @@
 .anime-search {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 223px;
-    border-bottom: 1px solid black;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 223px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
 
   &__text {
     color: $color--black;
-    // $color--white
     font-size: 18px;
     line-height: 120%;
   }
@@ -27,7 +26,6 @@
 
   &__item {
     display: flex;
-    //align-items: center;
     font-size: $font--size-large;
     line-height: 120%;
     letter-spacing: 0.9px;

@@ -2,7 +2,6 @@
     position: fixed;
     display: flex;
     justify-content: center;
-    align-items: center;
     top:0;
     left: 0;
     width: 100%;
@@ -20,10 +19,6 @@
     }
 
     &__content {
-        //box-shadow: rgba(125, 90, 141, 0.56) 0px 22px 70px 4px;
-        //background: $background--black;
-        //border-radius: 15px;
-        //padding: 45px;
         position: relative;
     }
 
@@ -31,7 +26,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 55px;
     }
 
     &__title {

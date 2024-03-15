@@ -14,12 +14,13 @@ interface DialogProps {
     closeEscape?: boolean
     lockScroll?: boolean
     overlayClosable?: boolean
+    verticalPosition: "flex-start" | "center" | "flex-end"
     zIndex?: number
     className?: string
     visible?: boolean
 }
 
-export const Dialog = ({ 
+export const Dialog = ({
         children,
         title,
         closeEscape,
@@ -29,13 +30,15 @@ export const Dialog = ({
         overlayClosable,
         zIndex = 1000,
         className,
-        visible
+        visible,
+        verticalPosition = "center"
+
     }: DialogProps) => {
 
-    const [active, setActive] = useState(false); 
+    const [active, setActive] = useState(false);
     const [aniClassName, setAniClassName] = useState('')
     const refDialog = useRef<HTMLDivElement>(null)
-    
+
     const handleEscape = (event: KeyboardEvent) => {
         if (event.code === 'Escape') {
             onClose?.()
@@ -56,7 +59,7 @@ export const Dialog = ({
 
     useEffect(() => {
         if (visible && closeEscape) document.addEventListener('keydown', handleEscape, {once: true})
-        
+
     }, [visible, closeEscape])
 
     useEffect(() => {
@@ -93,10 +96,10 @@ export const Dialog = ({
 
     return (
         createPortal(
-            <div 
+            <div
                 className={cx("modal", aniClassName)}
-                onTransitionEnd={onTransitionEnd} 
-                style={{zIndex: zIndex}}
+                onTransitionEnd={onTransitionEnd}
+                style={{zIndex: zIndex, alignItems: verticalPosition}}
                 onClick={(event: MouseEvent<HTMLDivElement>) => {
                     if(!overlayClosable) return
 
@@ -110,12 +113,12 @@ export const Dialog = ({
 
                             {closeIcon && (
                                     <button type='button' onClick={() => onClose?.()}>
-                                        {closeIcon} 
+                                        {closeIcon}
                                     </button>
                                 )
                             }
                         </header>
-                        
+
                         {children}
                     </div>
                 </div>

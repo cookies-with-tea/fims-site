@@ -33,7 +33,7 @@ export const AnimeSearch = () => {
   const onClearValue = (): void => {
     setSearch("" )
   }
-
+  console.log(searchRef.current)
   const getDataFilms = async () => {
     try {
       const data = await (await (axios.get(url(searchRef.current), option))).data.items.slice(0, 9).filter(({ nameRu }: DataFilms) => nameRu != null)
@@ -60,6 +60,9 @@ export const AnimeSearch = () => {
           onClose={changeVisible}
           className={cx("dialog__content")}
           title="Поиск"
+          closeEscape
+          overlayClosable
+          verticalPosition="flex-start"
         >
           <Input
             name="search"
