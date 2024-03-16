@@ -31,16 +31,17 @@ export const AnimeSearch = () => {
 
   searchRef.current = search
 
-  const debounce = useCallback(useDebounce(() => getDataFilms() , 2000), [])
+  const debounce = useCallback(useDebounce(() => getDataFilms() , 1000), [])
 
   const onClearValue = (): void => {
     setSearch("" )
   }
-
   const getDataFilms = async () => {
     try {
-      const data = await (await (axios.get(url(searchRef.current), option))).data.items.slice(0, 9).filter(({ nameRu }: DataFilms) => nameRu != null)
-      setDataFilms(data)
+      if(searchRef.current.length >= 3){
+        const data = await (await (axios.get(url(searchRef.current), option))).data.items.slice(0, 9).filter(({ nameRu }: DataFilms) => nameRu != null)
+        setDataFilms(data)
+      }
     } catch (error) {
       console.log(`${error} --- error`)
     }
