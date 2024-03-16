@@ -11,6 +11,7 @@ export const Header = () => {
         <header className={cx("header")}>
             <div className={cx("container", "header__container")}>
                 <Navbar/>
+
                 <AnimeSearch/>
             </div>
         </header>

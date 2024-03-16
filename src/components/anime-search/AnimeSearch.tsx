@@ -3,8 +3,8 @@ import { Icon } from "src/ui/icon/Icon";
 import { useModal } from "src/hooks/modal/Modal.tsx";
 import { Dialog } from "src/ui/dialog/dialog.tsx";
 import { Input } from "src/ui/input/input.tsx";
-import { useDebounce } from "src/hooks/debounce/Debounce.tsx";
-import { markText } from "src/utils/markText.tsx";
+import { useDebounce } from "src/hooks/debounce/use-debounce.ts";
+import { markText } from "src/utils/mark-text.ts";
 import axios from "axios";
 import style from "./animeSeacrh.module.scss"
 import cnBind from 'classnames/bind'
@@ -23,16 +23,20 @@ interface DataFilms {
   year: number
 }
 export const AnimeSearch = () => {
-  const [visible, changeVisible] = useModal();
+  const [isVisible, handleDialogVisibleToggle] = useModal();
   const [dataFilms, setDataFilms] = useState([])
   const [search, setSearch] = useState("")
+
   const searchRef = useRef<string>(search)
+
   searchRef.current = search
 
   const debounce = useCallback(useDebounce(() => getDataFilms() , 2000), [])
+
   const onClearValue = (): void => {
     setSearch("" )
   }
+
   const getDataFilms = async () => {
     try {
       const data = await (await (axios.get(url(searchRef.current), option))).data.items.slice(0, 9).filter(({ nameRu }: DataFilms) => nameRu != null)
@@ -48,47 +52,49 @@ export const AnimeSearch = () => {
   }
 
   return (
-      <>
-        <button className={cx("anime-search")} onClick={() => changeVisible()}>
-          <div className={cx("anime-search__text")}>Поиск</div>
-          <Icon name="search" className={cx("anime-search__icon")}/>
-        </button>
-        <Dialog
-          visible={visible}
-          onClose={changeVisible}
-          className={cx("dialog__content")}
-          closeEscape
-          overlayClosable
-          verticalPosition="flex-start"
-        >
-          <div className={cx("anime-search__title")}>
-            Поиск
-          </div>
-          <Input
-            name="search"
-            size={"sm"}
-            value={search}
-            placeholder="Поиск"
-            onChange={onValueChange}
-            onClearValue={onClearValue}
-          />
-          <ul className={cx("anime-search__menu")}>
-            {dataFilms.map(( {kinopoiskId, nameRu, year}: DataFilms) => (
-              <li key={kinopoiskId} className={cx("anime-search__item")}>
-                <Icon name="video" className={cx("anime-search__icon-video")}/>
-                <div className={cx("anime-search__content")}>
-                  <div
-                    className={cx("anime-search__name")}
-                    dangerouslySetInnerHTML={{__html: markText({repString: searchRef.current, fullString: nameRu})}}>
-                  </div>
-                  <div className={cx("anime-search__year")}>
-                    {year}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </Dialog>
-      </>
+    <div className={cx("anime-search")}>
+       <button className={cx("anime-search__trigger")} onClick={() => handleDialogVisibleToggle()}>
+         <div className={cx("anime-search__text")}>Поиск</div>
+         <Icon name="search" className={cx("anime-search__icon")}/>
+       </button>
+
+       <Dialog
+         visible={isVisible}
+         onClose={handleDialogVisibleToggle}
+         className={cx("dialog__content")}
+         closeEscape
+         overlayClosable
+         verticalPosition="flex-start"
+       >
+         <div className={cx("anime-search__title")}>
+           Поиск
+         </div>
+         <Input
+           name="search"
+           size={"sm"}
+           value={search}
+           placeholder="Поиск"
+           onChange={onValueChange}
+           onClearValue={onClearValue}
+         />
+         <ul className={cx("anime-search__menu")}>
+           {dataFilms.map(( {kinopoiskId, nameRu, year}: DataFilms) => (
+             <li key={kinopoiskId} className={cx("anime-search__item")}>
+               <Icon name="video" className={cx("anime-search__icon-video")}/>
+
+               <div className={cx("anime-search__content")}>
+                 <div
+                   className={cx("anime-search__name")}
+                   dangerouslySetInnerHTML={{__html: markText({repString: searchRef.current, fullString: nameRu})}}>
+                 </div>
+                 <div className={cx("anime-search__year")}>
+                   {year}
+                 </div>
+               </div>
+             </li>
+           ))}
+         </ul>
+       </Dialog>
+    </div>
   );
 };

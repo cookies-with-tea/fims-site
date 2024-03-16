@@ -14,7 +14,7 @@ interface DialogProps {
     closeEscape?: boolean
     lockScroll?: boolean
     overlayClosable?: boolean
-    verticalPosition: "flex-start" | "center" | "flex-end"
+    verticalPosition?: "flex-start" | "center" | "flex-end"
     zIndex?: number
     className?: string
     visible?: boolean
@@ -99,7 +99,7 @@ export const Dialog = ({
             <div
                 className={cx("modal", aniClassName)}
                 onTransitionEnd={onTransitionEnd}
-                style={{zIndex: zIndex, alignItems: verticalPosition}}
+                style={{zIndex, alignItems: verticalPosition}}
                 onClick={(event: MouseEvent<HTMLDivElement>) => {
                     if(!overlayClosable) return
 
