@@ -8,19 +8,19 @@ interface TooltipProps {
     className?: string
     children?: ReactNode
     content?: ReactNode
-    offsetX?: number    
-    offsetY?: number    
-    placement?: "top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end" | 
+    offsetX?: number
+    offsetY?: number
+    placement?: "top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end" |
                 "right" | "right-start" | "right-end" | "left" | "left-start"| "left-end"
-    trigger?: "hover" | "click" 
+    trigger?: "hover" | "click"
     closeOutside?: boolean
     teleportTarget?: HTMLElement
     showArrow?: boolean
 }
 
-export const Tooltip = ({ 
+export const Tooltip = ({
         children,
-        content, 
+        content,
         teleportTarget = document.body,
         placement = "bottom",
         className = "",
@@ -43,50 +43,50 @@ export const Tooltip = ({
         const handlerOutsideClick = (event: MouseEvent) => {
             const getClickWindow = (event.target as HTMLElement)
 
-            if (!triggerRef.current?.contains(getClickWindow) && 
+            if (!triggerRef.current?.contains(getClickWindow) &&
                 !tooltipRef.current?.contains(getClickWindow)) {
                 setTooltipVisible(!tooltipVisible);
             }
         }
-        
+
         if(tooltipVisible && closeOutside) {
             window.addEventListener('click', handlerOutsideClick)
 
-            return () => window.addEventListener('click', handlerOutsideClick)
-        } 
+            return () => window.removeEventListener('click', handlerOutsideClick)
+        }
     }, [tooltipVisible, closeOutside]);
-    // DEBT: Добавить анимацию при появление/скрытие 
+    // DEBT: Добавить анимацию при появление/скрытие
     useEffect(() => {
         if (!tooltipVisible || !triggerRef.current || !tooltipRef.current) {
             return;
-        } 
+        }
         const triggerRefClientRect = triggerRef.current.getBoundingClientRect();
         const contentRefClientRect = tooltipRef.current.getBoundingClientRect();
         // DEBT: В будущем, должным образом сократить код + точно удостовериться в том, что arrow позиционироется по центру тригера
         const positionsArrow = {
             changePositionVertical(position: string) {
                 if(!tooltipRef.current || !arrowRef.current) return
-    
+
                 const { height } = arrowRef.current.getBoundingClientRect()
                 switch(true) {
                     case position.startsWith("top"):
                         arrowRef.current.style.bottom = '-4px';
                     break
-    
+
                     case position.startsWith("bottom"):
                         arrowRef.current.style.top = '-4px';
                     break
-    
+
                     case position === "left":
                     case position === "right":
                         arrowRef.current.style.top = `50%`;
                     break
-    
+
                     case position === "left-start":
                     case position === "right-start":
                         arrowRef.current.style.top = `${(triggerRefClientRect.height / 2) - (height / 2)}px`;
                     break
-    
+
                     case position === "left-end":
                     case position === "right-end":
                         arrowRef.current.style.bottom = `${(triggerRefClientRect.height / 2) - (height / 2)}px`;
@@ -95,26 +95,26 @@ export const Tooltip = ({
             },
             changePositionHorizontal(position: string) {
                 if(!tooltipRef.current || !arrowRef.current) return
-    
+
                 switch(true) {
                     case position.startsWith("right"):
                         arrowRef.current.style.left = `-4px`;
                     break
-    
+
                     case position.startsWith("left"):
                         arrowRef.current.style.right = `-4px`;
                     break
-    
+
                     case position === "bottom":
                     case position === "top":
                         arrowRef.current.style.left = '50%';
                     break
-    
+
                     case position === "bottom-start":
                     case position === "top-start":
                         arrowRef.current.style.left = `${triggerRefClientRect.width / 2}px`;
                     break
-    
+
                     case position === "bottom-end":
                     case position === "top-end":
                         arrowRef.current.style.right = `${triggerRefClientRect.width / 2}px`;
@@ -122,7 +122,7 @@ export const Tooltip = ({
                 }
             }
         }
-        
+
         const positionsTooltip = {
             currentX: 0,
             currentY: 0,
@@ -145,7 +145,7 @@ export const Tooltip = ({
                         this.setPositionToHorizontal(getNewPosition("bottom", "top"))
                         positionsArrow.changePositionVertical(getNewPosition("bottom", "top"))
                         positionsArrow.changePositionHorizontal(getNewPosition("bottom", "top"))
-                    } 
+                    }
                 }
             },
             setVerticalToHorizontal(position: string) {
@@ -162,7 +162,7 @@ export const Tooltip = ({
                     case position === "right":
                         this.currentY = (triggerRefClientRect.bottom + window.scrollY - (triggerRefClientRect.height + contentRefClientRect.height) / 2)
                     break
-                    
+
                     case position ==="left-start":
                     case position === "right-start":
                         this.currentY = (triggerRefClientRect.top + window.scrollY)
@@ -220,27 +220,27 @@ export const Tooltip = ({
 
     return (
         <div className={cx("tooltip")}>
-            <div 
-                className="tooltip__trigger" 
+            <div
+                className="tooltip__trigger"
                 ref={triggerRef}
                 onClick={() => trigger === "click" && onClick()}
-                onMouseEnter={() => trigger === "hover" && setTooltipVisible(true)} 
+                onMouseEnter={() => trigger === "hover" && setTooltipVisible(true)}
                 onMouseLeave={() => trigger === "hover" && setTooltipVisible(false)}
             >
                 {children}
             </div>
 
             {tooltipVisible && createPortal(
-                <div 
+                <div
                     className={classes}
                     ref={tooltipRef}
                 >
                     {showArrow && <div className={cx("tooltip__arrow")} ref={arrowRef}></div>}
 
                     {content}
-                </div>, 
+                </div>,
                 teleportTarget)
-            } 
+            }
         </div>
     )
 }

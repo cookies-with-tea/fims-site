@@ -1,8 +1,8 @@
 import {ChangeEvent, useState, useCallback, useRef} from "react";
 import { Icon } from "src/ui/icon/Icon";
-import { useModal } from "src/hooks/modal/Modal.tsx";
-import { Dialog } from "src/ui/dialog/dialog.tsx";
-import { Input } from "src/ui/input/input.tsx";
+import { useModal } from "src/hooks/modal/Modal";
+import { Dialog } from "src/ui/dialog/Dialog";
+import { Input } from "src/ui/input/Input";
 import { useDebounce } from "src/hooks/debounce/use-debounce.ts";
 import { markText } from "src/utils/mark-text.ts";
 import axios from "axios";
@@ -10,6 +10,7 @@ import style from "./animeSeacrh.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
+// TODO: При интеграции удалить => url
 const url = (keyword: string) => `https://kinopoiskapiunofficial.tech/api/v2.2/films?keyword=${keyword}`
 const option = {
   headers: {
@@ -17,11 +18,13 @@ const option = {
     'Content-Type': 'application/json',
   },
 }
+
 interface DataFilms {
   kinopoiskId: number
   nameRu: string
   year: number
 }
+
 export const AnimeSearch = () => {
   const [isVisible, handleDialogVisibleToggle] = useModal();
   const [dataFilms, setDataFilms] = useState([])
@@ -32,7 +35,7 @@ export const AnimeSearch = () => {
   searchRef.current = search
 
   const debounce = useCallback(useDebounce(() => getDataFilms() , 1000), [])
-
+  // DEBT: в дальнешем пересмотреть надобность функции onClearValue
   const onClearValue = (): void => {
     setSearch("" )
   }
@@ -46,10 +49,16 @@ export const AnimeSearch = () => {
       console.log(`${error} --- error`)
     }
   }
-  // DEBT: в дальнешем пересмотреть надобность функции onClearValue
+
   const onValueChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSearch(event.target.value)
     debounce()
+  }
+
+  const onClose = () => {
+    handleDialogVisibleToggle()
+    setDataFilms([])
+    setSearch("")
   }
 
   return (
@@ -61,7 +70,7 @@ export const AnimeSearch = () => {
 
        <Dialog
          visible={isVisible}
-         onClose={handleDialogVisibleToggle}
+         onClose={onClose}
          className={cx("dialog__content")}
          closeEscape
          overlayClosable

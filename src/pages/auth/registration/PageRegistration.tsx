@@ -1,5 +1,5 @@
 import { Button } from 'src/ui/button/Button'
-import { Input } from 'src/ui/input/input'
+import { Input } from 'src/ui/input/Input.tsx'
 import { Link } from 'react-router-dom'
 import cnBind from 'classnames/bind'
 import style from "src/pages/auth/authForm.module.scss"
@@ -10,7 +10,7 @@ const cx = cnBind.bind(style)
 
 export const PageRegistration = () => {
     const [formData, setFormData] = useState({
-        email:"", 
+        email:"",
         password:"",
         userName:"",
     })
@@ -30,32 +30,32 @@ export const PageRegistration = () => {
                 <div className={cx("form__content")}>
                     <div className={cx("form__item")}>
                         <label className={cx("form__label")}>Почта</label>
-                        <Input 
+                        <Input
                             placeholder='Email'
                             name='email'
                             value={formData.email}
                             onChange={onValueChange}
                             type='email'
                             onClearValue={onClearValue}
-                            
+
                         />
                     </div>
 
                     <div className={cx("form__item")}>
                         <label className={cx("form__label")}>Имя</label>
-                        <Input 
+                        <Input
                             placeholder='Username'
                             name='userName'
                             value={formData.userName}
                             onChange={onValueChange}
                             onClearValue={onClearValue}
-                            
+
                         />
                     </div>
 
                     <div className={cx("form__item")}>
                         <label className={cx("form__label")}>Пароль</label>
-                        <Input 
+                        <Input
                             placeholder='Password'
                             name='password'
                             value={formData.password}
@@ -65,10 +65,10 @@ export const PageRegistration = () => {
                         />
                     </div>
                 </div>
-                
+
                 <div className={cx("form__btn")}>
                     <Button
-                        type='submit' 
+                        type='submit'
                         radius='max'
                     >
                         Создать аккаунт
@@ -76,7 +76,7 @@ export const PageRegistration = () => {
                 </div>
 
                 <div className={cx("form__possibilities")}>
-                    <span>Есть аккаунт?</span> 
+                    <span>Есть аккаунт?</span>
 
                     <div className={cx("divider")}></div>
 

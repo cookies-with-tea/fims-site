@@ -32,7 +32,6 @@ export const Dialog = ({
         className,
         visible,
         verticalPosition = "center"
-
     }: DialogProps) => {
 
     const [active, setActive] = useState(false);
@@ -44,6 +43,7 @@ export const Dialog = ({
             onClose?.()
         }
     }
+
     const handleBackgroundClose = ({ target }: MouseEvent) => {
         if(refDialog.current && target && !refDialog.current.contains(target as HTMLDivElement)){
             onClose?.()
@@ -58,8 +58,12 @@ export const Dialog = ({
     };
 
     useEffect(() => {
-        if (visible && closeEscape) document.addEventListener('keydown', handleEscape, {once: true})
+        if (visible && closeEscape) {
 
+          document.addEventListener('keydown', handleEscape)
+
+          return () =>  document.removeEventListener('keydown', handleEscape)
+        }
     }, [visible, closeEscape])
 
     useEffect(() => {
