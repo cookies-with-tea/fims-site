@@ -39,6 +39,7 @@ export const AnimeSearch = () => {
   const onClearValue = (): void => {
     setSearch("" )
   }
+
   const getDataFilms = async () => {
     try {
       if(searchRef.current.length >= 3){

@@ -35,7 +35,7 @@ export const Dialog = ({
     }: DialogProps) => {
 
     const [active, setActive] = useState(false);
-    const [aniClassName, setAniClassName] = useState('')
+    const [animation, setAnimation] = useState('')
     const refDialog = useRef<HTMLDivElement>(null)
 
     const handleEscape = (event: KeyboardEvent) => {
@@ -51,7 +51,7 @@ export const Dialog = ({
     }
 
     const onTransitionEnd = () => {
-        setAniClassName(visible ? 'enter-done' : 'exit-done');
+        setAnimation(visible ? 'enter-done' : 'exit-done');
         if (!visible) {
             setActive(false);
         }
@@ -78,17 +78,17 @@ export const Dialog = ({
         if (visible) {
             setActive(true);
 
-            setAniClassName("enter");
+            setAnimation("enter");
 
             setTimeout(() => {
-                setAniClassName("enter-active");
+                setAnimation("enter-active");
             });
 
         } else {
-            setAniClassName("exit");
+            setAnimation("exit");
 
             setTimeout(() => {
-                setAniClassName("exit-active");
+                setAnimation("exit-active");
             });
         }
 
@@ -101,7 +101,7 @@ export const Dialog = ({
     return (
         createPortal(
             <div
-                className={cx("modal", aniClassName)}
+                className={cx("modal", animation)}
                 onTransitionEnd={onTransitionEnd}
                 style={{zIndex, alignItems: verticalPosition}}
                 onClick={(event: MouseEvent<HTMLDivElement>) => {
