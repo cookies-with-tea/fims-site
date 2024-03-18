@@ -1,4 +1,4 @@
-import { ReactNode, ChangeEvent, useState} from "react"
+import { ReactNode, ChangeEvent, useState, forwardRef, RefObject } from "react"
 import { Icon } from "../icon/Icon"
 import style from "./input.module.scss"
 import cnBind from 'classnames/bind'
@@ -37,13 +37,15 @@ interface ContentProps{
 
 type InputChangeEventHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 
-export const Input = ({
+export const Input = forwardRef<
+    HTMLInputElement | HTMLTextAreaElement,
+    InputProps>(({
         size = "md",
         className = "",
         placeholder = "",
         type = "text",
         disabled = false,
-        clearable = <Icon name="clear" className={cx("input__icon")}/>, 
+        clearable = <Icon name="clear" className={cx("input__icon")}/>,
         rows = 4,
         postfixIcon,
         prefixIcon,
@@ -55,8 +57,8 @@ export const Input = ({
         prepend,
         append,
         name,
-    }: InputProps) => {
-    
+    }, ref) => {
+
     const [passwordShown, setPasswordShown] = useState(false);
 
     const inputType = passwordShown ? "text" : type
@@ -97,12 +99,13 @@ export const Input = ({
     }
     if(type === "textarea"){
         return(
-            <textarea 
+            <textarea
                 className={cx("textarea")}
                 placeholder={placeholder}
                 value={value}
                 disabled={disabled}
                 rows={rows}
+                ref={ref as RefObject<HTMLTextAreaElement>}
                 onChange={onChange}
                 name={name}
             />
@@ -118,10 +121,11 @@ export const Input = ({
             <input
                 className={classes}
                 value={value}
-                type={inputType} 
+                type={inputType}
                 placeholder={placeholder}
                 disabled={disabled}
                 onChange={onChange}
+                ref={ref as RefObject<HTMLInputElement>}
                 name={name}
             />
 
@@ -143,4 +147,4 @@ export const Input = ({
             <RenderContent append={append}/>
         </div>
     )
-}
+})

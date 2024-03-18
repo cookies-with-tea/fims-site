@@ -1,4 +1,4 @@
-import {ChangeEvent, useState, useCallback, useRef} from "react";
+import {ChangeEvent, useState, useCallback, useRef, useEffect} from "react";
 import { Icon } from "src/ui/icon/Icon";
 import { useModal } from "src/hooks/modal/Modal";
 import { Dialog } from "src/ui/dialog/Dialog";
@@ -30,11 +30,19 @@ export const AnimeSearch = () => {
   const [dataFilms, setDataFilms] = useState([])
   const [search, setSearch] = useState("")
 
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null)
   const searchRef = useRef<string>(search)
 
   searchRef.current = search
 
   const debounce = useCallback(useDebounce(() => getDataFilms() , 1000), [])
+
+  useEffect(() => {
+    if (isVisible && inputRef.current) {
+      inputRef.current.focus()
+    }
+  },[isVisible])
+
   // DEBT: в дальнешем пересмотреть надобность функции onClearValue
   const onClearValue = (): void => {
     setSearch("" )
@@ -84,6 +92,7 @@ export const AnimeSearch = () => {
            name="search"
            size={"sm"}
            value={search}
+           ref={inputRef}
            placeholder="Поиск"
            onChange={onValueChange}
            onClearValue={onClearValue}
