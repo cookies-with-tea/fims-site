@@ -1,5 +1,5 @@
-import { Dialog } from "src/ui/dialog/dialog"
-import { Input } from "src/ui/input/input"
+import { Dialog } from "src/ui/dialog/Dialog"
+import { Input } from "src/ui/input/Input.tsx"
 import { ChangeEvent, useState } from 'react'
 import { Button } from "src/ui/button/Button";
 import style from "./sendEmail.module.scss"
@@ -23,10 +23,10 @@ export const SendNewPasswordForm = ({ visible, onClose }: PropsSendEmail) => {
         setFormData(event.target.value)
     }
     return (
-        <Dialog 
-            onClose={onClose} 
-            closeEscape 
-            lockScroll 
+        <Dialog
+            onClose={onClose}
+            closeEscape
+            lockScroll
             overlayClosable
             visible={visible}
             title="Восстановление аккаунта"
@@ -34,8 +34,8 @@ export const SendNewPasswordForm = ({ visible, onClose }: PropsSendEmail) => {
             <form className={cx("form")}>
                 <div className={cx("form__content")}>
                     <label className={cx("form__label")}>Почта</label>
-                    
-                    <Input 
+
+                    <Input
                         name='email'
                         className={cx("form__input")}
                         placeholder='Email'
@@ -43,12 +43,12 @@ export const SendNewPasswordForm = ({ visible, onClose }: PropsSendEmail) => {
                         type='email'
                         onChange={onValueChange}
                         onClearValue={onClearValue}
-                        
+
                     />
                 </div>
-                
-                <Button 
-                    type="button" 
+
+                <Button
+                    type="button"
                     className={cx("form__btn")}
                     onClick={() => onClose()}
                 >

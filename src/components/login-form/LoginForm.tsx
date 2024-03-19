@@ -1,5 +1,5 @@
 import { Button } from 'src/ui/button/Button'
-import { Input } from 'src/ui/input/input'
+import { Input } from 'src/ui/input/Input'
 import { Link } from 'react-router-dom'
 import { Icon } from 'src/ui/icon/Icon'
 import { SendNewPasswordForm } from 'src/components/send-email/SendNewPasswordForm'
@@ -16,7 +16,7 @@ interface LoginForm {
 
 export const LoginForm = ({ handleModalVisibleToggle , visible}: LoginForm) => {
     const [formData, setFormData] = useState({
-        email:"", 
+        email:"",
         password:""
     })
 
@@ -31,11 +31,11 @@ export const LoginForm = ({ handleModalVisibleToggle , visible}: LoginForm) => {
     return (
         <>
             <h3 className={cx("auth__title")}>Вход</h3>
-            <form className={cx("form")}>
+            <form className={cx("form")} onSubmit={(event) => event.preventDefault()}>
                 <div className={cx("form__content")}>
                     <div className={cx("form__item")}>
                         <label className={cx("form__label")}>Почта или имя</label>
-                        <Input 
+                        <Input
                             value={formData.email}
                             placeholder='Email or username'
                             onChange={onValueChange}
@@ -47,7 +47,7 @@ export const LoginForm = ({ handleModalVisibleToggle , visible}: LoginForm) => {
 
                     <div className={cx("form__item")}>
                         <label className={cx("form__label")}>Пароль</label>
-                        <Input 
+                        <Input
                             name='password'
                             type='password'
                             value={formData.password}
@@ -57,25 +57,25 @@ export const LoginForm = ({ handleModalVisibleToggle , visible}: LoginForm) => {
                         />
                     </div>
                 </div>
-                
+
                 <div className={cx("form__btn")}>
                     <Button
-                        type='submit' 
+                        type='submit'
                         radius='max'
                         className={cx("form__btn-item")}
                         >
                         Войти в аккаунт
                     </Button>
                 </div>
-                
+
                 <div className={cx("form__possibilities")}>
-                    <button 
+                    <button
                         type='button'
-                        className={cx("form__forgot-password")} 
+                        className={cx("form__forgot-password")}
                         onClick={() => handleModalVisibleToggle()}
                     >
                         Забыли пароль?
-                    </button> 
+                    </button>
 
                     <div className={cx("divider")}></div>
 

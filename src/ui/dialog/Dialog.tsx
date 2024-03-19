@@ -14,12 +14,13 @@ interface DialogProps {
     closeEscape?: boolean
     lockScroll?: boolean
     overlayClosable?: boolean
+    verticalPosition?: "flex-start" | "center" | "flex-end"
     zIndex?: number
     className?: string
     visible?: boolean
 }
 
-export const Dialog = ({ 
+export const Dialog = ({
         children,
         title,
         closeEscape,
@@ -29,18 +30,20 @@ export const Dialog = ({
         overlayClosable,
         zIndex = 1000,
         className,
-        visible
+        visible,
+        verticalPosition = "center"
     }: DialogProps) => {
 
-    const [active, setActive] = useState(false); 
-    const [aniClassName, setAniClassName] = useState('')
+    const [active, setActive] = useState(false);
+    const [animation, setAnimation] = useState('')
     const refDialog = useRef<HTMLDivElement>(null)
-    
+
     const handleEscape = (event: KeyboardEvent) => {
         if (event.code === 'Escape') {
             onClose?.()
         }
     }
+
     const handleBackgroundClose = ({ target }: MouseEvent) => {
         if(refDialog.current && target && !refDialog.current.contains(target as HTMLDivElement)){
             onClose?.()
@@ -48,15 +51,19 @@ export const Dialog = ({
     }
 
     const onTransitionEnd = () => {
-        setAniClassName(visible ? 'enter-done' : 'exit-done');
+        setAnimation(visible ? 'enter-done' : 'exit-done');
         if (!visible) {
             setActive(false);
         }
     };
 
     useEffect(() => {
-        if (visible && closeEscape) document.addEventListener('keydown', handleEscape, {once: true})
-        
+        if (visible && closeEscape) {
+
+          document.addEventListener('keydown', handleEscape)
+
+          return () =>  document.removeEventListener('keydown', handleEscape)
+        }
     }, [visible, closeEscape])
 
     useEffect(() => {
@@ -71,17 +78,17 @@ export const Dialog = ({
         if (visible) {
             setActive(true);
 
-            setAniClassName("enter");
+            setAnimation("enter");
 
             setTimeout(() => {
-                setAniClassName("enter-active");
+                setAnimation("enter-active");
             });
 
         } else {
-            setAniClassName("exit");
+            setAnimation("exit");
 
             setTimeout(() => {
-                setAniClassName("exit-active");
+                setAnimation("exit-active");
             });
         }
 
@@ -93,10 +100,10 @@ export const Dialog = ({
 
     return (
         createPortal(
-            <div 
-                className={cx("modal", aniClassName)}
-                onTransitionEnd={onTransitionEnd} 
-                style={{zIndex: zIndex}}
+            <div
+                className={cx("modal", animation)}
+                onTransitionEnd={onTransitionEnd}
+                style={{zIndex, alignItems: verticalPosition}}
                 onClick={(event: MouseEvent<HTMLDivElement>) => {
                     if(!overlayClosable) return
 
@@ -110,12 +117,12 @@ export const Dialog = ({
 
                             {closeIcon && (
                                     <button type='button' onClick={() => onClose?.()}>
-                                        {closeIcon} 
+                                        {closeIcon}
                                     </button>
                                 )
                             }
                         </header>
-                        
+
                         {children}
                     </div>
                 </div>
