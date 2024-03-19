@@ -1,3 +1,4 @@
+import {Logo} from "src/components/logo/Logo"
 import { Navbar } from "src/components/navbar/Navbar"
 import {AnimeSearch} from "src/components/anime-search/AnimeSearch.tsx";
 
@@ -11,7 +12,7 @@ export const Header = () => {
         <header className={cx("header")}>
             <div className={cx("container", "header__container")}>
                 <Navbar/>
-
+                <Logo/>
                 <AnimeSearch/>
             </div>
         </header>
