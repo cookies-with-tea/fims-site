@@ -31,7 +31,7 @@ export const LoginForm = ({ handleModalVisibleToggle , visible}: LoginForm) => {
     return (
         <>
             <h3 className={cx("auth__title")}>Вход</h3>
-            <form className={cx("form")}>
+            <form className={cx("form")} onSubmit={(event) => event.preventDefault()}>
                 <div className={cx("form__content")}>
                     <div className={cx("form__item")}>
                         <label className={cx("form__label")}>Почта или имя</label>
