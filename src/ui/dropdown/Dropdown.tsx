@@ -5,11 +5,11 @@ interface DropdownProps {
     className?: string
     children?: ReactNode
     content?: ReactNode
-    offsetX?: number    
-    offsetY?: number    
-    placement?: "top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end" | 
+    offsetX?: number
+    offsetY?: number
+    placement?: "top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end" |
                 "right" | "right-start" | "right-end" | "left" | "left-start"| "left-end"
-    trigger?: "hover" | "click" 
+    trigger?: "hover" | "click"
     closeOutside?: boolean
     teleportTarget?: HTMLElement
     showArrow?: boolean
@@ -17,7 +17,7 @@ interface DropdownProps {
 
 export const Dropdown = ({
         children,
-        content, 
+        content,
         teleportTarget = document.body,
         placement = "bottom",
         className = "",
@@ -28,8 +28,8 @@ export const Dropdown = ({
         showArrow = false
     }: DropdownProps) => {
     return (
-        <Tooltip 
-            content={content} 
+        <Tooltip
+            content={content}
             teleportTarget={teleportTarget}
             placement={placement}
             className = {className}

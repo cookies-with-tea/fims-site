@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Button } from "src/ui/button/Button"
 import { Icon } from "src/ui/icon/Icon"
-import { Input } from "src/ui/input/Input"
+import { Input } from "src/ui/input/Input.tsx"
 import stl from "./uikit.module.scss"
 
 
@@ -14,15 +14,15 @@ export const Uikit = () => {
                     Вход
                 </Button>
 
-                <Button 
-                    variant="secondary" 
+                <Button
+                    variant="secondary"
                     size="sm"
                     >
                     Вход
                 </Button>
 
-                <Button 
-                    size="xs" 
+                <Button
+                    size="xs"
                     radius="max"
                     >
                     Вход
@@ -42,8 +42,8 @@ export const Uikit = () => {
             </div>
 
             <div style={{margin:"20px 0"}}>
-                <Button 
-                    prefixIcon={<Icon name="filter"/>} 
+                <Button
+                    prefixIcon={<Icon name="filter"/>}
                     href="/"
                     >
                     Вход
@@ -61,36 +61,36 @@ export const Uikit = () => {
             </div>
 
             <div>
-                <Input 
-                    value={value} 
+                <Input
+                    value={value}
                     placeholder="вход"
                     onChange={setValue}
                 />
-                <Input 
-                    value={value} 
+                <Input
+                    value={value}
                     placeholder="вход"
                     onChange={setValue}
                     clearable={true}
                     size="sm"
                 />
-                <Input 
-                    value={value} 
+                <Input
+                    value={value}
                     placeholder="вход"
                     onChange={setValue}
                     size="xs"
                     type="password"
                 />
 
-                <Input 
-                    value={value} 
+                <Input
+                    value={value}
                     placeholder="вход"
                     onChange={setValue}
                     postfixIcon={<Icon name="filter"/>}
                     prefixIcon={<Icon name="filter"/>}
                 />
 
-                <Input 
-                    value={value} 
+                <Input
+                    value={value}
                     placeholder="вход"
                     onChange={setValue}
                     append={"Open"}
@@ -98,7 +98,7 @@ export const Uikit = () => {
                 />
             </div>
             <div>
-                <Input 
+                <Input
                     type="textarea"
                     placeholder="вход"
                     disabled={true}

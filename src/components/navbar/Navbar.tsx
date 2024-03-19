@@ -1,7 +1,6 @@
 // import { NavLink } from "react-router-dom"
 import style from "./navbar.module.scss"
 import cnBind from 'classnames/bind'
-import { Tooltip } from "src/ui/tooltip/Tooltip"
 
 const cx = cnBind.bind(style)
 
@@ -22,7 +21,7 @@ export const Navbar = () => {
                         <li key={index} className={cx("menu__item")}>
                             {/* TODO: Будет исправленно по окончанию реализации navbar */}
                             {/* <NavLink to={item.path} className={cx("menu__link")}> */}
-                                {index != 2 ? item.name : <Tooltip content="Аниме" trigger="click" placement="top" showArrow> {item.name}</Tooltip>}
+                                {item.name}
                             {/* </NavLink> */}
                         </li>
                     ))
