@@ -1,17 +1,23 @@
-.menu {
+.nav {
+  margin-right: 83px;
+
+  .menu {
     display: flex;
 
     &__item {
-        font-size: 20px;
-        &:not(:last-child) {
-            margin-right: 50px;
-        }
+      font-size: $font--size-large-3;
+      &:not(:last-child) {
+        margin-right: 50px;
+      }
     }
 
     &__link {
-        color: $background--black;
-        font-size: $font--size-large-3;
-        line-height: 100%;
-        letter-spacing: 1.2px;
+      color: $background--black;
+      font-size: $font--size-large-3;
+      line-height: 100%;
+      letter-spacing: 1.2px;
     }
+  }
 }
+
+

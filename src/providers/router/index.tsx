@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
             }
         ]
     },
-    
+
     {
         path: "/",
         element: <GuestLayout/>,
@@ -30,6 +30,6 @@ export const router = createBrowserRouter([
                 path: "/registration",
                 element: <PageRegistration/>
             }
-        ] 
+        ]
     },
 ]);
