@@ -2,13 +2,19 @@
   padding-top: 30px;
 
   &__button {
+    font-weight: 600;
     font-size: $font--size-large-2;
-    width: 180px;
+    padding: 0 20px;
   }
 
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  &__icon {
+    fill: $color--white;
+    font-size: 30px;
   }
 }
