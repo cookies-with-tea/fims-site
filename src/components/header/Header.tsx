@@ -19,6 +19,7 @@ export const Header = () => {
 
               <Button
                 className={cx("header__button")}
+                size={"sm"}
                 href={"/login"}
               >
                 Вход
