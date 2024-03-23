@@ -12,7 +12,9 @@
       "layouts/*": ["layouts/*"],
       "pages/*": ["pages/*"],
       "scss/*": ["scss/*"],
-      "ui/*": ["ui/*"]
+      "ui/*": ["ui/*"],
+      "utils/*": ["utils/*"],
+      "providers/*": ["providers/*"]
     },
 
     /* Bundler mode */

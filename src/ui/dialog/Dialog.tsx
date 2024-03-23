@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef, MouseEvent, useState} from 'react';
 import {createPortal} from 'react-dom';
-import { Icon } from '../icon/Icon';
+import { Icon } from 'ui/icon/Icon.tsx';
 import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 

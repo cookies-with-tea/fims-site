@@ -1,10 +1,8 @@
-import { Button } from 'src/ui/button/Button'
-import { Input } from 'src/ui/input/Input.tsx'
-import { Link } from 'react-router-dom'
-import cnBind from 'classnames/bind'
-import style from "src/pages/auth/styles.module.scss"
-import { Icon } from 'src/ui/icon/Icon'
+import {Input, Button, Icon} from "ui/index.ts"
 import { useState , ChangeEvent} from 'react'
+import { Link } from 'react-router-dom'
+import style from "pages/auth/styles.module.scss"
+import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
 

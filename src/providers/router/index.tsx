@@ -1,10 +1,9 @@
-import { GuestLayout } from "src/layouts/guest/GuestLayout";
-import { PageLogin } from "src/pages/auth/login/PageLogin";
-import { PageRegistration } from "src/pages/auth/registration/PageRegistration";
+import { GuestLayout } from "layouts/guest/GuestLayout.tsx";
+import { PageLogin } from "pages/auth/login/PageLogin.tsx";
+import { PageRegistration } from "pages/auth/registration/PageRegistration.tsx";
 import { createBrowserRouter } from "react-router-dom";
-import { MainLayout } from "src/layouts/base/MainLayout";
-import { MainPage } from "src/pages/base/MainPage";
-
+import { MainLayout } from "layouts/base/MainLayout.tsx";
+import { MainPage } from "pages/base/MainPage.tsx";
 
 export const router = createBrowserRouter([
     {

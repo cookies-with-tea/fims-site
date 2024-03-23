@@ -1,4 +1,4 @@
-import {Tooltip} from "src/ui/tooltip/Tooltip"
+import {Tooltip} from "ui/tooltip/Tooltip"
 import { ReactNode } from "react"
 
 interface DropdownProps {
