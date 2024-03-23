@@ -21,7 +21,9 @@ export const Header = () => {
               <Button
                 className={cx("header__button")}
                 href={"/login"}
-                prefixIcon={<Icon name={"user"} className={cx("header__icon")}/>}
+                prefixIcon={
+                  <Icon name={"user"} className={cx("header__icon")}/>
+                }
               >
                 Вход
               </Button>
