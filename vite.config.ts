@@ -18,7 +18,12 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      src:"/src",
+      components: "src/components",
+      hooks: "src/hooks",
+      layouts: "src/layouts",
+      pages: "src/pages",
+      scss: "src/scss",
+      ui: "src/ui",
     },
   },
   css: {
