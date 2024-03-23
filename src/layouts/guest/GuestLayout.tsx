@@ -7,7 +7,7 @@ const cx = cnBind.bind(style)
 
 export const GuestLayout = () => {
     return (
-      <div className={"wrapper"}>
+      <div className={"guest-layout wrapper"}>
         <div className={cx("auth")}>
           <div className={cx("auth__header","container")}>
             <Logo />
