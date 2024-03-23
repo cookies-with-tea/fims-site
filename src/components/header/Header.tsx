@@ -16,7 +16,6 @@ export const Header = () => {
 
               <Navbar/>
 
-
               <AnimeSearch/>
 
               <Button

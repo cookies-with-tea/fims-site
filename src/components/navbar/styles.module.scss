@@ -1,22 +1,19 @@
-.nav {
+.menu {
+  display: flex;
 
-  .menu {
-    display: flex;
+  &__item {
+    font-size: $font--size-large-3;
 
-    &__item {
-      font-size: $font--size-large-3;
-
-      &:not(:last-child) {
-        margin-right: 50px;
-      }
+    &:not(:last-child) {
+      margin-right: 50px;
     }
+  }
 
-    &__link {
-      color: $background--black;
-      font-size: $font--size-large-3;
-      line-height: 100%;
-      letter-spacing: 1.2px;
-    }
+  &__link {
+    color: $background--black;
+    font-size: $font--size-large-3;
+    line-height: 100%;
+    letter-spacing: 1.2px;
   }
 }
 

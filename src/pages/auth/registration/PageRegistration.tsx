@@ -2,7 +2,7 @@ import { Button } from 'src/ui/button/Button'
 import { Input } from 'src/ui/input/Input.tsx'
 import { Link } from 'react-router-dom'
 import cnBind from 'classnames/bind'
-import style from "src/pages/auth/styles.scss"
+import style from "src/pages/auth/styles.module.scss"
 import { Icon } from 'src/ui/icon/Icon'
 import { useState , ChangeEvent} from 'react'
 

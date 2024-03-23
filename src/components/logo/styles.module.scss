@@ -6,7 +6,7 @@
   }
 
   &__anime {
-    color: #2D8984;
+    color: $background--blue;
     transition: transform 150ms ease-in-out;
 
     &:hover {
@@ -15,7 +15,7 @@
   }
 
   &__summer {
-    color: #FEFEFE;
+    color: $color--white;
     transition: transform 150ms ease-in-out;
 
     &:hover {
