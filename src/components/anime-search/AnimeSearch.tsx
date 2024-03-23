@@ -6,7 +6,7 @@ import { Input } from "src/ui/input/Input";
 import { useDebounce } from "src/hooks/debounce/use-debounce.ts";
 import { markText } from "src/utils/mark-text.ts";
 import axios from "axios";
-import style from "./animeSeacrh.module.scss"
+import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)

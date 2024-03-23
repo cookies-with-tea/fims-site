@@ -2,7 +2,7 @@ import { Dialog } from "src/ui/dialog/Dialog"
 import { Input } from "src/ui/input/Input.tsx"
 import { ChangeEvent, useState } from 'react'
 import { Button } from "src/ui/button/Button";
-import style from "./sendEmail.module.scss"
+import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)

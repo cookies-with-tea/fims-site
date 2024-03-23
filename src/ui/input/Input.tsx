@@ -1,6 +1,6 @@
 import { ReactNode, ChangeEvent, useState, forwardRef, RefObject } from "react"
 import { Icon } from "../icon/Icon"
-import style from "./input.module.scss"
+import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)

@@ -5,7 +5,7 @@ import { Icon } from 'src/ui/icon/Icon'
 import { SendNewPasswordForm } from 'src/components/send-email/SendNewPasswordForm'
 import { ChangeEvent, useState } from 'react'
 import cnBind from 'classnames/bind'
-import style from "src/pages/auth/authForm.module.scss"
+import style from "src/pages/auth/styles.scss"
 
 const cx = cnBind.bind(style)
 

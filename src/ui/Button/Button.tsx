@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ReactNode, MouseEvent } from 'react';
-import style from "./button.module.scss"
+import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)

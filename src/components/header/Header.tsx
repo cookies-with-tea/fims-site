@@ -3,7 +3,7 @@ import { Navbar } from "src/components/navbar/Navbar"
 import {AnimeSearch} from "src/components/anime-search/AnimeSearch.tsx";
 import {Button} from "src/ui/button/Button.tsx";
 import {Icon} from "src/ui/icon/Icon.tsx";
-import style from "./header.module.scss"
+import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)

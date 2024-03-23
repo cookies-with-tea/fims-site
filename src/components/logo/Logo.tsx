@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import style from "./logo.module.scss"
+import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)

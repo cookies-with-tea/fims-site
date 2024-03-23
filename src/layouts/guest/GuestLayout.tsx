@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import { Logo } from "src/components/logo/Logo.tsx";
-import style from "./guestLayout.module.scss"
+import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)

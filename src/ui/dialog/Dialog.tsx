@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, MouseEvent, useState} from 'react';
 import {createPortal} from 'react-dom';
-import style from "./dialog.module.scss"
 import { Icon } from '../icon/Icon';
+import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
