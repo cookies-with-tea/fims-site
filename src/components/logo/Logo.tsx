@@ -4,13 +4,9 @@ import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
 
-interface LogoProp {
-  className?: string
-}
-
-export const Logo = ({ className }: LogoProp) => {
+export const Logo = (props?: Partial <HTMLDivElement>) => {
   return (
-    <div className={cx("logo", className)}>
+    <div className={cx("logo", props?.className)}>
       <Link to={"/"} className={cx("logo__link")}>
         <p className={cx("logo__anime")}>
           Anime
