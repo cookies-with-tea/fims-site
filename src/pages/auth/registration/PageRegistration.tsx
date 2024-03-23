@@ -80,7 +80,7 @@ export const PageRegistration = () => {
 
                     <div className={cx("divider")}></div>
 
-                    <Link to={"/"} className={cx("form__link")}>Войти</Link>
+                    <Link to={"/login"} className={cx("form__link")}>Войти</Link>
                 </div>
 
                 <div className={cx("form__entrance")}>

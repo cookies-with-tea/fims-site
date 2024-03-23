@@ -1,11 +1,11 @@
 .nav {
-  margin-right: 83px;
 
   .menu {
     display: flex;
 
     &__item {
       font-size: $font--size-large-3;
+
       &:not(:last-child) {
         margin-right: 50px;
       }

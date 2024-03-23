@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
         element: <GuestLayout/>,
         children:[
             {
-                path: "/",
+                path: "/login",
                 element: <PageLogin/>
             },
             {

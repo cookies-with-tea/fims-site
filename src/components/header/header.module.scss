@@ -8,9 +8,6 @@
   &__container {
     display: flex;
     align-items: center;
-  }
-
-  &__icon-user {
-    font-size: 35px;
+    justify-content: space-between;
   }
 }
