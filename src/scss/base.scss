@@ -13,14 +13,16 @@
     margin: 0 auto;
     padding: 0 15px;
 }
-
-// TODO: выделеям ссылку накоторой находится Url.Оставленно до окончания реализации Navbar 
+body{
+  background-color: $background--black;
+}
+// TODO: выделеям ссылку накоторой находится Url.Оставленно до окончания реализации Navbar
 // a {
 //     transition: all 200ms ease-in-out;
 //     &:hover {
 //         color: $background--blue-2;
 //     }
-    
+
 // }
 // .active {
 //     color: $background--blue-2;

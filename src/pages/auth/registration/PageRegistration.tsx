@@ -1,10 +1,8 @@
-import { Button } from 'src/ui/button/Button'
-import { Input } from 'src/ui/input/Input.tsx'
-import { Link } from 'react-router-dom'
-import cnBind from 'classnames/bind'
-import style from "src/pages/auth/authForm.module.scss"
-import { Icon } from 'src/ui/icon/Icon'
+import {Input, Button, Icon} from "@/ui"
 import { useState , ChangeEvent} from 'react'
+import { Link } from 'react-router-dom'
+import style from "@pages/auth/styles.module.scss"
+import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
 
@@ -26,7 +24,7 @@ export const PageRegistration = () => {
     return (
         <>
             <h3 className={cx("auth__title")}>Регистрация</h3>
-            <form className={cx("form")}>
+            <form className={cx("form")} onSubmit={(event) => event.preventDefault()}>
                 <div className={cx("form__content")}>
                     <div className={cx("form__item")}>
                         <label className={cx("form__label")}>Почта</label>
@@ -80,7 +78,7 @@ export const PageRegistration = () => {
 
                     <div className={cx("divider")}></div>
 
-                    <Link to={"/"} className={cx("form__link")}>Войти</Link>
+                    <Link to={"/login"} className={cx("form__link")}>Войти</Link>
                 </div>
 
                 <div className={cx("form__entrance")}>

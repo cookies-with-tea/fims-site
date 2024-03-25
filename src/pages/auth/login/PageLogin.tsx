@@ -1,5 +1,5 @@
-import { LoginForm } from "src/components/login-form/LoginForm"
-import { useModal } from "src/hooks/modal/Modal"
+import { LoginForm} from "@components/login-form/LoginForm.tsx";
+import { useModal } from "@hooks/modal/Modal.tsx";
 
 export const PageLogin = () => {
     const [visible, changeVisible] = useModal();

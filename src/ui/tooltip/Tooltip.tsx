@@ -1,6 +1,6 @@
 import { ReactNode, useRef, useState, useEffect} from "react"
 import {createPortal} from 'react-dom';
-import style from "./tooltip.module.scss"
+import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 const cx = cnBind.bind(style)
 
