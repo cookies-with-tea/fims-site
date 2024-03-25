@@ -5,7 +5,7 @@
     border-radius: $font--size-medium;
     border: 2px solid $background--blue-2;
     font-size: $font--size-large;
-    transition: box-shadow 500ms ease-in-out, color 500ms ease-in-out;
+    transition: box-shadow 500ms ease-in-out;
 
     &:focus-within {
       box-shadow: rgb(76 209 209 / 74%) 0 3px 18px;
