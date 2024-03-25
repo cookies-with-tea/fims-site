@@ -7,12 +7,6 @@
     font-size: $font--size-large;
     transition: box-shadow 500ms ease-in-out, color 500ms ease-in-out;
 
-    &:hover &__inner{
-      &::placeholder{
-        color: $color--white;
-      }
-    }
-
     &:focus-within {
       box-shadow: rgb(76 209 209 / 74%) 0 3px 18px;
     }
@@ -23,7 +17,7 @@
         justify-content: center;
         height: 100%;
         padding: 0 20px;
-        background: #4cd1d13d;
+        background: $background--blue-grey;
         color: $color--white;
     }
 
