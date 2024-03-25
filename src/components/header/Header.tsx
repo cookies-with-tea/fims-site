@@ -1,5 +1,5 @@
-import { Button, Icon } from "ui"
-import { Navbar, Logo, AnimeSearch} from "components"
+import { Button, Icon } from "@/ui"
+import { Navbar, Logo, AnimeSearch} from "@/components"
 import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 

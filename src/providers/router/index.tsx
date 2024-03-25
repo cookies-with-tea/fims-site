@@ -1,9 +1,16 @@
-import { GuestLayout } from "layouts/guest/GuestLayout.tsx";
-import { PageLogin } from "pages/auth/login/PageLogin.tsx";
-import { PageRegistration } from "pages/auth/registration/PageRegistration.tsx";
 import { createBrowserRouter } from "react-router-dom";
-import { MainLayout } from "layouts/base/MainLayout.tsx";
-import { MainPage } from "pages/base/MainPage.tsx";
+import { PageLogin, PageRegistration, MainPage } from "@/pages"
+import { GuestLayout } from "@layouts/guest/GuestLayout.tsx";
+import { MainLayout } from "@layouts/base/MainLayout.tsx";
+
+const ROUTES = {
+  LOGIN: {
+    path: '/login',
+  },
+  REGISTRATION: {
+    path: '/registration',
+  },
+}
 
 export const router = createBrowserRouter([
     {
@@ -22,11 +29,11 @@ export const router = createBrowserRouter([
         element: <GuestLayout/>,
         children:[
             {
-                path: "/login",
+                path: ROUTES.LOGIN.path,
                 element: <PageLogin/>
             },
             {
-                path: "/registration",
+                path: ROUTES.REGISTRATION.path,
                 element: <PageRegistration/>
             }
         ]

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button, Input , Icon} from "ui"
+import { Button, Input , Icon} from "@/ui"
 import stl from "./styles.module.scss"
 
 

@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import { Logo } from "components/logo/Logo.tsx";
+import {Logo} from "@components/logo/Logo.tsx";
 import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 

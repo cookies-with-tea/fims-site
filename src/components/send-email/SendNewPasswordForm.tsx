@@ -1,4 +1,4 @@
-import { Input, Dialog , Button} from "ui"
+import { Input, Dialog , Button} from "@/ui"
 import { ChangeEvent, useState } from 'react'
 import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'

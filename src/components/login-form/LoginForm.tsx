@@ -1,8 +1,8 @@
-import { Button , Input, Icon} from 'ui'
-import { SendNewPasswordForm } from 'components/send-email/SendNewPasswordForm'
+import { Button , Input, Icon} from '@/ui'
+import { SendNewPasswordForm } from '@components/send-email/SendNewPasswordForm'
 import { Link } from 'react-router-dom'
 import { ChangeEvent, useState } from 'react'
-import style from "pages/auth/styles.module.scss"
+import style from "@pages/auth/styles.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)

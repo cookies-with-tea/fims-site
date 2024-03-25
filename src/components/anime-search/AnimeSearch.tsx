@@ -1,7 +1,7 @@
 import {ChangeEvent, useState, useCallback, useRef, useEffect} from "react";
-import { Icon, Dialog, Input } from "ui";
-import { useModal, useDebounce } from "hooks";
-import { markText } from "utils/mark-text.ts";
+import { Icon, Dialog, Input } from "@/ui";
+import { useModal , useDebounce} from "@/hooks";
+import { markText } from "@utils/mark-text.ts";
 import axios from "axios";
 import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'

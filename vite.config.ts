@@ -1,7 +1,9 @@
-import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
+import { defineConfig } from 'vite'
+import { fileURLToPath} from "url";
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+
 
 const svgIconsConfig = createSvgIconsPlugin({
   iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
@@ -18,14 +20,15 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      components: "src/components",
-      hooks: "src/hooks",
-      layouts: "src/layouts",
-      pages: "src/pages",
-      scss: "src/scss",
-      ui: "src/ui",
-      utils: "src/utils",
-      providers: "src/providers",
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      "@hooks": fileURLToPath(new URL('./src/hooks', import.meta.url)),
+      "@layouts": fileURLToPath(new URL('./src/layouts', import.meta.url)),
+      "@utils": fileURLToPath(new URL('./src/utils', import.meta.url)),
+      "@pages": fileURLToPath(new URL('./src/pages', import.meta.url)),
+      "@scss": fileURLToPath(new URL('./src/scss', import.meta.url)),
+      "@ui": fileURLToPath(new URL('./src/ui', import.meta.url)),
+      "@providers": fileURLToPath(new URL('./src/providers', import.meta.url)),
+      "@components": fileURLToPath(new URL('./src/components', import.meta.url)),
     },
   },
   css: {
