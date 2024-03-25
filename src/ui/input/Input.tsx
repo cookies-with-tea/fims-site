@@ -57,7 +57,7 @@ export const Input = forwardRef<
         onClearValue,
         prepend,
         append,
-        autocorrectIcons,
+        autocorrectIcons= false,
         name,
     }, ref) => {
 
