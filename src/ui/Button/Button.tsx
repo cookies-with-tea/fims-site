@@ -1,6 +1,6 @@
-import style from "./button.module.scss"
 import { Link } from 'react-router-dom';
 import { ReactNode, MouseEvent } from 'react';
+import style from "./styles.module.scss"
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
@@ -20,11 +20,11 @@ interface ButtonProps {
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
-export const Button = ({ 
+export const Button = ({
         size = "md",
-        variant = "primary", 
+        variant = "primary",
         className = "",
-        type = "button", 
+        type = "button",
         radius = "min",
         disabled = false,
         href = "",
@@ -72,10 +72,10 @@ export const Button = ({
         )
     }
     return (
-        <button 
-            type={type} 
-            onClick={onClick} 
-            className={classes} 
+        <button
+            type={type}
+            onClick={onClick}
+            className={classes}
             disabled={disabled}>
             <ConditionalRender/>
         </button>

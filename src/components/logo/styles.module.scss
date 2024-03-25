@@ -1,0 +1,25 @@
+.logo {
+  font-size: $font--size-large-3;
+
+  &__link {
+    display: flex;
+  }
+
+  &__anime {
+    color: $background--blue;
+    transition: transform 150ms ease-in-out;
+
+    &:hover {
+      transform: scale(1.1)
+    }
+  }
+
+  &__summer {
+    color: $color--white;
+    transition: transform 150ms ease-in-out;
+
+    &:hover {
+      transform: scale(1.1)
+    }
+  }
+}
