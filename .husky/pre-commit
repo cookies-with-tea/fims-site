@@ -1,2 +1,2 @@
-pnpm type-check
-pnpm lint
+npm type-check
+npm lint
