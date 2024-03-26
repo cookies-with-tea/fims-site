@@ -4,7 +4,6 @@ import { defineConfig } from 'vite'
 import { fileURLToPath} from "url";
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
-
 const svgIconsConfig = createSvgIconsPlugin({
   iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
   symbolId: 'icon-[dir]-[name]',
