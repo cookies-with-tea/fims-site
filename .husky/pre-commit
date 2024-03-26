@@ -1,2 +1,2 @@
-npm type-check
-npm lint
+npm run type-check
+npm run lint
