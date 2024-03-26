@@ -5,6 +5,11 @@
     border-radius: $font--size-medium;
     border: 2px solid $background--blue-2;
     font-size: $font--size-large;
+    transition: box-shadow 500ms ease-in-out;
+
+    &:focus-within {
+      box-shadow: rgb(76 209 209 / 74%) 0 3px 18px;
+    }
 
     &__content {
         display: flex;
@@ -12,7 +17,7 @@
         justify-content: center;
         height: 100%;
         padding: 0 20px;
-        background: #4cd1d13d;
+        background: $background--blue-grey;
         color: $color--white;
     }
 
@@ -31,15 +36,15 @@
     }
 
     &__icon {
-        font-size: 25px;
+        font-size: $font--size-large-3;
         fill: $color--white;
         transition: all 500ms ease-in-out;
-    
+
         &:hover {
             fill: $color--black-gray;
         }
     }
-    
+
     &:disabled {
         opacity: .8;
         pointer-events: none;
@@ -62,7 +67,7 @@
 
     &:disabled {
         background: $background--transparent-white;
-        
+
         &::placeholder {
             color: $color--white;
         }

@@ -18,6 +18,10 @@
     line-height: 120%;
   }
 
+  &__autocorrect-icon{
+    font-size: $font--size-large-3;
+  }
+
   &__icon {
     display: flex;
     align-self: end;

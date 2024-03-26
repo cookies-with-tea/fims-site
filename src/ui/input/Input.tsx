@@ -20,6 +20,7 @@ interface InputProps {
     prepend?: string | ReactNode
     append?: string | ReactNode
     rows?: number
+    autocorrectIcons?: boolean | ReactNode
     onChange: InputChangeEventHandler
     onClearValue?: (value: string) => void;
     name: string
@@ -56,6 +57,7 @@ export const Input = forwardRef<
         onClearValue,
         prepend,
         append,
+        autocorrectIcons= false,
         name,
     }, ref) => {
 
@@ -129,6 +131,7 @@ export const Input = forwardRef<
                 name={name}
             />
 
+
             { clearable && value && (
                     <div onClick={() => onClearValue?.(name)} className={cx('postfix')}>
                         {clearable}
@@ -136,7 +139,14 @@ export const Input = forwardRef<
                 )
             }
 
-            { type === "password" && (
+            { autocorrectIcons && !value && (
+                <div className={cx('postfix')}>
+                  {autocorrectIcons}
+                </div>
+              )
+            }
+
+          {type === "password" && (
                 <div className={cx('postfix')} onClick={() => setPasswordShown(!passwordShown)}>
                     {!passwordShown ? passwordHideIcon : passwordShowIcon}
                 </div>
