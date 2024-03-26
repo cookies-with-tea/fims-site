@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "prepare": "husky",
     "eslint": "eslint . --ext .js,.tsx,.ts",
-    "eslint:fix": "npm run eslint --fix",
+    "eslint:fix": "npm run eslint -- --fix",
     "stylelint": "stylelint \"**/*.{css,scss}\"",
     "stylelint:fix": "npm stylelint --fix",
     "lint": "npm run eslint && npm run stylelint",
