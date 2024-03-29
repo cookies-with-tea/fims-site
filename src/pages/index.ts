@@ -1,5 +1,5 @@
-export {PageLogin} from "@pages/auth/login/PageLogin.tsx"
+export { PageLogin } from '@pages/auth/login/PageLogin'
 
-export {PageRegistration} from "@pages/auth/registration/PageRegistration.tsx"
+export { PageRegistration } from '@pages/auth/registration/PageRegistration'
 
-export {MainPage} from "@pages/base/MainPage.tsx"
+export { MainPage } from '@pages/base/MainPage'

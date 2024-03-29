@@ -1,11 +1,11 @@
-export { Button } from "@ui/button/Button.tsx"
+export { Button } from '@ui/button/Button'
 
-export { Dialog } from "@ui/dialog/Dialog.tsx"
+export { Dialog } from '@ui/dialog/Dialog'
 
-export { Dropdown } from "@ui/dropdown/Dropdown.tsx"
+export { Dropdown } from '@ui/dropdown/Dropdown'
 
-export { Icon } from "@ui/icon/Icon.tsx"
+export { Icon } from '@ui/icon/Icon'
 
-export { Input } from "@ui/input/Input.tsx"
+export { Input } from '@ui/input/Input'
 
-export { Tooltip } from  "@ui/tooltip/Tooltip.tsx"
+export { Tooltip } from  '@ui/tooltip/Tooltip'

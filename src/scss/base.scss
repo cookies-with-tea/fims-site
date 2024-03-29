@@ -3,19 +3,21 @@
 .wrapper {
     width: 100%;
     min-height: 100%;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .container {
     max-width: 1380px;
-    margin: 0 auto;
     padding: 0 15px;
+    margin: 0 auto;
 }
+
 body{
   background-color: $background--black;
 }
+
 // TODO: выделеям ссылку накоторой находится Url.Оставленно до окончания реализации Navbar
 // a {
 //     transition: all 200ms ease-in-out;

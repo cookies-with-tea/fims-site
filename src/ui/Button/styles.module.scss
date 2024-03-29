@@ -2,17 +2,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     font-size: $font--size-large;
     line-height: 120%;
     letter-spacing: 0.9px;
+    text-align: center;
     color: $color--white;
     cursor: pointer;
 
     &:disabled,
     &.disabled {
-        opacity: .8;
         pointer-events: none;
+        opacity: .8;
     }
 }
 
@@ -21,6 +21,7 @@
     display: flex;
     margin-left: 15px;
 }
+
 .prefix-icon {
     display: flex;
     margin-right: 15px;
@@ -42,14 +43,14 @@
 }
 
 .sm {
-    font-size: $font--size-medium;
     height: 40px;
+    font-size: $font--size-medium;
     padding: 0 30px;
 }
 
 .xs {
-    font-size: $font--size-small;
     height: 35px;
+    font-size: $font--size-small;
     padding: 0 20px;
 }
 

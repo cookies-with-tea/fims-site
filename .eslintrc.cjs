@@ -44,7 +44,7 @@ module.exports = {
       2,
       "tag-aligned"
     ],
-    "import/no-anonymous-default-export": "warn",
+    "import/no-anonymous-default-export": 0,
     "react/no-unknown-property": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
