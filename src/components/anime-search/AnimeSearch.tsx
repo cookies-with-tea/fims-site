@@ -32,14 +32,11 @@ export const AnimeSearch = () => {
 
   searchRef.current = search
 
-  const debounce = useDebounce(() => getDataFilms() , 1000)
-
   useEffect(() => {
     if (isVisible && inputRef.current) {
       inputRef.current.focus()
     }
   },[isVisible])
-
   // DEBT: в дальнешем пересмотреть надобность функции onClearValue
   const onClearValue = (): void => {
     setSearch('' )
@@ -47,7 +44,7 @@ export const AnimeSearch = () => {
 
   const getDataFilms = async () => {
     try {
-      if(searchRef.current.length >= 3){
+      if(searchRef.current.length >= 3) {
         const data = await (await (axios.get(url(searchRef.current), option)))
           .data.items.slice(0, 9).filter(({ nameRu }: DataFilms) => nameRu != null)
 
@@ -57,6 +54,8 @@ export const AnimeSearch = () => {
       console.log(`${error} --- error`)
     }
   }
+
+  const debounce = useDebounce(getDataFilms, 1000)
 
   const onValueChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSearch(event.target.value)

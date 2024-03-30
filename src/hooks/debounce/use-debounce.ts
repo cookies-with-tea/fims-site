@@ -6,10 +6,8 @@ export const useDebounce = <T extends unknown[]>(
   ): ((...args: T) => void) => {
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
-  return useCallback((...args) => {
-      if (!timerRef.current) return
-
-      clearTimeout(timerRef.current)
+  return useCallback((...args)=> {
+      clearTimeout(timerRef.current as NodeJS.Timeout)
       timerRef.current = setTimeout(() => func.apply(this, args), delay)
     },[func, delay]
   )
