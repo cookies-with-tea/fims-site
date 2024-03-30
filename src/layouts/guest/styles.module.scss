@@ -3,12 +3,11 @@
     background: $background--black;
 
     &__header {
-      height: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 1px 2px 3px $color--white;
-      background: $background--black
+      box-shadow: $color--white  -1px -5px 20px;
+      padding: 15px 0;
     }
 
     &__body {
@@ -24,7 +23,7 @@
       border-radius: 20px;
       box-shadow: rgb(125 90 141 / 56%) 0 22px 70px 4px;
       color: $color--white;
-      padding: 28px 56px;
+      padding: 20px 36px;
     }
 }
 

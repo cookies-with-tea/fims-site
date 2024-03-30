@@ -9,8 +9,10 @@ export const GuestLayout = () => {
     return (
       <div className={'guest-layout wrapper'}>
         <div className={cx('auth')}>
-          <div className={cx('auth__header','container')}>
-            <Logo />
+          <div className={cx('auth__header')}>
+            <div className="container">
+              <Logo />
+            </div>
           </div>
 
           <div className={cx('auth__body')}>
