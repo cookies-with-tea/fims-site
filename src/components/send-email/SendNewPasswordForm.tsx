@@ -27,6 +27,7 @@ export const SendNewPasswordForm = ({ visible, onClose }: PropsSendEmail) => {
         overlayClosable
         visible={visible}
         title="Восстановление аккаунта"
+        className={cx('dialog__content')}
         onClose={onClose}
       >
         <form className={cx('form')}>
