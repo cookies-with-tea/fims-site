@@ -1,4 +1,4 @@
-export { Button } from '@ui/button/Button'
+export { Button } from '@ui/Button/Button'
 
 export { Dialog } from '@ui/dialog/Dialog'
 

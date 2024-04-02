@@ -18,7 +18,7 @@
     color: $color--black;
   }
 
-  &__autocorrect-icon{
+  &__autocorrect-icon {
     font-size: $font--size-large-3;
   }
 
@@ -45,7 +45,8 @@
   }
 
   &__content {
-    margin-left: 10px;
+    width: 800px;
+    margin: 0 auto;
   }
 
   &__year {
@@ -61,4 +62,5 @@
 
 .dialog__content {
   width: 800px;
+  margin-top: 0;
 }

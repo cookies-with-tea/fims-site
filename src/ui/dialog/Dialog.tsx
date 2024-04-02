@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { Icon } from '@ui/icon/Icon'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
+import cn from 'classnames'
 
 const cx = cnBind.bind(style)
 
@@ -18,6 +19,7 @@ interface DialogProps {
     zIndex?: number
     className?: string
     visible?: boolean
+    fullScreen?: boolean
 }
 
 export const Dialog = ({
@@ -31,7 +33,8 @@ export const Dialog = ({
         zIndex = 1000,
         className,
         visible,
-        verticalPosition = 'center'
+        verticalPosition = 'center',
+        fullScreen = false,
     }: DialogProps) => {
 
     const [active, setActive] = useState(false)
@@ -101,7 +104,7 @@ export const Dialog = ({
     return (
         createPortal(
           <div
-            className={cx('modal', animation)}
+            className={cx('modal', animation, { 'is-fullscreen': fullScreen, 'with-title': title })}
             style={{ zIndex, alignItems: verticalPosition }}
             onTransitionEnd={onTransitionEnd}
             onClick={(event: MouseEvent<HTMLDivElement>) => {
@@ -111,16 +114,22 @@ export const Dialog = ({
             }}
           >
             <div className={cx('modal__overlay')}>
-              <div className={cx('modal__content', className)} ref={refDialog}>
+              <div className={cn('modal__content', cx('modal__content', className))} ref={refDialog}>
                 <header className={cx('modal__header')}>
-                  <h3 className={cx('modal__title')}>{title}</h3>
+                  {
+                    title && (
+                      <h3 className={cx('modal__title')}>
+                        {title}
+                      </h3>
+                    )
+                  }
 
                   {closeIcon && (
-                    <button type='button' onClick={() => onClose?.()}>
+                    <button className={cx('modal__close')} type='button' onClick={() => onClose?.()}>
                       {closeIcon}
                     </button>
-                                )
-                            }
+                    )
+                  }
                 </header>
 
                 {children}

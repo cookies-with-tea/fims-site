@@ -55,7 +55,7 @@ export const AnimeSearch = () => {
     }
   }
 
-  const debounce = useDebounce(getDataFilms, 1000)
+  const debounce = useDebounce(getDataFilms, 300)
 
   const onValueChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setSearch(event.target.value)
@@ -79,47 +79,51 @@ export const AnimeSearch = () => {
       <Dialog
         closeEscape
         overlayClosable
+        fullScreen
         visible={isVisible}
         className={cx('dialog__content')}
         verticalPosition="flex-start"
         onClose={onClose}
       >
-        <div className={cx('anime-search__title')}>
-          Поиск
-        </div>
+        <div className={cx('anime-search__content')}>
+          <div className={cx('anime-search__title')}>
+            Поиск
+          </div>
 
-        <Input
-          name="search"
-          size={'sm'}
-          autocorrectIcons={
-            <Icon name="search" className={cx('anime-search__autocorrect-icon')}/>
+          <Input
+            name="search"
+            size={'sm'}
+            autocorrectIcons={
+              <Icon name="search" className={cx('anime-search__autocorrect-icon')}/>
             }
-          value={search}
-          ref={inputRef}
-          placeholder="Поиск"
-          onChange={onValueChange}
-          onClearValue={onClearValue}
-        />
+            value={search}
+            ref={inputRef}
+            placeholder="Поиск"
+            onChange={onValueChange}
+            onClearValue={onClearValue}
+          />
 
-        <ul className={cx('anime-search__menu')}>
-          {dataFilms.map(( { kinopoiskId, nameRu, year }: DataFilms) => (
-            <li key={kinopoiskId} className={cx('anime-search__item')}>
-              <Icon name="video" className={cx('anime-search__icon-video')}/>
+          <ul className={cx('anime-search__menu')}>
+            {dataFilms.map(( { kinopoiskId, nameRu, year }: DataFilms) => (
+              <li key={kinopoiskId} className={cx('anime-search__item')}>
+                <Icon name="video" className={cx('anime-search__icon-video')}/>
 
-              <div className={cx('anime-search__content')}>
-                <div
-                  className={cx('anime-search__name')}
-                  dangerouslySetInnerHTML={{ __html: markText({ repString: searchRef.current, fullString: nameRu }) }}
-                >
+                <div className={cx('anime-search__content')}>
+                  <div
+                    className={cx('anime-search__name')}
+                    dangerouslySetInnerHTML={{ __html: markText({ repString: searchRef.current, fullString: nameRu }) }}
+                  >
+                  </div>
+
+                  <div className={cx('anime-search__year')}>
+                    {year}
+                  </div>
                 </div>
-
-                <div className={cx('anime-search__year')}>
-                  {year}
-                </div>
-              </div>
-            </li>
+              </li>
            ))}
-        </ul>
+          </ul>
+        </div> 
+    
       </Dialog>
     </div>
   )
