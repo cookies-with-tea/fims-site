@@ -120,7 +120,9 @@ export const Dialog = ({
                 ref={refDialog}
               >
                 <header className={cx('dialog__header')}>
-                  <h3 className={cx('dialog__title')}>{title}</h3>
+                  { title && (
+                    <h3 className={cx('dialog__title')}>{title}</h3>
+                  )}
 
                   {closeIcon && (
                     <button

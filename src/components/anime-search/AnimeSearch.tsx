@@ -95,7 +95,7 @@ export const AnimeSearch = () => {
           size={'sm'}
           autocorrectIcons={
             <Icon name="search" className={cx('anime-search__autocorrect-icon')}/>
-            }
+          }
           value={search}
           ref={inputRef}
           placeholder="Поиск"

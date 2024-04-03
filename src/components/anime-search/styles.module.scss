@@ -10,6 +10,7 @@
 
   &__title {
     font-size: $font--size-xl;
+    margin-bottom: 32px;
   }
 
   &__text {
@@ -57,4 +58,8 @@
     font-size: 22px;
     fill: $background--blue;
   }
+}
+
+.dialog__content {
+  margin-top: 50px;
 }
