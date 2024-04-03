@@ -7,33 +7,36 @@ import cnBind from 'classnames/bind'
 const cx = cnBind.bind(style)
 
 interface DialogProps {
-    children?: ReactNode
-    closeIcon?: ReactNode | boolean
-    title?: string
-    onClose?: () => void
-    closeEscape?: boolean
-    lockScroll?: boolean
-    overlayClosable?: boolean
-    verticalPosition?: 'flex-start' | 'center' | 'flex-end'
-    zIndex?: number
-    className?: string
-    visible?: boolean
+  children?: ReactNode
+  closeIcon?: ReactNode | boolean
+  title?: string
+  onClose?: () => void
+  closeEscape?: boolean
+  lockScroll?: boolean
+  overlayClosable?: boolean
+  verticalPosition?: 'flex-start' | 'center' | 'flex-end'
+  zIndex?: number
+  className?: string
+  visible?: boolean
+  fullScreen?: boolean
+  width: string | number
 }
 
 export const Dialog = ({
-        children,
-        title,
-        closeEscape,
-        onClose,
-        lockScroll,
-        closeIcon = <Icon name='close' className={cx('dialog__close')}/>,
-        overlayClosable,
-        zIndex = 1000,
-        className,
-        visible,
-        verticalPosition = 'center'
+      children,
+      title,
+      closeEscape,
+      onClose,
+      lockScroll,
+      closeIcon = <Icon name='close' className={cx('dialog__close')}/>,
+      overlayClosable,
+      zIndex = 1000,
+      className,
+      visible,
+      fullScreen = false,
+      width,
+      verticalPosition = 'center'
     }: DialogProps) => {
-
     const [active, setActive] = useState(false)
     const [animation, setAnimation] = useState('')
     const refDialog = useRef<HTMLDivElement>(null)
@@ -105,18 +108,26 @@ export const Dialog = ({
             style={{ zIndex, alignItems: verticalPosition }}
             onTransitionEnd={onTransitionEnd}
             onClick={(event: MouseEvent<HTMLDivElement>) => {
-                    if(!overlayClosable) return
+              if(!overlayClosable) return
 
-                    handleBackgroundClose(event)
+              handleBackgroundClose(event)
             }}
           >
             <div className={cx('dialog__overlay')}>
-              <div className={cx('dialog__content', className)} ref={refDialog}>
+              <div
+                className={cx('dialog__content', className)}
+                style={{ width: `${width}px` }}
+                ref={refDialog}
+              >
                 <header className={cx('dialog__header')}>
                   <h3 className={cx('dialog__title')}>{title}</h3>
 
                   {closeIcon && (
-                    <button type='button' onClick={() => onClose?.()}>
+                    <button
+                      type='button'
+                      className={cx({ 'is-fullscreen': fullScreen })}
+                      onClick={() => onClose?.()}
+                    >
                       {closeIcon}
                     </button>
                   )}

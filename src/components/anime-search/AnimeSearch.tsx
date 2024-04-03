@@ -77,11 +77,13 @@ export const AnimeSearch = () => {
       </button>
 
       <Dialog
+        fullScreen
         closeEscape
         overlayClosable
         visible={isVisible}
         className={cx('dialog__content')}
         verticalPosition="flex-start"
+        width={800}
         onClose={onClose}
       >
         <div className={cx('anime-search__title')}>
