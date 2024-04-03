@@ -26,7 +26,7 @@ export const Dialog = ({
         closeEscape,
         onClose,
         lockScroll,
-        closeIcon = <Icon name='close' className={cx('modal__close')}/>,
+        closeIcon = <Icon name='close' className={cx('dialog__close')}/>,
         overlayClosable,
         zIndex = 1000,
         className,
@@ -101,7 +101,7 @@ export const Dialog = ({
     return (
         createPortal(
           <div
-            className={cx('modal', animation)}
+            className={cx('dialog', animation)}
             style={{ zIndex, alignItems: verticalPosition }}
             onTransitionEnd={onTransitionEnd}
             onClick={(event: MouseEvent<HTMLDivElement>) => {
@@ -110,17 +110,16 @@ export const Dialog = ({
                     handleBackgroundClose(event)
             }}
           >
-            <div className={cx('modal__overlay')}>
-              <div className={cx('modal__content', className)} ref={refDialog}>
-                <header className={cx('modal__header')}>
-                  <h3 className={cx('modal__title')}>{title}</h3>
+            <div className={cx('dialog__overlay')}>
+              <div className={cx('dialog__content', className)} ref={refDialog}>
+                <header className={cx('dialog__header')}>
+                  <h3 className={cx('dialog__title')}>{title}</h3>
 
                   {closeIcon && (
                     <button type='button' onClick={() => onClose?.()}>
                       {closeIcon}
                     </button>
-                                )
-                            }
+                  )}
                 </header>
 
                 {children}
