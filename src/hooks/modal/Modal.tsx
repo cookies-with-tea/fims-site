@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 export const useModal = (): [boolean, () => void] => {
-    const [isVisible, setIsVisible] = useState<boolean>(false);
+    const [isVisible, setIsVisible] = useState<boolean>(false)
 
     const changeVisible = () => {
-        setIsVisible(!isVisible);
+        setIsVisible(!isVisible)
     }
 
     return [

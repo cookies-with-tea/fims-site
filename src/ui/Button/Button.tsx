@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
-import { ReactNode, MouseEvent } from 'react';
-import style from "./styles.module.scss"
+import { Link } from 'react-router-dom'
+import { ReactNode, MouseEvent } from 'react'
+import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
 
 interface ButtonProps {
     size?: 'md' | 'sm' | 'xs'
-    variant?: "primary"| "secondary"
+    variant?: 'primary'| 'secondary'
     className?: string
     children?: ReactNode
-    type?: "button"| "submit"
-    radius?: "min" | "max"
+    type?: 'button'| 'submit'
+    radius?: 'min' | 'max'
     disabled?: boolean
     href?: string
     prefixIcon?: ReactNode
@@ -21,13 +21,13 @@ interface ButtonProps {
 }
 
 export const Button = ({
-        size = "md",
-        variant = "primary",
-        className = "",
-        type = "button",
-        radius = "min",
+        size = 'md',
+        variant = 'primary',
+        className = '',
+        type = 'button',
+        radius = 'min',
         disabled = false,
-        href = "",
+        href = '',
         children,
         prefixIcon,
         postfixIcon,
@@ -36,48 +36,52 @@ export const Button = ({
     }: ButtonProps) => {
 
     const classes = cx(
-        "btn",
+        'btn',
         `border-${radius}`,
-        {"prefixIcon": !!prefixIcon },
-        {"postfixIcon": !!postfixIcon },
+        { 'prefixIcon': !!prefixIcon },
+        { 'postfixIcon': !!postfixIcon },
         className,
         variant,
         size,
-    );
+    )
 
     const ConditionalRender = (): ReactNode => {
         return (
-            <>
-                { icon && !children && icon }
-                { prefixIcon && (
-                    <div className={cx('prefix-icon')}>
-                        { prefixIcon }
-                    </div>
+          <>
+            { icon && !children && icon }
+
+            { prefixIcon && (
+              <div className={cx('prefix-icon')}>
+                { prefixIcon }
+              </div>
                 ) }
-                { children && children }
-                { postfixIcon && (
-                    <div className={cx('suffix-icon')}>
-                        { postfixIcon }
-                    </div>
+
+            { children && children }
+
+            { postfixIcon && (
+              <div className={cx('suffix-icon')}>
+                { postfixIcon }
+              </div>
                 ) }
-            </>
+          </>
         )
     }
 
     if(href){
         return (
-            <Link to={href} className={classes}>
-                <ConditionalRender/>
-            </Link>
+          <Link to={href} className={classes}>
+            <ConditionalRender/>
+          </Link>
         )
     }
     return (
-        <button
-            type={type}
-            onClick={onClick}
-            className={classes}
-            disabled={disabled}>
-            <ConditionalRender/>
-        </button>
+      <button
+        type={type}
+        className={classes}
+        disabled={disabled}
+        onClick={onClick}
+      >
+        <ConditionalRender/>
+      </button>
     )
 }

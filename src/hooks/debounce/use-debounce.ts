@@ -1,14 +1,14 @@
+import { useCallback , useRef } from 'react'
+
 export const useDebounce = <T extends unknown[]>(
-  callback: (...args: T) => void,
-  timeout = 300
+  func: (...args: T) => void,
+  delay = 300
   ): ((...args: T) => void) => {
-  let timer: NodeJS.Timeout
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
 
-  return (...args) => {
-    clearTimeout(timer)
-
-    timer = setTimeout(() => {
-      callback.apply(this, args)
-    }, timeout)
-  }
+  return useCallback((...args)=> {
+      clearTimeout(timerRef.current as NodeJS.Timeout)
+      timerRef.current = setTimeout(() => func.apply(this, args), delay)
+    },[func, delay]
+  )
 }

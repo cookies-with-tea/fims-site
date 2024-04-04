@@ -1,6 +1,6 @@
-import { ReactNode, ChangeEvent, useState, forwardRef, RefObject } from "react"
-import { Icon } from "@ui/icon/Icon.tsx"
-import style from "./styles.module.scss"
+import { ReactNode, ChangeEvent, useState, forwardRef, RefObject } from 'react'
+import { Icon } from '@/ui'
+import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
@@ -40,18 +40,18 @@ type InputChangeEventHandler = (event: ChangeEvent<HTMLInputElement | HTMLTextAr
 
 export const Input = forwardRef<
     HTMLInputElement | HTMLTextAreaElement,
-    InputProps>(({
-        size = "md",
-        className = "",
-        placeholder = "",
-        type = "text",
+    InputProps>(function Input({
+        size = 'md',
+        className = '',
+        placeholder = '',
+        type = 'text',
         disabled = false,
-        clearable = <Icon name="clear" className={cx("input__icon")}/>,
+        clearable = <Icon name='clear' className={cx('input__icon')}/>,
         rows = 4,
         postfixIcon,
         prefixIcon,
-        passwordHideIcon = <Icon name={`eye-off`} className={cx("input__icon")}/>,
-        passwordShowIcon = <Icon name={`eye-on`} className={cx("input__icon")}/>,
+        passwordHideIcon = <Icon name={'eye-off'} className={cx('input__icon')}/>,
+        passwordShowIcon = <Icon name={'eye-on'} className={cx('input__icon')}/>,
         value,
         onChange,
         onClearValue,
@@ -59,102 +59,101 @@ export const Input = forwardRef<
         append,
         autocorrectIcons= false,
         name,
-    }, ref) => {
+    }, ref){
 
-    const [passwordShown, setPasswordShown] = useState(false);
+    const [passwordShown, setPasswordShown] = useState(false)
 
-    const inputType = passwordShown ? "text" : type
+    const inputType = passwordShown ? 'text' : type
     const classes = cx(
         className,
-        "input__inner",
+        'input__inner',
     )
-    const RenderIcon = ({prefix, postfix}: IconProps): ReactNode =>{
-        const currentChildren = prefix ?? postfix;
+    const RenderIcon = ({ prefix, postfix }: IconProps): ReactNode =>{
+        const currentChildren = prefix ?? postfix
 
-        const classIcon = cx("input__icon", {
+        const classIcon = cx('input__icon', {
             prefix,
             postfix,
         })
         return (
-            <>
-                { currentChildren && (
-                    <div className={classIcon}>
-                        {currentChildren}
-                    </div>
-                )}
-            </>
+          <>
+            { currentChildren && (
+              <div className={classIcon}>
+                { currentChildren }
+              </div>
+              )}
+          </>
         )
     }
-    const RenderContent = ({prepend, append}: ContentProps): ReactNode =>{
-        const currentChildren = prepend ?? append;
+    const RenderContent = ({ prepend, append }: ContentProps): ReactNode =>{
+        const currentChildren = prepend ?? append
 
-        const classes = cx("input__content", { prepend, append })
+        const classes = cx('input__content', { prepend, append })
         return (
-            <>
-                { currentChildren && (
-                    <div className={classes}>
-                        {currentChildren}
-                    </div>
+          <>
+            { currentChildren && (
+              <div className={ classes }>
+                { currentChildren }
+              </div>
                 )}
-            </>
+          </>
         )
     }
-    if(type === "textarea"){
+    if(type === 'textarea'){
         return(
-            <textarea
-                className={cx("textarea")}
-                placeholder={placeholder}
-                value={value}
-                disabled={disabled}
-                rows={rows}
-                ref={ref as RefObject<HTMLTextAreaElement>}
-                onChange={onChange}
-                name={name}
-            />
+          <textarea
+            className={cx('textarea')}
+            placeholder={placeholder}
+            value={value}
+            disabled={disabled}
+            rows={rows}
+            ref={ref as RefObject<HTMLTextAreaElement>}
+            name={name}
+            onChange={onChange}
+          />
         )
     }
 
     return (
-        <div className={cx("input", size)}>
-            <RenderContent prepend={prepend}/>
+      <div className={cx('input', size)}>
+        <RenderContent prepend={prepend}/>
 
-            <RenderIcon prefix={prefixIcon}/>
+        <RenderIcon prefix={prefixIcon}/>
 
-            <input
-                className={classes}
-                value={value}
-                type={inputType}
-                placeholder={placeholder}
-                disabled={disabled}
-                onChange={onChange}
-                ref={ref as RefObject<HTMLInputElement>}
-                name={name}
-            />
+        <input
+          className={classes}
+          value={value}
+          type={inputType}
+          placeholder={placeholder}
+          disabled={disabled}
+          ref={ref as RefObject<HTMLInputElement>}
+          name={name}
+          onChange={onChange}
+        />
 
-
-            { clearable && value && (
-                    <div onClick={() => onClearValue?.(name)} className={cx('postfix')}>
-                        {clearable}
-                    </div>
+        { clearable && value && (
+          <div  className={cx('postfix')} onClick={() => onClearValue?.(name)}>
+            { clearable }
+          </div>
                 )
             }
 
-            { autocorrectIcons && !value && (
-                <div className={cx('postfix')}>
-                  {autocorrectIcons}
-                </div>
+        { autocorrectIcons && !value && (
+          <div className={cx('postfix')}>
+            { autocorrectIcons }
+          </div>
               )
             }
 
-          {type === "password" && (
-                <div className={cx('postfix')} onClick={() => setPasswordShown(!passwordShown)}>
-                    {!passwordShown ? passwordHideIcon : passwordShowIcon}
-                </div>
+        {type === 'password' && (
+          <div className={cx('postfix')} onClick={() => setPasswordShown(!passwordShown)}>
+            {!passwordShown ? passwordHideIcon : passwordShowIcon}
+          </div>
             )}
 
-            <RenderIcon postfix={postfixIcon}/>
+        <RenderIcon postfix={postfixIcon}/>
 
-            <RenderContent append={append}/>
-        </div>
+        <RenderContent append={append}/>
+      </div>
     )
 })

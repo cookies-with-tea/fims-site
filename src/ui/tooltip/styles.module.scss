@@ -1,20 +1,20 @@
 .tooltip {
     &__content {
+        top: 0;
+        left: 0;
         position: absolute;
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 1000;
-        top: 0;
-        left: 0;
     }
 
     &__arrow {
-        position: absolute;
-        z-index: 1000;
         width: 8px;
         height: 8px;
-        transform: rotate(45deg);
+        position: absolute;
         background: inherit;
+        transform: rotate(45deg);
+        z-index: 1000;
     }
 }

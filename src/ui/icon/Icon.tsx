@@ -1,5 +1,5 @@
-import cls from 'classnames';
-import style from "./styles.module.scss"
+import cls from 'classnames'
+import style from './styles.module.scss'
 
 interface IProps {
     name: string
@@ -20,15 +20,15 @@ export const Icon = ({
     const symbolId = `#${prefix}-${name}`
 
     return (
-        <>
-            <svg
-                className={classNames}
-                width={width}
-                height={height}
-                aria-hidden="true"
-                >
-                <use href={symbolId} />
-            </svg>
-        </>
+      <>
+        <svg
+          className={classNames}
+          width={width}
+          height={height}
+          aria-hidden="true"
+        >
+          <use href={symbolId} />
+        </svg>
+      </>
     )
 }

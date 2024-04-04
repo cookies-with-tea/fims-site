@@ -1,3 +1,3 @@
-export {useDebounce} from "@hooks/debounce/use-debounce.ts"
+export { useDebounce } from '@hooks/debounce/use-debounce'
 
-export {useModal} from "@hooks/modal/Modal.tsx"
+export { useModal } from '@hooks/modal/Modal'

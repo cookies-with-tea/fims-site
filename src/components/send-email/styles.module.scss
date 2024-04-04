@@ -1,4 +1,6 @@
 .form {
+    margin-top: 50px;
+
     &__content {
         margin-bottom: 30px;
     }
@@ -13,3 +15,11 @@
         width: 100%;
     }
 }
+
+.dialog__content {
+  border-radius: 15px;
+  box-shadow: rgb(125 90 141 / 0.56) 0 22px 70px 4px;
+  background: $background--black;
+  padding: 45px;
+}
+

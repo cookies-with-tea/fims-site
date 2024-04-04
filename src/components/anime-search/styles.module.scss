@@ -1,24 +1,25 @@
 .anime-search {
   &__trigger {
+    width: 223px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 223px;
     border-bottom: 1px solid $color--black;
     cursor: pointer;
   }
 
   &__title {
     font-size: $font--size-xl;
+    margin-bottom: 32px;
   }
 
   &__text {
-    color: $color--black;
     font-size: $font--size-large;
     line-height: 120%;
+    color: $color--black;
   }
 
-  &__autocorrect-icon{
+  &__autocorrect-icon {
     font-size: $font--size-large-3;
   }
 
@@ -36,12 +37,12 @@
 
   &__item {
     display: flex;
+    flex-shrink: 0;
+    flex-basis: 50%;
     font-size: $font--size-large;
     line-height: 120%;
     letter-spacing: 0.9px;
     padding-top: 8px;
-    flex-basis: 50%;
-    flex-shrink: 0;
   }
 
   &__content {
@@ -54,11 +55,11 @@
   }
 
   &__icon-video {
-    fill: $background--blue;
     font-size: 22px;
+    fill: $background--blue;
   }
 }
 
 .dialog__content {
-  width: 800px;
+  margin-top: 50px;
 }
