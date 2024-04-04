@@ -1,4 +1,4 @@
-.modal {
+.dialog {
     top:0;
     left: 0;
     width: 100%;
@@ -43,6 +43,12 @@
             color: $color--black-gray;
         }
     }
+}
+
+.is-fullscreen {
+  top: 32px;
+  right: 32px;
+  position: fixed;
 }
 
 .enter {

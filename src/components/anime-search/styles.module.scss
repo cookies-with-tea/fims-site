@@ -10,6 +10,7 @@
 
   &__title {
     font-size: $font--size-xl;
+    margin-bottom: 32px;
   }
 
   &__text {
@@ -18,7 +19,7 @@
     color: $color--black;
   }
 
-  &__autocorrect-icon{
+  &__autocorrect-icon {
     font-size: $font--size-large-3;
   }
 
@@ -60,5 +61,5 @@
 }
 
 .dialog__content {
-  width: 800px;
+  margin-top: 50px;
 }

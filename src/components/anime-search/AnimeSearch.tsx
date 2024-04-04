@@ -77,11 +77,13 @@ export const AnimeSearch = () => {
       </button>
 
       <Dialog
+        fullScreen
         closeEscape
         overlayClosable
         visible={isVisible}
         className={cx('dialog__content')}
         verticalPosition="flex-start"
+        width={800}
         onClose={onClose}
       >
         <div className={cx('anime-search__title')}>
@@ -93,7 +95,7 @@ export const AnimeSearch = () => {
           size={'sm'}
           autocorrectIcons={
             <Icon name="search" className={cx('anime-search__autocorrect-icon')}/>
-            }
+          }
           value={search}
           ref={inputRef}
           placeholder="Поиск"
