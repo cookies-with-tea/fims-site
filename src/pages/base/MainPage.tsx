@@ -1,6 +1,9 @@
+import { BestFilms } from '@components/best-films/BestFilms'
 
 export const MainPage = () => {
     return (
-      <div>MainPage</div>
+      <>
+        <BestFilms/>
+      </>
     )
 }

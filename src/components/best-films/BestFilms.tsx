@@ -1,11 +1,11 @@
 // import {style} from "./style.module.scss"
 // import cnBind from 'classnames/bind'
-import { SwiperSlider } from '@components/swiper-slider/SwiperSlider'
+import { MoveSlider } from '@components/move-films/MoveSlider'
 
-export  const BestFilms = () =>  {
+export const BestFilms = () => {
   return (
     <section>
-      <SwiperSlider/>
+      <MoveSlider/>
     </section>
   )
 }
