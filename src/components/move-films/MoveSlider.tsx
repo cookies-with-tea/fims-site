@@ -65,50 +65,55 @@ export const MoveSlider = () => {
 
   return (
     <div className={cx('swiper')}>
-      <Swiper
-        modules={[Navigation, Pagination]}
-        navigation={{
-          prevEl: prevRef?.current,
-          nextEl: nextRef?.current
-        }}
-        pagination={{
-          el: '.custom-pagination',
-          clickable: true
-        }}
-        spaceBetween={50}
-        slidesPerView={2.5}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={setSwiper}
-      >
-        {slidersImage}
-      </Swiper>
-
-      <div className={cx('custom-pagination')}></div>
-
-      <div className={'swiper__navigation'}>
-        <button
-          type={'button'}
-          className={cx('swiper__button-prev')}
-          ref={prevRef}
+      <div className={cx('swiper__inner')}>
+        <Swiper
+          modules={[Navigation, Pagination]}
+          navigation={{
+            prevEl: prevRef?.current,
+            nextEl: nextRef?.current,
+          }}
+          pagination={{
+            el: '#swiper__pagination',
+            type: 'bullets',
+            bulletClass: cx('swiper__pagination-item'),
+            bulletActiveClass: cx('swiper__pagination-item_active'),
+            clickable: true,
+          }}
+          spaceBetween={50}
+          slidesPerView={2.5}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={setSwiper}
         >
-          <Icon
-            reversed
-            name={'arrow'}
-            className={cx('swiper__button-arrow')}
-          />
-        </button>
+          {slidersImage}
+        </Swiper>
 
-        <button
-          type={'button'}
-          className={cx('swiper__button-next')}
-          ref={nextRef}
-        >
-          <Icon
-            name={'arrow'}
-            className={cx('swiper__button-arrow')}
-          />
-        </button>
+        <div className={'swiper__navigation'}>
+          <button
+            type={'button'}
+            className={cx('swiper__button-prev')}
+            ref={prevRef}
+          >
+            <Icon
+              reversed
+              name={'arrow'}
+              className={cx('swiper__button-arrow')}
+            />
+          </button>
+
+          <button
+            type={'button'}
+            className={cx('swiper__button-next')}
+            ref={nextRef}
+          >
+            <Icon
+              name={'arrow'}
+              className={cx('swiper__button-arrow')}
+            />
+          </button>
+        </div>
       </div>
+
+      <div id="swiper__pagination" className={cx('swiper__pagination')}></div>
     </div>
   )
 }
