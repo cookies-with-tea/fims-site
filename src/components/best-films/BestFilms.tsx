@@ -5,7 +5,9 @@ import { MoveSlider } from '@components/move-films/MoveSlider'
 export const BestFilms = () => {
   return (
     <section>
-      <MoveSlider/>
+      <div className="container">
+        <MoveSlider/>
+      </div>
     </section>
   )
 }
