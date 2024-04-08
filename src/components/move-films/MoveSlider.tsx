@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
+import type { Swiper as SwiperClass } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper/modules'
+import { Navigation , Pagination } from 'swiper/modules'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Icon } from '@/ui'
@@ -27,7 +28,19 @@ export const MoveSlider = () => {
   const [dateSlider, setDateSlider] = useState<object[]>([])
   const prevRef = useRef<HTMLButtonElement | null>(null)
   const nextRef = useRef<HTMLButtonElement | null>(null)
-  // const [swiper, setSwiper] = useState<SwiperClass | null>(null)
+  const [swiper, setSwiper] = useState<SwiperClass | null>(null)
+
+  useEffect(() => {
+    if (swiper) {
+      // @ts-ignore
+      swiper.params.navigation.prevEl = prevRef.current
+      // @ts-ignore
+      swiper.params.navigation.nextEl = nextRef.current
+
+      swiper.navigation.init()
+      swiper.navigation.update()
+    }
+  }, [swiper])
 
   useEffect(() => {
     const getDateSlides = async () => {
@@ -51,23 +64,31 @@ export const MoveSlider = () => {
   ))
 
   return (
-    <div className={'Swiper'}>
+    <div className={cx('swiper')}>
       <Swiper
-        navigation
         modules={[Navigation, Pagination]}
-        pagination={{ clickable: true }}
+        navigation={{
+          prevEl: prevRef?.current,
+          nextEl: nextRef?.current
+        }}
+        pagination={{
+          el: '.custom-pagination',
+          clickable: true
+        }}
         spaceBetween={50}
-        slidesPerView={3}
+        slidesPerView={2.5}
         onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSwiper={setSwiper}
       >
         {slidersImage}
       </Swiper>
 
+      <div className={cx('custom-pagination')}></div>
+
       <div className={'swiper__navigation'}>
         <button
           type={'button'}
-          className={cx('swiper__button')}
+          className={cx('swiper__button-prev')}
           ref={prevRef}
         >
           <Icon
@@ -79,7 +100,7 @@ export const MoveSlider = () => {
 
         <button
           type={'button'}
-          className={cx('swiper__button')}
+          className={cx('swiper__button-next')}
           ref={nextRef}
         >
           <Icon
