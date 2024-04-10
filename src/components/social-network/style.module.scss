@@ -1,0 +1,39 @@
+.social-network {
+  $root: &;
+
+  display: flex;
+
+  &__item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background: $color--white;
+    transition: background-color 300ms ease-in-out;
+    cursor: pointer;
+    padding: 15px;
+
+    &:not(:last-child) {
+      margin-right: 50px;
+    }
+
+    &:nth-last-child(-n+2):hover {
+      background-color: $background--blue-3;
+    }
+
+    &:hover #{$root}__icon {
+      color: $color--white;
+    }
+
+    &:nth-child(1):hover {
+      background-color: $background--red;
+    }
+  }
+
+  &__icon {
+    font-size: 25px;
+    transition: color 300ms ease-in-out;
+  }
+}
