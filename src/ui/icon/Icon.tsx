@@ -1,10 +1,11 @@
+import { IconNamesType } from '@ui/icon/types'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
 
 interface IProps {
-  name: string
+  name: IconNamesType
   className?: string
   prefix?: string
   width?: number | string
