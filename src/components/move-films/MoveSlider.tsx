@@ -26,9 +26,12 @@ type DataSlider = {
 
 export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
   const [dateSlider, setDateSlider] = useState<object[]>([])
+  const [swiper, setSwiper] = useState<SwiperClass | null>(null)
+
   const prevRef = useRef<HTMLButtonElement | null>(null)
   const nextRef = useRef<HTMLButtonElement | null>(null)
-  const [swiper, setSwiper] = useState<SwiperClass | null>(null)
+
+  const paginationRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (swiper) {
@@ -73,7 +76,7 @@ export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
             nextEl: nextRef?.current,
           }}
           pagination={{
-            el: '#swiper__pagination',
+            el: paginationRef?.current,
             type: 'bullets',
             bulletClass: cx('swiper__pagination-item'),
             bulletActiveClass: cx('swiper__pagination-item_active'),
@@ -81,7 +84,6 @@ export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
           }}
           spaceBetween={50}
           slidesPerView={2.5}
-          onSlideChange={() => console.log('slide change')}
           onSwiper={setSwiper}
         >
           {slidersImage}
@@ -113,7 +115,7 @@ export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
         </div>
       </div>
 
-      <div id="swiper__pagination" className={cx('swiper__pagination')}></div>
+      <div ref={paginationRef} className={cx('swiper__pagination')}></div>
     </div>
   )
 }

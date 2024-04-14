@@ -1,4 +1,6 @@
 .best-films {
+  $root: &;
+
   margin-top: 100px;
 
   &__container {
@@ -9,5 +11,48 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  &__social-network {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    color: $color--black;
+  }
+
+  &__item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background: $color--white;
+    transition: background-color 300ms ease-in-out;
+    cursor: pointer;
+    padding: 15px;
+
+    &:not(:last-child) {
+      margin-bottom: 50px;
+    }
+
+    &:nth-last-child(-n+2):hover {
+      background-color: $background--blue-3;
+    }
+
+    &:hover #{$root}__icon {
+      color: $color--white;
+    }
+
+    &:nth-child(1):hover {
+      background-color: $background--red;
+    }
+  }
+
+  &__icon {
+    font-size: $font--size-large-2;
+    transition: color 300ms ease-in-out;
   }
 }
