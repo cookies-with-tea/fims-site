@@ -1,15 +1,19 @@
-// import {style} from "./style.module.scss"
-// import cnBind from 'classnames/bind'
 import { MoveSlider } from '@components/move-films/MoveSlider'
 import { SocialNetwork } from '@components/social-network/SocialNetwork'
+import style from './style.module.scss'
+import cnBind from 'classnames/bind'
+
+const cx = cnBind.bind(style)
 
 export const BestFilms = () => {
   return (
-    <section>
+    <section className={cx('best-films')}>
       <div className="container">
-        <MoveSlider/>
+        <div className={cx('best-films__wrapper')}>
+          <MoveSlider className={ cx('best-films__container')} />
 
-        <SocialNetwork/>
+          <SocialNetwork position={'column'} />
+        </div>
       </div>
     </section>
   )

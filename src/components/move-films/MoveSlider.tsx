@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
 import type { Swiper as SwiperClass } from 'swiper'
+import { Icon } from '@/ui'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation , Pagination } from 'swiper/modules'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { Icon } from '@/ui'
 import 'swiper/scss'
+import axios from 'axios'
 import style from './style.module.scss'
 import cnBind from 'classnames/bind'
 
@@ -24,7 +24,7 @@ type DataSlider = {
   posterUrl?: string
 }
 
-export const MoveSlider = () => {
+export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
   const [dateSlider, setDateSlider] = useState<object[]>([])
   const prevRef = useRef<HTMLButtonElement | null>(null)
   const nextRef = useRef<HTMLButtonElement | null>(null)
@@ -64,7 +64,7 @@ export const MoveSlider = () => {
   ))
 
   return (
-    <div className={cx('swiper')}>
+    <div className={cx('swiper', props?.className)}>
       <div className={cx('swiper__inner')}>
         <Swiper
           modules={[Navigation, Pagination]}
