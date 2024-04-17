@@ -5,17 +5,15 @@ import { Suspense } from 'react'
 export const MainLayout = () => {
     return (
       <div className={'main-layout wrapper'}>
-        <>
-          <Header/>
+        <Header/>
 
-          <Suspense
-            fallback={
-              <p>Loading</p>
-            }
-          >
-            <Outlet />
-          </Suspense>
-        </>
+        <Suspense
+          fallback={
+            <p>Loading</p>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </div>
     )
 }

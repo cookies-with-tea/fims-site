@@ -27,6 +27,7 @@ type DataSlider = {
 export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
   const [dateSlider, setDateSlider] = useState<object[]>([])
   const [swiper, setSwiper] = useState<SwiperClass | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const prevRef = useRef<HTMLButtonElement | null>(null)
   const nextRef = useRef<HTMLButtonElement | null>(null)
@@ -50,6 +51,7 @@ export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
       try {
         const data: object[] = await (await (axios.get(url, option))).data.items
         setDateSlider(data)
+        setIsLoading(false)
       } catch (error) {
         console.log(`${error} --- error`)
       }
@@ -65,6 +67,14 @@ export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
       </Link>
     </SwiperSlide>
   ))
+
+  if (isLoading) {
+    return (
+      <div>
+        Динозавр
+      </div>
+    )
+  }
 
   return (
     <div className={cx('swiper', props?.className)}>

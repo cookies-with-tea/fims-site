@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom'
-import { lazy } from 'react'
-// import { MoveSlider } from '@components/move-films/MoveSlider'
-const MoveSlider = lazy(() => import('@components/move-films/'))
+import { MoveSlider } from '@components/move-films/MoveSlider'
 import { Icon } from '@/ui'
 import style from './style.module.scss'
 import cnBind from 'classnames/bind'
-import { Suspense } from 'react'
 
 const cx = cnBind.bind(style)
 
@@ -14,13 +11,7 @@ export const BestFilms = () => {
     <section className={cx('best-films')}>
       <div className="container">
         <div className={cx('best-films__wrapper')}>
-          <Suspense
-            fallback={
-              <p>Loading</p>
-            }
-          >
-            <MoveSlider className={cx('best-films__container')} />
-          </Suspense>
+          <MoveSlider className={cx('best-films__container')} />
 
           <div className={cx('best-films__social-network')}>
             <div className={cx('best-films__item')}>
