@@ -1,7 +1,12 @@
+import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
-import { PageLogin, PageRegistration, MainPage } from '@/pages'
+
 import { GuestLayout } from '@layouts/guest/GuestLayout'
 import { MainLayout } from '@layouts/base/MainLayout'
+
+const MainPage = lazy(() => import('@pages/base'))
+const PageLogin = lazy(() => import('@pages/auth/login'))
+const PageRegistration = lazy(() => import('@pages/auth/registration'))
 
 const ROUTES = {
   LOGIN: {

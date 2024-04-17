@@ -1,5 +1,6 @@
 import { Header } from '@components/header/Header'
 import { Outlet } from 'react-router-dom'
+import { Suspense } from 'react'
 
 export const MainLayout = () => {
     return (
@@ -7,7 +8,13 @@ export const MainLayout = () => {
         <>
           <Header/>
 
-          <Outlet/>
+          <Suspense
+            fallback={
+              <p>Loading</p>
+            }
+          >
+            <Outlet />
+          </Suspense>
         </>
       </div>
     )
