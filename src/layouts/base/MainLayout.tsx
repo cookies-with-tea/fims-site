@@ -22,8 +22,8 @@ export const MainLayout = () => {
         <div className={cx('video')}>
           <video
             muted
-            autoPlay
             loop
+            autoPlay
             className={cx('video__item')}
           >
             <source
