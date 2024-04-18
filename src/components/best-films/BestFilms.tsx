@@ -9,7 +9,11 @@ const cx = cnBind.bind(style)
 export const BestFilms = () => {
   return (
     <section className={cx('best-films')}>
-      <div className="container">
+      <div className='container'>
+        <div className={cx('best-films__title')}>
+          Лучшие фильмы
+        </div>
+
         <div className={cx('best-films__wrapper')}>
           <MoveSlider className={cx('best-films__container')} />
 

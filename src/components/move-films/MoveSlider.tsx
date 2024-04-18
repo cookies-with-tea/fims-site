@@ -28,6 +28,7 @@ export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
   const [dateSlider, setDateSlider] = useState<object[]>([])
   const [swiper, setSwiper] = useState<SwiperClass | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  // DEBT: в дальнешем подумать над тем ,чтоб вынести состояние Loading в хук
 
   const prevRef = useRef<HTMLButtonElement | null>(null)
   const nextRef = useRef<HTMLButtonElement | null>(null)
@@ -68,6 +69,7 @@ export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
     </SwiperSlide>
   ))
 
+  // DEBT: сделать элемент загрузки
   if (isLoading) {
     return (
       <div>
@@ -93,7 +95,7 @@ export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
             clickable: true,
           }}
           spaceBetween={50}
-          slidesPerView={2.5}
+          slidesPerView={2.2}
           onSwiper={setSwiper}
         >
           {slidersImage}
