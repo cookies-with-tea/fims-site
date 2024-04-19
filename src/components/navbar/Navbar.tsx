@@ -7,13 +7,6 @@ const cx = cnBind.bind(style)
 
 export const Navbar = () => {
     // DEBT: до реализации компонента Tooltip данный компонент приостановлен
-    const navigation = [
-        { name:'Главная', path:'/' },
-        { name:'Новинки', path:'/new-anime' },
-        { name:'Аниме', path:'/anime' },
-        { name:'Топы', path:'/anime-top' },
-    ]
-
     return (
       <nav className={cx('nav')}>
         <ul className={cx('menu')}>
