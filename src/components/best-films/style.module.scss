@@ -51,8 +51,10 @@
       background-color: $background--blue-3;
     }
 
-    &:hover #{$root}__icon {
-      color: $color--white;
+    &:hover {
+      #{$root}__icon {
+        color: $color--white;
+      }
     }
 
     &:nth-child(1):hover {
