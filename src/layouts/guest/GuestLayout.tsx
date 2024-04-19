@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import { Logo } from '@components/logo/Logo'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
+import { Suspense } from 'react'
 
 const cx = cnBind.bind(style)
 
@@ -17,7 +18,13 @@ export const GuestLayout = () => {
 
           <div className={cx('auth__body')}>
             <div className={cx('auth__content')}>
-              <Outlet/>
+              <Suspense
+                fallback={
+                  <p>Loading</p>
+                }
+              >
+                <Outlet />
+              </Suspense>
             </div>
           </div>
         </div>

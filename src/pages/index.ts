@@ -1,5 +1,5 @@
-export { PageLogin } from '@pages/auth/login/PageLogin'
+export { PageLogin } from '@pages/auth/login/ui/PageLogin'
 
-export { PageRegistration } from '@pages/auth/registration/PageRegistration'
+export { PageRegistration } from '@pages/auth/registration/ui/PageRegistration'
 
-export { MainPage } from '@pages/base/MainPage'
+export { MainPage } from '@pages/base/ui/MainPage'

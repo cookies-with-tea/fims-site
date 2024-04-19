@@ -1,22 +1,33 @@
-import cls from 'classnames'
+import { IconNamesType } from '@ui/icon/types'
 import style from './styles.module.scss'
+import cnBind from 'classnames/bind'
+
+const cx = cnBind.bind(style)
 
 interface IProps {
-    name: string
-    className?: string
-    prefix?: string
-    width?: number | string
-    height?: number | string
+  name: IconNamesType
+  className?: string
+  prefix?: string
+  width?: number | string
+  height?: number | string
+  reversed?: boolean
 }
 
 export const Icon = ({
-        className,
-        name,
-        prefix = 'icon',
-        width = '1em',
-        height = '1em'
+      className,
+      name,
+      reversed = false,
+      prefix = 'icon',
+      width = '1em',
+      height = '1em'
     }: IProps) => {
-    const classNames = cls(style.icon,  className, `icon--${name}`)
+    const classNames = cx(
+      'icon',
+      className,
+      `icon--${name}`,
+      { reversed }
+    )
+
     const symbolId = `#${prefix}-${name}`
 
     return (

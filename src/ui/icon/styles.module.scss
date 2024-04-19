@@ -2,4 +2,8 @@
     position: relative;
     display: flex;
     flex-shrink: 0;
+
+    &.reversed {
+      transform: rotate(180deg);
+    }
 }

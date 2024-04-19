@@ -1,0 +1,53 @@
+.swiper {
+  &__img {
+    width: 467px;
+    height: 540px;
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  &__button-arrow {
+    font-size: 40px;
+  }
+
+  &__button-prev {
+    right: 100%;
+    bottom: 50%;
+    position: absolute;
+    cursor: pointer;
+    margin-right: 17px;
+  }
+
+  &__button-next {
+    left: 100%;
+    bottom: 50%;
+    position: absolute;
+    cursor: pointer;
+    margin-left: 17px;
+  }
+
+  :global(.swiper-button-disabled) {
+    display: none;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 26px;
+
+    &-item {
+      width: 12px;
+      height: 12px;
+      border-radius: 30px;
+      background-color: $color--black-gray;
+      cursor: pointer;
+      margin: 0 5px;
+
+      &_active {
+        background-color: $background--transparent-white;
+      }
+    }
+  }
+}

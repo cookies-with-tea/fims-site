@@ -1,5 +1,5 @@
 // import { useState } from 'react'
-// import { Button, Input , Icon } from '@/ui'
+// import { button, Input , Icon } from '@/ui'
 // import stl from './styles.module.scss'
 //
 // export const Uikit = () => {
@@ -7,44 +7,44 @@
 //     return (
 //       <div className={stl.uikit}>
 //         <div className={stl['d-f']}>
-//           <Button>
+//           <button>
 //             Вход
-//           </Button>
+//           </button>
 //
-//           <Button
+//           <button
 //             variant="secondary"
 //             size="sm"
 //           >
 //             Вход
-//           </Button>
+//           </button>
 //
-//           <Button
+//           <button
 //             size="xs"
 //             radius="max"
 //           >
 //             Вход
-//           </Button>
+//           </button>
 //
-//           <Button postfixIcon={<Icon name="filter"/>}>
+//           <button postfixIcon={<Icon name="filter"/>}>
 //             Вход
-//           </Button>
+//           </button>
 //
-//           <Button prefixIcon={<Icon name="filter"/>}>
+//           <button prefixIcon={<Icon name="filter"/>}>
 //             Вход
-//           </Button>
+//           </button>
 //
-//           <Button disabled={true}>
+//           <button disabled={true}>
 //             Вход
-//           </Button>
+//           </button>
 //         </div>
 //
 //         <div style={{ margin:'20px 0' }}>
-//           <Button
+//           <button
 //             prefixIcon={<Icon name="filter"/>}
 //             href="/"
 //           >
 //             Вход
-//           </Button>
+//           </button>
 //         </div>
 //
 //         <div style={{ fontSize:'30px' }}>
