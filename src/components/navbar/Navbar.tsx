@@ -1,4 +1,5 @@
 // import { NavLink } from "react-router-dom"
+import { menuItem } from '@components/navbar/types/navbar.constans'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
 
@@ -17,7 +18,7 @@ export const Navbar = () => {
       <nav className={cx('nav')}>
         <ul className={cx('menu')}>
           {
-            navigation.map((item, index) => (
+            menuItem.map((item, index) => (
               <li key={index} className={cx('menu__item')}>
                 {/* TODO: Будет исправленно по окончанию реализации navbar */}
                 {/* <NavLink to={item.path} className={cx("menu__link")}> */}

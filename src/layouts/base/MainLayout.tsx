@@ -11,6 +11,8 @@ export const MainLayout = () => {
       <div className={'main-layout wrapper'}>
         <Header />
 
+        {/*TODO: Добавить эффект загрузки в 'fallback'*/}
+
         <Suspense
           fallback={
             <p>Loading</p>

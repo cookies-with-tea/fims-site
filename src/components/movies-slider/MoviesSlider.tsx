@@ -19,12 +19,12 @@ const option = {
   },
 }
 
-type DataSlider = {
+type MovieType = {
   kinopoiskId?: number
   posterUrl?: string
 }
 
-export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
+export const MoviesSlider = (props?: Partial <HTMLDivElement>) => {
   const [dateSlider, setDateSlider] = useState<object[]>([])
   const [swiper, setSwiper] = useState<SwiperClass | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -61,7 +61,7 @@ export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
     getDateSlides()
   }, [])
 
-  const slidersImage = dateSlider.map(({ kinopoiskId, posterUrl }: DataSlider) => (
+  const slidersImage = dateSlider.map(({ kinopoiskId, posterUrl }: MovieType) => (
     <SwiperSlide key={kinopoiskId}>
       <Link to={'/'}>
         <img className={cx('swiper__img')} src={posterUrl} alt={'картинка фильма'} />
@@ -127,7 +127,7 @@ export const MoveSlider = (props?: Partial <HTMLDivElement>) => {
         </div>
       </div>
 
-      <div ref={paginationRef} className={cx('swiper__pagination')}></div>
+      <div ref={paginationRef} className={cx('swiper__pagination')} />
     </div>
   )
 }

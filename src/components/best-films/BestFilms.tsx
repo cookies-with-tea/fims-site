@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { MoveSlider } from '@components/move-films/MoveSlider'
+import { MoviesSlider } from '@components/movies-slider/MoviesSlider'
 import { Icon } from '@/ui'
 import style from './style.module.scss'
 import cnBind from 'classnames/bind'
@@ -15,7 +15,7 @@ export const BestFilms = () => {
         </div>
 
         <div className={cx('best-films__wrapper')}>
-          <MoveSlider className={cx('best-films__container')} />
+          <MoviesSlider className={cx('best-films__container')} />
 
           <div className={cx('best-films__social-network')}>
             <div className={cx('best-films__item')}>
