@@ -1,4 +1,4 @@
-import { MenuItemType } from '@components/navbar/types/navbar.types'
+import { MenuItemType } from '@components/navbar/navbar.types'
 
 export const menuItem: MenuItemType[] = [
   { name:'Главная', path:'/' },

@@ -1,5 +1,5 @@
 // import { NavLink } from "react-router-dom"
-import { menuItem } from '@components/navbar/types/navbar.constans'
+import { menuItem } from '@components/navbar/navbar.constans'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
 
