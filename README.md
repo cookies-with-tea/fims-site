@@ -20,7 +20,7 @@ docker-compose up -d --build
 
 ### Подсказки, чтобы не забыть
 
-**fix postgres with sqlx**
+**fix postgres with sqlx** - add postgres to features
 ```
 cargo add sqlx -F postgres
 ```
