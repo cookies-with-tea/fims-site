@@ -9,3 +9,5 @@ export { Icon } from '@ui/icon/Icon'
 export { Input } from '@ui/input/Input'
 
 export { Tooltip } from  '@ui/tooltip/Tooltip'
+
+export { Select } from  '@ui/select/Select'
