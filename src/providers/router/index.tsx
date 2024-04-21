@@ -4,17 +4,27 @@ import { createBrowserRouter } from 'react-router-dom'
 import { GuestLayout } from '@layouts/guest/GuestLayout'
 import { MainLayout } from '@layouts/home/MainLayout'
 
-const MainPage = lazy(() => import('@pages/base'))
+const MainPage = lazy(() => import('@pages/base/base'))
+const AnimePage = lazy(() => import('@pages/base/anime-page'))
 const PageLogin = lazy(() => import('@pages/auth/login'))
 const PageRegistration = lazy(() => import('@pages/auth/registration'))
 
 const ROUTES = {
+  MAIN: {
+    path: '/'
+  },
+
   LOGIN: {
     path: '/login',
   },
+
   REGISTRATION: {
     path: '/registration',
   },
+
+  ANIME: {
+    path: '/anime',
+  }
 }
 
 export const router = createBrowserRouter([
@@ -22,10 +32,15 @@ export const router = createBrowserRouter([
         path: '/',
         element: <MainLayout/>,
         children:[
-            {
-                path: '/',
-                element: <MainPage/>
-            }
+          {
+              path: ROUTES.MAIN.path,
+              element: <MainPage/>
+          },
+
+          {
+            path: ROUTES.ANIME.path,
+            element: <AnimePage/>
+          }
         ]
     },
 
