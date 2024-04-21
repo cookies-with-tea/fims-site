@@ -1,4 +1,4 @@
-// import { NavLink } from "react-router-dom"
+import { NavLink } from 'react-router-dom'
 import { menuItem } from '@components/navbar/navbar.constans'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
@@ -14,10 +14,12 @@ export const Navbar = () => {
             menuItem.map((item, index) => (
               <li key={index} className={cx('menu__item')}>
                 {/* TODO: Будет исправленно по окончанию реализации navbar */}
-                {/* <NavLink to={item.path} className={cx("menu__link")}> */}
-                {item.name}
-
-                {/* </NavLink> */}
+                <NavLink
+                  className={cx('menu__link')}
+                  to={item.path}
+                >
+                  { item.name }
+                </NavLink>
               </li>
             ))
           }

@@ -48,14 +48,14 @@ export const router = createBrowserRouter([
         path: '/',
         element: <GuestLayout/>,
         children:[
-            {
-                path: ROUTES.LOGIN.path,
-                element: <PageLogin/>
-            },
-            {
-                path: ROUTES.REGISTRATION.path,
-                element: <PageRegistration/>
-            }
+          {
+              path: ROUTES.LOGIN.path,
+              element: <PageLogin/>
+          },
+          {
+              path: ROUTES.REGISTRATION.path,
+              element: <PageRegistration/>
+          }
         ]
     },
 ])
