@@ -7,6 +7,11 @@
   background-color: $background--purple-white;
   transition: box-shadow 500ms ease-in-out;
 
+  &__dropdown {
+    width: 275px;
+    border-radius: 8px;
+    background-color: $background--purple-white;
+  }
 
   &__input {
     width:  100%;

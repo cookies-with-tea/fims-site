@@ -2,6 +2,7 @@ import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
 import { Dropdown, Icon } from '@/ui'
 import { ChangeEvent, useState } from 'react'
+import { ContentSelect } from '@/components'
 
 const cx = cnBind.bind(style)
 
@@ -13,7 +14,7 @@ interface SelectType {
 
 export const Select = ({
     placeholder = 'Жанры',
-    option,
+    // option,
     size = 'md',
   }: SelectType) => {
 
@@ -22,7 +23,7 @@ export const Select = ({
     setA(event.target.value)
   }
   return (
-    <Dropdown trigger={'click'} content={option}>
+    <Dropdown trigger={'click'} content={<ContentSelect/>} className={cx('select__dropdown')}>
       <div className={cx('select', size)}>
         <input
           placeholder={placeholder}

@@ -246,8 +246,8 @@ export const Tooltip = ({
 
             {content}
           </div>,
-                teleportTarget)
-            }
+          teleportTarget)
+        }
       </div>
     )
 }
