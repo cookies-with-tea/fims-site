@@ -1,8 +1,8 @@
+import { Dropdown, Icon } from '@/ui'
+import { ChangeEvent, ReactNode, useState } from 'react'
+import { ContentSelect } from '@/components'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
-import { Dropdown, Icon } from '@/ui'
-import { ChangeEvent, useState } from 'react'
-import { ContentSelect } from '@/components'
 
 const cx = cnBind.bind(style)
 
@@ -10,12 +10,14 @@ interface SelectType {
   option?: any[]
   placeholder?: string
   size?: 'md' | 'sm' | 'xs'
+  clearable?: ReactNode | boolean
 }
 
 export const Select = ({
     placeholder = 'Жанры',
     // option,
-    size = 'md',
+    clearable = false,
+    size = 'sm',
   }: SelectType) => {
 
   const [a, setA] = useState('')

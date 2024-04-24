@@ -6,16 +6,14 @@ const cx = cnBind.bind(style)
 
 export const ContentSelect = () => {
   return (
-    <div className={cx('сontent-select')}>
-      <ul className={cx('сontent-select__menu')}>
-        {
-          menuSelectItem.map((genre, index) => (
-            <li className={cx('сontent-select__item')} key={index}>
-              { genre }
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <ul className={cx('menu')}>
+      {
+        menuSelectItem.map((genre, index) => (
+          <li className={cx('menu__item')} key={index}>
+            { genre }
+          </li>
+        ))
+      }
+    </ul>
   )
 }
