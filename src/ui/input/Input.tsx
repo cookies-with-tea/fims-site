@@ -95,7 +95,7 @@ export const Input = forwardRef<
               <div className={ classes }>
                 { currentChildren }
               </div>
-                )}
+            )}
           </>
         )
     }
@@ -135,21 +135,19 @@ export const Input = forwardRef<
           <div  className={cx('postfix')} onClick={() => onClearValue?.(name)}>
             { clearable }
           </div>
-                )
-            }
+        )}
 
         { autocorrectIcons && !value && (
           <div className={cx('postfix')}>
             { autocorrectIcons }
           </div>
-              )
-            }
+        )}
 
         {type === 'password' && (
           <div className={cx('postfix')} onClick={() => setPasswordShown(!passwordShown)}>
             {!passwordShown ? passwordHideIcon : passwordShowIcon}
           </div>
-            )}
+        )}
 
         <RenderIcon postfix={postfixIcon}/>
 
