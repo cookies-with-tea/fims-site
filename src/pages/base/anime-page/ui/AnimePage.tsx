@@ -1,8 +1,8 @@
-import { Select } from '@/ui'
+import { Filter } from '@components/filter/Filter'
 
 export const AnimePage = () => {
 
   return (
-    <><Select/></>
+    <Filter/>
   )
 }

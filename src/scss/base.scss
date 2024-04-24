@@ -1,5 +1,9 @@
 @import "reset";
 
+body {
+  background-color: $background--purple-black;
+}
+
 .wrapper {
     width: 100%;
     min-height: 100%;
@@ -13,6 +17,7 @@
     padding: 0 15px;
     margin: 0 auto;
 }
+
 
 // TODO: выделеям ссылку накоторой находится Url.Оставленно до окончания реализации Navbar
 // a {
