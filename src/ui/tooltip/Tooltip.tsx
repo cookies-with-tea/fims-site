@@ -5,17 +5,18 @@ import cnBind from 'classnames/bind'
 const cx = cnBind.bind(style)
 
 interface TooltipProps {
-    className?: string
-    children?: ReactNode
-    content?: ReactNode
-    offsetX?: number
-    offsetY?: number
-    placement?: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' |
-                'right' | 'right-start' | 'right-end' | 'left' | 'left-start'| 'left-end'
-    trigger?: 'hover' | 'click'
-    closeOutside?: boolean
-    teleportTarget?: HTMLElement
-    showArrow?: boolean
+  className?: string
+  children?: ReactNode
+  content?: ReactNode
+  offsetX?: number
+  offsetY?: number
+  placement?: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' |
+              'right' | 'right-start' | 'right-end' | 'left' | 'left-start'| 'left-end'
+  trigger?: 'hover' | 'click'
+  closeOutside?: boolean
+  teleportTarget?: HTMLElement
+  showArrow?: boolean
+  hideOnClick?: boolean
 }
 
 export const Tooltip = ({
@@ -28,7 +29,8 @@ export const Tooltip = ({
         offsetY = 10,
         trigger = 'hover',
         closeOutside = true,
-        showArrow = false
+        showArrow = false,
+        hideOnClick = false
     }: TooltipProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const arrowRef = useRef<HTMLDivElement>(null)
@@ -241,6 +243,7 @@ export const Tooltip = ({
           <div
             className={classes}
             ref={tooltipRef}
+            onClick={() => hideOnClick && onClick()}
           >
             {showArrow && <div className={cx('tooltip__arrow')} ref={arrowRef}></div>}
 

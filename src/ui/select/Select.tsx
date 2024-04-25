@@ -27,7 +27,7 @@ export const Select = ({
   }: SelectType) => {
 
   return (
-    <Dropdown trigger={'click'} content={option} className={cx('select__dropdown')}>
+    <Dropdown hideOnClick trigger={'click'} content={option} className={cx('select__dropdown')} >
       <div className={cx('select', size)}>
         <input
           placeholder={placeholder}
