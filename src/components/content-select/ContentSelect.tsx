@@ -1,7 +1,7 @@
 import { menuSelectItem } from '@components/content-select/contentSelect.constans'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
-import { ChangeEvent, MouseEvent } from 'react'
+import { MouseEvent } from 'react'
 
 const cx = cnBind.bind(style)
 

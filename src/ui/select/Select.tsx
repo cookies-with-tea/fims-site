@@ -1,6 +1,5 @@
 import { Dropdown, Icon } from '@/ui'
-import { ChangeEvent, ReactNode, useState } from 'react'
-import { ContentSelect } from '@/components'
+import {  ReactNode } from 'react'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
 
@@ -11,6 +10,8 @@ interface SelectType {
   placeholder?: string
   size?: 'md' | 'sm' | 'xs'
   clearable?: ReactNode | boolean
+  autocorrectIcons?: ReactNode | boolean
+  onClearValue?: () => void
   value?: string | number
 }
 
@@ -18,9 +19,11 @@ export const Select = ({
     placeholder = 'Жанры',
     option,
     // withCheckIcon,
-    clearable = false,
+    autocorrectIcons = <Icon name={'arrow-filter'} className={cx('select__icon-arrow')}/>,
+    clearable = <Icon name={'clear'} className={cx('select__icon-arrow')}/>,
     size = 'sm',
-    value
+    value,
+    onClearValue
   }: SelectType) => {
 
   return (
@@ -32,7 +35,17 @@ export const Select = ({
           value={value}
         />
 
-        <Icon name={'arrow-filter'} className={cx('select__icon-arrow')}/>
+        { clearable && value && (
+          <div  className={cx('postfix')} onClick={() => onClearValue?.()}>
+            { clearable }
+          </div>
+        )}
+
+        { autocorrectIcons && !value && (
+          <div className={cx('postfix')}>
+            { autocorrectIcons }
+          </div>
+        )}
       </div>
     </Dropdown>
   )

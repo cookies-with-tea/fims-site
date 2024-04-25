@@ -15,12 +15,20 @@ export const Filter = () => {
 
   }
 
+  const onClearValue = () => {
+    setA('')
+  }
+
   return (
     <div className={cx('filter')}>
       <div className='container'>
         <div className={cx('filter__body')}>
           <div className={cx('filter__item')}>
-            <Select option={<ContentSelect onClick={onValueChange}/>} value={a}/>
+            <Select
+              option={<ContentSelect onClick={onValueChange}/>}
+              value={a}
+              onClearValue={onClearValue}
+            />
           </div>
         </div>
       </div>
