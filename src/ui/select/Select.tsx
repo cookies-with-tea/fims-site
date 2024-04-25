@@ -7,31 +7,29 @@ import cnBind from 'classnames/bind'
 const cx = cnBind.bind(style)
 
 interface SelectType {
-  option?: any[]
+  option?: ReactNode
   placeholder?: string
   size?: 'md' | 'sm' | 'xs'
   clearable?: ReactNode | boolean
+  value?: string | number
 }
 
 export const Select = ({
     placeholder = 'Жанры',
-    // option,
+    option,
+    // withCheckIcon,
     clearable = false,
     size = 'sm',
+    value
   }: SelectType) => {
 
-  const [a, setA] = useState('')
-  const onValueChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setA(event.target.value)
-  }
   return (
-    <Dropdown trigger={'click'} content={<ContentSelect/>} className={cx('select__dropdown')}>
+    <Dropdown trigger={'click'} content={option} className={cx('select__dropdown')}>
       <div className={cx('select', size)}>
         <input
           placeholder={placeholder}
           className={cx('select__input')}
-          value={a}
-          onChange={onValueChange}
+          value={value}
         />
 
         <Icon name={'arrow-filter'} className={cx('select__icon-arrow')}/>
