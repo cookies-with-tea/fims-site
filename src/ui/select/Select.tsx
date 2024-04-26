@@ -18,7 +18,6 @@ interface SelectType {
 export const Select = ({
     placeholder = 'Жанры',
     option,
-    // withCheckIcon,
     autocorrectIcons = <Icon name={'arrow-filter'} className={cx('select__icon-arrow')}/>,
     clearable = <Icon name={'clear'} className={cx('select__icon-arrow')}/>,
     size = 'sm',
@@ -27,7 +26,12 @@ export const Select = ({
   }: SelectType) => {
 
   return (
-    <Dropdown hideOnClick trigger={'click'} content={option} className={cx('select__dropdown')} >
+    <Dropdown
+      hideOnClick
+      trigger={'click'}
+      content={option}
+      className={cx('select__dropdown')}
+    >
       <div className={cx('select', size)}>
         <input
           placeholder={placeholder}

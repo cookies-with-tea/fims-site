@@ -25,7 +25,7 @@ export const Filter = () => {
         <div className={cx('filter__body')}>
           <div className={cx('filter__item')}>
             <Select
-              option={<ContentSelect onClick={onValueChange}/>}
+              option={<ContentSelect checkIconPosition={'right'} onClick={onValueChange}/>}
               value={a}
               onClearValue={onClearValue}
             />

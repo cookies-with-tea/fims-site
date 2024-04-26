@@ -1,6 +1,7 @@
 .menu {
   &__item {
     position: relative;
+    display: flex;
     font-size: $font--size-large;
     color: $color--white;
     transition: color 200ms ease-in;
@@ -17,6 +18,11 @@
       background: #000;
     }
 
+    &-icon {
+      font-size: $font--size-large;
+      padding: 0 6px;
+    }
+
     &:hover {
       color: $color--black;
 
@@ -28,6 +34,10 @@
         border-radius: 0 0 8px 8px;
       }
     }
-
   }
+}
+
+
+.right {
+  justify-content: space-between;
 }
