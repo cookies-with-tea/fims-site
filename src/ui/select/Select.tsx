@@ -1,35 +1,44 @@
 import { Dropdown, Icon } from '@/ui'
-import {  ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
+import { SelectOptions } from '@ui/select/select-options/SelectOptions'
+import { OptionType } from '@/types'
 
 const cx = cnBind.bind(style)
 
 interface SelectType {
-  option?: ReactNode
   placeholder?: string
   size?: 'md' | 'sm' | 'xs'
   clearable?: ReactNode | boolean
   autocorrectIcons?: ReactNode | boolean
   onClearValue?: () => void
   value?: string | number
+  data: OptionType[]
+  onChange: (values: OptionType['value'][]) => void
 }
 
 export const Select = ({
     placeholder = 'Жанры',
-    option,
+    data,
     autocorrectIcons = <Icon name={'arrow-filter'} className={cx('select__icon-arrow')}/>,
     clearable = <Icon name={'clear'} className={cx('select__icon-arrow')}/>,
     size = 'sm',
     value,
-    onClearValue
+    onClearValue,
+    onChange
   }: SelectType) => {
+  const [a, setA] = useState<OptionType['value'][]>([])
+
+  const handleSelectChange = (value: OptionType['value']) => {
+    onChange([value])
+  }
 
   return (
     <Dropdown
       hideOnClick
       trigger={'click'}
-      content={option}
+      content={ <SelectOptions data={data} onChange={handleSelectChange} /> }
       className={cx('select__dropdown')}
     >
       <div className={cx('select', size)}>
