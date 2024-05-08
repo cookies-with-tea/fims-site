@@ -1,9 +1,9 @@
 import { Dropdown, Icon } from '@/ui'
 import { ReactNode } from 'react'
+import { SelectOptions } from '@ui/select/options/SelectOptions'
+import { OptionType } from '@/types'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
-import { SelectOptions } from '@ui/select/select-options/SelectOptions'
-import { OptionType } from '@/types'
 
 const cx = cnBind.bind(style)
 
@@ -15,7 +15,7 @@ interface SelectType {
   onClearValue?: () => void
   value?: string | OptionType['value'][]
   data: OptionType[]
-  onChange: (values: OptionType['value'][] | string) => void
+  onChange?: (values: OptionType['value'][] | string) => void
 }
 
 export const Select = ({
@@ -30,7 +30,8 @@ export const Select = ({
   }: SelectType) => {
 
   const handleSelectChange = (value: OptionType['value']) => {
-    onChange([value])
+    onChange?.(value)
+    // onChange([value])
   }
 
   return (

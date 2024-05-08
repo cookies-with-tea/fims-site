@@ -26,10 +26,10 @@ export const Filter = () => {
         <div className={cx('filter__body')}>
           <div className={cx('filter__item')}>
             <Select
-              data={[{ value: 'value', label: 'label' }]}
-              value={a}
+              data={[{ value: '1value', label: '1value' }, { value: '2value', label: '2value' },{ value: '3value', label: '3value' }]}
+              // value={a}
               onClearValue={onClearValue}
-              onChange={(value) => setA(value)}
+              // onChange={(value) => setA(value)}
             />
           </div>
         </div>
