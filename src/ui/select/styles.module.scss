@@ -6,6 +6,7 @@
   font-size: $font--size-large;
   background-color: $background--purple-white;
   transition: box-shadow 500ms ease-in-out;
+  cursor: pointer;
 
   &__dropdown {
     width: 275px;

@@ -1,8 +1,11 @@
-import { Filter } from '@components/filter/Filter'
+import { AnimeFilters } from '@components/anime-filters'
 
 export const AnimePage = () => {
-
   return (
-    <Filter/>
+    <div className={'anime-page'}>
+      <AnimeFilters />
+
+      <h2>Страница аниме!! ^_^</h2>
+    </div>
   )
 }

@@ -1,43 +1,42 @@
 import { OptionType } from '@/types'
-import { ReactNode, useState } from 'react'
-import { Icon } from '@/ui'
+import { ReactNode } from 'react'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
 
 interface OptionsProps {
-  data: OptionType
+  option: OptionType
   onChange: (value: OptionType['value']) => void
   checkIconPosition?: 'left' | 'right'
-  withCheckIcon?: ReactNode | boolean
+  checkedIcon?: ReactNode | boolean
   isChecked: boolean
 }
 
 export const Option = ({
   onChange,
   checkIconPosition = 'right',
-  withCheckIcon = <Icon name={'checked'} className={cx('select__icon-arrow')}/>,
-  data,
+  checkedIcon,
+  option,
   isChecked
   }: OptionsProps) => {
 
   return (
     <li
       className={cx('menu__item', checkIconPosition)}
-      onClick={() => onChange(data.value)}
+      onClick={() => onChange(option.value)}
     >
       { checkIconPosition === 'left' && isChecked && (
         <div className={cx('menu__item-icon')}>
-          { withCheckIcon }
+          { checkedIcon }
         </div>
       ) }
 
-      { data.label }
+      { option.label }
 
       { checkIconPosition === 'right' && isChecked && (
         <div className={cx('menu__item-icon')}>
-          { withCheckIcon }
+          { checkedIcon }
         </div>
       ) }
     </li>

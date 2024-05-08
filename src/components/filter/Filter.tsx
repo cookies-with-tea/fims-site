@@ -1,39 +1,14 @@
-import style from './styles.module.scss'
-import cnBind from 'classnames/bind'
 import { Select } from '@/ui'
-import { useState } from 'react'
-import { OptionType } from '@/types'
+import { OptionType, UnionOrArray } from '@/types'
 
-const cx = cnBind.bind(style)
-
-export const Filter = () => {
-  // const [a, setA] = useState<OptionType['value'][]>([])
-  const [a, setA] = useState<OptionType['value'][] | string>('')
-  // const onValueChange = (event: MouseEvent<HTMLElement>) => {
-  //   const target = event.target as HTMLElement
-  //   setA(target.innerText)
-  //
-  // }
-  //
-  console.log(a)
-  const onClearValue = () => {
-    setA('')
-  }
-
+export const Filter = ({ filter, onChange }: { filter: any, onChange: (value: UnionOrArray<OptionType['value']>) => void }) => {
   return (
-    <div className={cx('filter')}>
-      <div className='container'>
-        <div className={cx('filter__body')}>
-          <div className={cx('filter__item')}>
-            <Select
-              data={[{ value: '1value', label: '1value' }, { value: '2value', label: '2value' },{ value: '3value', label: '3value' }]}
-              // value={a}
-              onClearValue={onClearValue}
-              // onChange={(value) => setA(value)}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Select
+      multiple
+      placeholder={filter.title}
+      data={filter.items}
+      // onClearValue={onClearValue}
+      onChange={onChange}
+    />
   )
 }

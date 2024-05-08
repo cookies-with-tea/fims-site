@@ -1,5 +1,5 @@
 import { OptionType } from '@/types'
-import { memo, ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 import { Icon } from '@/ui'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
@@ -10,51 +10,31 @@ const cx = cnBind.bind(style)
 interface OptionsProps {
   data: OptionType[]
   onChange: (value: OptionType['value']) => void
+  values: Set<OptionType['value']>
   checkIconPosition?: 'left' | 'right'
-  withCheckIcon?: ReactNode | boolean
+  checkedIcon?: ReactNode | boolean
 }
 
-export const SelectOptions = memo(function SelectOptions({
-   data,
-   onChange,
-   checkIconPosition = 'right',
-   withCheckIcon = <Icon name={'checked'} className={cx('select__icon-arrow')}/>
-  } : OptionsProps){
-
-  const [valuesState, setValuesState] = useState(new Set())
-
-  const updateMap = (value: string) => {
-    console.log(valuesState.values())
-    const _values = new Set(valuesState)
-
-    if (_values.has(value)) {
-      _values.delete(value)
-    } else {
-      _values.add(value)
-    }
-    console.log(value)
-    console.log(_values.values())
-
-    setValuesState(_values)
-  }
+export const SelectOptions = ({
+  data,
+  onChange,
+  checkIconPosition = 'right',
+  checkedIcon = <Icon name={'checked'} className={cx('select__icon-arrow')}/>,
+  values
+}: OptionsProps) => {
 
   return (
     <ul>
-      {data.map((item , index) => (
-        // <Option
-        //   isChecked={valuesState.has(item.value)}
-        //   key={index}
-        //   data={item}
-        //   checkIconPosition={checkIconPosition}
-        //   withCheckIcon={withCheckIcon}
-        //   onChange={updateMap}
-        // />
-        <div key={index} onClick={() => updateMap(item.value)}>
-          { item.value} --
-
-          { valuesState.has(item.value) ? 'true' : 'false'}
-        </div>
+      {data.map((option , index) => (
+        <Option
+          isChecked={values.has(option.value)}
+          key={index}
+          option={option}
+          checkIconPosition={checkIconPosition}
+          checkedIcon={checkedIcon}
+          onChange={onChange}
+        />
       ))}
     </ul>
   )
-})
+}
