@@ -12,7 +12,7 @@ pub fn create_router(shared_state: Arc<AppState>) -> Router<Arc<AppState>> {
     move |body| create_anime(body, shared_state.clone())
   }))
   .route("/", get(get_animes))
-  .route("/filters/list/:key", get(get_anime_filters));
+  .route("/filters/:key", get(get_anime_filters));
 
   app
 }
