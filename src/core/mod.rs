@@ -2,6 +2,8 @@ pub mod db;
 pub mod app;
 pub mod error;
 
+pub mod response;
+
 use std::sync::Arc;
 pub use db::DatabaseConfig;
 

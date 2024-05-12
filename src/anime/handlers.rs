@@ -7,37 +7,57 @@ use uuid::Uuid;
 use crate::anime::model::{Anime, CreateAnimeDTO, FilterCategory, FilterItem, UpdateAnimeDTO};
 use crate::AppState;
 use crate::core::error::internal_error;
+use crate::core::response::ApiResponse;
 
 pub(crate) async fn create_anime(
   Json(payload): Json<CreateAnimeDTO>,
   state: Arc<AppState>,
-) -> StatusCode {
+) -> Json<ApiResponse<()>> {
   let status = payload.status.unwrap_or("anime".to_string());
   let description = payload.description.unwrap_or("".to_string());
 
-  let _ = sqlx::query(
+  let result = sqlx::query(
     "INSERT INTO anime (titles) VALUES ($1)"
   )
     .bind(&payload.titles)
     .bind(status)
     .bind(description)
     .execute(&state.pool)
-    .await
-    .map_err(internal_error)
-    .unwrap();
+    .await;
 
-  StatusCode::CREATED
+  let mut response = ApiResponse {
+    data: None,
+    errors: Vec::new(),
+    messages: Vec::new(),
+  };
+
+  match result {
+    Ok(_) => {
+      response.messages.push("Аниме успешно создано".to_string());
+      Json(response)
+    },
+    Err(err) => {
+      response.errors.push(internal_error(err).1); // Получить только строку из кортежа
+      Json(response)
+    }
+  }
 }
 
 pub(crate) async fn get_animes(
   state: State<Arc<AppState>>,
-) -> Result<Json<Vec<Anime>>, (StatusCode, String)> {
-  let todos = sqlx::query_as::<_, Anime>("SELECT * FROM anime")
+) -> Result<Json<ApiResponse<Vec<Anime>>>, (StatusCode, String)> {
+  let result = sqlx::query_as::<_, Anime>("SELECT * FROM anime")
     .fetch_all(&state.pool)
     .await
     .map_err(internal_error)?;
 
-  Ok(Json(todos))
+  let mut response = ApiResponse {
+    data: Some(result),
+    errors: Vec::new(),
+    messages: Vec::new(),
+  };
+
+  Ok(Json(response))
 }
 
 async fn get_anime(
@@ -136,16 +156,23 @@ async fn delete_anime(
 // filters
 pub(crate) async fn get_anime_filters<'a>(
   Path(key): Path<String>,
-) -> Result<Json<Option<FilterCategory>>, (StatusCode, String)> {
+) -> Result<Json<ApiResponse<FilterCategory>>, (StatusCode, String)> {
   let uuid = match Uuid::parse_str(&key) {
     Ok(uuid) => uuid,
-    Err(_) => return Ok(Json(None)),
+    Err(_) => return Ok(Json(ApiResponse { data: None, errors: Vec::new(), messages: Vec::new() })),
   };
 
   let category = get_categories().iter().find(|c| c.uuid == uuid).cloned();
 
-  Ok(Json(category))
+  let response = ApiResponse {
+    data: category,
+    errors: Vec::new(),
+    messages: Vec::new(),
+  };
+
+  Ok(Json(response))
 }
+
 fn get_categories() -> Vec<FilterCategory> {
   vec![
     FilterCategory {
