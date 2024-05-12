@@ -7,17 +7,14 @@ pub use db::DatabaseConfig;
 
 use crate::anime::{routing as anime_routing};
 use axum::Router;
+use crate::AppState;
 
 
-pub fn create_routing(shared_state: Arc<crate::AppState>) -> Router<Arc<crate::AppState>> {
+pub fn create_routing(shared_state: Arc<AppState>) ->  Router<Arc<AppState>> {
   let mut app = Router::new();
 
-  let api_routes = Router::new()
-    .nest("/anime", anime_routing::create_router(shared_state));
-
-  app = app.nest("/api/v1", api_routes);
-
-  // app = app.nest("/api/v1", user_routing::create_router());
+  app = Router::new()
+    .nest("/api/v1/anime", anime_routing::create_router(shared_state));
 
   app
 }

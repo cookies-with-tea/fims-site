@@ -1,9 +1,12 @@
 use std::sync::Arc;
-use axum::extract::{Path};
+use axum::extract::{Path, State};
 use axum::http::StatusCode;
-use axum::{extract, Json};
-use crate::anime::model::{Anime, CreateAnimeDTO, UpdateAnimeDTO};
+use axum::{Json};
+use serde_json::json;
+use uuid::Uuid;
+use crate::anime::model::{Anime, CreateAnimeDTO, FilterCategory, FilterItem, UpdateAnimeDTO};
 use crate::AppState;
+use crate::core::error::internal_error;
 
 pub(crate) async fn create_anime(
   Json(payload): Json<CreateAnimeDTO>,
@@ -27,7 +30,7 @@ pub(crate) async fn create_anime(
 }
 
 pub(crate) async fn get_animes(
-  state: extract::State<Arc<AppState>>,
+  state: State<Arc<AppState>>,
 ) -> Result<Json<Vec<Anime>>, (StatusCode, String)> {
   let todos = sqlx::query_as::<_, Anime>("SELECT * FROM anime")
     .fetch_all(&state.pool)
@@ -130,9 +133,56 @@ async fn delete_anime(
   StatusCode::OK
 }
 
-fn internal_error<E>(err: E) -> (StatusCode, String)
-  where
-    E: std::error::Error,
-{
-  (StatusCode::INTERNAL_SERVER_ERROR, err.to_string())
+// filters
+pub(crate) async fn get_anime_filters<'a>(
+  Path(key): Path<String>,
+) -> Result<Json<Option<FilterCategory>>, (StatusCode, String)> {
+  let uuid = match Uuid::parse_str(&key) {
+    Ok(uuid) => uuid,
+    Err(_) => return Ok(Json(None)),
+  };
+
+  let category = get_categories().iter().find(|c| c.uuid == uuid).cloned();
+
+  Ok(Json(category))
+}
+fn get_categories() -> Vec<FilterCategory> {
+  vec![
+    FilterCategory {
+      title: "Жанры".to_string(),
+      uuid: "92add9a4-4daa-4e70-bc1b-7e81fe9a11ef".parse().unwrap(),
+      items: vec![
+        FilterItem {
+          label: "Хоррор".to_string(),
+          uuid: uuid::Uuid::new_v4(),
+        },
+        FilterItem {
+          label: "Комедия".to_string(),
+          uuid: uuid::Uuid::new_v4(),
+        },
+        FilterItem {
+          label: "Приключения".to_string(),
+          uuid: uuid::Uuid::new_v4(),
+        },
+      ],
+    },
+    FilterCategory {
+      title: "Страны".to_string(),
+      uuid: "70b44723-5c67-421b-bf0c-9202ae955dea".parse().unwrap(),
+      items: vec![
+        FilterItem {
+          label: "Омерика".to_string(),
+          uuid: uuid::Uuid::new_v4(),
+        },
+        FilterItem {
+          label: "Британия".to_string(),
+          uuid: uuid::Uuid::new_v4(),
+        },
+        FilterItem {
+          label: "Казхастан".to_string(),
+          uuid: uuid::Uuid::new_v4(),
+        },
+      ],
+    },
+  ]
 }

@@ -4,8 +4,8 @@ mod anime;
 use serde::{Deserialize, Serialize};
 use std::{sync::Arc};
 use sqlx::{Pool, Postgres};
-use crate::anime::routing::create_router;
 use crate::core::app::{AppConfig};
+use crate::core::create_routing;
 use crate::core::db::create_pool;
 
 #[derive(Clone, Debug)]
@@ -26,7 +26,7 @@ async fn main() {
 
   let shared_state = Arc::new(AppState { pool: pool.clone() });
 
-  let app = create_router(shared_state.clone()).with_state(shared_state);
+  let app = create_routing(shared_state.clone()).with_state(shared_state);
 
   let listener = tokio::net::TcpListener::bind(format!("{}:{}", {app_host}, {app_port})).await.unwrap();
 
