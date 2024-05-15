@@ -79,6 +79,7 @@ export const AnimeSearch = () => {
       <Dialog
         fullScreen
         closeEscape
+        lockScroll
         overlayClosable
         visible={isVisible}
         className={cx('dialog__content')}

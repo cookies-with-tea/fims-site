@@ -1,9 +1,9 @@
 import { OptionType } from '@/types'
 import { ReactNode } from 'react'
 import { Icon } from '@/ui'
+import { Option } from '@ui/select/option/Option'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
-import { Option } from '@ui/select/option/Option'
 
 const cx = cnBind.bind(style)
 

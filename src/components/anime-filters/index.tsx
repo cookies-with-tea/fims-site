@@ -1,11 +1,11 @@
 import { Filter } from '@/components'
-import cn from 'classnames'
-import cb from 'classnames/bind'
-
-import styles from './styles.module.scss'
+import { FiltersData } from '@/mocks/filters.type'
 import { useEffect, useState } from 'react'
 import { FILTERS_MOCK_DATA } from '@/mocks'
 import { OptionType, UnionOrArray } from '@/types'
+import styles from './styles.module.scss'
+import cn from 'classnames'
+import cb from 'classnames/bind'
 
 const cx = cb.bind(styles)
 
@@ -14,9 +14,9 @@ const fetchFilters = async () => {
 }
 
 export const AnimeFilters = () => {
-  const [filters, setFilters] = useState<any[]>([])
+  const [filters, setFilters] = useState<FiltersData[]>([])
   const [filtersValues, setFiltersValues] = useState({})
-
+  console.log(filtersValues)
   const fetchData = async () => {
     console.log({
       filters: filtersValues,
@@ -61,7 +61,11 @@ export const AnimeFilters = () => {
       <div className={cx('anime-filters')}>
         <div className={cx('anime-filters__content')}>
           { filters.length ? filters?.map((filter, index) => (
-            <Filter key={index} filter={filter} onChange={(value) => handleFilterChange(filter.value, value)} />
+            <Filter
+              key={index}
+              filter={filter}
+              onChange={(value) => handleFilterChange(filter.value, value)}
+            />
           )) : null}
         </div>
       </div>

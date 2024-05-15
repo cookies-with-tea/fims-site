@@ -1,7 +1,15 @@
 import { Select } from '@/ui'
 import { OptionType, UnionOrArray } from '@/types'
 
-export const Filter = ({ filter, onChange }: { filter: any, onChange: (value: UnionOrArray<OptionType['value']>) => void }) => {
+interface FilterProp {
+  filter: any
+  onChange: (value: UnionOrArray<OptionType['value']>) => void
+}
+
+export const Filter = ({
+    filter,
+    onChange
+  }: FilterProp) => {
   return (
     <Select
       multiple

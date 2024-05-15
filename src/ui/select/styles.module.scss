@@ -1,5 +1,6 @@
 .select {
-  width: 100%;
+  //width: 100%;
+  width: 284px;
   display: flex;
   align-items: center;
   border-radius: $font--size-small;
@@ -54,4 +55,20 @@
 .postfix {
   cursor: pointer;
   padding: 0 10px;
+}
+
+.select__selected{
+  display: flex;
+  margin-left: 5px;
+}
+
+.select__selected-item {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 10px;
+  background-color: rgba(53, 39, 65, 0.78);
+}
+.select__selected-text{
+  margin-right: 5px;
 }

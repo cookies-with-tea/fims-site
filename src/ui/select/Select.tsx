@@ -31,8 +31,9 @@ export const Select = ({
   multiple = false
   }: SelectType) => {
   const [valuesState, setValuesState] = useState<Set<OptionType['value']>>(new Set())
-
-  const handleValuesChange = (value: OptionType['value']) => {
+  const [checkedValues, setCheckedValues] = useState<string[]>([])
+  console.log(valuesState)
+  const handleValuesChange = (value: OptionType['value'], valueChecked?: string) => {
     const _values = new Set(valuesState)
 
     if (_values.has(value)) {
@@ -43,10 +44,12 @@ export const Select = ({
 
     setValuesState(_values)
 
+    valueChecked && setCheckedValues([...checkedValues, valueChecked])
+    console.log()
     onChange?.(Array.from(_values.values()))
   }
 
-  const handleOptionChange = (value: OptionType['value']) => {
+  const handleOptionChange = (value: OptionType['value'],  valueChecked?: string) => {
     if (!multiple) {
       onChange?.(value)
 
@@ -61,7 +64,7 @@ export const Select = ({
       return
     }
 
-    handleValuesChange(value)
+    handleValuesChange(value, valueChecked)
   }
 
   return (
@@ -72,8 +75,25 @@ export const Select = ({
       className={cx('select__dropdown')}
     >
       <div className={cx('select', size)}>
+        <div className={cx('select__selected')}>
+
+          <div className={cx('select__selected-item')}>
+            <span className={cx('select__selected-text')}>
+              { checkedValues[0] }valuesState
+            </span>
+
+            <button>
+              <Icon name={'close'} className={cx('select__selected-icon')}/>
+            </button>
+          </div>
+
+          <div className={cx('select__selected-item')}>
+            <span> +{ checkedValues.length }</span>
+          </div>
+        </div>
+
         <input
-          placeholder={placeholder}
+          placeholder={!checkedValues.length ? placeholder : ''}
           className={cx('select__input')}
           value={value}
         />

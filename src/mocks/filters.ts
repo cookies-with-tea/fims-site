@@ -1,4 +1,6 @@
-export const FILTERS_MOCK_DATA = [
+import { FiltersData } from '@/mocks/filters.type'
+
+export const FILTERS_MOCK_DATA: FiltersData[] = [
   {
     title: 'Жанры',
     value: 'genres',
@@ -37,4 +39,4 @@ export const FILTERS_MOCK_DATA = [
       }
     ]
   }
-] as const
+]
