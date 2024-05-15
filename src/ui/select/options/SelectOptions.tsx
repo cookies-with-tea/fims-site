@@ -27,7 +27,7 @@ export const SelectOptions = ({
     <ul>
       {data.map((option , index) => (
         <Option
-          isChecked={values.has(option.value)}
+          isChecked={new Set(values).has(option)}
           key={index}
           option={option}
           checkIconPosition={checkIconPosition}

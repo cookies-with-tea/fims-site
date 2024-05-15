@@ -23,7 +23,7 @@ export const Option = ({
   return (
     <li
       className={cx('menu__item', checkIconPosition)}
-      onClick={() => onChange(option.value, option.label)}
+      onClick={() => onChange(option)}
     >
       { checkIconPosition === 'left' && isChecked && (
         <div className={cx('menu__item-icon')}>

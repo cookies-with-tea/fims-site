@@ -16,6 +16,7 @@ const fetchFilters = async () => {
 export const AnimeFilters = () => {
   const [filters, setFilters] = useState<FiltersData[]>([])
   const [filtersValues, setFiltersValues] = useState({})
+
   console.log(filtersValues)
   const fetchData = async () => {
     console.log({

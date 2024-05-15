@@ -30,10 +30,9 @@ export const Select = ({
   onChange,
   multiple = false
   }: SelectType) => {
-  const [valuesState, setValuesState] = useState<Set<OptionType['value']>>(new Set())
-  const [checkedValues, setCheckedValues] = useState<string[]>([])
-  console.log(valuesState)
-  const handleValuesChange = (value: OptionType['value'], valueChecked?: string) => {
+  const [valuesState, setValuesState] = useState([])
+
+  const handleValuesChange = (value: OptionType) => {
     const _values = new Set(valuesState)
 
     if (_values.has(value)) {
@@ -42,14 +41,12 @@ export const Select = ({
       _values.add(value)
     }
 
-    setValuesState(_values)
+    setValuesState([..._values])
 
-    valueChecked && setCheckedValues([...checkedValues, valueChecked])
-    console.log()
-    onChange?.(Array.from(_values.values()))
+    onChange?.(valuesState.map(map => map.value))
   }
 
-  const handleOptionChange = (value: OptionType['value'],  valueChecked?: string) => {
+  const handleOptionChange = (value) => {
     if (!multiple) {
       onChange?.(value)
 
@@ -64,7 +61,18 @@ export const Select = ({
       return
     }
 
-    handleValuesChange(value, valueChecked)
+    handleValuesChange(value)
+  }
+  const handleOptionRemove = (event) => {
+    event.stopPropagation()
+    console.log(valuesState)
+
+    // console.log(valuesState.filter((employee, index) => index != 0))
+    setValuesState(current =>
+      current.filter((employee, index) => index != 0),
+    )
+
+    onChange?.(valuesState.map(map => map.value))
   }
 
   return (
@@ -77,23 +85,27 @@ export const Select = ({
       <div className={cx('select', size)}>
         <div className={cx('select__selected')}>
 
-          <div className={cx('select__selected-item')}>
-            <span className={cx('select__selected-text')}>
-              { checkedValues[0] }valuesState
-            </span>
+          { !!valuesState.length && (
+            <div className={cx('select__selected-item')}>
+              <span className={cx('select__selected-text')}>
+                {valuesState[0].label}
+              </span>
 
-            <button>
-              <Icon name={'close'} className={cx('select__selected-icon')}/>
-            </button>
-          </div>
+              <button onClick={handleOptionRemove}>
+                <Icon name={'close'} className={cx('select__selected-icon')} />
+              </button>
+            </div>
+          )}
 
-          <div className={cx('select__selected-item')}>
-            <span> +{ checkedValues.length }</span>
-          </div>
+          {valuesState.length > 1 && (
+            <div className={cx('select__selected-item')}>
+              <span> +{valuesState.length - 1}</span>
+            </div>
+          )}
         </div>
 
         <input
-          placeholder={!checkedValues.length ? placeholder : ''}
+          placeholder={!valuesState.length ? placeholder : ''}
           className={cx('select__input')}
           value={value}
         />
