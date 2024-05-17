@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   border-radius: $font--size-small;
-  font-size: $font--size-large;
+
   background-color: $background--purple-white;
   transition: box-shadow 500ms ease-in-out;
   cursor: pointer;
@@ -57,17 +57,23 @@
   padding: 0 10px;
 }
 
-.select__selected{
-  display: flex;
-  margin-left: 5px;
-}
+//.select__selected{
+//  display: flex;
+//  margin-left: 5px;
+//}
 
 .select__selected-item {
   display: flex;
   align-items: center;
+  //color: $color--white;
   padding: 6px;
+  margin-left: 5px;
   border-radius: 10px;
-  background-color: rgba(53, 39, 65, 0.78);
+  background-color: rgba(255, 255, 255, 0.42);
+  font-size: $font--size-large;
+}
+.select__selected-icon{
+  font-size: 14px;
 }
 .select__selected-text{
   margin-right: 5px;

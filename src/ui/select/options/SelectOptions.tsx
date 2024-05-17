@@ -13,6 +13,7 @@ interface OptionsProps {
   values: Set<OptionType['value']>
   checkIconPosition?: 'left' | 'right'
   checkedIcon?: ReactNode | boolean
+  emptyContent?: ReactNode
 }
 
 export const SelectOptions = ({
@@ -20,21 +21,31 @@ export const SelectOptions = ({
   onChange,
   checkIconPosition = 'right',
   checkedIcon = <Icon name={'checked'} className={cx('select__icon-arrow')}/>,
-  values
+  values,
+  emptyContent = 'Нет данных'
 }: OptionsProps) => {
 
   return (
-    <ul>
-      {data.map((option , index) => (
-        <Option
-          isChecked={new Set(values).has(option)}
-          key={index}
-          option={option}
-          checkIconPosition={checkIconPosition}
-          checkedIcon={checkedIcon}
-          onChange={onChange}
-        />
-      ))}
-    </ul>
+    <>
+      {data.length ? (
+        <ul>
+          {data.map((option, index) => (
+            <Option
+              isChecked={new Set(values).has(option)}
+              key={index}
+              option={option}
+              checkIconPosition={checkIconPosition}
+              checkedIcon={checkedIcon}
+              onChange={onChange}
+            />
+          ))}
+        </ul>
+      ) : (
+        <div>
+          { emptyContent }
+        </div>
+      )}
+    </>
+
   )
 }

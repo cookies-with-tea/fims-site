@@ -1,5 +1,5 @@
 import { Dropdown, Icon } from '@/ui'
-import { ReactNode, useState } from 'react'
+import { ReactNode,  useState } from 'react'
 import { SelectOptions } from '@ui/select/options/SelectOptions'
 import { UnionOrArray, OptionType } from '@/types'
 import style from './styles.module.scss'
@@ -67,7 +67,6 @@ export const Select = ({
     event.stopPropagation()
     console.log(valuesState)
 
-    // console.log(valuesState.filter((employee, index) => index != 0))
     setValuesState(current =>
       current.filter((employee, index) => index != 0),
     )
@@ -83,26 +82,23 @@ export const Select = ({
       className={cx('select__dropdown')}
     >
       <div className={cx('select', size)}>
-        <div className={cx('select__selected')}>
+        { !!valuesState.length && (
+          <div className={cx('select__selected-item')}>
+            <p className={cx('select__selected-text')}>
+              {valuesState[0].label}
+            </p>
 
-          { !!valuesState.length && (
-            <div className={cx('select__selected-item')}>
-              <span className={cx('select__selected-text')}>
-                {valuesState[0].label}
-              </span>
+            <button onClick={handleOptionRemove}>
+              <Icon name={'close'} className={cx('select__selected-icon')} />
+            </button>
+          </div>
+        )}
 
-              <button onClick={handleOptionRemove}>
-                <Icon name={'close'} className={cx('select__selected-icon')} />
-              </button>
-            </div>
-          )}
-
-          {valuesState.length > 1 && (
-            <div className={cx('select__selected-item')}>
-              <span> +{valuesState.length - 1}</span>
-            </div>
-          )}
-        </div>
+        {valuesState.length > 1 && (
+          <div className={cx('select__selected-item')}>
+            <span> +{valuesState.length - 1}</span>
+          </div>
+        )}
 
         <input
           placeholder={!valuesState.length ? placeholder : ''}
