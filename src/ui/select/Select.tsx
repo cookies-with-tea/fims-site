@@ -1,5 +1,5 @@
 import { Dropdown, Icon } from '@/ui'
-import { ReactNode,  useState } from 'react'
+import { ReactNode,  useEffect,  useState } from 'react'
 import { SelectOptions } from '@ui/select/options/SelectOptions'
 import { UnionOrArray, OptionType } from '@/types'
 import style from './styles.module.scss'
@@ -42,8 +42,6 @@ export const Select = ({
     }
 
     setValuesState([..._values])
-
-    onChange?.(valuesState.map(map => map.value))
   }
 
   const handleOptionChange = (value) => {
@@ -70,9 +68,11 @@ export const Select = ({
     setValuesState(current =>
       current.filter((employee, index) => index != 0),
     )
-
-    onChange?.(valuesState.map(map => map.value))
   }
+
+  useEffect(() => {
+    onChange?.(valuesState.map(map => map.value))
+  }, [valuesState.length])
 
   return (
     <Dropdown

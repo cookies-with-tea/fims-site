@@ -17,9 +17,8 @@ export const AnimeFilters = () => {
   const [filters, setFilters] = useState<FiltersData[]>([])
   const [filtersValues, setFiltersValues] = useState({})
 
-  console.log(filtersValues)
   const fetchData = async () => {
-    console.log({
+    const paylaod = {
       filters: filtersValues,
       pagination: {
         page: 1,
@@ -29,7 +28,9 @@ export const AnimeFilters = () => {
         field: 'uuid',
         direct: 'asc'
       }
-    })
+    }
+
+    console.log(paylaod)
   }
 
   const getFilters = async () => {
@@ -42,7 +43,7 @@ export const AnimeFilters = () => {
     }
   }
 
-  const handleFilterChange = async (filterValue: string, optionValue: UnionOrArray<OptionType['value']>) => {
+  const handleFilterChange = async (filterValue: string, optionValue: UnionOrArray<OptionType['value']>) => {    
     setFiltersValues((prev) => ({
       ...prev,
       [filterValue]: optionValue,
