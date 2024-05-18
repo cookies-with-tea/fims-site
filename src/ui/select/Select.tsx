@@ -12,8 +12,6 @@ interface SelectType {
   size?: 'md' | 'sm' | 'xs'
   clearable?: ReactNode | boolean
   autocorrectIcons?: ReactNode | boolean
-  onClearValue?: () => void
-  value?: string | OptionType['value'][]
   data: OptionType[]
   onChange?: (values: UnionOrArray<OptionType['value']>) => void
   multiple?: boolean
@@ -25,12 +23,10 @@ export const Select = ({
   autocorrectIcons = <Icon name={'arrow-filter'} className={cx('select__icon-arrow')}/>,
   clearable = <Icon name={'clear'} className={cx('select__icon-arrow')}/>,
   size = 'sm',
-  value,
-  onClearValue,
   onChange,
   multiple = false
   }: SelectType) => {
-  const [valuesState, setValuesState] = useState([])
+  const [valuesState, setValuesState] = useState<string | string[]>([])
 
   const handleValuesChange = (value: OptionType) => {
     const _values = new Set(valuesState)
@@ -46,7 +42,7 @@ export const Select = ({
 
   const handleOptionChange = (value) => {
     if (!multiple) {
-      onChange?.(value)
+      onChange?.(value.value)
 
       const _values = new Set(valuesState)
 
@@ -54,7 +50,7 @@ export const Select = ({
 
       _values.add(value)
 
-      setValuesState(_values)
+      setValuesState([..._values])
 
       return
     }
@@ -63,7 +59,6 @@ export const Select = ({
   }
   const handleOptionRemove = (event) => {
     event.stopPropagation()
-    console.log(valuesState)
 
     setValuesState(current =>
       current.filter((employee, index) => index != 0),
@@ -71,7 +66,7 @@ export const Select = ({
   }
 
   useEffect(() => {
-    onChange?.(valuesState.map(map => map.value))
+    onChange?.( multiple ? valuesState.map(map => map.value): valuesState[0]?.value)
   }, [valuesState.length])
 
   return (
@@ -82,7 +77,7 @@ export const Select = ({
       className={cx('select__dropdown')}
     >
       <div className={cx('select', size)}>
-        { !!valuesState.length && (
+        {multiple && !!valuesState.length && (
           <div className={cx('select__selected-item')}>
             <p className={cx('select__selected-text')}>
               {valuesState[0].label}
@@ -94,7 +89,7 @@ export const Select = ({
           </div>
         )}
 
-        {valuesState.length > 1 && (
+        {multiple && valuesState.length > 1 && (
           <div className={cx('select__selected-item')}>
             <span> +{valuesState.length - 1}</span>
           </div>
@@ -103,22 +98,22 @@ export const Select = ({
         <input
           placeholder={!valuesState.length ? placeholder : ''}
           className={cx('select__input')}
-          value={value}
+          defaultValue={!multiple && valuesState.length ? valuesState[0]?.label : ''}
         />
 
-        { clearable && value && (
+        { clearable && !!valuesState.length && (
           <div
             className={cx('postfix')}
             onClick={(event) => {
               event.stopPropagation()
-              onClearValue?.()
+              setValuesState([])
             }}
           >
             { clearable }
           </div>
         )}
 
-        { autocorrectIcons && !value && (
+        { autocorrectIcons && !valuesState.length && (
           <div className={cx('postfix')}>
             { autocorrectIcons }
           </div>

@@ -43,7 +43,7 @@ export const AnimeFilters = () => {
     }
   }
 
-  const handleFilterChange = async (filterValue: string, optionValue: UnionOrArray<OptionType['value']>) => {    
+  const handleFilterChange = async (filterValue: string, optionValue: UnionOrArray<OptionType['value']>) => {
     setFiltersValues((prev) => ({
       ...prev,
       [filterValue]: optionValue,

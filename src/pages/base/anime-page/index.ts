@@ -1,3 +1,3 @@
-import { AnimePage } from '@/pages'
+import { AnimeList } from '@/pages'
 
-export default  AnimePage
+export default  AnimeList
