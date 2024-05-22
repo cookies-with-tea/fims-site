@@ -12,7 +12,7 @@ export const Filter = ({
   }: FilterProp) => {
   return (
     <Select
-      // multiple
+      multiple
       placeholder={filter.title}
       data={filter.items}
       onChange={onChange}

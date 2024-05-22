@@ -17,6 +17,34 @@ export const FILTERS_MOCK_DATA: FiltersData[] = [
       {
         label: 'Приключения',
         value: window.crypto.randomUUID(),
+      },
+      {
+        label: 'Комедия',
+        value: window.crypto.randomUUID(),
+      },
+      {
+        label: 'Приключения',
+        value: window.crypto.randomUUID(),
+      },
+      {
+        label: 'Хоррор',
+        value: window.crypto.randomUUID(),
+      },
+      {
+        label: 'Комедия',
+        value: window.crypto.randomUUID(),
+      },
+      {
+        label: 'Приключения',
+        value: window.crypto.randomUUID(),
+      },
+      {
+        label: 'Комедия',
+        value: window.crypto.randomUUID(),
+      },
+      {
+        label: 'Приключения',
+        value: window.crypto.randomUUID(),
       }
     ]
   },

@@ -1,6 +1,6 @@
 import { OptionType } from '@/types'
 import { ReactNode } from 'react'
-import { Icon } from '@/ui'
+import { Icon , Scrollbar } from '@/ui'
 import { Option } from '@ui/select/option/Option'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
@@ -28,21 +28,23 @@ export const SelectOptions = ({
   return (
     <>
       {data.length ? (
-        <ul>
-          {data.map((option, index) => (
-            <Option
-              isChecked={new Set(values).has(option)}
-              key={index}
-              option={option}
-              checkIconPosition={checkIconPosition}
-              checkedIcon={checkedIcon}
-              onChange={onChange}
-            />
-          ))}
-        </ul>
+        <Scrollbar maxHeight={200} >
+          <ul style={ { padding: '2px 0' } }>
+            {data.map((option, index) => (
+              <Option
+                isChecked={new Set(values).has(option)}
+                key={index}
+                option={option}
+                checkIconPosition={checkIconPosition}
+                checkedIcon={checkedIcon}
+                onChange={onChange}
+              />
+            ))}
+          </ul>
+        </Scrollbar>
       ) : (
         <div>
-          { emptyContent }
+          {emptyContent}
         </div>
       )}
     </>
