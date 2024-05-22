@@ -39,5 +39,5 @@ export const Option = ({
         </div>
       ) }
     </li>
-    )
+  )
 }
