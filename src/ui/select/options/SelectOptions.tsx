@@ -6,8 +6,8 @@ import style from './styles.module.scss'
 
 interface OptionsProps {
   data: OptionType[]
-  onChange: (value: OptionType['value']) => void
-  values: Set<OptionType['value']>
+  onChange: (value: OptionType) => void
+  values: OptionType[]
   checkIconPosition?: 'left' | 'right'
   checkedIcon?: ReactNode | boolean
   emptyContent?: ReactNode
@@ -26,7 +26,7 @@ export const SelectOptions = ({
       { data.length ? (
         <Scrollbar maxHeight={200} classNames={style.select__scroll}>
           <ul>
-            {data.map((option, index) => (
+            {data.map((option , index) => (
               <Option
                 isChecked={new Set(values).has(option)}
                 key={index}

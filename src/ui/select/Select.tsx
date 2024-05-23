@@ -1,5 +1,5 @@
 import { Dropdown, Icon } from '@/ui'
-import { ReactNode,  useEffect,  useState } from 'react'
+import { ReactNode,  useEffect,  useState , MouseEvent } from 'react'
 import { SelectOptions } from '@ui/select/options/SelectOptions'
 import { UnionOrArray, OptionType } from '@/types'
 import style from './styles.module.scss'
@@ -26,9 +26,9 @@ export const Select = ({
   onChange,
   multiple = false
   }: SelectType) => {
-  const [valuesState, setValuesState] = useState<string | string[]>([])
+  const [valuesState, setValuesState] = useState<OptionType[]>([])
 
-  const handleOptionChange = (value) => {
+  const handleOptionChange = (value: OptionType) => {
     const _values = new Set(valuesState)
 
     if (_values.has(value)) {
@@ -42,11 +42,11 @@ export const Select = ({
     setValuesState([..._values])
   }
 
-  const handleOptionRemove = (event) => {
+  const handleOptionRemove = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
 
     setValuesState(current =>
-      current.filter((item, index) => index != 0),
+      current.filter((item, index) => index != 0)
     )
   }
 

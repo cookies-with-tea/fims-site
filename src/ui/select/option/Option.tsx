@@ -7,7 +7,7 @@ const cx = cnBind.bind(style)
 
 interface OptionsProps {
   option: OptionType
-  onChange: (value: OptionType['value']) => void
+  onChange: (value: OptionType) => void
   checkIconPosition?: 'left' | 'right'
   checkedIcon?: ReactNode | boolean
   isChecked: boolean
