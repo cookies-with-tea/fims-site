@@ -41,17 +41,19 @@ export const Select = ({
 
     setValuesState([..._values])
   }
+
   const handleOptionRemove = (event) => {
     event.stopPropagation()
 
     setValuesState(current =>
-      current.filter((employee, index) => index != 0),
+      current.filter((item, index) => index != 0),
     )
   }
 
   useEffect(() => {
-    const a = multiple ? valuesState.map(map => map.value): valuesState[0]?.value
-    onChange?.(a ?? '' )
+    const getValuesChecked = multiple ? valuesState.map(option => option.value): valuesState[0]?.value
+
+    onChange?.(getValuesChecked ?? '' )
   }, [valuesState])
 
   return (
@@ -63,20 +65,20 @@ export const Select = ({
     >
       <div className={cx('select', size)}>
         { multiple && !!valuesState.length && (
-          <div className={cx('select__selected-item')}>
-            <p className={cx('select__selected-text')}>
-              {valuesState[0].label}
+          <div className={cx('select__item')}>
+            <p className={cx('select__text')}>
+              { valuesState[0].label }
             </p>
 
             <button onClick={handleOptionRemove}>
-              <Icon name={'close'} className={cx('select__selected-icon')} />
+              <Icon name={'close'} className={cx('select__icon')} />
             </button>
           </div>
         )}
 
         { multiple && valuesState.length > 1 && (
-          <div className={cx('select__selected-item')}>
-            <span>+{valuesState.length - 1}</span>
+          <div className={cx('select__item')}>
+            <span>+{ valuesState.length - 1 }</span>
           </div>
         )}
 
