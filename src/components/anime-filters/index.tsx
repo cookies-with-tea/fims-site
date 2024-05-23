@@ -37,7 +37,7 @@ export const AnimeFilters = () => {
     try {
       const data = await fetchFilters()
 
-      setFilters(data as any)
+      setFilters(data as FiltersData[])
     } catch (error) {
       console.error(error)
     }

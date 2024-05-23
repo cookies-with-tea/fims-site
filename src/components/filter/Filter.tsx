@@ -1,8 +1,9 @@
 import { Select } from '@/ui'
 import { OptionType, UnionOrArray } from '@/types'
+import { FiltersData } from '@/mocks/filters.type'
 
 interface FilterProp {
-  filter: any
+  filter: FiltersData
   onChange: (value: UnionOrArray<OptionType['value']>) => void
 }
 
