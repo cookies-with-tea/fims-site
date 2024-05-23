@@ -28,34 +28,18 @@ export const Select = ({
   }: SelectType) => {
   const [valuesState, setValuesState] = useState<string | string[]>([])
 
-  const handleValuesChange = (value: OptionType) => {
+  const handleOptionChange = (value) => {
     const _values = new Set(valuesState)
 
     if (_values.has(value)) {
       _values.delete(value)
     } else {
+      !multiple && _values.clear()
+
       _values.add(value)
     }
 
     setValuesState([..._values])
-  }
-
-  const handleOptionChange = (value) => {
-    if (!multiple) {
-      onChange?.(value.value)
-
-      const _values = new Set(valuesState)
-
-      _values.clear()
-
-      _values.add(value)
-
-      setValuesState([..._values])
-
-      return
-    }
-
-    handleValuesChange(value)
   }
   const handleOptionRemove = (event) => {
     event.stopPropagation()
@@ -66,8 +50,9 @@ export const Select = ({
   }
 
   useEffect(() => {
-    onChange?.( multiple ? valuesState.map(map => map.value): valuesState[0]?.value)
-  }, [valuesState.length])
+    const a = multiple ? valuesState.map(map => map.value): valuesState[0]?.value
+    onChange?.(a ?? '' )
+  }, [valuesState])
 
   return (
     <Dropdown
@@ -77,7 +62,7 @@ export const Select = ({
       className={cx('select__dropdown')}
     >
       <div className={cx('select', size)}>
-        {multiple && !!valuesState.length && (
+        { multiple && !!valuesState.length && (
           <div className={cx('select__selected-item')}>
             <p className={cx('select__selected-text')}>
               {valuesState[0].label}
@@ -89,9 +74,9 @@ export const Select = ({
           </div>
         )}
 
-        {multiple && valuesState.length > 1 && (
+        { multiple && valuesState.length > 1 && (
           <div className={cx('select__selected-item')}>
-            <span> +{valuesState.length - 1}</span>
+            <span>+{valuesState.length - 1}</span>
           </div>
         )}
 

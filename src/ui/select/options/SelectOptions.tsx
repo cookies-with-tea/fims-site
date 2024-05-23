@@ -2,6 +2,7 @@ import { OptionType } from '@/types'
 import { ReactNode } from 'react'
 import { Icon , Scrollbar } from '@/ui'
 import { Option } from '@ui/select/option/Option'
+import style from './styles.module.scss'
 
 interface OptionsProps {
   data: OptionType[]
@@ -23,7 +24,7 @@ export const SelectOptions = ({
   return (
     <>
       { data.length ? (
-        <Scrollbar maxHeight={200} >
+        <Scrollbar maxHeight={200} classNames={style.select__scroll}>
           <ul>
             {data.map((option, index) => (
               <Option
