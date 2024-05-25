@@ -25,15 +25,9 @@ export const Option = ({
       className={cx('menu__item', checkIconPosition)}
       onClick={() => onChange(option)}
     >
-      { checkIconPosition === 'left' && isChecked && (
-        <div className={cx('menu__item-icon')}>
-          { checkedIcon }
-        </div>
-      ) }
-
       { option.label }
 
-      { checkIconPosition === 'right' && isChecked && (
+      { checkIconPosition && isChecked && (
         <div className={cx('menu__item-icon')}>
           { checkedIcon }
         </div>

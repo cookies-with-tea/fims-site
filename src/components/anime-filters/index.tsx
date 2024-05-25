@@ -17,7 +17,7 @@ export const AnimeFilters = () => {
   const [filters, setFilters] = useState<FiltersData[]>([])
   const [filtersValues, setFiltersValues] = useState({})
 
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     const paylaod = {
       filters: filtersValues,
       pagination: {
@@ -31,7 +31,8 @@ export const AnimeFilters = () => {
     }
 
     console.log(paylaod)
-  },[filtersValues])
+    
+  }
 
   const getFilters = async () => {
     try {
@@ -56,7 +57,7 @@ export const AnimeFilters = () => {
 
   useEffect(() => {
     fetchData()
-  }, [filtersValues, fetchData])
+  }, [filtersValues])
 
   return (
     <section className={cn('container')}>
