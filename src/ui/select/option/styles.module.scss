@@ -1,18 +1,30 @@
 .menu {
   &__item {
     display: flex;
+    align-items: center;
+    border-radius: 5px;
     font-size: $font--size-large;
     color: $color--white;
-    transition: color 200ms ease-in;
+    background-color: $background--purple-black-2;
+    transition: color 200ms ease-in, background-color 200ms ease-in;
     cursor: pointer;
-    padding: 16px 10px;
+    padding: 10px;
+
+    &_active {
+      color: $color--black;
+      background-color: $color--white--transparent;
+    }
 
     &-icon {
       font-size: $font--size-large;
     }
 
-    &:hover:not(:last-child) {
-      border-bottom: 1px solid ;
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+
+    &:hover {
+      opacity: 0.8;
     }
   }
 }

@@ -22,7 +22,9 @@ export const Option = ({
   }: OptionsProps) => {
   return (
     <li
-      className={cx('menu__item', checkIconPosition)}
+      className={cx('menu__item', checkIconPosition, {
+        'menu__item_active': isChecked
+      })}
       onClick={() => onChange(option)}
     >
       { option.label }
