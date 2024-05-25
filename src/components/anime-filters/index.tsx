@@ -1,6 +1,6 @@
 import { Filter } from '@/components'
 import { FiltersData } from '@/mocks/filters.type'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { FILTERS_MOCK_DATA } from '@/mocks'
 import { OptionType, UnionOrArray } from '@/types'
 import styles from './styles.module.scss'
@@ -17,7 +17,7 @@ export const AnimeFilters = () => {
   const [filters, setFilters] = useState<FiltersData[]>([])
   const [filtersValues, setFiltersValues] = useState({})
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const paylaod = {
       filters: filtersValues,
       pagination: {
@@ -31,7 +31,7 @@ export const AnimeFilters = () => {
     }
 
     console.log(paylaod)
-  }
+  },[filtersValues])
 
   const getFilters = async () => {
     try {
@@ -56,7 +56,7 @@ export const AnimeFilters = () => {
 
   useEffect(() => {
     fetchData()
-  }, [filtersValues])
+  }, [filtersValues, fetchData])
 
   return (
     <section className={cn('container')}>

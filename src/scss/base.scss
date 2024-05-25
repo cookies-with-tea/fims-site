@@ -1,6 +1,8 @@
 @import "reset";
+@import "font";
 
 body {
+  font-family: 'PT Serif';
   background-color: $background--purple-black;
 }
 

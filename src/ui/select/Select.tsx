@@ -54,7 +54,7 @@ export const Select = ({
     const getValuesChecked = multiple ? valuesState.map(option => option.value): valuesState[0]?.value
 
     onChange?.(getValuesChecked ?? '' )
-  }, [valuesState])
+  }, [valuesState, multiple, onChange])
 
   return (
     <Dropdown
