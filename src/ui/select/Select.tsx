@@ -45,16 +45,18 @@ export const Select = ({
   const handleOptionRemove = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
 
-    setValuesState(current =>
-      current.filter((item, index) => index != 0)
+    setValuesState((current) =>
+      current.filter((_, index) => index !== 0)
     )
   }
 
   useEffect(() => {
+    if (!valuesState.length) return
+
     const getValuesChecked = multiple ? valuesState.map(option => option.value): valuesState[0]?.value
 
     onChange?.(getValuesChecked ?? '' )
-  }, [valuesState, multiple, onChange])
+  }, [valuesState])
 
   return (
     <Dropdown
