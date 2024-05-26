@@ -9,3 +9,5 @@ export { Logo } from '@components/logo/Logo'
 export { Navbar } from '@components/navbar/Navbar'
 
 export { SendNewPasswordForm } from '@components/send-email/SendNewPasswordForm'
+
+export { Filter } from '@components/filter/Filter'

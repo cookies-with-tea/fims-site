@@ -1,6 +1,6 @@
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import { generateTypes } from 'typed-icon-template'
+import { typedIconPlugin } from 'typed-icon-template'
 import { defineConfig } from 'vite'
 import { fileURLToPath } from 'url'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
@@ -17,7 +17,7 @@ export default defineConfig({
   plugins: [
     react(),
     svgIconsConfig,
-    generateTypes({
+    typedIconPlugin({
       iconsPath: path.join(process.cwd(), 'src', 'assets', 'icons'),
       iconComponentPath: path.resolve(process.cwd(), 'src','ui', 'icon', 'types'),
       fileName: 'index.ts'

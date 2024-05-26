@@ -5,17 +5,18 @@ import cnBind from 'classnames/bind'
 const cx = cnBind.bind(style)
 
 interface TooltipProps {
-    className?: string
-    children?: ReactNode
-    content?: ReactNode
-    offsetX?: number
-    offsetY?: number
-    placement?: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' |
-                'right' | 'right-start' | 'right-end' | 'left' | 'left-start'| 'left-end'
-    trigger?: 'hover' | 'click'
-    closeOutside?: boolean
-    teleportTarget?: HTMLElement
-    showArrow?: boolean
+  className?: string
+  children?: ReactNode
+  content?: ReactNode
+  offsetX?: number
+  offsetY?: number
+  placement?: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' |
+              'right' | 'right-start' | 'right-end' | 'left' | 'left-start'| 'left-end'
+  trigger?: 'hover' | 'click'
+  closeOutside?: boolean
+  teleportTarget?: HTMLElement
+  showArrow?: boolean
+  hideOnClick?: boolean
 }
 
 export const Tooltip = ({
@@ -28,7 +29,8 @@ export const Tooltip = ({
         offsetY = 10,
         trigger = 'hover',
         closeOutside = true,
-        showArrow = false
+        showArrow = false,
+        hideOnClick = false
     }: TooltipProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const arrowRef = useRef<HTMLDivElement>(null)
@@ -43,9 +45,11 @@ export const Tooltip = ({
         const handlerOutsideClick = (event: MouseEvent) => {
             const getClickWindow = (event.target as HTMLElement)
 
-            if (!triggerRef.current?.contains(getClickWindow) &&
-                !tooltipRef.current?.contains(getClickWindow)) {
-                setTooltipVisible(!tooltipVisible)
+            if (
+              !triggerRef.current?.contains(getClickWindow) &&
+              !tooltipRef.current?.contains(getClickWindow)
+            ) {
+              setTooltipVisible(!tooltipVisible)
             }
         }
 
@@ -129,20 +133,20 @@ export const Tooltip = ({
             reversePositioning() {
                 const getNewPosition = (value: string, replacement: string) => placement.replace(value, replacement)
 
-                if(placement.startsWith('top')) {
+                if (placement.startsWith('top')) {
 
-                    if(window.scrollY > this.currentY) {
+                    if (window.scrollY > this.currentY) {
                         this.setVerticalToHorizontal(getNewPosition('top', 'bottom'))
                         this.setPositionToHorizontal(getNewPosition('top', 'bottom'))
                         positionsArrow.changePositionVertical(getNewPosition('top', 'bottom'))
                         positionsArrow.changePositionHorizontal(getNewPosition('top', 'bottom'))
                     }
-                }else if(placement.startsWith('bottom')) {
+                } else if (placement.startsWith('bottom')) {
                     const currentPositions = (window.innerHeight -
                       (this.currentY - window.scrollY + contentRefClientRect.height)
                     )
 
-                    if(currentPositions < 0) {
+                    if (currentPositions < 0) {
                         this.setVerticalToHorizontal(getNewPosition('bottom', 'top'))
                         this.setPositionToHorizontal(getNewPosition('bottom', 'top'))
                         positionsArrow.changePositionVertical(getNewPosition('bottom', 'top'))
@@ -151,7 +155,7 @@ export const Tooltip = ({
                 }
             },
             setVerticalToHorizontal(position: string) {
-                switch(true){
+                switch(true) {
                     case position.startsWith('top'):
                         this.currentY = ((triggerRefClientRect.top + window.scrollY) -
                           contentRefClientRect.height - offsetY
@@ -166,7 +170,7 @@ export const Tooltip = ({
                     case position === 'left':
                     case position === 'right':
                         this.currentY = (triggerRefClientRect.bottom + window.scrollY -
-                                      (triggerRefClientRect.height + contentRefClientRect.height) / 2)
+                                        (triggerRefClientRect.height + contentRefClientRect.height) / 2)
                     break
 
                     case position ==='left-start':
@@ -241,13 +245,14 @@ export const Tooltip = ({
           <div
             className={classes}
             ref={tooltipRef}
+            onClick={() => hideOnClick && onClick()}
           >
             {showArrow && <div className={cx('tooltip__arrow')} ref={arrowRef}></div>}
 
             {content}
           </div>,
-                teleportTarget)
-            }
+          teleportTarget)
+        }
       </div>
     )
 }

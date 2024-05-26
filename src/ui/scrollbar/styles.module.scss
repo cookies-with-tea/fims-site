@@ -1,0 +1,18 @@
+.scrollbar {
+  height: 100%;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: rgb(255 255 255 / 0.3);
+    visibility: hidden;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+  }
+}
+

@@ -1,18 +1,35 @@
 @import "reset";
+@import "font";
+
+:root {
+  --line-height-primary: 1.2;
+  --line-height-secondary: 1.4;
+}
+
+*, *::after, *::before {
+  font-family: 'Ubuntu', sans-serif;
+  line-height: var(--line-height-primary);
+}
+
+body {
+  background-color: $background--purple-black;
+}
 
 .wrapper {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .container {
-    max-width: 1380px;
-    padding: 0 15px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1380px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
+
 
 // TODO: выделеям ссылку накоторой находится Url.Оставленно до окончания реализации Navbar
 // a {
