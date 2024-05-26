@@ -1,4 +1,5 @@
 .select {
+  //TODO: по окончанию реализации листинга будет убрано
   //width: 100%;
   width: 284px;
   display: flex;
@@ -29,7 +30,7 @@
     }
   }
 
-  &__text{
+  &__text {
     margin-right: 5px;
   }
 
@@ -81,6 +82,3 @@
   cursor: pointer;
   padding: 0 10px;
 }
-
-
-
