@@ -5,7 +5,7 @@ import { GuestLayout } from '@layouts/guest/GuestLayout'
 import { MainLayout } from '@layouts/home/MainLayout'
 
 const MainPage = lazy(() => import('@pages/base/base'))
-const AnimePage = lazy(() => import('@pages/base/anime-page'))
+const AnimePage = lazy(() => import('@pages/base/anime-list'))
 const PageLogin = lazy(() => import('@pages/auth/login'))
 const PageRegistration = lazy(() => import('@pages/auth/registration'))
 

@@ -4,4 +4,4 @@ export { PageRegistration } from '@pages/auth/registration/ui/PageRegistration'
 
 export { MainPage } from '@pages/base/base/ui/MainPage'
 
-export { AnimeList } from '@pages/base/anime-page/ui/AnimeList'
+export { AnimeList } from '@pages/base/anime-list/ui/AnimeList'
