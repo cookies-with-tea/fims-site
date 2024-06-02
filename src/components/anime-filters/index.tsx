@@ -1,6 +1,6 @@
 import { Filter } from '@/components'
 import { FiltersData } from '@/mocks/filters.type'
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FILTERS_MOCK_DATA } from '@/mocks'
 import { OptionType, UnionOrArray } from '@/types'
 import styles from './styles.module.scss'
@@ -31,7 +31,7 @@ export const AnimeFilters = () => {
     }
 
     console.log(paylaod)
-    
+
   }
 
   const getFilters = async () => {
