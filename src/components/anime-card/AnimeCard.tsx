@@ -11,31 +11,29 @@ export const AnimeCard = ({
   }: any) => {
   return (
     <div className={cx('anime-card')}>
-      <div className={cx('anime-card__img')}>
-        <img src={'https://avatars.mds.yandex.net/i?id=5ea72a0867054873088bcb137c756592f8cd513b-10272338-images-thumbs&n=13'} alt={'111'}/>
+      <div className={cx('anime-card__poster')}>
+        <div className={cx('anime-card__poster-img')}>
+          <img src={'https://img.yani.tv/posters/big/1519225029.webp'} alt={'111'} />
+        </div>
+
+        <div className={cx('anime-card__poster-info')}>
+          <div className={cx('anime-card__poster-actions')}>
+            <Icon name={'star'}/>
+
+            <Icon name={'share'}/>
+
+            <Icon name={'eye-off'}/>
+          </div>
+
+          {/*<div className={cx('anime-card__rating')}>*/}
+          {/*  7,6*/}
+          {/*</div>*/}
+        </div>
+
       </div>
 
-      <div className={cx('anime-card__content')}>
-        <div className={cx('anime-card__title')}>
-          Название фильма
-        </div>
-
-        <div className={cx('anime-card__inner')}>
-          <div className={cx('anime-card__rating')}>
-            <span className={cx('anime-card__rating-number')}>
-              4,9
-            </span>
-
-            <Icon
-              className={cx('anime-card__icon-star')}
-              name={'star'}
-            />
-          </div>
-
-          <div className={cx('anime-card__status')}>
-            онгоинг
-          </div>
-        </div>
+      <div className={cx('anime-card__title')}>
+        Токийский гуль: Перерождение
       </div>
     </div>
   )
