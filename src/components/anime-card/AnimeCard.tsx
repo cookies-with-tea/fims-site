@@ -18,11 +18,13 @@ export const AnimeCard = ({
 
         <div className={cx('anime-card__poster-info')}>
           <div className={cx('anime-card__poster-actions')}>
-            <Icon name={'star'}/>
+            <Icon name={'bookmark'} className={cx('anime-card__icon')}/>
 
-            <Icon name={'share'}/>
+            <Icon name={'share'} className={cx('anime-card__icon')}/>
 
-            <Icon name={'eye-off'}/>
+            <Icon name={'star'} className={cx('anime-card__icon')}/>
+
+            <Icon name={'eye-off'} className={cx('anime-card__icon')}/>
           </div>
 
           {/*<div className={cx('anime-card__rating')}>*/}
