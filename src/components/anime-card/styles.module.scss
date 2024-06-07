@@ -1,70 +1,19 @@
 .anime-card {
+  $root: &;
+
+  cursor: pointer;
   width: 250px;
+  //transition: all 5s ease-in-out;
 
-  &__icon {
-    font-size: 24px;
-    cursor: pointer;
-
-    &:hover {
-      opacity: 0.6;
+  &:hover {
+    #{$root}__poster {
+      transform: scaleY(1.06);
+      transform-origin: bottom;
     }
 
-    &:not(:last-child) {
-      margin-bottom: 7px;
-    }
-  }
-
-  &__status {
-    padding: 4px;
-    background-color: $background--purple-white;
-    border-radius: 6px;
-  }
-
-  &__rating {
-    font-size: 18px;
-    font-weight: 600;
-    padding: 4px;
-    border-radius: 6px;
-    background-color: #2D8984;
-  }
-
-  &__genre {
-    padding: 4px;
-    background-color: #FEFEFE;
-    color: $color--black;
-    border-radius: 6px;
-  }
-
-  &__year {
-    display: flex;
-    align-items: center;
-    padding: 4px;
-    background-color: #352741;
-    border-radius: 6px;
-  }
-
-  &__bottom {
-    color: $color--white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    &-item {
-      position: relative;
-      font-weight: 500;
-      opacity: 0.8;
-
-      &::before {
-        content: '';
-        position: absolute;
-        display: flex;
-        align-items: center;
-        top: 0;
-        left: -5px;
-        height: inherit;
-        width: 2.2px;
-        background-color: $color--black-gray;
-      }
+    #{$root}__poster-info {
+      visibility: visible;
+      opacity: 1;
     }
   }
 
@@ -73,7 +22,7 @@
     height: 260px;
     border-radius: 10px;
     position: relative;
-    //overflow: hidden;
+    transition: all 1s cubic-bezier(0, 0, 0.2, 1);
 
     &-img {
       height: 100%;
@@ -90,32 +39,68 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      opacity: 1;//111
-      transition: all 500ms ease-in-out;
-      visibility: visible;//111
+      transition: all 500ms ease-out;
+      visibility: hidden;
       position: absolute;
-      background-color: rgba(7,5,14,.8);
+      background-color: $color--black--transparent;
       top: 0;
       border-radius: inherit;
       height: 100%;
       width: 100%;
-      padding: 12px;
+      padding: 8px;
     }
 
     &-actions {
-      color: #FEFEFE;
+      color: $color--white;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
     }
+  }
+
+  &__icon {
+    font-size: $font--size-large-3;
+    cursor: pointer;
 
     &:hover {
-      transform: scale(1.04);
+      opacity: 0.6;
+    }
 
-      .anime-card__poster-info {
-        transition: all 500ms ease-in-out;
-        visibility: visible;
-        opacity: 1;
+    &:not(:last-child) {
+      margin-bottom: 7px;
+    }
+  }
+
+  &__status {
+    background-color: $background--purple-white;
+  }
+
+  &__rating {
+    font-size: $font--size-medium;
+    font-weight: 600;
+    padding: 4px;
+    border-radius: 6px;
+    background-color: $background--blue;
+    opacity: 0.8;
+
+    &::first-letter {
+      font-size: $font--size-large-2
+    }
+  }
+
+  &__bottom {
+    color: $color--white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-item {
+      position: relative;
+      padding: 2px 5px;
+      border-radius: 4px;
+
+      &:not(:first-child, :last-child) {
+        border: 1.5px solid $color--black-gray;
       }
     }
   }

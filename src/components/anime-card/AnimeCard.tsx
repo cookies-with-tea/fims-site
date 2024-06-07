@@ -28,22 +28,19 @@ export const AnimeCard = ({
           </div>
 
           <div className={cx('anime-card__bottom')}>
-            <div className={cx('anime-card__rating', 'anime-card__bottom-item')}>
+            <div className={cx('anime-card__bottom-item', 'anime-card__rating')}>
               9,61
             </div>
 
-            <div className={cx('anime-card__year', 'anime-card__bottom-item')} style={{ display: 'flex' }}>
-              <div className={cx('anime-card__year-text')}>1999</div>
-
+            <div className={cx('anime-card__bottom-item' , 'anime-card__year',)}>
+              1999
             </div>
 
-            <div className={cx('anime-card__genre', 'anime-card__bottom-item')} style={{ display: 'flex' }}>
-              <div className={cx('anime-card__year-text')}>
-                драма
-              </div>
+            <div className={cx('anime-card__bottom-item', 'anime-card__genre')}>
+              драма
             </div>
 
-            <div className={cx('anime-card__status', 'anime-card__bottom-item')}>вышел</div>
+            <div className={cx('anime-card__bottom-item', 'anime-card__status')}>вышел</div>
           </div>
         </div>
       </div>
