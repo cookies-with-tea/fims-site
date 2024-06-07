@@ -33,8 +33,6 @@ export const AnimeCard = ({
             </div>
 
             <div className={cx('anime-card__year', 'anime-card__bottom-item')} style={{ display: 'flex' }}>
-              <Icon name={'calendar'} />
-
               <div className={cx('anime-card__year-text')}>1999</div>
 
             </div>

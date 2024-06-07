@@ -1,25 +1,13 @@
 @font-face {
-  src: url('fonts/Ubuntu/u Medium.eot');
-  src: url('fonts/Ubuntu/u Medium.eot?#iefix') format('embedded-opentype'),
-  url('fonts/Ubuntu/u Medium.woff2') format('woff2'),
-  url('fonts/Ubuntu/u Medium.woff') format('woff'),
-  url('fonts/Ubuntu/u Medium.svg#u Medium') format('svg');
-  font-family:'Ubuntu';
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  unicode-range: U+0020-2074;
-}
-
-@font-face {
-  src: url('fonts/Ubuntu/Ubuntu.eot');
-  src: url('fonts/Ubuntu/Ubuntu.eot?#iefix') format('embedded-opentype'),
-  url('fonts/Ubuntu/Ubuntu.woff2') format('woff2'),
-  url('fonts/Ubuntu/Ubuntu.woff') format('woff'),
-  url('fonts/Ubuntu/Ubuntu.svg#Ubuntu') format('svg');
-  font-family:'Ubuntu';
+  font-family: 'Tahoma';
+  src: url('fonts/Tahoma/subset-Tahoma.eot');
+  src: url('fonts/Tahoma/subset-Tahoma.eot?#iefix') format('embedded-opentype'),
+  url('fonts/Tahoma/subset-Tahoma.woff2') format('woff2'),
+  url('fonts/Tahoma/subset-Tahoma.woff') format('woff'),
+  url('fonts/Tahoma/subset-Tahoma.ttf') format('truetype'),
+  url('fonts/Tahoma/subset-Tahoma.svg#Tahoma') format('svg');
   font-weight: 400;
   font-style: normal;
-  font-stretch: normal;
-  unicode-range: U+0020-2074;
+  font-display: swap;
 }
+
