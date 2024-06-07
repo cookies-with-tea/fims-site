@@ -27,11 +27,27 @@ export const AnimeCard = ({
             <Icon name={'eye-off'} className={cx('anime-card__icon')}/>
           </div>
 
-          {/*<div className={cx('anime-card__rating')}>*/}
-          {/*  7,6*/}
-          {/*</div>*/}
-        </div>
+          <div className={cx('anime-card__bottom')}>
+            <div className={cx('anime-card__rating', 'anime-card__bottom-item')}>
+              9,61
+            </div>
 
+            <div className={cx('anime-card__year', 'anime-card__bottom-item')} style={{ display: 'flex' }}>
+              <Icon name={'calendar'} />
+
+              <div className={cx('anime-card__year-text')}>1999</div>
+
+            </div>
+
+            <div className={cx('anime-card__genre', 'anime-card__bottom-item')} style={{ display: 'flex' }}>
+              <div className={cx('anime-card__year-text')}>
+                драма
+              </div>
+            </div>
+
+            <div className={cx('anime-card__status', 'anime-card__bottom-item')}>вышел</div>
+          </div>
+        </div>
       </div>
 
       <div className={cx('anime-card__title')}>
