@@ -25,7 +25,7 @@ export const AnimeCard = ({
     year,
     genre,
     title
-  }: any) => {
+  }: AnimeCardProps) => {
   return (
     <Link className={cx('anime-card')} to={urlPath}>
       <div className={cx('anime-card__poster')}>
