@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'Tahoma';
   src: url('fonts/Tahoma/subset-Tahoma.eot');
   src: url('fonts/Tahoma/subset-Tahoma.eot?#iefix') format('embedded-opentype'),
   url('fonts/Tahoma/subset-Tahoma.woff2') format('woff2'),
   url('fonts/Tahoma/subset-Tahoma.woff') format('woff'),
   url('fonts/Tahoma/subset-Tahoma.ttf') format('truetype'),
   url('fonts/Tahoma/subset-Tahoma.svg#Tahoma') format('svg');
+  font-family: 'Tahoma', sans-serif;
   font-weight: 400;
   font-style: normal;
   font-display: swap;

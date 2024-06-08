@@ -1,27 +1,43 @@
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
 import { Icon } from '@/ui'
+import { Link } from 'react-router-dom'
 
 const cx = cnBind.bind(style)
 
+interface AnimeCardProps {
+  urlImg: string
+  urlPath: string
+  rating: string|string
+  status: string
+  age: string|string
+  year: string|string
+  genre: string
+  title: string
+}
 export const AnimeCard = ({
-  // url,
-  // rating,
-  // status,
-  }: any) => {
+    urlImg,
+    urlPath,
+    rating,
+    status,
+    age,
+    year,
+    genre,
+    title
+  }: AnimeCardProps) => {
   return (
-    <div className={cx('anime-card')}>
+    <Link className={cx('anime-card')} to={urlPath}>
       <div className={cx('anime-card__poster')}>
         <div className={cx('anime-card__img')}>
           <img
             className={cx('anime-card__img-item')}
-            src={'https://img.yani.tv/posters/big/1519225029.webp'}
-            alt={'111'}
+            src={urlImg}
+            alt={'poster'}
           />
         </div>
 
-        <div className='anime-card__poster-age'>
-          16+
+        <div className={cx('anime-card__poster-age')}>
+          {age}+
         </div>
 
         <div className={cx('anime-card__poster-info')}>
@@ -37,25 +53,27 @@ export const AnimeCard = ({
 
           <div className={cx('anime-card__bottom')}>
             <div className={cx('anime-card__bottom-item', 'anime-card__rating')}>
-              9,61
+              { rating }
             </div>
 
             <div className={cx('anime-card__bottom-item' , 'anime-card__year',)}>
-              1999
+              { year }
             </div>
 
             <div className={cx('anime-card__bottom-item', 'anime-card__genre')}>
-              драма
+              { genre }
             </div>
 
-            <div className={cx('anime-card__bottom-item', 'anime-card__status')}>вышел</div>
+            <div className={cx('anime-card__bottom-item', 'anime-card__status')}>
+              { status }
+            </div>
           </div>
         </div>
       </div>
 
       <div className={cx('anime-card__title')}>
-        Токийский гуль: Перерождение
+        { title }
       </div>
-    </div>
+    </Link>
   )
 }
