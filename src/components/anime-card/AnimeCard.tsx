@@ -12,8 +12,16 @@ export const AnimeCard = ({
   return (
     <div className={cx('anime-card')}>
       <div className={cx('anime-card__poster')}>
-        <div className={cx('anime-card__poster-img')}>
-          <img src={'https://img.yani.tv/posters/big/1519225029.webp'} alt={'111'} />
+        <div className={cx('anime-card__img')}>
+          <img
+            className={cx('anime-card__img-item')}
+            src={'https://img.yani.tv/posters/big/1519225029.webp'}
+            alt={'111'}
+          />
+        </div>
+
+        <div className='anime-card__poster-age'>
+          16+
         </div>
 
         <div className={cx('anime-card__poster-info')}>

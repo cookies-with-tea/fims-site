@@ -3,7 +3,6 @@
 
   cursor: pointer;
   width: 250px;
-  //transition: all 5s ease-in-out;
 
   &:hover {
     #{$root}__poster {
@@ -15,6 +14,21 @@
       visibility: visible;
       opacity: 1;
     }
+
+    #{$root}__title {
+      opacity: 0.7;
+    }
+  }
+
+  &__img {
+    height: 100%;
+
+    &-item {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
   }
 
   &__poster {
@@ -24,22 +38,19 @@
     position: relative;
     transition: all 1s cubic-bezier(0, 0, 0.2, 1);
 
-    &-img {
-      height: 100%;
-
-      & img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 10px;
-      }
+    &-age {
+      position: absolute;
+      top: 0;
+      right: 0;
+      //bottom: 0;
+      color: red;
     }
 
     &-info {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 500ms ease-out;
+      transition: opacity 500ms ease-out, visibility 500ms ease-out;
       visibility: hidden;
       position: absolute;
       background-color: $color--black--transparent;
