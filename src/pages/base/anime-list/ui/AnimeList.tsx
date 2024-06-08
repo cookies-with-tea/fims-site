@@ -6,7 +6,16 @@ export const AnimeList = () => {
     <div className={'anime-list'}>
       <AnimeFilters />
 
-      <AnimeCard/>
+      <AnimeCard
+        urlPath={'/'}
+        rating={9.6}
+        status={'Вышел'}
+        genre={'драма'}
+        year={'1990'}
+        age={18}
+        title={'Клинок, рассекающий демонов: Тренировка столпов'}
+        urlImg={'https://img.yani.tv/posters/big/1636671088.webp'}
+      />
     </div>
   )
 }

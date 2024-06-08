@@ -1,20 +1,21 @@
-import style from './styles.module.scss'
-import cnBind from 'classnames/bind'
 import { Icon } from '@/ui'
 import { Link } from 'react-router-dom'
+import style from './styles.module.scss'
+import cnBind from 'classnames/bind'
 
 const cx = cnBind.bind(style)
 
 interface AnimeCardProps {
   urlImg: string
   urlPath: string
-  rating: string|string
-  status: string
-  age: string|string
-  year: string|string
+  rating: string|number
+  status: 'Вышел' | 'Онгоинг'
+  age: string|number
+  year: string|number
   genre: string
   title: string
 }
+
 export const AnimeCard = ({
     urlImg,
     urlPath,
@@ -24,7 +25,7 @@ export const AnimeCard = ({
     year,
     genre,
     title
-  }: AnimeCardProps) => {
+  }: any) => {
   return (
     <Link className={cx('anime-card')} to={urlPath}>
       <div className={cx('anime-card__poster')}>
