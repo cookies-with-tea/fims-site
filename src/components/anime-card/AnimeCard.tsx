@@ -8,10 +8,10 @@ const cx = cnBind.bind(style)
 interface AnimeCardProps {
   urlImg: string
   urlPath: string
-  rating: string|number
+  rating: string | number
   status: 'Вышел' | 'Онгоинг'
-  age: string|number
-  year: string|number
+  age: string | number
+  year: string | number
   genre: string
   title: string
 }
