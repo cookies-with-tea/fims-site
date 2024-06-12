@@ -107,8 +107,9 @@
   }
 
   &__title {
-    @include truncate(1);
+    @include truncate(2);
 
+    text-align: center;
     margin-top: 8px;
   }
 
