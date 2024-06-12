@@ -41,6 +41,7 @@ export default defineConfig({
       scss: {
         additionalData: `
             @use './src/styles/additionals/variables/_index.scss' as *;
+            @use './src/styles/additionals/mixins/_index.scss' as *;
           `,
       },
     },

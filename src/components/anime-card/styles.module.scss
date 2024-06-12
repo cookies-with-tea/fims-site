@@ -107,11 +107,9 @@
   }
 
   &__title {
-    white-space: nowrap;
-    text-align: center;
-    text-overflow: ellipsis;
+    @include truncate(1);
+
     margin-top: 8px;
-    overflow: hidden;
   }
 
   &:hover {
