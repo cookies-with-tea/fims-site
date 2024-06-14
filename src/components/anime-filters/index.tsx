@@ -1,11 +1,11 @@
 import { Filter } from '@/components'
-import { FiltersData } from '@/mocks/filters.type'
 import { useEffect, useState } from 'react'
 import { FILTERS_MOCK_DATA } from '@/mocks'
 import { OptionType, UnionOrArray } from '@/types'
 import styles from './styles.module.scss'
 import cn from 'classnames'
 import cb from 'classnames/bind'
+import { FiltersData } from '@/types/filters'
 
 const cx = cb.bind(styles)
 

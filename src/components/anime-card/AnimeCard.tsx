@@ -2,39 +2,34 @@ import { Icon } from '@/ui'
 import { Link } from 'react-router-dom'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
+import { AnimeCardResponseType } from '@/types'
 
 const cx = cnBind.bind(style)
 
-interface AnimeCardProps {
-  urlImg: string
-  urlPath: string
-  rating: string | number
-  status: 'Вышел' | 'Онгоинг'
-  age: string | number
-  year: string | number
-  genre: string
-  title: string
-}
-
 export const AnimeCard = ({
-    urlImg,
-    urlPath,
     rating,
     status,
     age,
     year,
     genre,
-    title
-  }: AnimeCardProps) => {
+    title,
+    uuid,
+    slug,
+    image,
+  }: AnimeCardResponseType) => {
   return (
-    <Link className={cx('anime-card')} to={urlPath}>
+    <Link className={cx('anime-card')} to={`/anime/${slug}_${uuid}`}>
       <div className={cx('anime-card__poster')}>
         <div className={cx('anime-card__img')}>
-          <img
-            className={cx('anime-card__img-item')}
-            src={urlImg}
-            alt={'poster'}
-          />
+          {
+            image?.path && (
+              <img
+                className={cx('anime-card__img-item')}
+                src={image?.path}
+                alt={image?.alt}
+              />
+            )
+          }
         </div>
 
         <div className={cx('anime-card__poster-age')}>

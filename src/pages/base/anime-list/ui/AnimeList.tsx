@@ -1,21 +1,35 @@
 import { AnimeFilters } from '@components/anime-filters'
 import { AnimeCard } from '@components/anime-card/AnimeCard'
+import { useState, useEffect } from 'react'
+import { animeApi } from '@/api'
+import { AnimeCardResponseType } from '@/types'
 
 export const AnimeList = () => {
+  const [animeList, setAnimeList] = useState<AnimeCardResponseType[]>()
+
+  const getAnimeList = async () => {
+    const data = await animeApi.getAnimeList()
+
+    setAnimeList(data.data.items)
+  }
+
+  useEffect(() => {
+    getAnimeList()
+  }, [])
+
   return (
     <div className={'anime-list'}>
       <AnimeFilters />
 
-      <AnimeCard
-        urlPath={'/'}
-        rating={9.6}
-        status={'Вышел'}
-        genre={'драма'}
-        year={'1990'}
-        age={18}
-        title={'Клинок, рассекающий демонов: Тренировка столпов'}
-        urlImg={'https://img.yani.tv/posters/big/1636671088.webp'}
-      />
+      {
+        animeList?.length ? (
+          animeList?.map((item) => {
+            return (
+              <AnimeCard key={item.uuid} {...item} />
+            )
+          })
+        ) : null
+      }
     </div>
   )
 }

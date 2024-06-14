@@ -1,4 +1,4 @@
-import { FiltersData } from '@/mocks/filters.type'
+import { FiltersData } from '@/types/filters'
 
 export const FILTERS_MOCK_DATA: FiltersData[] = [
   {
