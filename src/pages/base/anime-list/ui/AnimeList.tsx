@@ -22,11 +22,11 @@ export const AnimeList = () => {
   }, [])
 
   return (
-    <div className={'anime-list'}>
+    <div className={cx('anime-list')}>
       <AnimeFilters />
 
       { animeList?.length ? (
-        <div className='anime-list__wrapper'>
+        <div className={cx('anime-list__wrapper')}>
           <div className='container'>
             <div className={cx('anime-list__body')}>
               {/*TODO: Добавить эффект загрузки 'suspense'*/}
