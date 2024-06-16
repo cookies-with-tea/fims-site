@@ -1,8 +1,8 @@
 import { Icon } from '@/ui'
 import { Link } from 'react-router-dom'
+import { AnimeCardResponseType } from '@/types'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
-import { AnimeCardResponseType } from '@/types'
 
 const cx = cnBind.bind(style)
 
@@ -52,7 +52,7 @@ export const AnimeCard = ({
               { rating }
             </div>
 
-            <div className={cx('anime-card__bottom-item' , 'anime-card__year',)}>
+            <div className={cx('anime-card__bottom-item' , 'anime-card__year')}>
               { year }
             </div>
 

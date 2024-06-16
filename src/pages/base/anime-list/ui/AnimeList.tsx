@@ -3,6 +3,10 @@ import { AnimeCard } from '@components/anime-card/AnimeCard'
 import { useState, useEffect } from 'react'
 import { animeApi } from '@/api'
 import { AnimeCardResponseType } from '@/types'
+import style from './styles.module.scss'
+import cnBind from 'classnames/bind'
+
+const cx = cnBind.bind(style)
 
 export const AnimeList = () => {
   const [animeList, setAnimeList] = useState<AnimeCardResponseType[]>()
@@ -21,13 +25,17 @@ export const AnimeList = () => {
     <div className={'anime-list'}>
       <AnimeFilters />
 
-      {
-        animeList?.length ? (
-          animeList?.map((item) => {
-            return (
-              <AnimeCard key={item.uuid} {...item} />
-            )
-          })
+      { animeList?.length ? (
+        <div className='anime-list__wrapper'>
+          <div className='container'>
+            <div className={cx('anime-list__body')}>
+              {/*TODO: Добавить эффект загрузки 'suspense'*/}
+              { animeList?.map((item) => (
+                <AnimeCard key={item.uuid} {...item} />
+              )) }
+            </div>
+          </div>
+        </div>
         ) : null
       }
     </div>
