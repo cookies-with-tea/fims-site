@@ -1,0 +1,13 @@
+.anime-list {
+  margin-top: 80px;
+
+  &__wrapper {
+    margin-top: 25px;
+  }
+
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+}

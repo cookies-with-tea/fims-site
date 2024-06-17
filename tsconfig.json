@@ -16,7 +16,7 @@
       "@layouts/*": ["./src/layouts/*"],
       "@utils/*": ["./src/utils/*"],
       "@pages/*": ["./src/pages/*"],
-      "@scss/*": ["./src/scss/*"],
+      "@scss/*": ["./src/styles/*"],
       "@ui/*": ["./src/ui/*"],
       "@providers/*": ["./src/providers/*"],
       "@components/*": ["./src/components/*"],

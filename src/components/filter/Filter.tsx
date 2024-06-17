@@ -1,6 +1,6 @@
 import { Select } from '@/ui'
 import { OptionType, UnionOrArray } from '@/types'
-import { FiltersData } from '@/mocks/filters.type'
+import { FiltersData } from '@/types/filters'
 
 interface FilterProp {
   filter: FiltersData

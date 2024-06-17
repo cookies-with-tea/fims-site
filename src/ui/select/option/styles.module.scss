@@ -11,12 +11,12 @@
     padding: 10px;
 
     &_active {
-      color: $color--black;
       background-color: $color--white--transparent;
     }
 
     &-icon {
       font-size: $font--size-large;
+      color: $color--black;
     }
 
     &:not(:last-child) {

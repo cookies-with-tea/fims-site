@@ -1,6 +1,6 @@
 // import { useState } from 'react'
 // import { button, Input , Icon } from '@/ui'
-// import stl from './styles.module.scss'
+// import stl from './styles.module.styles'
 //
 // export const Uikit = () => {
 //     const [value, setValue] = useState('')

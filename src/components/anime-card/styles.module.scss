@@ -1,0 +1,131 @@
+.anime-card {
+  $root: &;
+
+  width: 250px;
+  display: block;
+  color: $color--white;
+
+  &__img {
+    height: 100%;
+
+    &-item {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  }
+
+  &__poster {
+    width: 100%;
+    height: 260px;
+    position: relative;
+    border-radius: 10px;
+    transition: transform 500ms ease-in-out;
+
+    &-age {
+      right: 8px;
+      bottom: 8px;
+      position: absolute;
+      border-radius: 5px;
+      font-weight: 500;
+      font-size: 12px;
+      background-color: $color--black-gray;
+      padding: 2px;
+      opacity: 0.7;
+    }
+
+    &-info {
+      top: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: inherit;
+      background-color: $color--black--transparent;
+      transition: opacity 500ms ease-in-out,  visibility 1s ease-in-out;
+
+      //TODO: Подумать над изменением анимации
+      padding: 8px;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+
+  &__icon {
+    font-size: $font--size-large-3;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-bottom: 7px;
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__status {
+    background-color: $background--purple-white;
+  }
+
+  &__rating {
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: $font--size-medium;
+    background-color: $background--blue;
+    padding: 4px;
+    opacity: 0.8;
+
+    &::first-letter {
+      font-size: $font--size-large-2
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-item {
+      position: relative;
+      border-radius: 4px;
+      padding: 2px 5px;
+
+      &:not(:first-child, :last-child) {
+        border: 2px solid $color--black-gray;
+      }
+    }
+  }
+
+  &__title {
+    @include truncate(2);
+
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  &:hover {
+    #{$root}__poster {
+      transform: scale(1.04);
+    }
+
+    #{$root}__poster-info {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    #{$root}__title {
+      opacity: 0.7;
+    }
+  }
+}
+

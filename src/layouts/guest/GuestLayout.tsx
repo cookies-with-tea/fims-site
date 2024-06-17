@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom'
+import { Suspense } from 'react'
 import { Logo } from '@components/logo/Logo'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
-import { Suspense } from 'react'
 
 const cx = cnBind.bind(style)
 
