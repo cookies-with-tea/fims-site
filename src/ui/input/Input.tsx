@@ -68,7 +68,8 @@ export const Input = forwardRef<
         className,
         'input__inner',
     )
-    const RenderIcon = ({ prefix, postfix }: IconProps): ReactNode =>{
+
+    const RenderIcon = ({ prefix, postfix }: IconProps): ReactNode => {
         const currentChildren = prefix ?? postfix
 
         const classIcon = cx('input__icon', {
@@ -85,6 +86,7 @@ export const Input = forwardRef<
           </>
         )
     }
+
     const RenderContent = ({ prepend, append }: ContentProps): ReactNode =>{
         const currentChildren = prepend ?? append
 
@@ -99,7 +101,8 @@ export const Input = forwardRef<
           </>
         )
     }
-    if(type === 'textarea'){
+
+    if (type === 'textarea') {
         return(
           <textarea
             className={cx('textarea')}
@@ -143,11 +146,11 @@ export const Input = forwardRef<
           </div>
         )}
 
-        {type === 'password' && (
+        { type === 'password' && (
           <div className={cx('postfix')} onClick={() => setPasswordShown(!passwordShown)}>
-            {!passwordShown ? passwordHideIcon : passwordShowIcon}
+            { !passwordShown ? passwordHideIcon : passwordShowIcon }
           </div>
-        )}
+        ) }
 
         <RenderIcon postfix={postfixIcon}/>
 

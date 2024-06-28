@@ -54,7 +54,7 @@ export const Button = ({
               <div className={cx('prefix-icon')}>
                 { prefixIcon }
               </div>
-                ) }
+            ) }
 
             { children && children }
 
@@ -62,18 +62,19 @@ export const Button = ({
               <div className={cx('suffix-icon')}>
                 { postfixIcon }
               </div>
-                ) }
+            ) }
           </>
         )
     }
 
-    if(href){
+    if (href) {
         return (
           <Link to={href} className={classes}>
             <ConditionalRender/>
           </Link>
         )
     }
+
     return (
       <button
         type={type}

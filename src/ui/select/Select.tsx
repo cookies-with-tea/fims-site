@@ -16,6 +16,13 @@ interface SelectType {
   onChange?: (values: UnionOrArray<OptionType['value']>) => void
   multiple?: boolean
   variant?: 'primary' | 'secondary'
+  prefixIcon?: ReactNode
+  postfixIcon?: ReactNode
+}
+
+interface IconProps {
+  prefix?: ReactNode
+  postfix?: ReactNode
 }
 
 export const Select = ({
@@ -26,11 +33,11 @@ export const Select = ({
   clearable = <Icon name={'clear'} className={cx('select__icon-arrow')}/>,
   size = 'sm',
   onChange,
-  multiple = false
+  multiple = false,
+  postfixIcon,
+  prefixIcon,
   }: SelectType) => {
   const [valuesState, setValuesState] = useState<OptionType[]>([])
-
-  const isVariantSort = variant === 'secondary'
 
   const handleOptionChange = (value: OptionType) => {
     const _values = new Set(valuesState)
@@ -62,6 +69,25 @@ export const Select = ({
     onChange?.(getValuesChecked ?? '' )
   }, [valuesState])
 
+  const RenderIcon = ({ prefix, postfix }: IconProps): ReactNode =>{
+    const currentChildren = prefix ?? postfix
+
+    const classIcon = cx('input__icon', {
+      prefix,
+      postfix,
+    })
+
+    return (
+      <>
+        { currentChildren && (
+          <div className={classIcon}>
+            { currentChildren }
+          </div>
+        )}
+      </>
+    )
+  }
+
   return (
     <Dropdown
       hideOnClick={!multiple}
@@ -88,6 +114,8 @@ export const Select = ({
           </div>
         )}
 
+        <RenderIcon prefix={prefixIcon}/>
+
         <input
           placeholder={!valuesState.length ? placeholder : ''}
           className={cx('select__input')}
@@ -111,6 +139,8 @@ export const Select = ({
             { autocorrectIcons }
           </div>
         )}
+
+        <RenderIcon postfix={postfixIcon}/>
       </div>
     </Dropdown>
   )
