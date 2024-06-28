@@ -5,6 +5,7 @@ import { animeApi } from '@/api'
 import { AnimeCardResponseType } from '@/types'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
+import { AnimeListSort } from '@components/anime-list-sort/AnimeListSort'
 
 const cx = cnBind.bind(style)
 
@@ -33,6 +34,8 @@ export const AnimeList = () => {
               { animeList?.map((item) => (
                 <AnimeCard key={item.uuid} {...item} />
               )) }
+
+              {/*<AnimeListSort data={}/>*/}
             </div>
           </div>
         </div>

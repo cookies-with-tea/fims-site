@@ -15,9 +15,11 @@ interface SelectType {
   data: OptionType[]
   onChange?: (values: UnionOrArray<OptionType['value']>) => void
   multiple?: boolean
+  variant?: 'primary' | 'secondary'
 }
 
 export const Select = ({
+  variant = 'primary',
   placeholder = 'Жанры',
   data,
   autocorrectIcons = <Icon name={'arrow-filter'} className={cx('select__icon-arrow')}/>,
@@ -27,6 +29,8 @@ export const Select = ({
   multiple = false
   }: SelectType) => {
   const [valuesState, setValuesState] = useState<OptionType[]>([])
+
+  const isVariantSort = variant === 'secondary'
 
   const handleOptionChange = (value: OptionType) => {
     const _values = new Set(valuesState)

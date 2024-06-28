@@ -26,12 +26,12 @@ interface InputProps {
     name: string
 }
 
-interface IconProps{
+interface IconProps {
     prefix?: ReactNode
     postfix?: ReactNode
 }
 
-interface ContentProps{
+interface ContentProps {
     prepend?: ReactNode
     append?: ReactNode
 }

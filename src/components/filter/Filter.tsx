@@ -13,7 +13,7 @@ export const Filter = ({
   }: FilterProp) => {
   return (
     <Select
-      multiple
+      variant={'secondary'}
       placeholder={filter.title}
       data={filter.items}
       onChange={onChange}
