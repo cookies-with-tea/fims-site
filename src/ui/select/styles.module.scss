@@ -1,8 +1,7 @@
 .select {
   //TODO: по окончанию реализации листинга будет убрано
   //width: 100%;
-  width: 284px;
-  display: flex;
+  //width: 284px;
   align-items: center;
   border-radius: $font--size-small;
   background-color: $background--purple-white;
@@ -89,6 +88,7 @@
 
 .primary {
   width: 284px;
+  display: flex;
 
   .select__input {
     width: 100%;
@@ -96,7 +96,19 @@
 }
 
 .secondary {
+  display: inline-flex;
+  background-color: transparent;
+
   .select__input {
+    font-size: $font--size-medium;
     field-sizing: content;
+
+    &::placeholder {
+      font-size: $font--size-medium;
+    }
+  }
+
+  &:hover {
+    background-color: $background--transparent-white;
   }
 }

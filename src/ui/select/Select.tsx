@@ -31,7 +31,7 @@ export const Select = ({
   data,
   autocorrectIcons = <Icon name={'arrow-filter'} className={cx('select__icon-arrow')}/>,
   clearable = <Icon name={'clear'} className={cx('select__icon-arrow')}/>,
-  size = 'sm',
+  size = 'xs',
   onChange,
   multiple = false,
   postfixIcon,
