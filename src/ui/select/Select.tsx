@@ -95,7 +95,7 @@ export const Select = ({
       content={<SelectOptions data={data} values={valuesState} onChange={handleOptionChange} />}
       className={cx('select__dropdown')}
     >
-      <div className={cx('select', size)}>
+      <div className={cx('select', variant, size)}>
         { multiple && !!valuesState.length && (
           <div className={cx('select__item')}>
             <p className={cx('select__text')}>

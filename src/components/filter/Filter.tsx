@@ -1,6 +1,7 @@
-import { Select } from '@/ui'
+import { Icon, Select } from '@/ui'
 import { OptionType, UnionOrArray } from '@/types'
 import { FiltersData } from '@/types/filters'
+import style from './style.module.scss'
 
 interface FilterProp {
   filter: FiltersData
@@ -14,6 +15,10 @@ export const Filter = ({
   return (
     <Select
       variant={'secondary'}
+      clearable={false}
+      autocorrectIcons={false}
+      prefixIcon={<Icon name={'sort'} className={style.filter__icon}/>}
+      postfixIcon={<Icon name={'arrow-bottom'} className={style.filter__icon}/>}
       placeholder={filter.title}
       data={filter.items}
       onChange={onChange}
