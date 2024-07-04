@@ -10,7 +10,7 @@ interface PropsSendEmail {
     onClose: () => void
 }
 
-export const SendNewPasswordForm = ({ visible, onClose }: PropsSendEmail) => {
+export const RecoveryAccount = ({ visible, onClose }: PropsSendEmail) => {
     const [formData, setFormData] = useState('')
 
     const onClearValue = (): void => {

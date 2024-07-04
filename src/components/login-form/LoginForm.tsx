@@ -1,5 +1,5 @@
 import { Button , Input, Icon } from '@/ui'
-import { SendNewPasswordForm } from '@components/send-email/SendNewPasswordForm'
+import { RecoveryAccount } from '@components/RecoveryAccount/RecoveryAccount'
 import { Link } from 'react-router-dom'
 import { ChangeEvent, useState } from 'react'
 import style from '@pages/auth/registration/ui/styles.module.scss'
@@ -104,7 +104,7 @@ export const LoginForm = ({ handleModalVisibleToggle , visible }: LoginForm) => 
           </div>
         </form>
 
-        <SendNewPasswordForm visible={visible} onClose={handleModalVisibleToggle}/>
+        <RecoveryAccount visible={visible} onClose={handleModalVisibleToggle}/>
       </>
     )
 }

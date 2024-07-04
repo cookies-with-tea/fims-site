@@ -8,6 +8,6 @@ export { Logo } from '@components/logo/Logo'
 
 export { Navbar } from '@components/navbar/Navbar'
 
-export { SendNewPasswordForm } from '@components/send-email/SendNewPasswordForm'
+export { RecoveryAccount } from '@components/RecoveryAccount/RecoveryAccount'
 
 export { Filter } from '@components/filter/Filter'
