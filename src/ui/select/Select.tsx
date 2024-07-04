@@ -27,7 +27,7 @@ interface IconProps {
 
 export const Select = ({
   variant = 'primary',
-  placeholder = 'Жанры',
+  placeholder = '',
   data,
   autocorrectIcons = <Icon name={'arrow-filter'} className={cx('select__icon-arrow')}/>,
   clearable = <Icon name={'clear'} className={cx('select__icon-arrow')}/>,

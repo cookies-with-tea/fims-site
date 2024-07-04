@@ -1,6 +1,10 @@
 import { Select } from '@/ui'
 import { ReactNode } from 'react'
 import { UnionOrArray, OptionType } from '@/types'
+import style from './styles.module.scss'
+import cnBind from 'classnames/bind'
+
+const cx = cnBind.bind(style)
 
 interface SortType {
   placeholder?: string
@@ -12,7 +16,7 @@ interface SortType {
   multiple?: boolean
 }
 
-export const AnimeListSort = ({
+export const Sort = ({
   placeholder,
   size,
   clearable,
@@ -22,14 +26,16 @@ export const AnimeListSort = ({
   multiple,
   }: SortType) => {
   return (
-    <Select
-      placeholder={placeholder}
-      size={size}
-      clearable={clearable}
-      autocorrectIcons={autocorrectIcons}
-      data={data}
-      multiple={multiple}
-      onChange={onChange}
-    />
+    <div className={cx('anime-sort')}>
+      <Select
+        placeholder={placeholder}
+        size={size}
+        clearable={clearable}
+        autocorrectIcons={autocorrectIcons}
+        data={data}
+        multiple={multiple}
+        onChange={onChange}
+      />
+    </div>
   )
 }
