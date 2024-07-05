@@ -8,6 +8,7 @@ interface TooltipProps {
   className?: string
   children?: ReactNode
   content?: ReactNode
+  width?: string | number
   offsetX?: number
   offsetY?: number
   placement?: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' |
@@ -20,17 +21,18 @@ interface TooltipProps {
 }
 
 export const Tooltip = ({
-        children,
-        content,
-        teleportTarget = document.body,
-        placement = 'bottom',
-        className = '',
-        offsetX = 10,
-        offsetY = 10,
-        trigger = 'hover',
-        closeOutside = true,
-        showArrow = false,
-        hideOnClick = false
+    children,
+    content,
+    width,
+    teleportTarget = document.body,
+    placement = 'bottom',
+    className = '',
+    offsetX = 10,
+    offsetY = 10,
+    trigger = 'hover',
+    closeOutside = true,
+    showArrow = false,
+    hideOnClick = false
     }: TooltipProps) => {
     const [tooltipVisible, setTooltipVisible] = useState(false)
     const arrowRef = useRef<HTMLDivElement>(null)
@@ -40,6 +42,16 @@ export const Tooltip = ({
     const onClick = () => {
         setTooltipVisible(!tooltipVisible)
     }
+
+    useEffect(() => {
+      if (!tooltipVisible || !triggerRef.current || !tooltipRef.current) {
+        return
+      }
+
+      const triggerRefWidth = triggerRef.current.getBoundingClientRect().width
+
+      tooltipRef.current.style.width = `${width ?? triggerRefWidth}px`
+    }, [tooltipVisible, width])
 
     useEffect(() => {
         const handlerOutsideClick = (event: MouseEvent) => {
@@ -53,7 +65,7 @@ export const Tooltip = ({
             }
         }
 
-        if(tooltipVisible && closeOutside) {
+        if (tooltipVisible && closeOutside) {
             window.addEventListener('click', handlerOutsideClick)
 
             return () => window.removeEventListener('click', handlerOutsideClick)
@@ -64,6 +76,7 @@ export const Tooltip = ({
         if (!tooltipVisible || !triggerRef.current || !tooltipRef.current) {
             return
         }
+
         const triggerRefClientRect = triggerRef.current.getBoundingClientRect()
         const contentRefClientRect = tooltipRef.current.getBoundingClientRect()
         // DEBT: В будущем, должным образом сократить код + точно удостовериться в том, что arrow позиционироется по центру тригера
@@ -97,6 +110,7 @@ export const Tooltip = ({
                     break
                 }
             },
+
             changePositionHorizontal(position: string) {
                 if(!tooltipRef.current || !arrowRef.current) return
 
@@ -130,6 +144,7 @@ export const Tooltip = ({
         const positionsTooltip = {
             currentX: 0,
             currentY: 0,
+
             reversePositioning() {
                 const getNewPosition = (value: string, replacement: string) => placement.replace(value, replacement)
 
@@ -154,6 +169,7 @@ export const Tooltip = ({
                     }
                 }
             },
+
             setVerticalToHorizontal(position: string) {
                 switch(true) {
                     case position.startsWith('top'):
@@ -184,6 +200,7 @@ export const Tooltip = ({
                     break
                 }
             },
+
             setPositionToHorizontal(position: string) {
                 switch(true){
                     case position.startsWith('left'):
@@ -211,6 +228,7 @@ export const Tooltip = ({
                     break
                 }
             },
+
             changePosition(currentPosition: string) {
                 this.setVerticalToHorizontal(currentPosition)
                 this.setPositionToHorizontal(currentPosition)
