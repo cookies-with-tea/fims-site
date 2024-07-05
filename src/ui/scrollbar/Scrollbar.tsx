@@ -1,6 +1,6 @@
+import { ReactNode } from 'react'
 import styles from './styles.module.scss'
 import cb from 'classnames/bind'
-import { ReactNode } from 'react'
 
 const cx = cb.bind(styles)
 

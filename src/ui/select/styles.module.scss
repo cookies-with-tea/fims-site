@@ -4,7 +4,6 @@
   //width: 284px;
   align-items: center;
   border-radius: $font--size-small;
-  background-color: $background--purple-white;
   transition: box-shadow 500ms ease-in-out;
   cursor: pointer;
 
@@ -42,7 +41,7 @@
   &__input {
     height: 100%;
     border-radius: 13px 0 0 13px;
-    font-size: $font--size-large;
+    font-size: $font--size-small-2;
     color: $color--white;
     background: transparent;
     pointer-events: none;
@@ -50,7 +49,7 @@
 
     &::placeholder {
       font-weight: 500;
-      font-size: $font--size-large;
+      font-size: $font--size-small-2;
       letter-spacing: 2px;
       color: $color--white;
     }
@@ -64,15 +63,15 @@
 }
 
 .md {
-  height: 64px;
-}
-
-.sm {
   height: 54px;
 }
 
+.sm {
+  height: 46px;
+}
+
 .xs {
-  height: 47px
+  height: 40px
 }
 
 .prefix {
@@ -88,6 +87,7 @@
 .primary {
   width: 284px;
   display: flex;
+  background-color: $background--purple-white;
 
   .select__input {
     width: 100%;
@@ -99,12 +99,7 @@
   background-color: transparent;
 
   .select__input {
-    font-size: $font--size-medium;
     field-sizing: content;
-
-    &::placeholder {
-      font-size: $font--size-medium;
-    }
   }
 
   &:hover {

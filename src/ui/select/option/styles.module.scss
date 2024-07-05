@@ -3,12 +3,12 @@
     display: flex;
     align-items: center;
     border-radius: 5px;
-    font-size: $font--size-large;
+    font-size: $font--size-medium;
     color: $color--white;
     background-color: $background--purple-black-2;
     transition: color 200ms ease-in, background-color 200ms ease-in;
     cursor: pointer;
-    padding: 10px;
+    padding: 6px;
 
     &_active {
       background-color: $color--white--transparent;

@@ -72,15 +72,10 @@ export const Select = ({
   const RenderIcon = ({ prefix, postfix }: IconProps): ReactNode =>{
     const currentChildren = prefix ?? postfix
 
-    const classIcon = cx('input__icon', {
-      prefix,
-      postfix,
-    })
-
     return (
       <>
         { currentChildren && (
-          <div className={classIcon}>
+          <div className={cx({ prefix, postfix })}>
             { currentChildren }
           </div>
         )}
