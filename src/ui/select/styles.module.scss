@@ -63,11 +63,11 @@
 }
 
 .md {
-  height: 54px;
+  height: 48px;
 }
 
 .sm {
-  height: 46px;
+  height: 44px;
 }
 
 .xs {
@@ -85,9 +85,9 @@
 }
 
 .primary {
-  width: 100%;
+  //width: 100%;
 
-  //width: 284px;
+  width: 284px;
   display: flex;
   background-color: $background--purple-white;
 
