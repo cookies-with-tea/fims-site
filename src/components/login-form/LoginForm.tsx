@@ -1,5 +1,5 @@
 import { Button , Input, Icon } from '@/ui'
-import { RecoveryAccount } from '@components/RecoveryAccount/RecoveryAccount'
+import { RecoveryAccount } from '@components/recoveryAccount/RecoveryAccount'
 import { Link } from 'react-router-dom'
 import { ChangeEvent, useState } from 'react'
 import style from '@pages/auth/registration/ui/styles.module.scss'

@@ -8,6 +8,6 @@ export { Logo } from '@components/logo/Logo'
 
 export { Navbar } from '@components/navbar/Navbar'
 
-export { RecoveryAccount } from '@components/RecoveryAccount/RecoveryAccount'
+export { RecoveryAccount } from '@components/recoveryAccount/RecoveryAccount'
 
 export { Filter } from '@components/filter/Filter'

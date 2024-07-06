@@ -85,7 +85,9 @@
 }
 
 .primary {
-  width: 284px;
+  width: 100%;
+
+  //width: 284px;
   display: flex;
   background-color: $background--purple-white;
 
