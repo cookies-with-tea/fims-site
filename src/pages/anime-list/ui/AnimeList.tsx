@@ -1,5 +1,5 @@
 import { AnimeFilters } from '@components/anime-filters'
-import { AnimeCard } from '@components/anime-card/AnimeCard'
+import { AnimeCard, Sort } from '@/components'
 import { useState, useEffect } from 'react'
 import { animeApi } from '@/api'
 import { AnimeCardResponseType } from '@/types'
@@ -25,6 +25,8 @@ export const AnimeList = () => {
     <div className={cx('anime-list')}>
       <AnimeFilters />
 
+      {/*<Sort/>*/}
+
       { animeList?.length ? (
         <div className={cx('anime-list__wrapper')}>
           <div className='container'>
@@ -33,8 +35,6 @@ export const AnimeList = () => {
               { animeList?.map((item) => (
                 <AnimeCard key={item.uuid} {...item} />
               )) }
-
-              {/*<AnimeListSort data={}/>*/}
             </div>
           </div>
         </div>

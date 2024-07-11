@@ -1,4 +1,4 @@
-import { Select } from '@/ui'
+import { Icon, Select } from '@/ui'
 import { ReactNode } from 'react'
 import { UnionOrArray, OptionType } from '@/types'
 import style from './styles.module.scss'
@@ -36,6 +36,10 @@ export const Sort = ({
         multiple={multiple}
         onChange={onChange}
       />
+
+      <button>
+        <Icon name={'sort-reverse'}/>
+      </button>
     </div>
   )
 }
