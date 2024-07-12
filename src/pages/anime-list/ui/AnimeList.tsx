@@ -1,45 +1,40 @@
 import { AnimeFilters } from '@components/anime-filters'
 import { AnimeCard, Sort } from '@/components'
-import { useState, useEffect } from 'react'
-import { animeApi } from '@/api'
-import { AnimeCardResponseType } from '@/types'
+import { useEffect } from 'react'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
+import { SORT_MOCK_DATA } from '@/mocks'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAnimeList } from '@/redux/anime-list/slices'
+import { RootState } from '@/redux/store'
 
 const cx = cnBind.bind(style)
 
 export const AnimeList = () => {
-  const [animeList, setAnimeList] = useState<AnimeCardResponseType[]>()
-
-  const getAnimeList = async () => {
-    const data = await animeApi.getAnimeList()
-
-    setAnimeList(data.data.items)
-  }
+  const dispatch = useDispatch();
+  const { animeList, status, error, payloadFilters } = useSelector((state: RootState) => state.anime);
 
   useEffect(() => {
-    getAnimeList()
-  }, [])
+    dispatch(fetchAnimeList());
+  }, [dispatch, payloadFilters]);
 
   return (
     <div className={cx('anime-list')}>
       <AnimeFilters />
 
-      {/*<Sort/>*/}
+      <Sort data={SORT_MOCK_DATA.animeList} />
 
-      { animeList?.length ? (
+      {animeList.length ? (
         <div className={cx('anime-list__wrapper')}>
           <div className='container'>
             <div className={cx('anime-list__body')}>
-              {/*TODO: Добавить эффект загрузки 'suspense'*/}
-              { animeList?.map((item) => (
+              {animeList.map((item) => (
                 <AnimeCard key={item.uuid} {...item} />
-              )) }
+              ))}
             </div>
           </div>
         </div>
-        ) : null
-      }
+      ) : null}
     </div>
-  )
-}
+  );
+};

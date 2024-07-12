@@ -17,21 +17,7 @@ export const ANIME_LIST_MOCK_DATA: AnimeListResponseType = {
       slug: 'nazvanie-1'
     },
     {
-      uuid: 'qwety-123',
-      title: 'Клинок, рассекающий демонов: Тренировка столпов',
-      status: 'Новый',
-      image: {
-        path: 'https://img.yani.tv/posters/big/1636671088.webp',
-        alt: 'Anime'
-      },
-      rating: 18,
-      age: '13',
-      year: '2017', // Здесь будет другой вид
-      genre: 'драма',
-      slug: 'nazvanie-1'
-    },
-    {
-      uuid: 'qwety-123',
+      uuid: 'qwety-123-1',
       title: 'Клинок, рассекающий демонов: Тренировка столпов',
       status: 'Новый',
       image: {
@@ -83,11 +69,25 @@ export const ANIME_LIST_MOCK_DATA: AnimeListResponseType = {
       rating: 18,
       age: '13',
       year: '2017', // Здесь будет другой вид
-      genre: 'драма', // вынести в словарь
+      genre: 'драма',
       slug: 'nazvanie-1'
     },
     {
       uuid: 'qwety-123-5',
+      title: 'Клинок, рассекающий демонов: Тренировка столпов',
+      status: 'Новый',
+      image: {
+        path: 'https://img.yani.tv/posters/big/1636671088.webp',
+        alt: 'Anime'
+      },
+      rating: 18,
+      age: '13',
+      year: '2017', // Здесь будет другой вид
+      genre: 'драма', // вынести в словарь
+      slug: 'nazvanie-1'
+    },
+    {
+      uuid: 'qwety-123-6 ',
       title: 'Клинок, рассекающий демонов: Тренировка столпов',
       status: 'Новый',
       image: {

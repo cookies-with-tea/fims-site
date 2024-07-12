@@ -28,34 +28,33 @@ const ROUTES = {
 }
 
 export const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <MainLayout/>,
-        children:[
-          {
-              path: ROUTES.MAIN.path,
-              element: <MainPage/>
-          },
+  {
+    path: '/',
+    element: <MainLayout/>,
+    children:[
+      {
+        path: ROUTES.MAIN.path,
+        element: <MainPage/>
+      },
 
-          {
-            path: ROUTES.ANIME.path,
-            element: <AnimePage/>
-          }
-        ]
-    },
-
-    {
-        path: '/',
-        element: <GuestLayout/>,
-        children:[
-          {
-              path: ROUTES.LOGIN.path,
-              element: <PageLogin/>
-          },
-          {
-              path: ROUTES.REGISTRATION.path,
-              element: <PageRegistration/>
-          }
-        ]
-    },
+      {
+        path: ROUTES.ANIME.path,
+        element: <AnimePage/>
+      }
+    ]
+  },
+  {
+    path: '/',
+    element: <GuestLayout/>,
+    children:[
+      {
+        path: ROUTES.LOGIN.path,
+        element: <PageLogin/>
+      },
+      {
+        path: ROUTES.REGISTRATION.path,
+        element: <PageRegistration/>
+      }
+    ]
+  },
 ])

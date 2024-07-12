@@ -1,14 +1,22 @@
 import { Header } from '@components/header/Header'
 import { Outlet, useLocation } from 'react-router-dom'
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import style from './styles.module.scss'
 import cnBind from 'classnames/bind'
+import { useDictionary } from '@/hooks'
 
 const cx = cnBind.bind(style)
 
 export const MainLayout = () => {
   const location= useLocation()
   const isMainPage = location.pathname === '/'
+
+  // TODO: Вынести в логику redux'а
+  const { getData } = useDictionary()
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return (
     <div className={'main-layout wrapper'}>

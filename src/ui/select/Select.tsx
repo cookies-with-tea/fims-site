@@ -12,7 +12,7 @@ interface SelectType {
   size?: 'md' | 'sm' | 'xs'
   clearable?: ReactNode | boolean
   autocorrectIcons?: ReactNode | boolean
-  data: OptionType[]
+  data?: OptionType[]
   onChange?: (values: UnionOrArray<OptionType['value']>) => void
   multiple?: boolean
   variant?: 'primary' | 'secondary'
@@ -117,6 +117,7 @@ export const Select = ({
           defaultValue={!multiple && valuesState.length ? valuesState[0]?.label : ''}
         />
 
+        {/*  DEBT: Доработать отчистку данных. Не обновляется стейт в родителе. */}
         { clearable && !!valuesState.length && (
           <div
             className={cx('postfix')}
