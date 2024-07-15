@@ -1,26 +1,31 @@
 import { Filter } from '@/components'
-import { useEffect, useState } from 'react'
-import styles from './styles.module.scss'
-import cn from 'classnames'
-import cb from 'classnames/bind'
-import { useAnimeList } from '@/hooks'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { handleFilterChange, setFilters } from '@/redux/anime-list/slices'
+import { handleFilterChange, setFilters, setStatus } from '@/redux/anime-list/slices'
 import { RootState } from '@/redux/store'
 import { useGetFiltersQuery } from '@/api'
+
+import styles from './styles.module.scss'
+import cb from 'classnames/bind'
 
 const cx = cb.bind(styles)
 
 export const AnimeFilters = () => {
-  const dispatch = useDispatch();
-  const { filters } = useSelector((state: RootState) => state.anime);
-  const { data: filtersData } = useGetFiltersQuery();
+  const dispatch = useDispatch()
+  const { filters } = useSelector((state: RootState) => state.anime)
+  const { data: filtersData, error, isLoading } = useGetFiltersQuery()
 
   useEffect(() => {
-    if (filtersData) {
-      dispatch(setFilters(filtersData));
+    if (isLoading) {
+      dispatch(setStatus('loading'))
+    } else if (error) {
+      dispatch(setStatus('failed'))
+    } else if (filtersData) {
+      dispatch(setFilters(filtersData))
+
+      dispatch(setStatus('idle'))
     }
-  }, [filtersData, dispatch]);
+  }, [filtersData, error, isLoading, dispatch])
 
   return (
     <section className={cx('container')}>
@@ -36,5 +41,5 @@ export const AnimeFilters = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

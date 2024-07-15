@@ -5,7 +5,7 @@ import { Option } from '@ui/select/option/Option'
 import style from './styles.module.scss'
 
 interface OptionsProps {
-  data: OptionType[]
+  data?: OptionType[]
   onChange: (value: OptionType) => void
   values: OptionType[]
   checkIconPosition?: 'left' | 'right'
@@ -23,7 +23,7 @@ export const SelectOptions = ({
 }: OptionsProps) => {
   return (
     <>
-      { data.length ? (
+      { data?.length ? (
         <Scrollbar maxHeight={200} classNames={style.select__scroll}>
           <ul>
             {data.map((option , index) => (
