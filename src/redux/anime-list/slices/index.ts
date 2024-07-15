@@ -1,6 +1,6 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { animeApi } from '@/api';
-import { FiltersData, FetchPayloadOptionsType, AnimeCardResponseType, ListResponseType, UnionOrArray } from '@/types';
+import { FiltersData, FetchPayloadOptionsType, AnimeCardResponseType, UnionOrArray } from '@/types';
 
 type AnimeState = {
   filters: FiltersData[];
@@ -28,21 +28,6 @@ const initialState: AnimeState = {
   error: null
 };
 
-export const fetchFiltersData = createAsyncThunk<FiltersData[]>('anime/fetchFiltersData', async () => {
-  const response = await animeApi.getFilters();
-  return response.data;
-});
-
-export const fetchAnimeList = createAsyncThunk<AnimeCardResponseType[], void, { state: { anime: AnimeState } }>(
-  'anime/fetchAnimeList',
-  async (_, { getState }) => {
-    const state = getState();
-    const { payloadFilters } = state.anime;
-    const response = await animeApi.getAnimeList(payloadFilters);
-    return response.data.items;
-  }
-);
-
 const animeSlice = createSlice({
   name: 'anime',
   initialState,
@@ -63,34 +48,32 @@ const animeSlice = createSlice({
     setPayloadFilters: (state, action: PayloadAction<FetchPayloadOptionsType>) => {
       state.payloadFilters = action.payload;
     },
+    setAnimeList: (state, action: PayloadAction<AnimeCardResponseType[]>) => {
+      state.animeList = action.payload;
+    },
+    setStatus: (state, action: PayloadAction<'idle' | 'loading' | 'succeeded' | 'failed'>) => {
+      state.status = action.payload;
+    },
+    setError: (state, action: PayloadAction<string | null>) => {
+      state.error = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFiltersData.fulfilled, (state, action: PayloadAction<FiltersData[]>) => {
+      .addMatcher(animeApi.endpoints.getFilters.matchFulfilled, (state, action: PayloadAction<FiltersData[]>) => {
         state.filters = action.payload;
       })
-      .addCase(fetchAnimeList.fulfilled, (state, action: PayloadAction<AnimeCardResponseType[]>) => {
+      .addMatcher(animeApi.endpoints.getAnimeList.matchFulfilled, (state, action: PayloadAction<AnimeCardResponseType[]>) => {
         state.animeList = action.payload;
+        state.status = 'succeeded';
       })
-      .addMatcher(
-        (action) => action.type.startsWith('anime/') && action.type.endsWith('/pending'),
-        (state) => {
-          state.status = 'loading';
-        }
-      )
-      .addMatcher(
-        (action) => action.type.startsWith('anime/') && action.type.endsWith('/fulfilled'),
-        (state) => {
-          state.status = 'succeeded';
-        }
-      )
-      .addMatcher(
-        (action) => action.type.startsWith('anime/') && action.type.endsWith('/rejected'),
-        (state, action) => {
-          state.status = 'failed';
-          state.error = action.error.message;
-        }
-      );
+      .addMatcher(animeApi.endpoints.getAnimeList.matchPending, (state) => {
+        state.status = 'loading';
+      })
+      .addMatcher(animeApi.endpoints.getAnimeList.matchRejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message || null;
+      });
   }
 });
 
@@ -99,6 +82,9 @@ export const {
   handleSortChange,
   setFilters,
   setPayloadFilters,
+  setAnimeList,
+  setStatus,
+  setError,
 } = animeSlice.actions;
 
 export default animeSlice.reducer;

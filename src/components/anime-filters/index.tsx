@@ -5,18 +5,22 @@ import cn from 'classnames'
 import cb from 'classnames/bind'
 import { useAnimeList } from '@/hooks'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchFiltersData, handleFilterChange } from '@/redux/anime-list/slices'
+import { handleFilterChange, setFilters } from '@/redux/anime-list/slices'
 import { RootState } from '@/redux/store'
+import { useGetFiltersQuery } from '@/api'
 
 const cx = cb.bind(styles)
 
 export const AnimeFilters = () => {
   const dispatch = useDispatch();
   const { filters } = useSelector((state: RootState) => state.anime);
+  const { data: filtersData } = useGetFiltersQuery();
 
   useEffect(() => {
-    dispatch(fetchFiltersData());
-  }, [dispatch]);
+    if (filtersData) {
+      dispatch(setFilters(filtersData));
+    }
+  }, [filtersData, dispatch]);
 
   return (
     <section className={cx('container')}>
